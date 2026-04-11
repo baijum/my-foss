@@ -1,0 +1,971 @@
+comment_char    %
+escape_char     /
+% Malayalam language locale for India.
+% Contributed by Free Software Foundation of India
+LC_IDENTIFICATION
+title     " Malayalam language locale for India"
+source     "Free Software Foundation of India, Trivandrum"
+address     ""
+contact     ""
+email     "bug-glibc@gnu.org"
+tel     ""
+fax     ""
+language     "Malayalam"
+territory     "India"
+revision     "0.1"
+date     "     "
+%
+category     "ml_IN:2000";LC_IDENTIFICATION
+category     "ml_IN:2000";LC_CTYPE
+category     "ml_IN:2000";LC_COLLATE
+category     "ml_IN:2000";LC_TIME
+category     "ml_IN:2000";LC_NUMERIC
+category     "ml_IN:2000";LC_MONETARY
+category     "ml_IN:2000";LC_MESSAGES
+category     "ml_IN:2000";LC_PAPER
+category     "ml_IN:2000";LC_NAME
+category     "ml_IN:2000";LC_ADDRESS
+category     "ml_IN:2000";LC_TELEPHONE
+category     "ml_IN:2000";LC_MEASUREMENT
+END LC_IDENTIFICATION
+LC_CTYPE
+copy	"i18n"
+translit_start
+include     "translit_combining";""
+translit_end
+END LC_CTYPE
+%
+%
+LC_COLLATE
+collating-element <am> from     "<U0D05><U0D02>"
+collating-element <a-a> from     "<U0D05><U0D03>"
+%%for Ka
+collating-element <k-a> from "<U0D15>"
+collating-element <ke> from     "<U0D15><U0D46>"
+collating-element <kee> from     "<U0D15><U0D47>"
+collating-element <kai> from     "<U0D15><U0D48>"
+collating-element <ko> from     "<U0D15><U0D4A>"
+collating-element <koo> from     "<U0D15><U0D4B>"
+collating-element <kao> from     "<U0D15><U0D4C>"
+%% kha
+collating-element <kh-a> from "<U0D16><U0D4D>"
+collating-element <khe> from     "<U0D46><U0D16>"
+collating-element <khee> from     "<U0D47><U0D16>"
+collating-element <khai> from     "<U0D48><U0D16>"
+collating-element <kho> from     "<U0D4A><U0D16>"
+collating-element <khoo> from     "<U0D4B><U0D16>"
+%% Ga
+collating-element <g-a> from "<U0D17><U0D4D>"
+collating-element <ge> from     "<U0D46><U0D17>"
+collating-element <gee> from     "<U0D47><U0D17>"
+collating-element <gai> from     "<U0D48><U0D17>"
+collating-element <go> from     "<U0D4A><U0D17>"
+collating-element <goo> from     "<U0D4B><U0D17>"
+%%Gha
+collating-element <gh-a> from "<U0D18><U0D4D>"
+collating-element <ghe> from     "<U0D46><U0D18>"
+collating-element <ghee> from     "<U0D47><U0D18>"
+collating-element <ghai> from     "<U0D48><U0D18>"
+collating-element <gho> from     "<U0D4A><U0D18>"
+collating-element <ghoo> from     "<U0D4B><U0D18>"
+%%nga
+collating-element <ng-a> from "<U0D19><U0D4D>"
+collating-element <nge> from     "<U0D46><U0D19>"
+collating-element <ngee> from     "<U0D47><U0D19>"
+collating-element <ngai> from     "<U0D48><U0D19>"
+collating-element <ngo> from     "<U0D4A><U0D19>"
+collating-element <ngoo> from     "<U0D4B><U0D19>"
+%%cha
+collating-element <ch-a> from "<U0D1A><U0D4D>"
+collating-element <che> from     "<U0D46><U0D1A>"
+collating-element <chee> from     "<U0D47><U0D1A>"
+collating-element <chai> from     "<U0D48><U0D1A>"
+collating-element <cho> from     "<U0D4A><U0D1A>"
+collating-element <choo> from     "<U0D4B><U0D1A>"
+%%ccha
+collating-element <cch-a> from "<U0D1B><U0D4D>"
+collating-element <cche> from     "<U0D46><U0D1B>"
+collating-element <cchee> from     "<U0D47><U0D1B>"
+collating-element <cchai> from     "<U0D48><U0D1B>"
+collating-element <ccho> from     "<U0D4A><U0D1B>"
+collating-element <cchoo> from     "<U0D4B><U0D1B>"
+collating-element <cchau> from     "<U0D1B><U0D57>"
+%%ja 
+collating-element <j-a> from "<U0D1C><U0D4D>"
+collating-element <je> from     "<U0D46><U0D1C>"
+collating-element <jee> from     "<U0D47><U0D1C>"
+collating-element <jai> from     "<U0D48><U0D1C>"
+collating-element <jo> from     "<U0D4A><U0D1C>"
+collating-element <joo> from     "<U0D4B><U0D1C>"
+%%jha
+collating-element <jh-a> from "<U0D1D><U0D4D>"
+collating-element <jhe> from     "<U0D46><U0D1D>"
+collating-element <jhee> from     "<U0D47><U0D1D>"
+collating-element <jhai> from     "<U0D48><U0D1D>"
+collating-element <jho> from     "<U0D4A><U0D1D>"
+collating-element <jhoo> from     "<U0D4B><U0D1D>"
+%%nnga
+collating-element <nng-a> from "<U0D1E><U0D4D>"
+collating-element <nnge> from     "<U0D46><U0D1E>"
+collating-element <nngee> from     "<U0D47><U0D1E>"
+collating-element <nngai> from     "<U0D48><U0D1E>"
+collating-element <nngo> from     "<U0D4A><U0D1E>"
+collating-element <nngoo> from     "<U0D4B><U0D1E>"
+%%ta
+collating-element <t-a> from "<U0D1F><U0D4D>"
+collating-element <te> from     "<U0D46><U0D1F>"
+collating-element <tee> from     "<U0D47><U0D1F>"
+collating-element <tai> from     "<U0D48><U0D1F>"
+collating-element <to> from     "<U0D4A><U0D1F>"
+collating-element <too> from     "<U0D4B><U0D1F>"
+%%tta
+collating-element <tt-a> from "<U0D20><U0D4D>"
+collating-element <tte> from     "<U0D46><U0D20>"
+collating-element <ttee> from     "<U0D47><U0D20>"
+collating-element <ttai> from     "<U0D48><U0D20>"
+collating-element <tto> from     "<U0D4A><U0D20>"
+collating-element <ttoo> from     "<U0D4B><U0D20>"
+%%da
+collating-element <d-a> from "<U0D21><U0D4D>"
+collating-element <de> from     "<U0D46><U0D21>"
+collating-element <dee> from     "<U0D47><U0D21>"
+collating-element <dai> from     "<U0D48><U0D21>"
+collating-element <do> from     "<U0D4A><U0D21>"
+collating-element <doo> from     "<U0D4B><U0D21>"
+%%dda
+collating-element <dd-a> from "<U0D22><U0D4D>"
+collating-element <dde> from     "<U0D46><U0D22>"
+collating-element <ddee> from     "<U0D47><U0D22>"
+collating-element <ddai> from     "<U0D48><U0D22>"
+collating-element <ddo> from     "<U0D4A><U0D22>"
+collating-element <ddoo> from     "<U0D4B><U0D22>"
+%%kna
+collating-element <kn-a> from "<U0D23><U0D4D>"
+collating-element <kne> from     "<U0D46><U0D23>"
+collating-element <knee> from     "<U0D47><U0D23>"
+collating-element <knai> from     "<U0D48><U0D23>"
+collating-element <kno> from     "<U0D4A><U0D23>"
+collating-element <knoo> from     "<U0D4B><U0D23>"
+%%tha
+collating-element <th-a> from "<U0D24><U0D4D>"
+collating-element <the> from     "<U0D46><U0D24>"
+collating-element <thee> from     "<U0D47><U0D24>"
+collating-element <thai> from     "<U0D48><U0D24>"
+collating-element <tho> from     "<U0D4A><U0D24>"
+collating-element <thoo> from     "<U0D4B><U0D24>"
+%%ttha
+collating-element <tth-a> from "<U0D25><U0D4D>"
+collating-element <tthe> from     "<U0D46><U0D25>"
+collating-element <tthee> from     "<U0D47><U0D25>"
+collating-element <tthai> from     "<U0D48><U0D25>"
+collating-element <ttho> from     "<U0D4A><U0D25>"
+collating-element <tthoo> from     "<U0D4B><U0D25>"
+%%dha
+collating-element <dh-a> from "<U0D26><U0D4D>"
+collating-element <dhe> from     "<U0D46><U0D26>"
+collating-element <dhee> from     "<U0D47><U0D26>"
+collating-element <dhai> from     "<U0D48><U0D26>"
+collating-element <dho> from     "<U0D4A><U0D26>"
+collating-element <dhoo> from     "<U0D4B><U0D26>"
+%%ddha
+collating-element <ddh-a> from "<U0D27><U0D4D>"
+collating-element <ddhe> from     "<U0D46><U0D27>"
+collating-element <ddhee> from     "<U0D47><U0D27>"
+collating-element <ddhai> from     "<U0D48><U0D27>"
+collating-element <ddho> from     "<U0D4A><U0D27>"
+collating-element <ddhoo> from     "<U0D4B><U0D27>"
+%%na
+collating-element <n-a> from "<U0D28><U0D4D>"
+collating-element <ne> from     "<U0D46><U0D28>"
+collating-element <nee> from     "<U0D47><U0D28>"
+collating-element <nai> from     "<U0D48><U0D28>"
+collating-element <no> from     "<U0D4A><U0D28>"
+collating-element <noo> from     "<U0D4B><U0D28>"
+%%pa
+collating-element <p-a> from "<U0D2A><U0D4D>"
+collating-element <pe> from     "<U0D46><U0D2A>"
+collating-element <pee> from     "<U0D47><U0D2A>"
+collating-element <pai> from     "<U0D48><U0D2A>"
+collating-element <po> from     "<U0D4A><U0D2A>"
+collating-element <poo> from     "<U0D4B><U0D2A>"
+%%pha
+collating-element <ph-a> from "<U0D2B><U0D4D>"
+collating-element <phe> from     "<U0D46><U0D2B>"
+collating-element <phee> from     "<U0D47><U0D2B>"
+collating-element <phai> from     "<U0D48><U0D2B>"
+collating-element <pho> from     "<U0D4A><U0D2B>"
+collating-element <phoo> from     "<U0D4B><U0D2B>"
+%%ba
+collating-element <b-a> from "<U0D2C><U0D4D>"
+collating-element <be> from     "<U0D46><U0D2C>"
+collating-element <bee> from     "<U0D47><U0D2C>"
+collating-element <bai> from     "<U0D48><U0D2C>"
+collating-element <bo> from     "<U0D4A><U0D2C>"
+collating-element <boo> from     "<U0D4B><U0D2C>"
+%%bha
+collating-element <bh-a> from "<U0D2D><U0D4D>"
+collating-element <bhe> from     "<U0D46><U0D2D>"
+collating-element <bhee> from     "<U0D47><U0D2D>"
+collating-element <bhai> from     "<U0D48><U0D2D>"
+collating-element <bho> from     "<U0D4A><U0D2D>"
+collating-element <bhoo> from     "<U0D4B><U0D2D>"
+%%ma
+collating-element <m-a> from "<U0D2E><U0D4D>"
+collating-element <me> from     "<U0D46><U0D2E>"
+collating-element <mee> from     "<U0D47><U0D2E>"
+collating-element <mai> from     "<U0D48><U0D2E>"
+collating-element <mo> from     "<U0D4A><U0D2E>"
+collating-element <moo> from     "<U0D4B><U0D2E>"
+%%ya
+collating-element <y-a> from "<U0D2F><U0D4D>"
+collating-element <ye> from     "<U0D46><U0D2F>"
+collating-element <yee> from     "<U0D47><U0D2F>"
+collating-element <yai> from     "<U0D48><U0D2F>"
+collating-element <yo> from     "<U0D4A><U0D2F>"
+collating-element <yoo> from     "<U0D4F><U0D2B>"
+%%ra
+collating-element <r-a> from "<U0D30><U0D4D>"
+collating-element <re> from     "<U0D46><U0D30>"
+collating-element <ree> from     "<U0D47><U0D30>"
+collating-element <rai> from     "<U0D48><U0D30>"
+collating-element <ro> from     "<U0D4A><U0D30>"
+collating-element <roo> from     "<U0D4B><U0D30>"
+%%la
+collating-element <l-a> from "<U0D32><U0D4D>"
+collating-element <le> from     "<U0D46><U0D32>"
+collating-element <lee> from     "<U0D47><U0D32>"
+collating-element <lai> from     "<U0D48><U0D32>"
+collating-element <lo> from     "<U0D4A><U0D32>"
+collating-element <loo> from     "<U0D4B><U0D32>"
+%%va
+collating-element <v-a> from "<U0D35><U0D4D>"
+collating-element <ve> from     "<U0D46><U0D35>"
+collating-element <vee> from     "<U0D47><U0D35>"
+collating-element <vai> from     "<U0D48><U0D35>"
+collating-element <vo> from     "<U0D4A><U0D35>"
+collating-element <voo> from     "<U0D4B><U0D35>"
+%%sha
+collating-element <sh-a> from "<U0D36><U0D4D>"
+collating-element <she> from     "<U0D46><U0D36>"
+collating-element <shee> from     "<U0D47><U0D36>"
+collating-element <shai> from     "<U0D48><U0D36>"
+collating-element <sho> from     "<U0D4A><U0D36>"
+collating-element <shoo> from     "<U0D4B><U0D36>"
+%%shha
+collating-element <shh-a> from "<U0D37><U0D4D>"
+collating-element <shhe> from     "<U0D46><U0D37>"
+collating-element <shhee> from     "<U0D47><U0D37>"
+collating-element <shhai> from     "<U0D48><U0D37>"
+collating-element <shho> from     "<U0D4A><U0D37>"
+collating-element <shhoo> from     "<U0D4B><U0D37>"
+%
+%sa
+collating-element <s-a> from "<U0D38><U0D4D>"
+collating-element <se> from     "<U0D46><U0D38>"
+collating-element <see> from     "<U0D47><U0D38>"
+collating-element <sai> from     "<U0D48><U0D38>"
+collating-element <so> from     "<U0D4A><U0D38>"
+collating-element <soo> from     "<U0D4B><U0D38>"
+%%ha
+collating-element <h-a> from "<U0D39><U0D4D>"
+collating-element <he> from     "<U0D46><U0D39>"
+collating-element <hee> from     "<U0D47><U0D39>"
+collating-element <hai> from     "<U0D48><U0D39>"
+collating-element <ho> from     "<U0D4A><U0D39>"
+collating-element <hoo> from     "<U0D4B><U0D39>"
+%%lha
+collating-element <lh-a> from "<U0D33><U0D4D>"
+collating-element <lhe> from     "<U0D46><U0D33>"
+collating-element <lhee> from     "<U0D47><U0D33>"
+collating-element <lhai> from     "<U0D48><U0D33>"
+collating-element <lho> from     "<U0D4A><U0D33>"
+collating-element <lhoo> from     "<U0D4B><U0D33>"
+%%zha
+collating-element <zh-a> from "<U0D34><U0D4D>"
+collating-element <zhe> from     "<U0D46><U0D34>"
+collating-element <zhee> from     "<U0D47><U0D34>"
+collating-element <zhai> from     "<U0D48><U0D34>"
+collating-element <zho> from     "<U0D4A><U0D34>"
+collating-element <zhoo> from     "<U0D4B><U0D34>"
+%%rha
+collating-element <rh-a> from "<U0D31><U0D4D>"
+collating-element <rhe> from     "<U0D46><U0D31>"
+collating-element <rhee> from     "<U0D47><U0D31>"
+collating-element <rhai> from     "<U0D48><U0D31>"
+collating-element <rho> from     "<U0D4A><U0D31>"
+collating-element <rhoo> from     "<U0D4B><U0D31>"
+collating-symbol <CHIHNA>
+collating-symbol <SWARAM>
+collating-symbol <WYANJANAM>
+order_start   forward;forward 
+<SWARAM>
+<WYANJANAM>
+<CHINHAM>
+<U0000>        IGNORE;<U0000>
+<U0001>        IGNORE;<U0001>
+<U0002>        IGNORE;<U0002>
+<U0003>        IGNORE;<U0003>
+<U0004>        IGNORE;<U0004>
+<U0005>        IGNORE;<U0005>
+<U0006>        IGNORE;<U0006>
+<U0007>        IGNORE;<U0007>
+<U0008>        IGNORE;<U0008>
+<U0009>        IGNORE;<U0009>
+<U000A>        IGNORE;<U000A>
+<U000B>        IGNORE;<U000B>
+<U000C>        IGNORE;<U000C>
+<U000D>        IGNORE;<U000D>
+<U000E>        IGNORE;<U000E>
+<U000F>        IGNORE;<U000F>
+<U0010>        IGNORE;<U0010>
+<U0011>        IGNORE;<U0011>
+<U0012>        IGNORE;<U0012>
+<U0013>        IGNORE;<U0013>
+<U0014>        IGNORE;<U0014>
+<U0015>        IGNORE;<U0015>
+<U0016>        IGNORE;<U0016>
+<U0017>        IGNORE;<U0017>
+<U0018>        IGNORE;<U0018>
+<U0019>        IGNORE;<U0019>
+<U001A>        IGNORE;<U001A>
+<U001B>        IGNORE;<U001B>
+<U001C>        IGNORE;<U001C>
+<U001D>        IGNORE;<U001D>
+<U001E>        IGNORE;<U001E>
+<U001F>        IGNORE;<U001F>
+%              %
+% ISO 646 IRV  % ISO 6
+%              %
+<U0020>        IGNORE;<U0020>
+<U0021>        IGNORE;<U0021>
+<U0022>        IGNORE;<U0022>
+<U0023>        IGNORE;<U0023>
+<U0024>        IGNORE;<U0024>
+<U0025>        IGNORE;<U0025>
+<U0026>        IGNORE;<U0026>
+<U0027>        IGNORE;<U0027>
+<U0028>        IGNORE;<U0028>
+<U0029>        IGNORE;<U0029>
+<U002A>        IGNORE;<U002A>
+<U002B>        IGNORE;<U002B>
+<U002C>        IGNORE;<U002C>
+<U002D>        IGNORE;<U002D>
+<U002E>        IGNORE;<U002E>
+<U002F>        IGNORE;<U002F>
+%% Arabic     
+<U0030>       IGNORE;<U0030> 
+<U0D66>       IGNORE;<U0D66>  %Malayalam 1/2 (given as 0)
+<U0031>       IGNORE;<U0031> 
+<U0D67>       IGNORE;<U0D67>  %Malayalam 1
+<U0032>       IGNORE;<U0032> 
+<U0D68>       IGNORE;<U0D68>  %Malayalam 2
+<U0033>       IGNORE;<U0033> 
+<U0D69>       IGNORE;<U0D69>  %Malayalam 3
+<U0034>       IGNORE;<U0034> 
+<U0D6A>       IGNORE;<U0D6A>  %Malayalam 4
+<U0035>       IGNORE;<U0035> 
+<U0D6B>       IGNORE;<U0D6B>  %Malayalam 5
+<U0036>       IGNORE;<U0036> 
+<U0D6C>       IGNORE;<U0D6C>  %Malayalam 6
+<U0037>       IGNORE;<U0037> 
+<U0D6D>       IGNORE;<U0D6D>  %Malayalam 7
+<U0038>       IGNORE;<U0038> 
+<U0D6E>       IGNORE;<U0D6E>  %Malayalam 8
+<U0039>       IGNORE;<U0039> 
+<U0D6F>       IGNORE;<U0D6F>  %Malayalam 9
+%
+%
+<U003A>        IGNORE;<U003A>
+<U003B>        IGNORE;<U003B>
+<U003C>        IGNORE;<U003C>
+<U003D>        IGNORE;<U003D>
+<U003E>        IGNORE;<U003E>
+<U003F>        IGNORE;<U003F>
+<U0040>        IGNORE;<U0040>
+<U0041>        IGNORE;<U0041>
+<U0042>        IGNORE;<U0042>
+<U0043>        IGNORE;<U0043>
+<U0044>        IGNORE;<U0044>
+<U0045>        IGNORE;<U0045>
+<U0046>        IGNORE;<U0046>
+<U0047>        IGNORE;<U0047>
+<U0048>        IGNORE;<U0048>
+<U0049>        IGNORE;<U0049>
+<U004A>        IGNORE;<U004A>
+<U004B>        IGNORE;<U004B>
+<U004C>        IGNORE;<U004C>
+<U004D>        IGNORE;<U004D>
+<U004E>        IGNORE;<U004E>
+<U004F>        IGNORE;<U004F>
+<U0050>        IGNORE;<U0050>
+<U0051>        IGNORE;<U0051>
+<U0052>        IGNORE;<U0052>
+<U0053>        IGNORE;<U0053>
+<U0054>        IGNORE;<U0054>
+<U0055>        IGNORE;<U0055>
+<U0056>        IGNORE;<U0056>
+<U0057>        IGNORE;<U0057>
+<U0058>        IGNORE;<U0058>
+<U0059>        IGNORE;<U0059>
+<U005A>        IGNORE;<U005A>
+<U005B>        IGNORE;<U005B>
+<U005C>        IGNORE;<U005C>
+<U005D>        IGNORE;<U005D>
+<U005E>        IGNORE;<U005E>
+<U005F>        IGNORE;<U005F>
+<U0060>        IGNORE;<U0060>
+<U0061>        IGNORE;<U0061>
+<U0062>        IGNORE;<U0062>
+<U0063>        IGNORE;<U0063>
+<U0064>        IGNORE;<U0064>
+<U0065>        IGNORE;<U0065>
+<U0066>        IGNORE;<U0066>
+<U0067>        IGNORE;<U0067>
+<U0068>        IGNORE;<U0068>
+<U0069>        IGNORE;<U0069>
+<U006A>        IGNORE;<U006A>
+<U006B>        IGNORE;<U006B>
+<U006C>        IGNORE;<U006C>
+<U006D>        IGNORE;<U006D>
+<U006E>        IGNORE;<U006E>
+<U006F>        IGNORE;<U006F>
+<U0070>        IGNORE;<U0070>
+<U0071>        IGNORE;<U0071>
+<U0072>        IGNORE;<U0072>
+<U0073>        IGNORE;<U0073>
+<U0074>        IGNORE;<U0074>
+<U0075>        IGNORE;<U0075>
+<U0076>        IGNORE;<U0076>
+<U0077>        IGNORE;<U0077>
+<U0078>        IGNORE;<U0078>
+<U0079>        IGNORE;<U0079>
+<U007A>        IGNORE;<U007A>
+<U007B>        IGNORE;<U007B>
+<U007C>        IGNORE;<U007C>
+<U007D>        IGNORE;<U007D>
+<U007E>        IGNORE;<U007E>
+<U007F>        IGNORE;<U007F>
+%               
+% C1            
+%                     
+<U0080>        IGNORE;<U0080>
+<U0081>        IGNORE;<U0081>
+<U0082>        IGNORE;<U0082>
+<U0083>        IGNORE;<U0083>
+<U0084>        IGNORE;<U0084>
+<U0085>        IGNORE;<U0085>
+<U0086>        IGNORE;<U0086>
+<U0087>        IGNORE;<U0087>
+<U0088>        IGNORE;<U0088>
+<U0089>        IGNORE;<U0089>
+<U008A>        IGNORE;<U008A>
+<U008B>        IGNORE;<U008B>
+<U008C>        IGNORE;<U008C>
+<U008D>        IGNORE;<U008D>
+<U0090>        IGNORE;<U0090>
+<U0091>        IGNORE;<U0091>
+<U0092>        IGNORE;<U0092>
+<U0093>        IGNORE;<U0093>
+<U0094>        IGNORE;<U0094>
+<U0095>        IGNORE;<U0095>
+<U0096>        IGNORE;<U0096>
+<U0097>        IGNORE;<U0097>
+<U0098>        IGNORE;<U0098>
+<U0099>        IGNORE;<U0099>
+<U009A>        IGNORE;<U009A>
+<U009B>        IGNORE;<U009B>
+<U009C>        IGNORE;<U009C>
+<U009D>        IGNORE;<U009D>
+<U009E>        IGNORE;<U009E>
+<U009F>        IGNORE;<U009F>
+%
+%malayalam  
+<U0D05>       <U0D05>;<SWARAM> %A   
+%<am>          <am>;<SWARAM>    %Am
+<U0D06>       <U0D06>;<SWARAM> %Aa
+<U0D07>       <U0D07>;<SWARAM> %E
+<U0D08>       <U0D08>;<SWARAM> %Ee
+<U0D09>       <U0D09>;<SWARAM> %U
+<U0D0A>       <U0D0A>;<SWARAM> %Uu
+<U0D0B>       <U0D0B>;<SWARAM> %Eru
+<U0D60>       <U0D60>;<SWARAM> %Eruu
+<U0D0C>       <U0D0C>;<SWARAM> %ENu
+<U0D61>       <U0D61>;<SWARAM> %ENuu
+<U0D0E>       <U0D0E>;<SWARAM> %E
+<U0D0F>       <U0D0F>;<SWARAM> %Ee
+<U0D10>       <U0D10>;<SWARAM> %I
+<U0D12>       <U0D12>;<SWARAM> %O
+<U0D13>       <U0D13>;<SWARAM> %Oo
+<U0D14>       <U0D14>;<SWARAM> %Ou
+%<a-a>         <a-a>;<SWARAM>   %A:
+<k-a>         <k-a>;<WYANJANAM>
+%<U0D15>       <U0D15>;<WYANJANAM>
+<kh-a>        <kh-a>;<WYANJANAM>
+<U0D16>       <U0D16>;<WYANJANAM>
+<g-a>         <g-a>;<WYANJANAM>
+<U0D17>       <U0D17>;<WYANJANAM>
+<gh-a>        <gh-a>;<WYANJANAM>
+<U0D18>       <U0D18>;<WYANJANAM>
+<ng-a>        <ng-a>;<WYANJANAM>
+<U0D19>       <U0D19>;<WYANJANAM>
+<ch-a>        <ch-a>;<WYANJANAM>
+<U0D1A>       <U0D1A>;<WYANJANAM>
+<cch-a>       <cch-a>;<WYANJANAM>
+<U0D1B>       <U0D1B>;<WYANJANAM>
+<j-a>         <j-a>;<WYANJANAM>
+<U0D1C>       <U0D1C>;<WYANJANAM>
+<jh-a>        <jh-a>;<WYANJANAM>
+<U0D1D>       <U0D1D>;<WYANJANAM>
+<nng-a>       <nng-a>;<WYANJANAM>
+<U0D1E>       <U0D1E>;<WYANJANAM>
+<t-a>         <t-a>;<WYANJANAM>
+<U0D1F>       <U0D1F>;<WYANJANAM>
+<tt-a>        <tt-a>;<WYANJANAM>
+<U0D20>       <U0D20>;<WYANJANAM>
+<d-a>         <d-a>;<WYANJANAM>
+<U0D21>       <U0D21>;<WYANJANAM>
+<dd-a>        <dd-a>;<WYANJANAM>
+<U0D22>       <U0D22>;<WYANJANAM>
+<kn-a>        <kn-a>;<WYANJANAM>
+<U0D23>       <U0D23>;<WYANJANAM>
+<th-a>        <th-a>;<WYANJANAM>
+<U0D24>       <U0D24>;<WYANJANAM>
+<tth-a>       <tth-a>;<WYANJANAM>
+<U0D25>       <U0D25>;<WYANJANAM>
+<dh-a>        <dh-a>;<WYANJANAM>
+<U0D26>       <U0D26>;<WYANJANAM>
+<ddh-a>       <ddh-a>;<WYANJANAM>
+<U0D27>       <U0D27>;<WYANJANAM>
+<n-a>         <n-a>;<WYANJANAM>
+<U0D28>       <U0D28>;<WYANJANAM>
+<p-a>         <p-a>;<WYANJANAM>
+<U0D2A>       <U0D2A>;<WYANJANAM>
+<ph-a>        <ph-a>;<WYANJANAM>
+<U0D2B>       <U0D2B>;<WYANJANAM>
+<b-a>         <b-a>;<WYANJANAM>
+<U0D2C>       <U0D2C>;<WYANJANAM>
+<bh-a>        <bh-a>;<WYANJANAM>
+<U0D2D>       <U0D2D>;<WYANJANAM>
+<m-a>         <m-a>;<WYANJANAM>
+<U0D2E>       <U0D2E>;<WYANJANAM>
+<y-a>         <y-a>;<WYANJANAM>
+<U0D2F>       <U0D2F>;<WYANJANAM>
+%
+<r-a>         <r-a>;<WYANJANAM>
+<U0D30>       <U0D30>;<WYANJANAM>
+<l-a>         <l-a>;<WYANJANAM>
+<U0D32>       <U0D32>;<WYANJANAM>
+<v-a>         <v-a>;<WYANJANAM>
+<U0D35>       <U0D35>;<WYANJANAM>
+<sh-a>        <sh-a>;<WYANJANAM>
+<U0D36>       <U0D36>;<WYANJANAM>
+<shh-a>       <shh-a>;<WYANJANAM>
+<U0D37>       <U0D37>;<WYANJANAM>
+<s-a>         <s-a>;<WYANJANAM>
+<U0D38>       <U0D38>;<WYANJANAM>
+<h-a>         <h-a>;<WYANJANAM>
+<U0D39>       <U0D39>;<WYANJANAM>
+<lh-a>        <lh-a>;<WYANJANAM>
+<U0D33>       <U0D33>;<WYANJANAM>
+<zh-a>        <zh-a>;<WYANJANAM>
+<U0D34>       <U0D34>;<WYANJANAM>
+<rh-a>        <rh-a>;<WYANJANAM>
+<U0D31>       <U0D31>;<WYANJANAM>
+%
+<ke>     "<k-a><U0D46>";<WYANJANAM>
+<kee>     "<k-a><U0D47>";<WYANJANAM>
+<kai>     "<k-a><U0D48>";<WYANJANAM>
+<ko>     "<k-a><U0D4A>";<WYANJANAM>
+<koo>     "<k-a><U0D4B>";<WYANJANAM>
+<kao>     "<k-a><U0D4C>";<WYANJANAM>
+%
+<khe>     "<U0D16><U0D46>";<WYANJANAM>
+<khee>     "<U0D16><U0D47>";<WYANJANAM>
+<khai>     "<U0D16><U0D48>";<WYANJANAM>
+<kho>     "<U0D16><U0D4A>";<WYANJANAM>
+<khoo>     "<U0D16><U0D4B>";<WYANJANAM>
+%
+<ge>     "<U0D17><U0D46>";<WYANJANAM>
+<gee>     "<U0D17><U0D47>";<WYANJANAM>
+<gai>     "<U0D17><U0D48>";<WYANJANAM>
+<go>     "<U0D17><U0D4A>";<WYANJANAM>
+<goo>     "<U0D17><U0D4B>";<WYANJANAM>
+%
+<ghe>     "<U0D18><U0D46>";<WYANJANAM>
+<ghee>     "<U0D18><U0D47>";<WYANJANAM>
+<ghai>     "<U0D18><U0D48>";<WYANJANAM>
+<gho>     "<U0D18><U0D4A>";<WYANJANAM>
+<ghoo>     "<U0D18><U0D4B>";<WYANJANAM>
+%
+<nge>     "<U0D19><U0D46>";<WYANJANAM>
+<ngee>     "<U0D19><U0D47>";<WYANJANAM>
+<ngai>     "<U0D19><U0D48>";<WYANJANAM>
+<ngo>     "<U0D19><U0D4A>";<WYANJANAM>
+<ngoo>     "<U0D19><U0D4B>";<WYANJANAM>
+%
+<che>     "<U0D1A><U0D46>";<WYANJANAM>
+<chee>     "<U0D1A><U0D47>";<WYANJANAM>
+<chai>     "<U0D1A><U0D48>";<WYANJANAM>
+<cho>     "<U0D1A><U0D4A>";<WYANJANAM>
+<choo>     "<U0D1A><U0D4B>";<WYANJANAM>
+%
+<cche>     "<U0D1B><U0D46>";<WYANJANAM>
+<cchee>     "<U0D1B><U0D47>";<WYANJANAM>
+<cchai>     "<U0D1B><U0D48>";<WYANJANAM>
+<ccho>     "<U0D1B><U0D4A>";<WYANJANAM>
+<cchoo>     "<U0D1B><U0D4B>";<WYANJANAM>
+%
+<je>     "<U0D1C><U0D46>";<WYANJANAM>
+<jee>     "<U0D1C><U0D47>";<WYANJANAM>
+<jai>     "<U0D1C><U0D48>";<WYANJANAM>
+<jo>     "<U0D1C><U0D4A>";<WYANJANAM>
+<joo>     "<U0D1C><U0D4B>";<WYANJANAM>
+%
+<jhe>     "<U0D1D><U0D46>";<WYANJANAM>
+<jhee>     "<U0D1D><U0D47>";<WYANJANAM>
+<jhai>     "<U0D1D><U0D48>";<WYANJANAM>
+<jho>     "<U0D1D><U0D4A>";<WYANJANAM>
+<jhoo>     "<U0D1D><U0D4B>";<WYANJANAM>
+%
+<nnge>     "<U0D1E><U0D46>";<WYANJANAM>
+<nngee>     "<U0D1E><U0D47>";<WYANJANAM>
+<nngai>     "<U0D1E><U0D48>";<WYANJANAM>
+<nngo>     "<U0D1E><U0D4A>";<WYANJANAM>
+<nngoo>     "<U0D1E><U0D4B>";<WYANJANAM>
+%
+<te>     "<U0D1F><U0D46>";<WYANJANAM>
+<tee>     "<U0D1F><U0D47>";<WYANJANAM>
+<tai>     "<U0D1F><U0D48>";<WYANJANAM>
+<to>     "<U0D1F><U0D4A>";<WYANJANAM>
+<too>     "<U0D1F><U0D4B>";<WYANJANAM>
+%
+<tte>     "<U0D20><U0D46>";<WYANJANAM>
+<ttee>     "<U0D20><U0D47>";<WYANJANAM>
+<ttai>     "<U0D20><U0D48>";<WYANJANAM>
+<tto>     "<U0D20><U0D4A>";<WYANJANAM>
+<ttoo>     "<U0D20><U0D4B>";<WYANJANAM>
+%
+<de>     "<U0D21><U0D46>";<WYANJANAM>
+<dee>     "<U0D21><U0D47>";<WYANJANAM>
+<dai>     "<U0D21><U0D48>";<WYANJANAM>
+<do>     "<U0D21><U0D4A>";<WYANJANAM>
+<doo>     "<U0D21><U0D4B>";<WYANJANAM>
+%
+<dde>     "<U0D22><U0D46>";<WYANJANAM>
+<ddee>     "<U0D22><U0D47>";<WYANJANAM>
+<ddai>     "<U0D22><U0D48>";<WYANJANAM>
+<ddo>     "<U0D22><U0D4A>";<WYANJANAM>
+<ddoo>     "<U0D22><U0D4B>";<WYANJANAM>
+%
+<kne>     "<U0D23><U0D46>";<WYANJANAM>
+<knee>     "<U0D23><U0D47>";<WYANJANAM>
+<knai>     "<U0D23><U0D48>";<WYANJANAM>
+<kno>     "<U0D23><U0D4A>";<WYANJANAM>
+<knoo>     "<U0D23><U0D4B>";<WYANJANAM>
+%
+<the>     "<U0D24><U0D46>";<WYANJANAM>
+<thee>     "<U0D24><U0D47>";<WYANJANAM>
+<thai>     "<U0D24><U0D48>";<WYANJANAM>
+<tho>     "<U0D24><U0D4A>";<WYANJANAM>
+<thoo>     "<U0D24><U0D4B>";<WYANJANAM>
+%
+<tthe>     "<U0D25><U0D46>";<WYANJANAM>
+<tthee>     "<U0D25><U0D47>";<WYANJANAM>
+<tthai>     "<U0D25><U0D48>";<WYANJANAM>
+<ttho>     "<U0D25><U0D4A>";<WYANJANAM>
+<tthoo>     "<U0D25><U0D4B>";<WYANJANAM>
+%
+<dhe>     "<U0D26><U0D46>";<WYANJANAM>
+<dhee>     "<U0D26><U0D47>";<WYANJANAM>
+<dhai>     "<U0D26><U0D48>";<WYANJANAM>
+<dho>     "<U0D26><U0D4A>";<WYANJANAM>
+<dhoo>     "<U0D26><U0D4B>";<WYANJANAM>
+%
+<ddhe>     "<U0D27><U0D46>";<WYANJANAM>
+<ddhee>     "<U0D27><U0D47>";<WYANJANAM>
+<ddhai>     "<U0D27><U0D48>";<WYANJANAM>
+<ddho>     "<U0D27><U0D4A>";<WYANJANAM>
+<ddhoo>     "<U0D27><U0D4B>";<WYANJANAM>
+%
+<ne>     "<U0D28><U0D46>";<WYANJANAM>
+<nee>     "<U0D28><U0D47>";<WYANJANAM>
+<nai>     "<U0D28><U0D48>";<WYANJANAM>
+<no>     "<U0D28><U0D4A>";<WYANJANAM>
+<noo>     "<U0D28><U0D4B>";<WYANJANAM>
+%
+<pe>     "<U0D2A><U0D46>";<WYANJANAM>
+<pee>     "<U0D2A><U0D47>";<WYANJANAM>
+<pai>     "<U0D2A><U0D48>";<WYANJANAM>
+<po>     "<U0D2A><U0D4A>";<WYANJANAM>
+<poo>     "<U0D2A><U0D4B>";<WYANJANAM>
+%
+<phe>     "<U0D2B><U0D46>";<WYANJANAM>
+<phee>     "<U0D2B><U0D47>";<WYANJANAM>
+<phai>     "<U0D2B><U0D48>";<WYANJANAM>
+<pho>     "<U0D2B><U0D4A>";<WYANJANAM>
+<phoo>     "<U0D2B><U0D4B>";<WYANJANAM>
+%
+<be>     "<U0D2C><U0D46>";<WYANJANAM>
+<bee>     "<U0D2C><U0D47>";<WYANJANAM>
+<bai>     "<U0D2C><U0D48>";<WYANJANAM>
+<bo>     "<U0D2C><U0D4A>";<WYANJANAM>
+<boo>     "<U0D2C><U0D4B>";<WYANJANAM>
+%
+<bhe>     "<U0D2D><U0D46>";<WYANJANAM>
+<bhee>     "<U0D2D><U0D47>";<WYANJANAM>
+<bhai>     "<U0D2D><U0D48>";<WYANJANAM>
+<bho>     "<U0D2D><U0D4A>";<WYANJANAM>
+<bhoo>     "<U0D2D><U0D4B>";<WYANJANAM>
+%
+<me>     "<U0D2E><U0D46>";<WYANJANAM>
+<mee>     "<U0D2E><U0D47>";<WYANJANAM>
+<mai>     "<U0D2E><U0D48>";<WYANJANAM>
+<mo>     "<U0D2E><U0D4A>";<WYANJANAM>
+<moo>     "<U0D2E><U0D4B>";<WYANJANAM>
+%
+<ye>     "<U0D2F><U0D46>";<WYANJANAM>
+<yee>     "<U0D2F><U0D47>";<WYANJANAM>
+<yai>     "<U0D2F><U0D48>";<WYANJANAM>
+<yo>     "<U0D2F><U0D4A>";<WYANJANAM>
+<yoo>     "<U0D2F><U0D4B>";<WYANJANAM>
+%
+<re>     "<U0D30><U0D46>";<WYANJANAM>
+<ree>     "<U0D30><U0D47>";<WYANJANAM>
+<rai>     "<U0D30><U0D48>";<WYANJANAM>
+<ro>     "<U0D30><U0D4A>";<WYANJANAM>
+<roo>     "<U0D30><U0D4B>";<WYANJANAM>
+%
+<le>     "<U0D32><U0D46>";<WYANJANAM>
+<lee>     "<U0D32><U0D47>";<WYANJANAM>
+<lai>     "<U0D32><U0D48>";<WYANJANAM>
+<lo>     "<U0D32><U0D4A>";<WYANJANAM>
+<loo>     "<U0D32><U0D4B>";<WYANJANAM>
+%
+<ve>     "<U0D35><U0D46>";<WYANJANAM>
+<vee>     "<U0D35><U0D47>";<WYANJANAM>
+<vai>     "<U0D35><U0D48>";<WYANJANAM>
+<vo>     "<U0D35><U0D4A>";<WYANJANAM>
+<voo>     "<U0D35><U0D4B>";<WYANJANAM>
+%
+<she>     "<U0D36><U0D46>";<WYANJANAM>
+<shee>     "<U0D36><U0D47>";<WYANJANAM>
+<shai>     "<U0D36><U0D48>";<WYANJANAM>
+<sho>     "<U0D36><U0D4A>";<WYANJANAM>
+<shoo>     "<U0D36><U0D4B>";<WYANJANAM>
+%
+<shhe>     "<U0D37><U0D46>";<WYANJANAM>
+<shhee>     "<U0D37><U0D47>";<WYANJANAM>
+<shhai>     "<U0D37><U0D48>";<WYANJANAM>
+<shho>     "<U0D37><U0D4A>";<WYANJANAM>
+<shhoo>     "<U0D37><U0D4B>";<WYANJANAM>
+%
+<se>     "<U0D38><U0D46>";<WYANJANAM>
+<see>     "<U0D38><U0D47>";<WYANJANAM>
+<sai>     "<U0D38><U0D48>";<WYANJANAM>
+<so>     "<U0D38><U0D4A>";<WYANJANAM>
+<soo>     "<U0D38><U0D4B>";<WYANJANAM>
+%
+<he>     "<U0D39><U0D46>";<WYANJANAM>
+<hee>     "<U0D39><U0D47>";<WYANJANAM>
+<hai>     "<U0D39><U0D48>";<WYANJANAM>
+<ho>     "<U0D39><U0D4A>";<WYANJANAM>
+<hoo>     "<U0D39><U0D4B>";<WYANJANAM>
+%
+<lhe>     "<U0D33><U0D46>";<WYANJANAM>
+<lhee>     "<U0D33><U0D47>";<WYANJANAM>
+<lhai>     "<U0D33><U0D48>";<WYANJANAM>
+<lho>     "<U0D33><U0D4A>";<WYANJANAM>
+<lhoo>     "<U0D33><U0D4B>";<WYANJANAM>
+%
+<zhe>     "<U0D34><U0D46>";<WYANJANAM>
+<zhee>     "<U0D34><U0D47>";<WYANJANAM>
+<zhai>     "<U0D34><U0D48>";<WYANJANAM>
+<zho>     "<U0D34><U0D4A>";<WYANJANAM>
+<zhoo>     "<U0D34><U0D4B>";<WYANJANAM>
+%
+<rhe>     "<U0D31><U0D46>";<WYANJANAM>
+<rhee>     "<U0D31><U0D47>";<WYANJANAM>
+<rhai>     "<U0D31><U0D48>";<WYANJANAM>
+<rho>     "<U0D31><U0D4A>";<WYANJANAM>
+<rhoo>     "<U0D31><U0D4B>";<WYANJANAM>
+%
+<U0D3E>   <U0D3E>;<CHINHAM>
+<U0D3F>   <U0D3F>;<CHINHAM>
+<U0D40>   <U0D40>;<CHINHAM>
+<U0D41>   <U0D41>;<CHINHAM>
+<U0D42>   <U0D42>;<CHINHAM>
+<U0D43>   <U0D43>;<CHINHAM>
+<U0D46>   <U0D46>;<CHINHAM>
+<U0D47>   <U0D47>;<CHINHAM>
+<U0D48>   <U0D48>;<CHINHAM>
+<U0D4A>   <U0D4A>;<CHINHAM>
+<U0D4B>   <U0D4B>;<CHINHAM>
+<U0D4C>   <U0D4C>;<CHINHAM>
+<U0D57>   <U0D57>;<CHINHAM>
+<U0D02>   <U0D02>;<CHINHAM>
+<U0D03>   <U0D03>;<CHINHAM>
+UNDEFINED      IGNORE;IGNORE
+order_end
+%
+END LC_COLLATE
+LC_MONETARY
+% This is the POSIX Locale definition the LC_MONETARY category
+% generated by IBM Basic CountryPack Transformer.
+% These are generated based on XML base Locale defintion file 
+% for IBM Class for Unicode.
+%
+int_curr_symbol     "<U0049><U004E><U0052><U0020>"
+currency_symbol     "<U0D30><U0D42>"
+mon_decimal_point     "<U002E>"
+mon_thousands_sep     "<U002C>"
+mon_grouping          3;2
+positive_sign     ""
+negative_sign     "<U002D>"
+int_frac_digits       2
+frac_digits           2
+p_cs_precedes         1
+p_sep_by_space        1
+n_cs_precedes         1
+n_sep_by_space        1
+p_sign_posn           1
+n_sign_posn           1
+%
+END LC_MONETARY
+%
+LC_NUMERIC
+% This is the POSIX Locale definition for the LC_NUMERIC  category.
+%
+decimal_point     "<U002E>"
+thousands_sep     "<U002C>"
+grouping               3;2
+%
+END LC_NUMERIC
+%
+LC_TIME
+% This is the POSIX Locale definition for the LC_TIME category
+% generated by IBM Basic CountryPack Transformer.
+% These are generated based on XML base Locale difintion file 
+% for IBM Class for Unicode.
+%
+% Abbreviated weekday names (%a)
+abday     "<U0D1E><U0D3E>";"<U0D24><U0D3F>";/
+"<U0D1A><U0D4A>";"<U0D2C><U0D41>";/
+"<U0D35><U0D4D><U0D2F><U0D3E>";"<U0D35><U0D46>";/
+"<U0D36>"
+%
+% Full weekday names (%A)
+day     "<U0D1E><U0D3E><U0D2F><U0D31><U0D4D><U200D>";/
+"<U0D24><U0D3F><U0D19><U0D4D><U0D15><U0D33><U0D4D><U200D>";/
+"<U0D1A><U0D4A><U0D35><U0D4D><U0D35>";/
+"<U0D2C><U0D41><U0D27><U0D28><U0D4D><U200D>";/
+"<U0D35><U0D4D><U0D2F><U0D3E><U0D34><U0D02>";/
+"<U0D35><U0D46><U0D33><U0D4D><U0D33><U0D3F>";/
+"<U0D36><U0D28><U0D3F>"
+%
+% Abbreviated month names (%b)
+abmon     "<U0D1C><U0D28><U0D41>";/
+"<U0D2B><U0D46><U0D2C><U0D4D>";/
+"<U0D2E><U0D3E><U0D31><U0D4D>";/
+"<U0D0F><U0D2A><U0D4D><U0D31><U0D3F><U0D32><U0D4D>";/
+"<U0D46><U0D2E><U0D2F><U0D4D>";/
+"<U0D1C><U0D42><U0D23><U0D4D>";/
+"<U0D1C><U0D42><U0D48><U0D32>";/
+"<U0D06><U0D17>";/
+"<U0D46><U0D38><U0D2A><U0D4D><U0D24><U0D02>";/
+"<U0D12><U0D15><U0D4D><U0D48><U0D1F>";/
+"<U0D28><U0D35><U0D02>";/
+"<U0D21><U0D3F><U0D38><U0D02>"
+%
+% FULL month names (%B)
+mon     "<U0D1C><U0D28><U0D41><U0D35><U0D30><U0D3F>";/
+"<U0D2B><U0D46><U0D2C><U0D4D><U0D30><U0D41><U0D35><U0D30><U0D3F>";/
+"<U0D2E><U0D3E><U0D31><U0D4D><U200D><U0D1A><U0D4D><U0D1A><U0D4D>";/
+"<U0D0F><U0D2A><U0D4D><U0D31><U0D3F><U0D32><U0D4D><U200D>";/
+"<U0D2E><U0D46><U0D2F><U0D4D>";/
+"<U0D1C><U0D42><U0D23><U0D4D><U200D>";/
+"<U0D1C><U0D42><U0D32><U0D48>";/
+"<U0D06><U0D17><U0D38><U0D4D><U0D24><U0D4D>";/
+"<U0D38><U0D46><U0D2A><U0D4D><U0D24><U0D02><U0D2C><U0D31><U0D4D><U200D>";/
+"<U0D12><U0D15><U0D4D><U0D1F><U0D4B><U0D2C><U0D31><U0D4D><U200D>";/
+"<U0D28><U0D35><U0D02><U0D2C><U0D31><U0D4D><U200D>";/
+"<U0D21><U0D3F><U0D38><U0D02><U0D2C><U0D31><U0D4D><U200D>"
+%
+%
+% Equivalent of AM PM 
+am_pm     "<U0D30><U0D3E><U0D35><U0D3F><U0D32><U0D46>";"<U0D35><U0D48><U0D15><U0D41>"
+%
+% Appropriate date and time representation 
+% %A %d %B %Y %I:%M:%S  %Z
+d_t_fmt     "<U0025><U0041><U0020><U0025><U0064><U0020><U0025><U0042><U0020><U0025><U0059><U0020><U0025><U0049><U003A><U0025><U004D><U003A><U0025><U0053><U0020><U0025><U0070><U0020><U0025><U005A>"
+%
+% Appropriate date representation 
+% %A %d %B %Y
+d_fmt     "<U0025><U0041><U0020><U0025><U0064><U0020><U0025><U0042><U0020><U0025><U0059>"
+%
+% Appropriate time representation 
+% %I:%M:%S  %Z
+t_fmt     "<U0025><U0049><U003A><U0025><U004D><U003A><U0025><U0053><U0020><U0020><U0025><U005A>"
+%
+% Appropriate 12 h time representation (%r) 
+t_fmt_ampm     "<U0025><U0049><U003A><U0025><U004D><U003A><U0025><U0053><U0020><U0025><U0070><U0020><U0025><U005A>"
+%
+END LC_TIME
+%
+LC_MESSAGES
+% This is the POSIX Locale definition for the LC_MESSAGES category
+% generated by IBM Basic CountryPack Transformer.
+% These are generated based on XML base Locale difintion file
+% for IBM Class for Unicode.
+%
+% ^[\u0d05\u0d24\u0d46]
+yesexpr     "<U005E><U005B><U0D05><U0D24><U0D46><U005D>"
+%
+%
+% ^[\u0d05\u0d32\u0d4d\u0d32]
+noexpr     "<U005E><U005B><U0D05><U0D32><U0D4D><U0D32><U005D>"
+%
+% \u0d05\u0d24\u0d46
+yesstr     "<U0D05><U0D24><U0D46>"
+%
+% \u0d05\u0d32\u0d4d\u0d32
+nostr     "<U0D05><U0D32><U0D4D><U0D32>"
+%
+END LC_MESSAGES
+%
+LC_PAPER
+% This is the ISO_IEC TR14652 Locale definition for the LC_PAPER category
+% generated by IBM Basic CountryPack Transformer.
+height      297
+width       210
+END LC_PAPER
+%
+LC_NAME
+% This is the ISO_IEC TR14652 Locale definition for the LC_NAME category
+% generated by IBM Basic CountryPack Transformer.
+% 
+% 
+name_fmt     "<U0025><U0070><U0025><U0074><U0025><U0066><U0025><U0074><U0025><U0067>"
+name_gen     "<U0D36><U0D4D><U0D30><U0D40>"
+name_mr      "<U0D36><U0D4D><U0D30><U0D40><U0D2E><U0D3E><U0D28><U0D4D><U200D>"
+name_mrs     "<U0D36><U0D4D><U0D30><U0D40><U0D2E><U0D24><U0D3F>"
+name_miss    "<U0D15><U0D41><U0D2E><U0D3E><U0D30><U0D3F>"
+name_ms      "<U0D36><U0D4D><U0D30><U0D40><U0D2E><U0D24><U0D3F>"
+END LC_NAME
+LC_ADDRESS
+% This is the ISO_IEC TR14652 Locale definition for the LC_ADDRESS category
+% generated by IBM Basic CountryPack Transformer.
+postal_fmt     "<U0025><U007A><U0025><U0063><U0025><U0054><U0025><U0073><U0025><U0062><U0025><U0065><U0025><U0072>"
+END LC_ADDRESS
+%
+LC_TELEPHONE
+% This is the ISO_IEC TR14652 Locale definition for the LC_TELEPHONE
+% generated by IBM Basic CountryPack Transformer.
+tel_int_fmt     "<U002B><U0025><U0063><U0020><U003B><U0025><U0061><U0020><U003B><U0025><U006C>"
+END LC_TELEPHONE
+%
+LC_MEASUREMENT
+% This is the ISO_IEC TR14652 Locale definition for the LC_MEASUREMENT
+% category generated by IBM Basic CountryPack Transformer.
+measurement 1
+END LC_MEASUREMENT
+%

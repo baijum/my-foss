@@ -1,0 +1,158 @@
+--------------------------------------------------------------------------
+
+		Malayalam International HOWTO
+		=============================
+
+
+	This HOWTO is just _STARTED_ I am planning to put all details
+ about Malayalm computing in free Operating systems. If you can help me
+in any way please contact me at : baiju@freeshell.org
+
+
+Contents :-
+
+	 1. Introduction
+	 2. Input Methods
+	 3. Font
+	 4. Renderer
+	 5. Locale 
+	 6. Applications
+	 7. Translations
+	 8. Speach synthesizer
+	 9. Speach Recognizer
+	10. OCR
+	11. Standards
+	12. Miscelleneous
+	13. Conclusion
+	14. Appendix A
+	15. Appendix B
+	    
+
+1. Introduction :-
+
+	Malayalam is spoken by more than 35 million all around the world.
+They are are named as 'Malayalees' and majority of them are from Kerala
+(The God's Own Contry!) in India. The language has got a well established
+script with 49 characters and it is a phonetic based script. The unicode
+range for this characters are from U+0D00 to U+0DFF. 
+
+(Can anyone write a nice *big* introduction? )
+
+
+2, Input Methods :-
+
+	The standared input method which is working properly is
+inscript based. Malayalam inscript keyboard layout is standardised by 
+Kerala government. If any hardware companies planning to make a
+Malayalam keyboard, I think they will follow this standared. It is
+very easy to impliment this layout in X Window System by using 
+a XKB file and a secial Compose file for 'chillu' characters.
+(In future, Compose file may not be required for this, read 
+ standardization section below....wait)
+
+All about this input method is described at :
+http://malayalamlinux.sf.net/input-methods
+
+A transliteration based input method will be available very soon.
+It is written only for GTK+ appps. 
+
+To impliment other keyboard layout like Modular (Typewriter)
+it is necessary to hack on XIM or in GTK input method.
+
+Applications like Yudit and Varamozhi supports transliteration
+based input methods. (Can anyone please give me more details about it)
+
+(If anyone is going to hack on XIM or IIMF for advanced malayalam input 
+methods, please inform me; here is some simple codes:
+http://malayalamlinux.sf.net/HOWTO/miniChinput-0.0.4.tar.bz2
+Now start hacking on it!) 
+
+Anyone interested to make a Table Input Method (TIM) for Malayalam?
+Visit : http://wenju.sf.net 
+
+I am planning to make this section the biggest in this this documenti,
+yes only for few years ;-) 
+
+
+3. Font :-
+
+	TrueType is one of the widely used font format in X Window system.
+TrueType font is a collection of TrueType vector outlines along with some 
+standared tables. Now OpenType font is going to be more
+popular in coming years. OpenType defines some advanced tables like 
+GSUB and GPOS for a better support of international languages.
+In unicode TTF fonts, basic characters of a language is positioned at 
+alloted unicode range for that language. Private/Corporate use area can be 
+use for positioning of other glyphs in a language.
+
+	Malayalam unicode range is from U+0D00 to U+0D7F. Other glyphs of
+Malayalam is posioned at Private/Corporate area in TTF font. In OTF font, 
+other glyps are unencoded, and it can access by OpenType tables. 
+
+GPLed TTF and OTF fonts are available at downloads section.
+This font is created by Jeroen Hellingman using Metafont and later N.V.Shaji 
+converted into TTF font and now OpenType tables support is added. There is 
+total 136 glyphs . And it is released under GNU General Public License. 
+
+(I will expand this section soon)
+
+
+4. Renderer :-
+	
+	For BDF and TTF fonts a font renderer is required to display our glyphs
+properly. Pango is a font renderer for GTK+ toolkit. 
+Now a pango module for GTK+ is available. GTK+ toolkit is used by GNOME and lots of 
+other applications, so Malayalam font will render properly in all GTK+ applications.
+
+
+5. Locale :-
+
+	For any language, locale database is necessary to make *COMPUTING* possible.
+Locale contains informations about contry (calender,flag etc.) and language fetures
+(sorting order, dates etc.). These all informations will be stored in unicode values.
+Now allmost all tables are ready for Malayalam, even LC_COLLATE, it is the sorting order
+table, ofcourse it requires to test.
+
+
+
+6. Applications
+
+	All GNOME 2.x applications will support Malayalam properly
+(with proper rendering). 
+ 
+ 
+7. Translations
+
+	Wait............
+	
+	
+8. Speach synthesizer
+
+	No Idea ;)
+
+	
+9. Speach Recognizer
+	
+	No Idea ;)
+	
+
+10. OCR
+	
+	No Idea ;)
+
+
+11. Standards
+
+	Recently Ministry of IT (Govt. of India) proposed some changes in Malayalam unicode
+character set, they suggested to include 'chillus' as basic basic building
+blocks. Now 'chillus' are represented by three unicode characters.
+	
+	
+12. Miscelleneous
+
+	Lots of miscelleneous things are there....
+...wait.
+
+
+--------------------------------------------------------------------------
+

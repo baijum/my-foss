@@ -1,0 +1,124 @@
+about
+acquire = 
+all desktop
+always on top
+bindings
+browse
+brush
+button
+channel
+clean indentation
+clear marker
+close = 'adaccuka','nirthuka'
+color = 'niram'
+comment = '
+configure = 'anuroopamakkuka'
+configure highlighting
+configure key bindings
+configure tools bars
+contents = 'ulladakkam'
+console
+copy = 'pakarthuka'
+create = 'nirmikkuka','undakkuka'
+create new = 'puthiyathu nirthuka', 'puthiyathu undakkuka'
+cut = 'murichedukkuka'
+decoration
+delete = 'ozhivakkuka','kalayuka'
+default
+deselect all
+device
+dialogs
+duplicate 
+duplicate window
+edit = 'edit'
+edit file type
+error = 'thettu','prashnam'
+exit = 'adaccuka','nirthuka'
+extra
+file = 'file'
+file info
+find = 'kandethuka','theduka'
+find next
+font
+frame
+fullscreen
+go 
+go to line
+help = 'sahayam'
+hide
+indent
+info
+insert
+insert file
+invert selection
+key
+layers
+link view
+location
+lock
+logos
+maximize
+menubar
+minimize
+mode
+move
+move to trash
+modules
+new = 'puthiyathu'
+new view
+new window
+new window
+open = 'thurakuka'
+open location
+open recent
+open with
+output
+pallete
+paste
+path
+plugins
+preferences
+print
+print preview
+properties
+quit = 'nirthuka'
+redo = 'veendum cheyyuka'
+redo typing
+rename = 'peru mattuka'
+replace = 'mattivekkuka'
+report bug
+revert
+save = 'karuthuka', 'sookhikkuka'
+save all
+save as
+select all
+session
+set marker
+settings
+screen
+script
+scrollbar
+session
+shade
+show = 'kaanikkuka' 
+shred
+size
+spelling
+status bar
+store settings
+transparent
+to desktop
+toolbar
+tools
+uncomment
+undo
+undo typing
+unindent
+unlock
+untitled
+use
+view
+warn
+what's this
+window
+

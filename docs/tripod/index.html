@@ -1,0 +1,268 @@
+
+   <html>
+<head><title>Baiju's Home Page</title>
+<style>
+<!-- a.none{text-decoration:none} -->
+</style>
+<!--We've put our example in a table, but feel free to format it any way you like.-->
+
+<!--Place the script anywhere in the <!--Begin JavaScript roadmap code.  If editing downloaded HTML source, delete
+ this portion.-->
+
+<script language="JavaScript">
+<!--
+
+function TripodShowPopup()
+{
+   var bName=navigator.appName;
+   var bVer=parseInt(navigator.appVersion);
+   var now = new Date();
+   var popupURL = "/adm/popup/roadmap.shtml?"+"member_name=baijum81&path=index.html&client_ip=209.237.238.161&ts=1074622358&ad_type=POPUP&search_string=ooty+photos&id=faa7a72801648e9212b0265e12eecfa0";
+   var popupName = "TripodPopup";
+
+   if (bName=="Netscape" && bVer<=3)
+   {
+      var popupWin = window.open("", popupName,'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=755,height=200,left=200,top=550');
+      popupWin.blur();
+   }
+   else
+   {
+      var popupWin = window.open("", popupName,'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=745,height=185,left=200,top=500');
+      popupWin.blur();
+   }
+   popupWin.location = popupURL;
+}
+
+TripodShowPopup();
+
+// -->
+</script>
+
+<script language="JavaScript1.2">
+<!--
+
+function changeOpenFunction()
+{
+   var original_window_open = window.open;
+   function new_open_function(url, name, features, replace)
+   {
+      if(name != "TripodPopup")
+         return original_window_open(url, name, features, replace);
+   }
+   window.open = new_open_function;
+}
+var bName = navigator.appName;
+
+if(bName != "Netscape")
+   changeOpenFunction();
+
+// -->
+</script>
+
+<script language="JavaScript">
+<!--
+window.onload = function () {
+   setKeywordCookie();
+   buildExitHandler();
+}
+
+function setKeywordCookie() {
+    var expdate = new Date ();
+    expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+    var keyword = 'ooty+photos';
+    if( keyword == "(none)") {
+        keyword = '';
+    }
+
+    var reg = new RegExp("http://([\\w\\.\\-]*\\.)?(tripod|angelfire|lycos).com/");
+
+    if ( ! reg.test( document.referrer ) ){
+        SetCookie("Keyword", keyword, '', "/", ".tripod.com");
+    }
+}
+
+function buildExitHandler () {
+    if (document.getElementsByTagName) {
+        var arrAnchor = document.getElementsByTagName('A');
+        for (i=0;i < arrAnchor.length;i++){
+            if (arrAnchor[i].getAttribute) {
+                if ( ! arrAnchor[i].onclick ) {
+                    arrAnchor[i].onclick = function () { exitPage(this); };
+                }
+            }
+        }
+    }
+}
+
+function exitPage(a) {
+    var reg = new RegExp("^http://([\\w\\.\\-]*\\.)?(tripod|angelfire|lycos).com/");
+    if ( reg.test( a.href ) ){
+        return true;
+    }
+
+    var windowLocation = "/bin/exit/exit_page";
+
+    var expdate = new Date ();
+    expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+    var visited = GetCookie("ExitPage");
+    var keyword = GetCookie("Keyword");
+
+    if ( ! visited  ){
+        w = window.open('', "tr_exit", 'height=700,width=780,scrollbars=yes,resizable=yes' +
+                        'toolbar=no,directories=no,status=no,menubar=no' );
+        w.location = windowLocation + "?q=" + keyword;
+        SetCookie( "ExitPage", "viewed", expdate, "/", ".tripod.com");
+    }
+}
+
+function SetCookie (name,value,expires,path,domain,secure){
+        document.cookie = name + "=" + escape (value) +
+                        ((expires) ? "; expires=" + expires.toGMTString() : "") +
+                        ((path) ? "; path=" + path : "") +
+                        ((domain) ? "; domain=" + domain : "") +
+                        ((secure) ? "; secure" : "");
+}
+
+function getCookieVal (offset){
+        var endstr = document.cookie.indexOf (";", offset);
+        if (endstr == -1)
+                endstr = document.cookie.length;
+        return unescape(document.cookie.substring(offset, endstr));
+  }
+
+function GetCookie (name){
+        var arg = name + "=";
+        var alen = arg.length;
+        var clen = document.cookie.length;
+        if( (document.cookie == null) || (document.cookie.length == null)){
+                return null;
+        }
+        var i = 0;
+        while (i < clen){
+                var j = i + alen;
+                if (document.cookie.substring(i, j) == arg)
+                        return getCookieVal (j);
+                i = document.cookie.indexOf(" ", i) + 1;
+                if (i == 0) break;
+        }
+        return null;
+}
+-->
+</script>
+<body><script language="JavaScript" src="/adm/embed/common_scripts.js"></script>
+<script language="JavaScript">
+<!--
+  if(!displayTopAd()) document.write("<!" + "--");
+//-->
+</script>
+
+<div align="center">
+<A HREF="http://ln.doubleclick.net/jump/bottom.ln/tripod;kw=ooty+photos;h=misc;sz=728x90;!category=adult;!category=sexualovertones;ord=14587166094542?" target=_top><IMG WIDTH=728 HEIGHT=90 SRC="http://ln.doubleclick.net/ad/bottom.ln/tripod;kw=ooty+photos;h=misc;sz=728x90;!category=adult;!category=sexualovertones;ord=14587166094542?"></A>
+<br />
+</div>
+
+<script language="JavaScript">
+<!--
+  if(!displayTopAd()) document.write("-" + "->");
+//-->
+</script>
+ tag.-->
+
+<FORM ACTION="/bin/script_library/site_search/search" METHOD="GET">
+
+<table border="0" cellpadding="2" cellspacing="0">
+	<tr>
+		<td colspan="2"><font face="verdana, helvetica, arial" size="2">Search term: <INPUT NAME="search_term"><br></font></td>
+	</tr>
+	<tr>
+	<!--The "Case-sensitive" and "Search-type" functions are optional - if you leave them out, the search will default to no case-sensitivity and exact search, (meaning a search for "TrIPod" will find "Tripod") and exact search (in which a search for "Tripod
+homepages" will only produce exact matches).-->
+		<td colspan="2" align="center"> <font face="verdana, helvetica, arial" size="2">Case-sensitive?
+		 <INPUT TYPE="checkbox" NAME="case_sensitive">yes<br></font></td>
+	</tr>
+	<tr>
+	 <!--A 'Fuzzy' search will call up results with a matching prefix, so if you search for 'the,', your search will also find
+"then" and "thereabouts."-->
+		<td align="right"><font face="verdana, helvetica, arial" size="2"><INPUT TYPE="radio" NAME="search_type" VALUE="exact" CHECKED>exact</font></td>
+		<td><font face="verdana, helvetica, arial" size="2"><INPUT TYPE="radio" NAME="search_type" VALUE="fuzzy">fuzzy<br></font></td>
+	</tr>
+	<tr>
+	<!--The color value can be changed - your search terms will be returned in this color.-->
+		<td colspan="2" align="center"><font face="verdana, helvetica, arial" size="2"><INPUT TYPE="hidden" NAME="display" VALUE="#FF0000"><INPUT TYPE="submit" VALUE="Search My Site"></font></td>
+	</tr>
+</table>
+
+
+
+</FORM>
+
+
+</head>
+<body>
+
+<!--Place this script anywhere in a page.-->
+<!--NOTE: You do not need to modify this script.-->
+
+<SCRIPT LANGUAGE = "JavaScript">
+<!--
+
+// Array of day names
+var dayNames = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+
+var monthNames = new Array("January","February","March","April","May","June","July",
+                           "August","September","October","November","December");
+
+var dt = new Date();
+var y  = dt.getYear();
+
+// Y2K compliant
+if (y < 1000) y +=1900;
+
+document.write(dayNames[dt.getDay()] + ", " + monthNames[dt.getMonth()] + " " + dt.getDate() + ", " + y);
+// -->
+</SCRIPT>
+
+
+
+<hr color=blue>
+<table align=left width=12%>
+<tr><td><a class=none href="index.html">Home</a></td><tr><br>
+<tr><td><a class=none href="about.html">About</a><td></tr><br>
+<tr><td><a class=none href="friends.html">Friends</a></td><tr><br>
+<tr><td><a class=none href="free-as-in-freedom.html">'Free' as in Freedom !</a></td><tr><br>
+<tr><td><a class=none href="contact.html">Contact</a></td></tr><br>
+<tr><td><a class=none href="mailto:baijum@epatra.com">Mail</a></td></tr><br>
+
+
+</table>
+<table>
+<td align=left>
+<!-- Body Starts Here --> 
+<tr><td align=center><h3>Welcome to Baiju's Home Page</h3></td></tr>
+<tr>
+<td align=center>
+<img src="images/baiju001.jpg" height=200>
+</td>
+<td align=left>
+This is my personal home page.<br>
+Here you can see more about me.<br>
+Also about my interests and works.<br>
+<a class=none href="http://two.guestbook.de/gb.cgi?gid=617385&prot=dwshbh">
+Vsit my guest book here ( if you like )</a>.<br>
+</td>
+</tr>
+<!-- Body Ends Here --> 
+</td>
+</table>
+<hr color=blue>
+<p align=right><font size=1>Copyright (C) 2002 Baiju M 
+<a class=none href="mailto:baijum@epatra.com">
+baijum@epatra.com</a><br>
+Last updated: 12-07-2002<br>
+</font>
+</p>
+</body>
+<html>
+

@@ -1,0 +1,229 @@
+<html>
+<head><title>Baiju's Biography Page</title>
+<style>
+<!-- a.none{text-decoration:none} -->
+</style>
+</head>
+<!--Begin JavaScript roadmap code.  If editing downloaded HTML source, delete
+ this portion.-->
+
+<script language="JavaScript">
+<!--
+
+function TripodShowPopup()
+{
+   var bName=navigator.appName;
+   var bVer=parseInt(navigator.appVersion);
+   var now = new Date();
+   var popupURL = "/adm/popup/roadmap.shtml?"+"member_name=baijum81&path=story.html&client_ip=209.237.238.161&ts=1074753617&ad_type=POPUP&search_string=ooty+photos&id=200415a6463bd9843f0fdc6a1ed5026a";
+   var popupName = "TripodPopup";
+
+   if (bName=="Netscape" && bVer<=3)
+   {
+      var popupWin = window.open("", popupName,'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=755,height=200,left=200,top=550');
+      popupWin.blur();
+   }
+   else
+   {
+      var popupWin = window.open("", popupName,'toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=745,height=185,left=200,top=500');
+      popupWin.blur();
+   }
+   popupWin.location = popupURL;
+}
+
+TripodShowPopup();
+
+// -->
+</script>
+
+<script language="JavaScript1.2">
+<!--
+
+function changeOpenFunction()
+{
+   var original_window_open = window.open;
+   function new_open_function(url, name, features, replace)
+   {
+      if(name != "TripodPopup")
+         return original_window_open(url, name, features, replace);
+   }
+   window.open = new_open_function;
+}
+var bName = navigator.appName;
+
+if(bName != "Netscape")
+   changeOpenFunction();
+
+// -->
+</script>
+
+<script language="JavaScript">
+<!--
+window.onload = function () {
+   setKeywordCookie();
+   buildExitHandler();
+}
+
+function setKeywordCookie() {
+    var expdate = new Date ();
+    expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+    var keyword = 'ooty+photos';
+    if( keyword == "(none)") {
+        keyword = '';
+    }
+
+    var reg = new RegExp("http://([\\w\\.\\-]*\\.)?(tripod|angelfire|lycos).com/");
+
+    if ( ! reg.test( document.referrer ) ){
+        SetCookie("Keyword", keyword, '', "/", ".tripod.com");
+    }
+}
+
+function buildExitHandler () {
+    if (document.getElementsByTagName) {
+        var arrAnchor = document.getElementsByTagName('A');
+        for (i=0;i < arrAnchor.length;i++){
+            if (arrAnchor[i].getAttribute) {
+                if ( ! arrAnchor[i].onclick ) {
+                    arrAnchor[i].onclick = function () { exitPage(this); };
+                }
+            }
+        }
+    }
+}
+
+function exitPage(a) {
+    var reg = new RegExp("^http://([\\w\\.\\-]*\\.)?(tripod|angelfire|lycos).com/");
+    if ( reg.test( a.href ) ){
+        return true;
+    }
+
+    var windowLocation = "/bin/exit/exit_page";
+
+    var expdate = new Date ();
+    expdate.setTime (expdate.getTime() + (24 * 60 * 60 * 1000));
+
+    var visited = GetCookie("ExitPage");
+    var keyword = GetCookie("Keyword");
+
+    if ( ! visited  ){
+        w = window.open('', "tr_exit", 'height=700,width=780,scrollbars=yes,resizable=yes' +
+                        'toolbar=no,directories=no,status=no,menubar=no' );
+        w.location = windowLocation + "?q=" + keyword;
+        SetCookie( "ExitPage", "viewed", expdate, "/", ".tripod.com");
+    }
+}
+
+function SetCookie (name,value,expires,path,domain,secure){
+        document.cookie = name + "=" + escape (value) +
+                        ((expires) ? "; expires=" + expires.toGMTString() : "") +
+                        ((path) ? "; path=" + path : "") +
+                        ((domain) ? "; domain=" + domain : "") +
+                        ((secure) ? "; secure" : "");
+}
+
+function getCookieVal (offset){
+        var endstr = document.cookie.indexOf (";", offset);
+        if (endstr == -1)
+                endstr = document.cookie.length;
+        return unescape(document.cookie.substring(offset, endstr));
+  }
+
+function GetCookie (name){
+        var arg = name + "=";
+        var alen = arg.length;
+        var clen = document.cookie.length;
+        if( (document.cookie == null) || (document.cookie.length == null)){
+                return null;
+        }
+        var i = 0;
+        while (i < clen){
+                var j = i + alen;
+                if (document.cookie.substring(i, j) == arg)
+                        return getCookieVal (j);
+                i = document.cookie.indexOf(" ", i) + 1;
+                if (i == 0) break;
+        }
+        return null;
+}
+-->
+</script>
+<body><script language="JavaScript" src="/adm/embed/common_scripts.js"></script>
+<script language="JavaScript">
+<!--
+  if(!displayTopAd()) document.write("<!" + "--");
+//-->
+</script>
+
+<div align="center">
+<A HREF="http://ln.doubleclick.net/jump/bottom.ln/tripod;kw=ooty+photos;h=misc;sz=728x90;!category=adult;!category=sexualovertones;ord=159323685210892?" target=_top><IMG WIDTH=728 HEIGHT=90 SRC="http://ln.doubleclick.net/ad/bottom.ln/tripod;kw=ooty+photos;h=misc;sz=728x90;!category=adult;!category=sexualovertones;ord=159323685210892?"></A>
+<br />
+</div>
+
+<script language="JavaScript">
+<!--
+  if(!displayTopAd()) document.write("-" + "->");
+//-->
+</script>
+
+<hr color=blue>
+
+<table align=left width=12%>
+<tr><td><a href="index.html">Home</a></td><tr><br>
+<tr><td><a href="about.html">About</a><td></tr><br>
+<tr><td><a href="friends.html">Friends</a></td><tr><br>
+<tr><td><a href="free-as-in-freedom.html">'Free' as in Freedom</a></td><tr><br>
+<tr><td><a href="contact.html">Contact</a></td></tr><br>
+<tr><td><a href="mailto:baijum@epatra.com">Mail</a></td></tr><br>
+</table>
+<table>
+<td align=left>
+<!-- Body Starts Here --> 
+<h4 align=center>The story continues here...</h4>
+During the joining I had an 
+intension to study many languages from my friends, later I found that it 
+is not as simple as that. Even I never used to talk in Hindi, ofcourse I 
+can understand a little bit. REC is more near to my home than MCC. Eventhough 
+I joined in hostel. I got admisson in CIVIL Engg. A lot to say about my life 
+at REC. Now it is getting to computers. When I was in 9th standard, I joined 
+for a short term course in basics of computers. I studied DOS,Wordstar,
+fundamentals of BASIC etc. from there. The games like Prince,Car race, 
+Bike race etc. were really interesting at that time. Whenever they allowed, 
+I used to play games. I lost touch with computers untill when we went to 
+FORTRAN practical classes. I had been no idea about UNIX at time, I thought 
+we are going to work on a system which is already known to me. I really 
+wondered, when I seen the black terminals only provided with keyboards. 
+Our teacher provided us a list of UNIX and VI commands. Some PG students 
+helped us to get into the system. Later I known that we were working on a 
+Sun OS. Again I got interest in computers, I started working on it, whenever 
+I went to Computer Center I studied anything which is new to me. It continued 
+like that ... we got login on GNU/Linux machine with internet connection. 
+Only 'lynx' were available to browse. Then we got login on different servers 
+with lots of utilities. Only Civil branch has got login on a GNU/Linux 
+system all other branch got login on diffenent Solaris machines. I used to 
+say 'Linux' at that time, freedom was a not matter at that time for me. 
+I also worked on Solaris, Windows 98,NT etc. Irix,OS/2 etc. were there in 
+my college, but I didn't got any chance to work on it. When we were on 
+final year, a server given to students to set up web server with  documents 
+and some mailing lists. Then a new "Linux User Group" formed and many 
+students joined in that group. The mailing list was active for sometime, 
+after few months the server down. I had been posted about GNU/Linux 
+Localization projects and other things to that list. And lots of other 
+things happened in between this. Now I am a member of Free Software 
+User Group, Kozhikode and a volunteer of Free Software Foundation, India. 
+Now I am working at FSF India in TVM. The story continues.... will write 
+about it after some years (if possible).
+
+<!-- Body Ends Here --> 
+</table>
+<hr color=blue>
+<p align=right><font size=1>Copyright (C) 2002 Baiju M 
+<a class=none href="mailto:baijum@epatra.com">
+Verbatim copying and distribution of this entire article is permitted in any medium, provided this notice is preserved. <br>
+baijum@epatra.com</a><br>
+Last updated: 03-11-2002<br>
+</font>
+</p>
+</body>
+<html>

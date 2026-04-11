@@ -1,0 +1,6 @@
+#!/bin/bash
+case "$1" in 
+"basic") setxkbmap -symbols "en_US(pc105)+ml(basic)+group(shift_toggle)" -compat "group_led" ;;
+"mlplusnum") setxkbmap -symbols "en_US(pc105)+ml(mlplusnum)+group(shift_toggle)" -compat "group_led" ;;
+*)     echo "usage: $0 basic or mlplusnum " ;;
+esac

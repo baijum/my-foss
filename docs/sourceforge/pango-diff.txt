@@ -1,0 +1,36 @@
+Index: pango/modules/indic/indic-ot-class-tables.c
+===================================================================
+RCS file: /cvs/gnome/pango/modules/indic/indic-ot-class-tables.c,v
+retrieving revision 1.2
+diff -r1.2 indic-ot-class-tables.c
+175,177c175,177
+<     _iv, _xx, _iv, _iv, _iv, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _bb, /* 0D10 - 0D1F */
+<     _ct, _ct, _ct, _bb, _ct, _bb, _bb, _ct, _ct, _xx, _ct, _ct, _ct, _ct, _ct, _ct, /* 0D20 - 0D2F */
+<     _pb, _cn, _bb, _ct, _ct, _pb, _ct, _ct, _ct, _ct, _xx, _xx, _xx, _xx, _dr, _dr, /* 0D30 - 0D3F */
+---
+>     _iv, _xx, _iv, _iv, _iv, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, /* 0D10 - 0D1F */
+>     _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _ct, _xx, _ct, _ct, _ct, _ct, _ct, _pb, /* 0D20 - 0D2F */
+>     _pb, _cn, _ct, _ct, _ct, _pb, _ct, _ct, _ct, _ct, _xx, _xx, _xx, _xx, _dr, _dr, /* 0D30 - 0D3F */
+Index: pango/modules/indic/indic-ot.c
+===================================================================
+RCS file: /cvs/gnome/pango/modules/indic/indic-ot.c,v
+retrieving revision 1.2
+diff -r1.2 indic-ot.c
+234c234
+<                 while (baseConsonant >= baseLimit) {
+---
+>                 while (baseConsonant > baseLimit) {
+315c315
+<                     writeChar(&output, chars[i], /*i*/ prev, nukt_p);
+---
+>                     writeChar(&output, chars[i], /*i*/ prev, base_p);
+Index: pango/modules/indic/indic-ot.h
+===================================================================
+RCS file: /cvs/gnome/pango/modules/indic/indic-ot.h,v
+retrieving revision 1.2
+diff -r1.2 indic-ot.h
+136c136,137
+<   nukt_p = (junk | dist | rphf | blwf | half)
+---
+>   nukt_p = (junk | dist | rphf | blwf | half),
+>   base_p = (junk | dist | rphf | blwf | half | pstf)

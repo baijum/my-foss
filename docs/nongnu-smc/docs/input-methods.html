@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+                                                 
+  <title>An Input Method for Malayalam</title>
+</head>
+  <body bgcolor="#ffffff" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+	  <br>
+<h2 align=center>An Input Method for Malayalam </h2>
+<h4 align=center><b>(This document is still in _DRAFT_ state)</b></h4>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;This input is based on the <a href="images/ml_inscript_layout.jpg">Malayalam Inscript keyboard layout.</a>
+and <a href="http://www.unicode.org/charts/PDF/U0D00.pdf">Malayalam unicode character set.</a>
+This is the <a href="http://www.keralaitmission.org/content/egovernance/MalayalamKeyboard.zip">standared keyboard layout proposed by Kerala government</a>.
+This layout will be default in the <a href="http://www.gnu.org">GNU/Linux</a> with Malayalam support.
+Though now it requires <a href="http://www.xfree86.org">X Window System</a> and best support is available in <a href="http://www.gnome.org">GNOME</a>.
+Inputting Malaylam numerals and other old characters are described below.
+<br><br>
+First of all download the following files :
+<br>
+<ul>
+	<li><a href="http://savannah.nongnu.org/download/smc/tmp/malayalam.ttf">Malayalam unicode font. </a><br></li>
+	<li><a href="http://savannah.nongnu.org/download/smc/tmp/ml">Malayalam XKB file.</a><br></li>
+	<li><a href="http://savannah.nongnu.org/download/smc/tmp/ml_IN">Malayalam locale. </a><br></li>
+	<li><a href="http://savannah.nongnu.org/download/smc/tmp/Compose">Malayalam Compose file. </a><br></li>
+	<li>Also make some changes in compose.dir file (descrption below) . <br></li>
+	<li><a href="http://savannah.nongnu.org/download/smc/tmp/ml_setkb">A simple script.</a><br></li>
+</ul>
+<br>
+<a href="images/ml_inscript_layout.jpg">Inscript Keyboard layout is available here.</a>
+<br><br>
+Add the font to your personal font directory (you need not be a
+superuser)<br>
+A detailed description for installing font is available <a href="http://www.tldp.org/HOWTO/Font-HOWTO">here.</a><br>
+For the time being just do like this :<br>
+bash$ cp nonstdml.ttf $HOME/personal-fonts/ <br>
+(If the directory is not existing just create it)<br>
+Now, add an entry to $HOME/personal-fonts/fonts.dir like :<br>
+nonstdml.ttf -misc-NonStdMl-medium-r-normal--0-0-0-0-p-0-iso10646-1<br>
+(this is the entry for the font available here)<br>
+A sample fonts.dir file is <a href="http://savannah.nongnu.org/download/smc/tmp/fonts.dir">here.</a><br><br>
+
+To add this font directory to X font path :<br>
+bash$ cd $HOME/personal-fonts<br>
+bash$ xset fp+ `pwd`<br>
+bash$ xset fp rehash<br>
+<br><br>
+
+Now copy the XKB file to /usr/X11R6/lib/X11/xkb/symbols/ (login as root)<br>
+bash# cp ml /usr/X11R6/lib/X11/xkb/symbols/<br>
+<br><br>
+Now, compile Malayalam locale (login as root)<br>
+Copy the locale to /usr/share/i18n/locales/<br>
+bash# cp ml_IN /usr/share/i18n/locales/<br>
+bash# localedef -i ml_IN -f UTF-8 /usr/share/locale/ml_IN.UTF-8/<br>
+<br><br>
+
+Then, copy the Compose file to<br>
+/usr/X11R6/lib/X11/locale/ml_IN.UTF-8 /<br>
+bash# cp Compose /usr/X11R6/lib/X11/locale/ml_IN.UTF-8/<br>
+( If directory not existing, just create it)<br>
+<br><br>
+Open the file /usr/X11R6/lib/X11/locale/compose.dir<br>
+and add these two entries at appropriate positions :<br>
+ml_IN.UTF-8/Compose&nbsp;&nbsp;&nbsp;&nbsp;ml_IN.UTF-8<br>
+ml_IN.UTF-8/Compose:&nbsp;&nbsp;&nbsp;&nbsp;ml_IN.UTF-8<br>
+(Be carefull, the second line has a colon in between)<br>
+A sample <a href="http://savannah.nongnu.org/download/smc/tmp/compose.dir">compose.dir</a> file is here.<br>
+<br>
+Before that change the locale :<br>
+bash$ export LC_ALL=ml_IN.UTF-8 <br>
+(Add this entry to $HOME/.bashrc for conveniance)<br>
+<br>
+Run the shell script to select the keyboard layout.
+bash$ ./ml_setkb basic <br>
+(option basic is required, other option is 'mlplusnum' to include 
+<i><b>malayalm numerals</b></i> in the shift locations of indo-arabic numerals)
+<br><br>
+<h3>Inputting Malayalam</h3><br><br>
+
+To input someting select X Input Method (right click in
+GEdit)press both shift, now you are swithed to Malayalam mode
+now start typing.
+To input any "Koottaksharas" press the consonant (vyanchanam)
+then 
+visarga (chandrakkala) and again the consonant. If you are
+inputing in correct order proper rendering will occur.
+
+<h4>Inputting Malayalm old charcters </h4>
+Suppose you want to input Malayalam vocalic LL 
+just do like this : <br>
+
+bash$ xmodmap -e "keycode 33 = U0D0C" <br>
+Keycode 33 is 'w' so by pressing 'w' you will get 
+the desired unicode value. Unicode values of old character are given below :<br><br>
+<a href="images/0d0c.png" ><img src="images/0d0c.png" border=2 width=35></a> 
+&nbsp;&nbsp;&nbsp;<b> U0D0C</b><br><br>
+<a href="images/0d60.png" ><img src="images/0d60.png" border=2 width=35></a>
+&nbsp;&nbsp;&nbsp;<b> U0D60</b><br><br>
+<a href="images/0d61.png" ><img src="images/0d61.png" border=2 width=35></a>
+&nbsp;&nbsp;&nbsp;<b> U0D61</b><br><br>
+<b>Note : Sorting order for these characters are not included </b>
+
+<h3>Author</h3>
+Baiju M
+<h3>Bugs</h3>
+Please report any bug at <a href="mailto:baiju@freeshell.org">baiju@freeshell.org</a>
+ <br><br>
+<HR>
+<P ALIGN=left>
+Copyright (C) 2002 SMC Project Team
+<P ALIGN=left>
+Verbatim copying and distribution of this entire article is
+permitted in any medium, provided this notice is preserved.
+<P ALIGN=left>
+Updated:
+<!-- timestamp start -->
+$Date: 2002/10/25 08:15:24 $ $Author: baijum81 $
+<!-- timestamp end -->
+<HR>
+
+</body>
+</html>
