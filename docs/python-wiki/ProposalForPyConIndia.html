@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>ProposalForPyConIndia</title>
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="europython/css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="europython/css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" charset="utf-8" href="europython/css/print.css">
+<style type="text/css">
+ul.pagetitle{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+li.pagetitle{
+  display: inline;
+  margin: 0;
+}
+td.noborder {
+  border: 0;
+}
+</style>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<style type="text/css">
+div#sidebar { display: none !important; }
+div#content { margin-left: 0 !important; padding: 0 16px !important; }
+ul#pagetrail { margin-left: 0 !important; }
+#pageinfo { margin-left: 0 !important; }
+#page { max-width: 960px; margin: 0 auto; padding: 16px 0; }
+
+/* Pagefind overrides */
+.wiki-search-bar { background: #f0f0f0; padding: 10px 20px; border-bottom: 1px solid #ddd; }
+.wiki-search-bar .pagefind-ui { max-width: 960px; margin: 0 auto; }
+.wiki-search-bar .pagefind-ui__form { position: relative !important; }
+.wiki-search-bar .pagefind-ui__search-input {
+    font-size: 16px !important;
+    padding: 10px 44px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.wiki-search-bar .pagefind-ui__search-clear {
+    position: absolute !important;
+    top: 20px !important;
+    right: 12px !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+}
+.wiki-search-bar .pagefind-ui__results-area {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+.wiki-search-bar .pagefind-ui__result {
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.wiki-search-bar .pagefind-ui__result-link {
+    color: #306998 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.wiki-search-bar .pagefind-ui__result-excerpt {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+.wiki-search-bar .pagefind-ui__message {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 8px 0 !important;
+}
+.wiki-search-bar .pagefind-ui__button {
+    background: #306998 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    margin-top: 8px !important;
+    cursor: pointer !important;
+}
+.wiki-search-bar .pagefind-ui__button:hover { background: #1e4f72 !important; }
+kbd.search-shortcut-hint {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8e8e8;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div style="background:#fffde7;color:#333;padding:14px 20px;font-family:-apple-system,sans-serif;font-size:14px;text-align:left;border-bottom:2px solid #f9a825;line-height:1.6;">
+This wiki is in the process of being archived due to lack of usage and the resources necessary to serve it &mdash; predominately to bots, crawlers, and LLM companies. Edits are discouraged.<br>
+Pages are preserved as they were at the time of archival. For current information, please visit <a href="https://www.python.org/" style="color:#306998;">python.org</a>.<br>If a change to this archive is absolutely needed, requests can be made via the <a href="mailto:infrastructure@python.org" style="color:#306998;">infrastructure@python.org</a> mailing list.
+</div>
+<div style="background:#f8f8f8;padding:8px 20px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<a href="FrontPage.html"><img src="logo.png" style="height:40px;"></a>
+<nav style="display:flex;gap:16px;font-size:15px;font-family:-apple-system,sans-serif;">
+<a href="FrontPage.html" style="color:#306998;text-decoration:none;">Home</a>
+<a href="TitleIndex.html" style="color:#306998;text-decoration:none;">All Pages</a>
+<a href="RecentChanges.html" style="color:#306998;text-decoration:none;">Recent Changes</a>
+</nav>
+</div>
+<div class="wiki-search-bar">
+<div id="search"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  new PagefindUI({element:"#search",showSubResults:false,showImages:false,autofocus:false,resetStyles:false,baseUrl:"/"});
+  var inp=document.querySelector(".pagefind-ui__search-input");
+  if(inp){
+    inp.placeholder="Search the wiki archive...";
+    var hint=document.createElement("kbd");
+    hint.className="search-shortcut-hint";
+    hint.innerHTML=(navigator.platform.indexOf("Mac")>-1?"⌘":"Ctrl")+"K";
+    inp.parentNode.style.position="relative";
+    inp.parentNode.appendChild(hint);
+    document.addEventListener("keydown",function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();inp.focus();inp.select();hint.style.display="none";}
+    });
+    inp.addEventListener("focus",function(){hint.style.display="none";});
+    inp.addEventListener("blur",function(){if(!inp.value)hint.style.display="";});
+  }
+});
+</script>
+</div>
+<div id="page">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h1 id="Proposal_for_PyCon_India">Proposal for PyCon India</h1>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line867"><a href="./PyCon.html">PyCon</a> is a global community event. We intend to have an Indian edition of the same, in association with <a href="./BangPypers.html">BangPypers</a>. The idea is to have all pythonistas from around the country come together and have a good fun pythonic time. The general outline is something as follows: <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><ul><li>Tutorials <span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span></li><li class="gap">General Talks <span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span></li><li class="gap">Workshops <span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span></li><li class="gap">Lightning Talks <span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span></li><li class="gap">Programming Sprints <span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span></li></ul><p class="line867">
+<h2 id="TODO_List">TODO List</h2>
+<span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><ul><li><p class="line862">Contact David Goodger of PSF to express the idea for an Indian edition of the conference, and for using the <a href="./PyCon.html">PyCon</a> title. (Ramakrishna Reddy) <span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span></li><li class="gap"><p class="line862">Write formal proposal (Noufal Ibrahim) <a href="./PyConIndiaProposalDraft.html">PyConIndiaProposalDraft</a> <span class="anchor" id="line-21"></span></li><li>Find venue <span class="anchor" id="line-22"></span></li><li>Find Sponsors <span class="anchor" id="line-23"></span></li><li>Finalize Date -- 3 days (September) <span class="anchor" id="line-24"></span><ul><li style="list-style-type:none">-- I suggest September 4,5,6 (Baiju M) <span class="anchor" id="line-25"></span></li></ul></li><li>Form a planning committee <span class="anchor" id="line-26"></span></li><li>Budget ? <span class="anchor" id="line-27"></span></li><li>How to do Publicity <span class="anchor" id="line-28"></span><ul><li>Blog about it <span class="anchor" id="line-29"></span></li><li>Buttons for websites/blog sidebars <span class="anchor" id="line-30"></span></li><li>Inform in all mailing lists (User Groups) and keep posting reminders <span class="anchor" id="line-31"></span></li><li>Publicize using other conferences/unconferences/events <span class="anchor" id="line-32"></span></li><li>All User Groups -- like django, TG, Pylons, etc. There are a few hundred user groups.. It is viral. <span class="anchor" id="line-33"></span></li><li>Bloggers can start blogging about it. <span class="anchor" id="line-34"></span></li><li>We can have a few magazines as Media sponsors. We can get the ads bartered. <span class="anchor" id="line-35"></span></li><li>Target LUGs. There are lots of Python fans there. <span class="anchor" id="line-36"></span></li><li>Get a few high profile bloggers in India and abroad to write about it. Personal requests will help. <span class="anchor" id="line-37"></span></li><li>Its extremely important to get the big cos which has some interest in Python involved. say Google. They can help evangelizing the conference. <span class="anchor" id="line-38"></span></li><li>If we are officially Pycon India, then don't worry, there will be automatic links out of most Python related sites. You can bet that anyone who's interested in Python will be visiting one such places in the next 5-6 months. <span class="anchor" id="line-39"></span></li><li>Contact the mainstream media which do write about tech-focussed events. [svaksha] <span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span></li></ul></li><li class="gap"><p class="line862">Create one website with event details and co-ordinating proposals.  May be use the same code used by <a href="./PyCon.html">PyCon</a> ? <span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span></li></ul><p class="line867">
+<h1 id="Community_Discussion">Community Discussion</h1>
+<span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><p class="line867">
+<h2 id="Decisions_to_be_made">Decisions to be made</h2>
+<span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><p class="line862">Please add your name to what you have to say, and try not to edit the opinions of others, you may reorder them though, I guess. -- <a href="./RoshanMathews.html">RoshanMathews</a> <span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span><p class="line867">
+<h3 id="Budgets.2FSponsorship.2FTravel">Budgets/Sponsorship/Travel</h3>
+<span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><ul><li>Speaker travel sponsorship : International speakers (may) need travel funding. [svaksha] <span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span></li><li class="gap">Local speakers : Budgets/sponsorship for local (other cities) speakers travel and stay ? [svaksha] <span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span></li><li class="gap">Conf entry : Is it free or will attendees be charged? This is not mentioned explicitly. [svaksha] <span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span></li></ul><p class="line867">
+<h3 id="Target_audience">Target audience</h3>
+<span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span><p class="line874">We have to decide who the target audience is, or at least the types of different targets.  Make tracks accordingly. <span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span><p class="line867">
+<h2 id="Opinions">Opinions</h2>
+<span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><p class="line867">
+<h3 id="Anand_B_Pillai_.28abpillai_at_gmail_dot_com.29">Anand B Pillai (abpillai at gmail dot com)</h3>
+<span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><ul><li><p class="line891"><a href="./PyCon.html">PyCon</a> India should be a conference, not an unconference. <span class="anchor" id="line-67"></span></li><li>We should strive for international participation in planning and content/presentation right from the start. <span class="anchor" id="line-68"></span></li><li>I agree September is a good time. <span class="anchor" id="line-69"></span></li><li>We should approach big Python users in Bangalore (HP, Google, Dell etc) as possible sponsors. <span class="anchor" id="line-70"></span></li><li>Dates for forming a draft formal proposal ? - This is required for even approaching someone for sponsorship. I suggest creating one in 3 months. I can take the lead in this. Let me know who else will be interested in working on the proposal. <span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span></li></ul><p class="line867">
+<h3 id="Noufal_Ibrahim_.28noufal_at_nibrahim_dot_net_dot_in.29">Noufal Ibrahim (noufal at nibrahim dot net dot in)</h3>
+<span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><ul><li>I can get probably help to get a draft for the 'formal proposal' ready along with someone else. I think it should be possible to create a first draft in a week or so. If anyone has any pointers, please send them to me. <span class="anchor" id="line-75"></span></li><li>Going to companies and advertising (including a website) would probably be predicated on the proposal. <span class="anchor" id="line-76"></span></li><li><p class="line862">I'm not so sure about September anymore. <a href="./ConventionHowto.html">ConventionHowto</a> indicates a much longer planning period. We need to discuss this.  <span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span></li></ul><p class="line867">
+<h3 id="Parthan_.28python_dot_technofreak_at_gmail_dot_com.29">Parthan (python dot technofreak at gmail dot com)</h3>
+<span class="anchor" id="line-79"></span><ul><li>+1 for September, but that means we have to start the publicity measures soon <span class="anchor" id="line-80"></span></li><li>We need a dedicated wiki/website up as soon as possible, this will help all information available at one place <span class="anchor" id="line-81"></span></li><li>Get international speakers to attract participation, but also give equal opportunity to Indian speakers <span class="anchor" id="line-82"></span></li><li>We should also involve all known companies who run as a python shop to increase the awareness within local communities. <span class="anchor" id="line-83"></span></li><li><p class="line862">A conference w/o tee is like having a south Indian meal w/o pickle. At least we can have pay for your tees or have delegate fees with and without goodies <img alt=";-)" height="16" src="/wiki/europython/img/smile4.png" title=";-)" width="16" /> <span class="anchor" id="line-84"></span></li><li><p class="line862">If we consider <a href="./ConventionHowto.html">ConventionHowto</a> , we have 18 months to September 2010 <img alt=";-)" height="16" src="/wiki/europython/img/smile4.png" title=";-)" width="16" /> <span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span></li></ul><p class="line867">
+<h3 id="Venkat_.28venkat83_at_gmail_dot_com.29">Venkat (venkat83 at gmail dot com)</h3>
+<span class="anchor" id="line-87"></span><ul><li>+1 for a 'dedicated' event. <span class="anchor" id="line-88"></span></li><li>Willing to volunteer for proposal, filtering/scheduling the talks. <span class="anchor" id="line-89"></span></li><li>Am not sure about September - as it looks very aggressive. <span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span></li></ul><p class="line867">
+<h3 id="Roshan_Mathews_.28rmathews_gmail_com.29">Roshan Mathews (rmathews gmail com)</h3>
+<span class="anchor" id="line-92"></span><ul><li><p class="line862">Having the conference be a "<a href="./PyCon.html">PyCon</a>" is serious stuff, which can't be a damp squib like one of the local meets. <span class="anchor" id="line-93"></span></li><li>I'd be against pitching this as a evangelical/community-building/newbie-oriented event.  I'd like something for Python programmers, not people who have just heard of the language.  But this is up to the "community" to agree upon. <span class="anchor" id="line-94"></span></li><li>Similarly, I'd rather this was a low budget event sans free T-Shirts and the usual swag. <span class="anchor" id="line-95"></span></li><li>So, minus the gimmicks, the only draw should be the quality of the talks/speakers in the conference. <span class="anchor" id="line-96"></span></li><li>September sounds okay, but the date should be finalized only after you have some sort of list of speakers, events, tracks et al. <span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span></li></ul><p class="line867">
+<h3 id="svaksha">svaksha</h3>
+<span class="anchor" id="line-99"></span><ul><li>Instead of swag like stickers/T-shirts/mugs, why not give Python books ? Alternatively if that is too expensive, the freely available documentation (with respective author perms) could be printed and bound for those interested at a nominal cost. <span class="anchor" id="line-100"></span><ul><li><p class="line862">This is a <strong>great</strong> idea!  I'll second it.  We can get publishers to offer deep discounts in return for having stalls at the conference.  Assuming an average book will cost around Rs.400, if the publishers offer a discount of 100, and the conference uses it's t-shirt money to knock off another 100 bucks per book, then we've managed a 50% discount which is really cool. -- <a href="./RoshanMathews.html">RoshanMathews</a> <span class="anchor" id="line-101"></span></li><li><p class="line862">And instead of stickers we can have print-outs of those folding reference cards as handouts. -- <a href="./RoshanMathews.html">RoshanMathews</a> <span class="anchor" id="line-102"></span></li><li><p class="line862">If this idea seems cool, I can elide the rant "To Tee or Not To" from above.  -- <a href="./RoshanMathews.html">RoshanMathews</a> <span class="anchor" id="line-103"></span><span class="anchor" id="line-104"></span></li></ul></li></ul><p class="line867"><a class="http" href="http://anurag-priyam.blogspot.com/">Anurag Priyam</a> (anurag08priyam [AT] gmail.com) <span class="anchor" id="line-105"></span><ul><li>wont the month of July be a better time for college students, considering the fact that we want participation of students from all over India. <span class="anchor" id="line-106"></span></li><li>i think we can get some publishing company like TMH to sponsor svaksha's idea of giving Python books. <span class="anchor" id="line-107"></span><span class="anchor" id="line-108"></span></li></ul><p class="line867">
+<h3 id="lawgon">lawgon</h3>
+<span class="anchor" id="line-109"></span><ul><li>In general in India, for some silly reason, it has become conventional to have free entrance to such conferences and also to pay for speakers accomodation and travel. I do not see this happening in other countries. I suggest we professionalise the conference - people pay their way, with maybe a discount for students. <span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span><ul><li>Hello Python is supposed to be absolutely free, so official Pycon has to be free of cost(especially in India). We should find some other way to raise fund, say by sponsorship or donation -- anirudh <span class="anchor" id="line-112"></span><span class="anchor" id="line-113"></span></li></ul></li></ul><p class="line867"><hr /><p class="line874"> <span class="anchor" id="line-114"></span><a href="./CategoryPyCon.html">CategoryPyCon</a> <a href="./CategoryPyConIndia2009.html">CategoryPyConIndia2009</a> <span class="anchor" id="line-115"></span><span class="anchor" id="bottom"></span></div>
+</div>
+<hr>
+2026-02-14 16:12
+</body>
+</html>

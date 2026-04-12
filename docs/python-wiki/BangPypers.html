@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>BangPypers</title>
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="europython/css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="europython/css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" charset="utf-8" href="europython/css/print.css">
+<style type="text/css">
+ul.pagetitle{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+li.pagetitle{
+  display: inline;
+  margin: 0;
+}
+td.noborder {
+  border: 0;
+}
+</style>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<style type="text/css">
+div#sidebar { display: none !important; }
+div#content { margin-left: 0 !important; padding: 0 16px !important; }
+ul#pagetrail { margin-left: 0 !important; }
+#pageinfo { margin-left: 0 !important; }
+#page { max-width: 960px; margin: 0 auto; padding: 16px 0; }
+
+/* Pagefind overrides */
+.wiki-search-bar { background: #f0f0f0; padding: 10px 20px; border-bottom: 1px solid #ddd; }
+.wiki-search-bar .pagefind-ui { max-width: 960px; margin: 0 auto; }
+.wiki-search-bar .pagefind-ui__form { position: relative !important; }
+.wiki-search-bar .pagefind-ui__search-input {
+    font-size: 16px !important;
+    padding: 10px 44px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.wiki-search-bar .pagefind-ui__search-clear {
+    position: absolute !important;
+    top: 20px !important;
+    right: 12px !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+}
+.wiki-search-bar .pagefind-ui__results-area {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+.wiki-search-bar .pagefind-ui__result {
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.wiki-search-bar .pagefind-ui__result-link {
+    color: #306998 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.wiki-search-bar .pagefind-ui__result-excerpt {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+.wiki-search-bar .pagefind-ui__message {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 8px 0 !important;
+}
+.wiki-search-bar .pagefind-ui__button {
+    background: #306998 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    margin-top: 8px !important;
+    cursor: pointer !important;
+}
+.wiki-search-bar .pagefind-ui__button:hover { background: #1e4f72 !important; }
+kbd.search-shortcut-hint {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8e8e8;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div style="background:#fffde7;color:#333;padding:14px 20px;font-family:-apple-system,sans-serif;font-size:14px;text-align:left;border-bottom:2px solid #f9a825;line-height:1.6;">
+This wiki is in the process of being archived due to lack of usage and the resources necessary to serve it &mdash; predominately to bots, crawlers, and LLM companies. Edits are discouraged.<br>
+Pages are preserved as they were at the time of archival. For current information, please visit <a href="https://www.python.org/" style="color:#306998;">python.org</a>.<br>If a change to this archive is absolutely needed, requests can be made via the <a href="mailto:infrastructure@python.org" style="color:#306998;">infrastructure@python.org</a> mailing list.
+</div>
+<div style="background:#f8f8f8;padding:8px 20px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<a href="FrontPage.html"><img src="logo.png" style="height:40px;"></a>
+<nav style="display:flex;gap:16px;font-size:15px;font-family:-apple-system,sans-serif;">
+<a href="FrontPage.html" style="color:#306998;text-decoration:none;">Home</a>
+<a href="TitleIndex.html" style="color:#306998;text-decoration:none;">All Pages</a>
+<a href="RecentChanges.html" style="color:#306998;text-decoration:none;">Recent Changes</a>
+</nav>
+</div>
+<div class="wiki-search-bar">
+<div id="search"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  new PagefindUI({element:"#search",showSubResults:false,showImages:false,autofocus:false,resetStyles:false,baseUrl:"/"});
+  var inp=document.querySelector(".pagefind-ui__search-input");
+  if(inp){
+    inp.placeholder="Search the wiki archive...";
+    var hint=document.createElement("kbd");
+    hint.className="search-shortcut-hint";
+    hint.innerHTML=(navigator.platform.indexOf("Mac")>-1?"⌘":"Ctrl")+"K";
+    inp.parentNode.style.position="relative";
+    inp.parentNode.appendChild(hint);
+    document.addEventListener("keydown",function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();inp.focus();inp.select();hint.style.display="none";}
+    });
+    inp.addEventListener("focus",function(){hint.style.display="none";});
+    inp.addEventListener("blur",function(){if(!inp.value)hint.style.display="";});
+  }
+});
+</script>
+</div>
+<div id="page">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h1 id="BangPypers-1">BangPypers</h1>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><span class="anchor" id="line-4"></span><p class="line867"><a class="http" href="http://mail.python.org/mailman/listinfo/bangpypers"><img alt="http://mail.python.org/mailman/listinfo/bangpypers" class="external_image" src="http://bangpypers.sourceforge.net/bpug.png" title="http://mail.python.org/mailman/listinfo/bangpypers" /></a> <span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><p class="line867">
+<h1 id="Website">Website</h1>
+<span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><p class="line867"><a class="http" href="http://bangalore.python.org.in/">http://bangalore.python.org.in/</a> <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span><p class="line867">
+<h1 id="Mailing_List">Mailing List</h1>
+<span class="anchor" id="line-14"></span><span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span><p class="line867"><a class="http" href="http://mail.python.org/mailman/listinfo/bangpypers">http://mail.python.org/mailman/listinfo/bangpypers</a> <span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span><p class="line867">
+<h1 id="Meetup_Page">Meetup Page</h1>
+<span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span><p class="line867"><a class="https" href="https://www.meetup.com/bangpypers">https://www.meetup.com/bangpypers</a> <span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><p class="line867">
+<h1 id="Frequently_Asked_Questions">Frequently Asked Questions</h1>
+<span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><ul><li><p class="line891"><a href="./BangPypers(2f)PythonEditors.html">BangPypers/PythonEditors</a> <span class="anchor" id="line-29"></span></li><li><p class="line891"><a href="./BangPypers(2f)PythonCompaniesInIndia.html">BangPypers/PythonCompaniesInIndia</a> <span class="anchor" id="line-30"></span></li><li><p class="line891"><a href="./BangPypers(2f)PresentationTopics.html">BangPypers/PresentationTopics</a> <span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span></li></ul><p class="line867">
+<h1 id="PyCon_India">PyCon India</h1>
+<span class="anchor" id="line-34"></span><span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><ul><li><p class="line891"><a href="./PyConIndiaSpeakerNotes.html">PyConIndiaSpeakerNotes</a> <span class="anchor" id="line-37"></span></li><li><p class="line891"><a href="./PyConIndiaBidRequirements.html">PyConIndiaBidRequirements</a> <span class="anchor" id="line-38"></span></li><li><p class="line891"><a href="./PyConIndiaTShirt.html">PyConIndiaTShirt</a> <span class="anchor" id="line-39"></span></li><li><p class="line891"><a href="./PyConIndiaVolunteers.html">PyConIndiaVolunteers</a> <span class="anchor" id="line-40"></span></li><li><p class="line891"><a href="./PyConIndiaLogos.html">PyConIndiaLogos</a> <span class="anchor" id="line-41"></span></li><li><p class="line891"><a class="nonexistent" href="./PyConIndiaPublicity.html">PyConIndiaPublicity</a> <span class="anchor" id="line-42"></span></li><li><p class="line891"><a href="./PyConIndiaCallForProposals.html">PyConIndiaCallForProposals</a> <span class="anchor" id="line-43"></span></li><li><p class="line891"><a class="http" href="http://wiki.python.org/moin/PyConIN_Sponsors">PyConIN_Sponsors</a> <span class="anchor" id="line-44"></span></li><li><p class="line891"><a href="./PyConIndiaInvitation.html">PyConIndiaInvitation</a> <span class="anchor" id="line-45"></span></li><li><p class="line891"><a href="./PyConIndiaAccommodation.html">PyConIndiaAccommodation</a> <span class="anchor" id="line-46"></span></li><li><p class="line891"><a href="./PyConIndiaFlyer.html">PyConIndiaFlyer</a> <span class="anchor" id="line-47"></span><span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span></li></ul><p class="line867">
+<h2 id="Ideation">Ideation</h2>
+<span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><ul><li><p class="line891"><a href="./ProposalForPyConIndia.html">ProposalForPyConIndia</a> <span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span></li></ul><p class="line867">
+<h1 id="Meetings">Meetings</h1>
+<span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><p class="line867">
+<h2 id="IRC_LOGS">IRC LOGS</h2>
+<span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span><ul><li><p class="line891"><a class="http" href="http://wiki.python.org/moin/BangPypers/IRCLogs">All IRC logs are available here</a> <span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span></li></ul><p class="line867">
+<h2 id="Upcoming_Meetings">Upcoming Meetings</h2>
+<span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span><ul><li><p class="line891"><a href="./BangPypers(2f)Meeting25July2009.html">BangPypers/Meeting25July2009</a> <span class="anchor" id="line-68"></span><span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span></li></ul><p class="line867">
+<h2 id="Earlier_Meetings">Earlier Meetings</h2>
+<span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><span class="anchor" id="line-73"></span><ul><li><p class="line891"><a href="./BangPypers(2f)Meeting03May2009.html">BangPypers/Meeting03May2009</a> <span class="anchor" id="line-74"></span></li><li><p class="line891"><a href="./BangPypers(2f)Meeting17May2009.html">BangPypers/Meeting17May2009</a> <span class="anchor" id="line-75"></span></li><li><p class="line891"><a href="./BangPypers(2f)MeetingPyConDiscussion1.html">BangPypers/MeetingPyConDiscussion1</a> <span class="anchor" id="line-76"></span></li><li><p class="line891"><a href="./BangPypers(2f)Meeting21Mar2009.html">BangPypers/Meeting21Mar2009</a> <span class="anchor" id="line-77"></span></li><li><p class="line891"><a href="./BangPypers(2f)Meeting21Feb2009.html">BangPypers/Meeting21Feb2009</a> <span class="anchor" id="line-78"></span></li><li><p class="line891"><a href="./BangPypers(2f)Meeting26Jan2008.html">BangPypers/Meeting26Jan2008</a> <span class="anchor" id="line-79"></span></li><li><p class="line891"><a href="./BangPypers(2f)Meeting11Aug2007.html">BangPypers/Meeting11Aug2007</a> <span class="anchor" id="line-80"></span></li><li><p class="line891"><a href="./BangPypers(2f)BoFatFossInBangalore.html">BangPypers/BoFatFossInBangalore</a> (what happend to this meeting ?) <span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><span class="anchor" id="line-83"></span></li></ul><p class="line867">
+<h2 id="Social">Social</h2>
+<span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><ul><li><p class="line891"><a class="https" href="https://www.facebook.com/bangpypers">Facebook</a> <span class="anchor" id="line-87"></span></li><li><p class="line891"><a class="https" href="https://twitter.com/__bangpypers__">Twitter</a> <span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span></li></ul><p class="line867"><hr /><p class="line874"> <span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span><p class="line867"><a href="./CategoryUsergroups.html">CategoryUsergroups</a> <a href="./CategoryPythonIndia.html">CategoryPythonIndia</a> <a href="./CategoryPyConIndia.html">CategoryPyConIndia</a> <span class="anchor" id="line-92"></span><span class="anchor" id="bottom"></span></div>
+</div>
+<hr>
+2026-02-14 16:07
+</body>
+</html>

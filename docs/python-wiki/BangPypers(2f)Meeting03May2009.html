@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>BangPypers/Meeting03May2009</title>
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="europython/css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="europython/css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" charset="utf-8" href="europython/css/print.css">
+<style type="text/css">
+ul.pagetitle{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+li.pagetitle{
+  display: inline;
+  margin: 0;
+}
+td.noborder {
+  border: 0;
+}
+</style>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<style type="text/css">
+div#sidebar { display: none !important; }
+div#content { margin-left: 0 !important; padding: 0 16px !important; }
+ul#pagetrail { margin-left: 0 !important; }
+#pageinfo { margin-left: 0 !important; }
+#page { max-width: 960px; margin: 0 auto; padding: 16px 0; }
+
+/* Pagefind overrides */
+.wiki-search-bar { background: #f0f0f0; padding: 10px 20px; border-bottom: 1px solid #ddd; }
+.wiki-search-bar .pagefind-ui { max-width: 960px; margin: 0 auto; }
+.wiki-search-bar .pagefind-ui__form { position: relative !important; }
+.wiki-search-bar .pagefind-ui__search-input {
+    font-size: 16px !important;
+    padding: 10px 44px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.wiki-search-bar .pagefind-ui__search-clear {
+    position: absolute !important;
+    top: 20px !important;
+    right: 12px !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+}
+.wiki-search-bar .pagefind-ui__results-area {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+.wiki-search-bar .pagefind-ui__result {
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.wiki-search-bar .pagefind-ui__result-link {
+    color: #306998 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.wiki-search-bar .pagefind-ui__result-excerpt {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+.wiki-search-bar .pagefind-ui__message {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 8px 0 !important;
+}
+.wiki-search-bar .pagefind-ui__button {
+    background: #306998 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    margin-top: 8px !important;
+    cursor: pointer !important;
+}
+.wiki-search-bar .pagefind-ui__button:hover { background: #1e4f72 !important; }
+kbd.search-shortcut-hint {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8e8e8;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div style="background:#fffde7;color:#333;padding:14px 20px;font-family:-apple-system,sans-serif;font-size:14px;text-align:left;border-bottom:2px solid #f9a825;line-height:1.6;">
+This wiki is in the process of being archived due to lack of usage and the resources necessary to serve it &mdash; predominately to bots, crawlers, and LLM companies. Edits are discouraged.<br>
+Pages are preserved as they were at the time of archival. For current information, please visit <a href="https://www.python.org/" style="color:#306998;">python.org</a>.<br>If a change to this archive is absolutely needed, requests can be made via the <a href="mailto:infrastructure@python.org" style="color:#306998;">infrastructure@python.org</a> mailing list.
+</div>
+<div style="background:#f8f8f8;padding:8px 20px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<a href="FrontPage.html"><img src="logo.png" style="height:40px;"></a>
+<nav style="display:flex;gap:16px;font-size:15px;font-family:-apple-system,sans-serif;">
+<a href="FrontPage.html" style="color:#306998;text-decoration:none;">Home</a>
+<a href="TitleIndex.html" style="color:#306998;text-decoration:none;">All Pages</a>
+<a href="RecentChanges.html" style="color:#306998;text-decoration:none;">Recent Changes</a>
+</nav>
+</div>
+<div class="wiki-search-bar">
+<div id="search"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  new PagefindUI({element:"#search",showSubResults:false,showImages:false,autofocus:false,resetStyles:false,baseUrl:"/"});
+  var inp=document.querySelector(".pagefind-ui__search-input");
+  if(inp){
+    inp.placeholder="Search the wiki archive...";
+    var hint=document.createElement("kbd");
+    hint.className="search-shortcut-hint";
+    hint.innerHTML=(navigator.platform.indexOf("Mac")>-1?"⌘":"Ctrl")+"K";
+    inp.parentNode.style.position="relative";
+    inp.parentNode.appendChild(hint);
+    document.addEventListener("keydown",function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();inp.focus();inp.select();hint.style.display="none";}
+    });
+    inp.addEventListener("focus",function(){hint.style.display="none";});
+    inp.addEventListener("blur",function(){if(!inp.value)hint.style.display="";});
+  }
+});
+</script>
+</div>
+<div id="page">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h2 id="Details">Details</h2>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><ul><li><p class="line862">Venue: <a class="nonexistent" href="./ThoughtWorks.html">ThoughtWorks</a>, 2nd floor, Tower C, Diamond District, Airport Road, Bangalore (opp TGIF, Near Indira Nagar 100 FT flyover).  <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span></li></ul><p class="line867"><a class="http" href="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Diamond+District,+Airport,+Bangalore,+Bengaluru,+Karnataka,+India&amp;sll=37.0625,-95.677068&amp;sspn=40.681389,93.164063&amp;ie=UTF8&amp;ll=12.95908,77.644833&amp;spn=0.006127,0.011373&amp;t=h&amp;z=17">map</a> <span class="anchor" id="line-6"></span><ul><li>Time: 3pm to 5pm on 03 May 2009 <span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span></li></ul><p class="line867">
+<h2 id="Agenda">Agenda</h2>
+<span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><ul><li><p class="line862">Discuss <a href="./PyCon.html">PyCon</a> India <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span></li></ul><p class="line867">
+<h2 id="Participants">Participants</h2>
+<span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span><ul><li>Anand Chitipothu <span class="anchor" id="line-15"></span></li><li>Sriram Narayanan <span class="anchor" id="line-16"></span></li><li>Harish Mallipeddi <span class="anchor" id="line-17"></span></li><li>Anand B Pillai <span class="anchor" id="line-18"></span></li><li>S Ramdas  <span class="anchor" id="line-19"></span></li><li>Senthil Kumaran <span class="anchor" id="line-20"></span></li><li>Ravi Shankar <span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span></li></ul><p class="line867">
+<h2 id="Summary">Summary</h2>
+<span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span><p class="line867">
+<h3 id="Attendees">Attendees</h3>
+<span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span><p class="line874">Anand B Pillai, Anand C, Harish M, Ravi Shankar, Senthil Kumaran, Sriram Narayan, S Ramdas. <span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><p class="line867">
+<h3 id="Minutes">Minutes</h3>
+<span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><p class="line874">We discussed the venue, the format, the cost aspects, organizing committee etc. The meeting lasted from around 3.30pm to 5.15pm. <span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><p class="line874">A few decisions were made regarding the venue, the format, the dates, the question of sponsorship etc. These are summarized below. <span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span><ul><li><p class="line862">It was tentatively decided to hold <a href="./PyCon.html">PyCon</a> India as a 2-day event on Sep 26-27. Fallback dates in case of any clash with other events are the previous 2 week-ends of Sep 12-13 and Sep 19-20.  <span class="anchor" id="line-35"></span></li><li>All the attendees unequivocally voiced their support for IISc as the primary choice of the venue. The reasons are that of branding, recognition, history and contacts (and food availability). Other venues discussed were St.Joseph's College and TATA Audi. <span class="anchor" id="line-36"></span></li><li><p class="line862">The event will be conducted aegis <a href="./PyCon.html">PyCon</a> India, a new society which we will register in the coming 2 months. This was seen to ease the tasks of receiving sponsorship money and to maintain finances and reporting. <span class="anchor" id="line-37"></span></li><li><p class="line862">We agreed to have a top-level <a href="./PyCon.html">PyCon</a> India core group who will help the executive committee to get things done and work at an advisory level. This group will perform tasks like society registration, international branding/marketing etc. The conference will not use the <a href="./BangPypers.html">BangPypers</a> name in marketing but will use the "<a href="./PyCon.html">PyCon</a> India" name. <span class="anchor" id="line-38"></span></li><li>We agreed to have a central organizing (executive) committee in charge of executing the event. We agreed to have Noufal Ibrahim to lead the executive committee. We need to select the remaining members of this committee. This committee would have around 3 members.  <span class="anchor" id="line-39"></span></li><li>Sponsorship from companies using Python is essential for the event to succeed. We discussed this and created a list of 1st level (companies working solely in Python and have a deep interest in the language) and 2nd level (companies using Python among other technologies) in Bangalore and Chennai who we would approach for sponsorship.  <span class="anchor" id="line-40"></span></li><li><p class="line862">It was agreed that we should create a separate "Pycon India" organizers mailing list and a <a href="./PyCon.html">PyCon</a> India website in the next 2-3 weeks. The mailing list would be invite only and open only to co-ordinators/volunteers of <a href="./PyCon.html">PyCon</a> India. The <a href="./BangPypers.html">BangPypers</a> mailing list would be used to discuss general topics of the event and to get grass-roots support for the <a href="./PyCon.html">PyCon</a>. <span class="anchor" id="line-41"></span></li><li>We agreed for a follow-up meeting 2 weeks later, i.e on May 17th at the same place (TW).  <span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span></li></ul><p class="line874">Here are the tasks that the participants have assigned to themselves for the next <span class="anchor" id="line-44"></span>2 weeks. <span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><ul><li><p class="line862">Anand B Pillai - <a href="./PyCon.html">PyCon</a> India organizers mailing list and registration of <a href="./PyCon.html">PyCon</a> India website.  <span class="anchor" id="line-47"></span></li><li>Anand C - Work IISc contacts and find out about the details in getting the venue for 2 days, also enquire the logistics of food arrangements.  <span class="anchor" id="line-48"></span></li><li><p class="line862">Ramdas S - Ground work for setting up <a href="./PyCon.html">PyCon</a> India website working with Kenneth Gonsalves + Initial investigation of registering <a href="./PyCon.html">PyCon</a> India as society. <span class="anchor" id="line-49"></span></li><li><p class="line862">Senthil Kumaran - Advertise <a href="./PyCon.html">PyCon</a> India with user group mailing lists, do the initial grass-roots activity <span class="anchor" id="line-50"></span></li><li><p class="line862">Everyone - Work contacts in companies using Python to spread the word and find out about sponsorships &amp; internal Python projects which they want to demo. <span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span></li></ul><span class="anchor" id="bottom"></span></div>
+</div>
+<hr>
+2026-02-14 16:07
+</body>
+</html>

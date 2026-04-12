@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>BangPypers/Meeting17May2009</title>
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="europython/css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="europython/css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" charset="utf-8" href="europython/css/print.css">
+<style type="text/css">
+ul.pagetitle{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+li.pagetitle{
+  display: inline;
+  margin: 0;
+}
+td.noborder {
+  border: 0;
+}
+</style>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<style type="text/css">
+div#sidebar { display: none !important; }
+div#content { margin-left: 0 !important; padding: 0 16px !important; }
+ul#pagetrail { margin-left: 0 !important; }
+#pageinfo { margin-left: 0 !important; }
+#page { max-width: 960px; margin: 0 auto; padding: 16px 0; }
+
+/* Pagefind overrides */
+.wiki-search-bar { background: #f0f0f0; padding: 10px 20px; border-bottom: 1px solid #ddd; }
+.wiki-search-bar .pagefind-ui { max-width: 960px; margin: 0 auto; }
+.wiki-search-bar .pagefind-ui__form { position: relative !important; }
+.wiki-search-bar .pagefind-ui__search-input {
+    font-size: 16px !important;
+    padding: 10px 44px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.wiki-search-bar .pagefind-ui__search-clear {
+    position: absolute !important;
+    top: 20px !important;
+    right: 12px !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+}
+.wiki-search-bar .pagefind-ui__results-area {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+.wiki-search-bar .pagefind-ui__result {
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.wiki-search-bar .pagefind-ui__result-link {
+    color: #306998 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.wiki-search-bar .pagefind-ui__result-excerpt {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+.wiki-search-bar .pagefind-ui__message {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 8px 0 !important;
+}
+.wiki-search-bar .pagefind-ui__button {
+    background: #306998 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    margin-top: 8px !important;
+    cursor: pointer !important;
+}
+.wiki-search-bar .pagefind-ui__button:hover { background: #1e4f72 !important; }
+kbd.search-shortcut-hint {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8e8e8;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div style="background:#fffde7;color:#333;padding:14px 20px;font-family:-apple-system,sans-serif;font-size:14px;text-align:left;border-bottom:2px solid #f9a825;line-height:1.6;">
+This wiki is in the process of being archived due to lack of usage and the resources necessary to serve it &mdash; predominately to bots, crawlers, and LLM companies. Edits are discouraged.<br>
+Pages are preserved as they were at the time of archival. For current information, please visit <a href="https://www.python.org/" style="color:#306998;">python.org</a>.<br>If a change to this archive is absolutely needed, requests can be made via the <a href="mailto:infrastructure@python.org" style="color:#306998;">infrastructure@python.org</a> mailing list.
+</div>
+<div style="background:#f8f8f8;padding:8px 20px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<a href="FrontPage.html"><img src="logo.png" style="height:40px;"></a>
+<nav style="display:flex;gap:16px;font-size:15px;font-family:-apple-system,sans-serif;">
+<a href="FrontPage.html" style="color:#306998;text-decoration:none;">Home</a>
+<a href="TitleIndex.html" style="color:#306998;text-decoration:none;">All Pages</a>
+<a href="RecentChanges.html" style="color:#306998;text-decoration:none;">Recent Changes</a>
+</nav>
+</div>
+<div class="wiki-search-bar">
+<div id="search"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  new PagefindUI({element:"#search",showSubResults:false,showImages:false,autofocus:false,resetStyles:false,baseUrl:"/"});
+  var inp=document.querySelector(".pagefind-ui__search-input");
+  if(inp){
+    inp.placeholder="Search the wiki archive...";
+    var hint=document.createElement("kbd");
+    hint.className="search-shortcut-hint";
+    hint.innerHTML=(navigator.platform.indexOf("Mac")>-1?"⌘":"Ctrl")+"K";
+    inp.parentNode.style.position="relative";
+    inp.parentNode.appendChild(hint);
+    document.addEventListener("keydown",function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();inp.focus();inp.select();hint.style.display="none";}
+    });
+    inp.addEventListener("focus",function(){hint.style.display="none";});
+    inp.addEventListener("blur",function(){if(!inp.value)hint.style.display="";});
+  }
+});
+</script>
+</div>
+<div id="page">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h2 id="Details">Details</h2>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><ul><li>Venue: Barista, Church Street - Opposite Java City (off Brigade road), Bangalore <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span></li><li class="gap">Time: 5pm to 7pm on 17 May 2009 <span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span></li></ul><p class="line867">
+<h2 id="Agenda">Agenda</h2>
+<span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><ul><li><p class="line862">Discuss <a href="./PyCon.html">PyCon</a> India (Follow up on the points from the last meeting) <span class="anchor" id="line-10"></span><span class="anchor" id="line-11"></span></li></ul><p class="line867">
+<h2 id="Participants">Participants</h2>
+<span class="anchor" id="line-12"></span><span class="anchor" id="line-13"></span><ul><li>Anand Chitipothu <span class="anchor" id="line-14"></span></li><li>S Ramdas  <span class="anchor" id="line-15"></span></li><li>Senthil Kumaran <span class="anchor" id="line-16"></span></li><li>Noufal Ibrahim <span class="anchor" id="line-17"></span></li><li>Puneeth <span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span></li></ul><p class="line867">
+<h2 id="Summary">Summary</h2>
+<span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span><p class="line867">
+<h3 id="Attendees">Attendees</h3>
+<span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span><p class="line874">Anand Chitipothu, Senthil Kumaran, Noufal Ibrahim, Srikanth Gaikwad, Puneeth, Kamal Govindraj <span class="anchor" id="line-24"></span><span class="anchor" id="line-25"></span><p class="line867">
+<h3 id="General_points">General points</h3>
+<span class="anchor" id="line-26"></span><ul><li>No keynote speaker <span class="anchor" id="line-27"></span><ul><li>We are not planning to have a keynote speaker for now.  <span class="anchor" id="line-28"></span></li></ul></li><li>Dates are 26 and 27 September <span class="anchor" id="line-29"></span><ul><li>No real objections raised so we're confirming these.  <span class="anchor" id="line-30"></span></li></ul></li><li>Two tracks, 2 days <span class="anchor" id="line-31"></span></li><li>Rs. 200 early bird registration and Rs. 300 spot registration. <span class="anchor" id="line-32"></span></li><li><p class="line862">We are planning to have a small <a href="./PyCon.html">PyCon</a> India Logo Design contest. Noufal will mail the list with the details. <span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span></li></ul><p class="line867">
+<h3 id="From_last_meeting">From last meeting</h3>
+<span class="anchor" id="line-35"></span><p class="line867">
+<h4 id="Venue_.28Anand_C..29">Venue (Anand C.)</h4>
+<span class="anchor" id="line-36"></span><ul><li>IISc. is available and confirmed.  <span class="anchor" id="line-37"></span></li><li>There are no expenses to consider <span class="anchor" id="line-38"></span></li><li>As for food, there is a a restaurant inside IISc. which might cater food. This has to be investigated. <span class="anchor" id="line-39"></span></li><li>Wireless setup has to investigated <span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span></li></ul><p class="line867">
+<h4 id="Mailing_list_and_Website_.28Anand_Pillai_.28along_with_Kenneth.29.29">Mailing list and Website (Anand Pillai (along with Kenneth))</h4>
+<span class="anchor" id="line-42"></span><ul><li>The website is the gating point for us to being publicity and marketing. <span class="anchor" id="line-43"></span></li><li><p class="line862">Anand has mailed Python.org and they've the mailing should be (or is already) functional. This will be advertised on the <a href="./BangPypers.html">BangPypers</a> list. <span class="anchor" id="line-44"></span></li><li>As for the website. We have to <span class="anchor" id="line-45"></span><ul><li>Get the in.pycon.org domain from the official pycon people <span class="anchor" id="line-46"></span></li><li>Put a cname entry there pointing to a domain which we have <span class="anchor" id="line-47"></span><ul><li style="list-style-type:none">control over <span class="anchor" id="line-48"></span></li></ul></li><li>Get the application ready <span class="anchor" id="line-49"></span></li><li>Host it at the domain and check functionality. <span class="anchor" id="line-50"></span></li></ul></li><li>Noufal will follow up and get the details from Anand and Kenneth.  <span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span></li></ul><p class="line867">
+<h4 id="Publicity_.28Senthil.29">Publicity (Senthil)</h4>
+<span class="anchor" id="line-53"></span><ul><li>Mailing details of the event to everyone <span class="anchor" id="line-54"></span></li><li>We can actually start on proper publicity only after we get the site up.  <span class="anchor" id="line-55"></span></li><li>Puneeth mentioned that colleges need to be targetted as many of the budding programmers will be there. Noufal will create a quick list of colleges and send it out to the list which can be expanded and we can contact them when the site is ready.  <span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span></li></ul><p class="line867">
+<h4 id="Registration_of_a_non-profit_.28Ramdas.29">Registration of a non-profit (Ramdas)</h4>
+<span class="anchor" id="line-58"></span><ul><li>Check the feasibility of registering a non-profit which we can use to handle financial and publicity matters.  <span class="anchor" id="line-59"></span></li><li>Senthil will check with Ramdas about the status. <span class="anchor" id="line-60"></span><span class="anchor" id="line-61"></span></li></ul><p class="line867">
+<h3 id="Other_things_to_do_that_came_up">Other things to do that came up</h3>
+<span class="anchor" id="line-62"></span><span class="anchor" id="line-63"></span><p class="line867">
+<h4 id="Possible_people_to_contact">Possible people to contact</h4>
+<span class="anchor" id="line-64"></span><ul><li>There might be people who can contribute their experiences to the community as a whole. <span class="anchor" id="line-65"></span></li></ul><p class="line867"><hr /><p class="line874"> <span class="anchor" id="line-66"></span><a href="./CategoryPythonIndia.html">CategoryPythonIndia</a> <span class="anchor" id="line-67"></span><span class="anchor" id="bottom"></span></div>
+</div>
+<hr>
+2026-02-14 16:07
+</body>
+</html>

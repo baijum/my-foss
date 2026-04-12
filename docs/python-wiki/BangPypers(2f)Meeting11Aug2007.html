@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>BangPypers/Meeting11Aug2007</title>
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="europython/css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="europython/css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" charset="utf-8" href="europython/css/print.css">
+<style type="text/css">
+ul.pagetitle{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+li.pagetitle{
+  display: inline;
+  margin: 0;
+}
+td.noborder {
+  border: 0;
+}
+</style>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<style type="text/css">
+div#sidebar { display: none !important; }
+div#content { margin-left: 0 !important; padding: 0 16px !important; }
+ul#pagetrail { margin-left: 0 !important; }
+#pageinfo { margin-left: 0 !important; }
+#page { max-width: 960px; margin: 0 auto; padding: 16px 0; }
+
+/* Pagefind overrides */
+.wiki-search-bar { background: #f0f0f0; padding: 10px 20px; border-bottom: 1px solid #ddd; }
+.wiki-search-bar .pagefind-ui { max-width: 960px; margin: 0 auto; }
+.wiki-search-bar .pagefind-ui__form { position: relative !important; }
+.wiki-search-bar .pagefind-ui__search-input {
+    font-size: 16px !important;
+    padding: 10px 44px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.wiki-search-bar .pagefind-ui__search-clear {
+    position: absolute !important;
+    top: 20px !important;
+    right: 12px !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+}
+.wiki-search-bar .pagefind-ui__results-area {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+.wiki-search-bar .pagefind-ui__result {
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.wiki-search-bar .pagefind-ui__result-link {
+    color: #306998 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.wiki-search-bar .pagefind-ui__result-excerpt {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+.wiki-search-bar .pagefind-ui__message {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 8px 0 !important;
+}
+.wiki-search-bar .pagefind-ui__button {
+    background: #306998 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    margin-top: 8px !important;
+    cursor: pointer !important;
+}
+.wiki-search-bar .pagefind-ui__button:hover { background: #1e4f72 !important; }
+kbd.search-shortcut-hint {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8e8e8;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div style="background:#fffde7;color:#333;padding:14px 20px;font-family:-apple-system,sans-serif;font-size:14px;text-align:left;border-bottom:2px solid #f9a825;line-height:1.6;">
+This wiki is in the process of being archived due to lack of usage and the resources necessary to serve it &mdash; predominately to bots, crawlers, and LLM companies. Edits are discouraged.<br>
+Pages are preserved as they were at the time of archival. For current information, please visit <a href="https://www.python.org/" style="color:#306998;">python.org</a>.<br>If a change to this archive is absolutely needed, requests can be made via the <a href="mailto:infrastructure@python.org" style="color:#306998;">infrastructure@python.org</a> mailing list.
+</div>
+<div style="background:#f8f8f8;padding:8px 20px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<a href="FrontPage.html"><img src="logo.png" style="height:40px;"></a>
+<nav style="display:flex;gap:16px;font-size:15px;font-family:-apple-system,sans-serif;">
+<a href="FrontPage.html" style="color:#306998;text-decoration:none;">Home</a>
+<a href="TitleIndex.html" style="color:#306998;text-decoration:none;">All Pages</a>
+<a href="RecentChanges.html" style="color:#306998;text-decoration:none;">Recent Changes</a>
+</nav>
+</div>
+<div class="wiki-search-bar">
+<div id="search"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  new PagefindUI({element:"#search",showSubResults:false,showImages:false,autofocus:false,resetStyles:false,baseUrl:"/"});
+  var inp=document.querySelector(".pagefind-ui__search-input");
+  if(inp){
+    inp.placeholder="Search the wiki archive...";
+    var hint=document.createElement("kbd");
+    hint.className="search-shortcut-hint";
+    hint.innerHTML=(navigator.platform.indexOf("Mac")>-1?"⌘":"Ctrl")+"K";
+    inp.parentNode.style.position="relative";
+    inp.parentNode.appendChild(hint);
+    document.addEventListener("keydown",function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();inp.focus();inp.select();hint.style.display="none";}
+    });
+    inp.addEventListener("focus",function(){hint.style.display="none";});
+    inp.addEventListener("blur",function(){if(!inp.value)hint.style.display="";});
+  }
+});
+</script>
+</div>
+<div id="page">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h2 id="Meeting_on_11-August-2007">Meeting on 11-August-2007</h2>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><ul><li><p class="line862">Venue: <a class="nonexistent" href="./ThoughtWorks.html">ThoughtWorks</a>, 2nd floor, Tower C, Diamond District, Airport Road, Bangalore (opp TGIF). <a class="http" href="http://maps.google.com/maps?f=q&amp;hl=en&amp;q=diamond+district,+bangalore&amp;layer=&amp;ie=UTF8&amp;z=13&amp;ll=12.97562,77.596951&amp;spn=0.096687,0.184708&amp;om=1&amp;iwloc=H,">map</a>    <span class="anchor" id="line-4"></span></li><li>Time: 3.00 PM <span class="anchor" id="line-5"></span></li><li>Facilities: Room (seating up to 30), projector, snacks, soft drinks/juices <span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span></li></ul><p class="line867">
+<h2 id="Agenda">Agenda</h2>
+<span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><ul><li>Lightning talks <span class="anchor" id="line-10"></span></li><li><p class="line891">&lt;add your talk here&gt; <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span></li></ul><p class="line867">
+<h2 id="Participants">Participants</h2>
+<span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span><ol type="1"><li>Baiju M, mbaiju AT zeomega.com , Phone: +91 9945973441 <span class="anchor" id="line-15"></span></li><li><p class="line862">Jayesh V, <tt>&lt;jayesh.mail&nbsp;AT&nbsp;gmail&nbsp;DOT&nbsp;com&gt;</tt> <span class="anchor" id="line-16"></span></li><li>Pradeep Gowda, pradeep.gowda AT gmail.com, (tentative) <span class="anchor" id="line-17"></span></li><li>Anand Chitipothu, anandology AT gmail.com <span class="anchor" id="line-18"></span></li><li>Subramani R, subramani95 AT gmail.com <span class="anchor" id="line-19"></span></li><li>Karabi B, karabi.b AT brainwavelive.com, (probable) <span class="anchor" id="line-20"></span></li><li>Brad Allen, ballen AT zeomega DOT com (may need a ride) <span class="anchor" id="line-21"></span></li><li>Senthil OR orsenthil AT gmail DOT com <span class="anchor" id="line-22"></span></li><li><p class="line862">Roshan Mathews, <a class="mailto" href="mailto:rmathews@gmail.com">rmathews@gmail.com</a> <span class="anchor" id="line-23"></span></li><li>Ashok Ravi, ashok.raavi AT gmail.com <span class="anchor" id="line-24"></span></li><li>Vijay Kumar Bang vnbang2003 at gmail.com <span class="anchor" id="line-25"></span></li><li>Nagesh S nagu.s.hindu at gmail.com <span class="anchor" id="line-26"></span></li><li>Ranganath.S Ranganaths at gmail.com <span class="anchor" id="line-27"></span></li><li>Satheesh Kumar M, sathyz AT gmail DOT com <span class="anchor" id="line-28"></span></li><li><p class="line862">Nagarajan N, <a class="mailto" href="mailto:naga86@gmail.com">naga86@gmail.com</a> <span class="anchor" id="line-29"></span></li><li>Abhishek Tiwari, tabhishek AT zeomega dot com <span class="anchor" id="line-30"></span></li><li>Abdul Kader Maliyakkal akader AT zeomega dot com <span class="anchor" id="line-31"></span></li><li><p class="line862">S.Krishnakumar, <a class="mailto" href="mailto:kumar.sange@gmail.com">kumar.sange@gmail.com</a> (tentative) <span class="anchor" id="line-32"></span></li></ol><span class="anchor" id="bottom"></span></div>
+</div>
+<hr>
+2026-02-14 16:07
+</body>
+</html>

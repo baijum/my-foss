@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>PyConIndiaLogos</title>
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="europython/css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="europython/css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" charset="utf-8" href="europython/css/print.css">
+<style type="text/css">
+ul.pagetitle{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+li.pagetitle{
+  display: inline;
+  margin: 0;
+}
+td.noborder {
+  border: 0;
+}
+</style>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<style type="text/css">
+div#sidebar { display: none !important; }
+div#content { margin-left: 0 !important; padding: 0 16px !important; }
+ul#pagetrail { margin-left: 0 !important; }
+#pageinfo { margin-left: 0 !important; }
+#page { max-width: 960px; margin: 0 auto; padding: 16px 0; }
+
+/* Pagefind overrides */
+.wiki-search-bar { background: #f0f0f0; padding: 10px 20px; border-bottom: 1px solid #ddd; }
+.wiki-search-bar .pagefind-ui { max-width: 960px; margin: 0 auto; }
+.wiki-search-bar .pagefind-ui__form { position: relative !important; }
+.wiki-search-bar .pagefind-ui__search-input {
+    font-size: 16px !important;
+    padding: 10px 44px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.wiki-search-bar .pagefind-ui__search-clear {
+    position: absolute !important;
+    top: 20px !important;
+    right: 12px !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+}
+.wiki-search-bar .pagefind-ui__results-area {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+.wiki-search-bar .pagefind-ui__result {
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.wiki-search-bar .pagefind-ui__result-link {
+    color: #306998 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.wiki-search-bar .pagefind-ui__result-excerpt {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+.wiki-search-bar .pagefind-ui__message {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 8px 0 !important;
+}
+.wiki-search-bar .pagefind-ui__button {
+    background: #306998 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    margin-top: 8px !important;
+    cursor: pointer !important;
+}
+.wiki-search-bar .pagefind-ui__button:hover { background: #1e4f72 !important; }
+kbd.search-shortcut-hint {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8e8e8;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div style="background:#fffde7;color:#333;padding:14px 20px;font-family:-apple-system,sans-serif;font-size:14px;text-align:left;border-bottom:2px solid #f9a825;line-height:1.6;">
+This wiki is in the process of being archived due to lack of usage and the resources necessary to serve it &mdash; predominately to bots, crawlers, and LLM companies. Edits are discouraged.<br>
+Pages are preserved as they were at the time of archival. For current information, please visit <a href="https://www.python.org/" style="color:#306998;">python.org</a>.<br>If a change to this archive is absolutely needed, requests can be made via the <a href="mailto:infrastructure@python.org" style="color:#306998;">infrastructure@python.org</a> mailing list.
+</div>
+<div style="background:#f8f8f8;padding:8px 20px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<a href="FrontPage.html"><img src="logo.png" style="height:40px;"></a>
+<nav style="display:flex;gap:16px;font-size:15px;font-family:-apple-system,sans-serif;">
+<a href="FrontPage.html" style="color:#306998;text-decoration:none;">Home</a>
+<a href="TitleIndex.html" style="color:#306998;text-decoration:none;">All Pages</a>
+<a href="RecentChanges.html" style="color:#306998;text-decoration:none;">Recent Changes</a>
+</nav>
+</div>
+<div class="wiki-search-bar">
+<div id="search"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  new PagefindUI({element:"#search",showSubResults:false,showImages:false,autofocus:false,resetStyles:false,baseUrl:"/"});
+  var inp=document.querySelector(".pagefind-ui__search-input");
+  if(inp){
+    inp.placeholder="Search the wiki archive...";
+    var hint=document.createElement("kbd");
+    hint.className="search-shortcut-hint";
+    hint.innerHTML=(navigator.platform.indexOf("Mac")>-1?"⌘":"Ctrl")+"K";
+    inp.parentNode.style.position="relative";
+    inp.parentNode.appendChild(hint);
+    document.addEventListener("keydown",function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();inp.focus();inp.select();hint.style.display="none";}
+    });
+    inp.addEventListener("focus",function(){hint.style.display="none";});
+    inp.addEventListener("blur",function(){if(!inp.value)hint.style.display="";});
+  }
+});
+</script>
+</div>
+<div id="page">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867"><strong> <a href="./PyCon.html">PyCon</a> 2009 India Logo Contest</strong> <span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line867"><img alt="BharathKeshav3_small.jpg" class="attachment" src="attachments/PyConIndiaLogos/BharathKeshav3_small.jpg" title="BharathKeshav3_small.jpg" />  <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><p class="line867"><hr /><p class="line874"> <span class="anchor" id="line-6"></span><hr /><p class="line874"> <span class="anchor" id="line-7"></span><span class="anchor" id="line-8"></span><p class="line867"><strong>Please don't upload any more images. We have stopped accepting submissions and have started voting</strong> <span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><p class="line867"><strong>Rules for Voting</strong> <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span><ul><li>Write your login name against the logos you would like to vote. <span class="anchor" id="line-13"></span></li><li>One person can support many logos. <span class="anchor" id="line-14"></span></li><li>Logo with the maximum number of votes wins. <span class="anchor" id="line-15"></span></li><li><p class="line862">Last date for voting will be:  <em>28/May/2009</em> <span class="anchor" id="line-16"></span><span class="anchor" id="line-17"></span></li></ul><p class="line867"><hr /><p class="line874">  <span class="anchor" id="line-18"></span><em>Encouraging Comment from PSF Chair</em> <span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><p class="line862">If half as much time goes into organizing as goes into developing and choosing a logo this is going to be one heck of a conference <img alt=";-)" height="16" src="/wiki/europython/img/smile4.png" title=";-)" width="16" /> <span class="anchor" id="line-21"></span>Bear in mind, though, that it isn't the logo that gets people to come back, but the conference content. <span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span><p class="line874">It's great to see that the Indian community is moving forward with such gusto. Please let the PSF Board know if you need any assistance. <span class="anchor" id="line-24"></span>One of my goals as chairman is to encourage Python development globally.  I hope that one day soon I will be able to visit India and <span class="anchor" id="line-25"></span>meet the many people who are investing their time in developing the Indian Python community. <em><a href="./SteveHolden.html">SteveHolden</a></em>  <span class="anchor" id="line-26"></span><hr /><p class="line874"> <span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span><ol type="1"><li><p class="line862">Logo Design by <a class="nonexistent" href="./ShrikantGaikwad.html">ShrikantGaikwad</a> <span class="anchor" id="line-29"></span><span class="anchor" id="line-30"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="ShrikantGaikwad.png" class="attachment" src="attachments/PyConIndiaLogos/ShrikantGaikwad.png" title="ShrikantGaikwad.png" /> <span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span></li><li class="gap"><p class="line891"><a href="./SteveHolden.html">SteveHolden</a> <span class="anchor" id="line-35"></span></li><li>AnandBPillai <span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span></li></ul></li><li class="gap"><p class="line862">Logo Design by <a class="nonexistent" href="./PankajNathani.html">PankajNathani</a> <span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="PankajNathani.jpg" class="attachment" src="attachments/PyConIndiaLogos/PankajNathani.jpg" title="PankajNathani.jpg" /> <span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span></li></ul></li><li class="gap"><p class="line862">Logo Design by <a class="nonexistent" href="./SreekanthRameshaiah.html">SreekanthRameshaiah</a> <span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="SreekanthRameshaiah.jpg" class="attachment" src="attachments/PyConIndiaLogos/SreekanthRameshaiah.jpg" title="SreekanthRameshaiah.jpg" /> <span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span></li><li class="gap"><p class="line891"><a class="nonexistent" href="./SenthilKumaran.html">SenthilKumaran</a> <span class="anchor" id="line-50"></span></li><li>Ataulla SH <span class="anchor" id="line-51"></span></li><li>Praveen <span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span></li></ul></li><li class="gap"><p class="line862">Logo Design by <a href="./NoufalIbrahim.html">NoufalIbrahim</a> <span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="NoufalIbrahim.png" class="attachment" src="attachments/PyConIndiaLogos/NoufalIbrahim.png" title="NoufalIbrahim.png" /> <span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span></li><li class="gap"><p class="line891"><a href="./DavidGoodger.html">DavidGoodger</a> (<a href="./PyCon.html">PyCon</a> US 2008 &amp; 2009 chair): I like the lettering; it could go well with #1 above too. I recommend removing the black outline around the Python logo though. <span class="anchor" id="line-60"></span></li><li><p class="line891"><a href="./svaksha.html">svaksha</a> : loved the lettering, very indian-ish and yet simple <img alt=":)" height="16" src="/wiki/europython/img/smile.png" title=":)" width="16" /> <span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span></li></ul></li><li class="gap">Logo Design#1 from Smriti <span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="Smriti01.jpg" class="attachment" src="attachments/PyConIndiaLogos/Smriti01.jpg" title="Smriti01.jpg" />  <span class="anchor" id="line-65"></span><span class="anchor" id="line-66"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-67"></span><span class="anchor" id="line-68"></span><p class="line891"><strong>Note:</strong>  Be careful about modifying the shape of Python logo (including removing/obscuring a part as above, or separating the parts like #7 &amp; #8 below). The old <a class="http" href="http://www.python.org/psf/trademarks/">trademark policy</a> may be helpful, if complicated. The Trademark Committee (psf-trademarks at python.org) should be consulted on modifications to the logo. Changing the colours is typically fine, as long as the shape is unaltered. -- <em><a href="./DavidGoodger.html">DavidGoodger</a></em> <span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span></li></ul></li><li class="gap">Logo Design#2 from Smriti <span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="Smriti02.jpg" class="attachment" src="attachments/PyConIndiaLogos/Smriti02.jpg" title="Smriti02.jpg" />  <span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span></li></ul></li><li class="gap">Logo Design#3 from Smriti <span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="Smriti03.jpg" class="attachment" src="attachments/PyConIndiaLogos/Smriti03.jpg" title="Smriti03.jpg" />  <span class="anchor" id="line-79"></span><span class="anchor" id="line-80"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><p class="line891"><strong>Note:</strong> See #5 above. <span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span></li></ul></li><li class="gap">Logo Design#4 from Smriti <span class="anchor" id="line-85"></span><span class="anchor" id="line-86"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="Smriti04.jpg" class="attachment" src="attachments/PyConIndiaLogos/Smriti04.jpg" title="Smriti04.jpg" />  <span class="anchor" id="line-87"></span><span class="anchor" id="line-88"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span></li><li class="gap"><p class="line891"><a href="./NoufalIbrahim.html">NoufalIbrahim</a>  <span class="anchor" id="line-91"></span></li><li>Amal <span class="anchor" id="line-92"></span></li><li><p class="line891"><a class="nonexistent" href="./AbhinavSarkar.html">AbhinavSarkar</a> <span class="anchor" id="line-93"></span></li><li><p class="line891"><a class="nonexistent" href="./AnandChitipothu.html">AnandChitipothu</a> <span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span><p class="line891"><strong>Note:</strong> See #5 above. <span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span></li></ul></li><li class="gap"><p class="line862">Logo Design#1 from <a class="nonexistent" href="./VipinChandran.html">VipinChandran</a> <span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="VipinChandran01.png" class="attachment" src="attachments/PyConIndiaLogos/VipinChandran01.png" title="VipinChandran01.png" /> <span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-102"></span></li><li><p class="line891"><a href="./NoufalIbrahim.html">NoufalIbrahim</a> <span class="anchor" id="line-103"></span></li><li>Ram Kumar Hariharan <span class="anchor" id="line-104"></span></li><li>Ataulla SH <span class="anchor" id="line-105"></span></li><li>Ruchir Shukla <span class="anchor" id="line-106"></span></li><li><p class="line891"><a class="nonexistent" href="./PankajNathani.html">PankajNathani</a> <span class="anchor" id="line-107"></span></li><li><p class="line891"><a class="nonexistent" href="./KamalGovindraj.html">KamalGovindraj</a> <span class="anchor" id="line-108"></span></li><li>punchagan <span class="anchor" id="line-109"></span></li><li>Devi <span class="anchor" id="line-110"></span></li><li><p class="line891"><a class="nonexistent" href="./AbhinavSarkar.html">AbhinavSarkar</a> <span class="anchor" id="line-111"></span><span class="anchor" id="line-112"></span></li></ul></li><li class="gap"><p class="line862">Logo Design#2 from <a class="nonexistent" href="./VipinChandran.html">VipinChandran</a> <span class="anchor" id="line-113"></span><span class="anchor" id="line-114"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="VipinChandran02.png" class="attachment" src="attachments/PyConIndiaLogos/VipinChandran02.png" title="VipinChandran02.png" /> <span class="anchor" id="line-115"></span><span class="anchor" id="line-116"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span></li></ul></li><li class="gap"><p class="line862">Logo Design#3 from <a class="nonexistent" href="./VipinChandran.html">VipinChandran</a> <span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="VipinChandran03.png" class="attachment" src="attachments/PyConIndiaLogos/VipinChandran03.png" title="VipinChandran03.png" />  <span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-123"></span></li><li><p class="line891"><a class="nonexistent" href="./PankajNathani.html">PankajNathani</a> <span class="anchor" id="line-124"></span><span class="anchor" id="line-125"></span></li></ul></li><li class="gap"><p class="line862">Logo Design#1 from <a class="nonexistent" href="./BharathKeshav.html">BharathKeshav</a> <span class="anchor" id="line-126"></span><span class="anchor" id="line-127"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="BharathKeshav1_small.jpg" class="attachment" src="attachments/PyConIndiaLogos/BharathKeshav1_small.jpg" title="BharathKeshav1_small.jpg" /> <span class="anchor" id="line-128"></span><span class="anchor" id="line-129"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-130"></span><span class="anchor" id="line-131"></span></li><li class="gap"><p class="line891"><a class="nonexistent" href="./BharathKeshav.html">BharathKeshav</a> <span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span></li></ul></li><li class="gap"><p class="line862">Logo Design#2 from <a class="nonexistent" href="./BharathKeshav.html">BharathKeshav</a> <span class="anchor" id="line-134"></span><span class="anchor" id="line-135"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="BharathKeshav2_small.jpg" class="attachment" src="attachments/PyConIndiaLogos/BharathKeshav2_small.jpg" title="BharathKeshav2_small.jpg" /> <span class="anchor" id="line-136"></span><span class="anchor" id="line-137"></span></li></ul><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-138"></span><span class="anchor" id="line-139"></span></li><li class="gap"><p class="line862">Logo Design#3 from <a class="nonexistent" href="./BharathKeshav.html">BharathKeshav</a> <span class="anchor" id="line-140"></span><span class="anchor" id="line-141"></span><p class="line891"><img alt="BharathKeshav3_small.jpg" class="attachment" src="attachments/PyConIndiaLogos/BharathKeshav3_small.jpg" title="BharathKeshav3_small.jpg" />  <span class="anchor" id="line-142"></span></li></ol><p class="line862">Author's note : The lotus inside the logo which represents the national flower of India, symbolizes knowledge and enlightenment. The dark blue color background is the color of Asoka chakra of the Indian national flag. Other colors used are pretty self explanatory. Just thought of explaining, in case if they get overlooked and thought as just some fancy accessories. <img alt=":)" height="16" src="/wiki/europython/img/smile.png" title=":)" width="16" /> <span class="anchor" id="line-143"></span><span class="anchor" id="line-144"></span><p class="line862">(Credits to Mr <a class="http" href="http://www.rupeshpatange.com">RupeshPatange</a> for his contribution towards the design of this logo) <span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span><ul><li style="list-style-type:none"><p class="line891"><strong>Votes:</strong>  <span class="anchor" id="line-147"></span></li><li><p class="line891"><a class="nonexistent" href="./SenthilKumaran.html">SenthilKumaran</a> <span class="anchor" id="line-148"></span></li><li><p class="line891"><a href="./SteveHolden.html">SteveHolden</a> <span class="anchor" id="line-149"></span></li><li><p class="line891"><a class="nonexistent" href="./BharathKeshav.html">BharathKeshav</a> <span class="anchor" id="line-150"></span></li><li>AnandBPillai <span class="anchor" id="line-151"></span></li><li>Satyag <span class="anchor" id="line-152"></span></li><li><p class="line891"><a class="nonexistent" href="./PankajNathani.html">PankajNathani</a> <span class="anchor" id="line-153"></span></li><li>Jai Pandya <span class="anchor" id="line-154"></span></li><li><p class="line891"><a class="nonexistent" href="./KamalGovindraj.html">KamalGovindraj</a> <span class="anchor" id="line-155"></span></li><li>punchagan <span class="anchor" id="line-156"></span></li><li>Devi <span class="anchor" id="line-157"></span></li><li><p class="line891"><a class="nonexistent" href="./AbhinavSarkar.html">AbhinavSarkar</a> <span class="anchor" id="line-158"></span></li><li>Geetanjali <span class="anchor" id="line-159"></span></li><li>Vishal Sapre <span class="anchor" id="line-160"></span></li><li><p class="line891"><a class="nonexistent" href="./AnandChitipothu.html">AnandChitipothu</a> <span class="anchor" id="line-161"></span></li><li>Nitin Shukla <span class="anchor" id="line-162"></span><span class="anchor" id="line-163"></span></li></ul><ol type="1"><li><p class="line862">Logo Design#4 from <a class="nonexistent" href="./BharathKeshav.html">BharathKeshav</a> <span class="anchor" id="line-164"></span><span class="anchor" id="line-165"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="BharathKeshav4_small.jpg" class="attachment" src="attachments/PyConIndiaLogos/BharathKeshav4_small.jpg" title="BharathKeshav4_small.jpg" /> <span class="anchor" id="line-166"></span><span class="anchor" id="line-167"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-168"></span><span class="anchor" id="line-169"></span></li></ul></li><li class="gap"><p class="line862">Logo Design#5 from <a class="nonexistent" href="./BharathKeshav.html">BharathKeshav</a> <span class="anchor" id="line-170"></span><span class="anchor" id="line-171"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="BharathKeshav5_small.jpg" class="attachment" src="attachments/PyConIndiaLogos/BharathKeshav5_small.jpg" title="BharathKeshav5_small.jpg" /> <span class="anchor" id="line-172"></span><span class="anchor" id="line-173"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-174"></span><span class="anchor" id="line-175"></span></li></ul></li><li class="gap"><p class="line862">Logo Design#6 from <a class="nonexistent" href="./BharathKeshav.html">BharathKeshav</a> <span class="anchor" id="line-176"></span><span class="anchor" id="line-177"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="BharathKeshav6_small.jpg" class="attachment" src="attachments/PyConIndiaLogos/BharathKeshav6_small.jpg" title="BharathKeshav6_small.jpg" />  <span class="anchor" id="line-178"></span><span class="anchor" id="line-179"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-180"></span><span class="anchor" id="line-181"></span></li><li class="gap">AnandBPillai <span class="anchor" id="line-182"></span></li><li><p class="line891"><a class="nonexistent" href="./AbhinavSarkar.html">AbhinavSarkar</a> <span class="anchor" id="line-183"></span><span class="anchor" id="line-184"></span><span class="anchor" id="line-185"></span></li></ul></li><li class="gap"><p class="line862">Logo Design by <a class="nonexistent" href="./MukulSapre.html">MukulSapre</a> <span class="anchor" id="line-186"></span><span class="anchor" id="line-187"></span><ul><li style="list-style-type:none"><p class="line891"><img alt="Pycon Logo1_2_by_Mukul.JPG" class="attachment" src="attachments/PyConIndiaLogos/Pycon%20Logo1_2_by_Mukul.JPG" title="Pycon Logo1_2_by_Mukul.JPG" /> <span class="anchor" id="line-188"></span><span class="anchor" id="line-189"></span><p class="line891"><strong>Votes:</strong> <span class="anchor" id="line-190"></span></li><li>Ruchir Shukla  <span class="anchor" id="line-191"></span></li><li>Praveen <span class="anchor" id="line-192"></span></li><li>Vishal Sapre <span class="anchor" id="line-193"></span></li></ul></li></ol><p class="line867"><hr /><p class="line874"> <span class="anchor" id="line-194"></span><a href="./CategoryPyConIndia2009.html">CategoryPyConIndia2009</a> <span class="anchor" id="line-195"></span><span class="anchor" id="bottom"></span></div>
+</div>
+<hr>
+2026-02-14 16:12
+</body>
+</html>

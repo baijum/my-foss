@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>PyConIndiaSpeakerNotes</title>
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="europython/css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="europython/css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" charset="utf-8" href="europython/css/print.css">
+<style type="text/css">
+ul.pagetitle{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+li.pagetitle{
+  display: inline;
+  margin: 0;
+}
+td.noborder {
+  border: 0;
+}
+</style>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<style type="text/css">
+div#sidebar { display: none !important; }
+div#content { margin-left: 0 !important; padding: 0 16px !important; }
+ul#pagetrail { margin-left: 0 !important; }
+#pageinfo { margin-left: 0 !important; }
+#page { max-width: 960px; margin: 0 auto; padding: 16px 0; }
+
+/* Pagefind overrides */
+.wiki-search-bar { background: #f0f0f0; padding: 10px 20px; border-bottom: 1px solid #ddd; }
+.wiki-search-bar .pagefind-ui { max-width: 960px; margin: 0 auto; }
+.wiki-search-bar .pagefind-ui__form { position: relative !important; }
+.wiki-search-bar .pagefind-ui__search-input {
+    font-size: 16px !important;
+    padding: 10px 44px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.wiki-search-bar .pagefind-ui__search-clear {
+    position: absolute !important;
+    top: 20px !important;
+    right: 12px !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+}
+.wiki-search-bar .pagefind-ui__results-area {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+.wiki-search-bar .pagefind-ui__result {
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.wiki-search-bar .pagefind-ui__result-link {
+    color: #306998 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.wiki-search-bar .pagefind-ui__result-excerpt {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+.wiki-search-bar .pagefind-ui__message {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 8px 0 !important;
+}
+.wiki-search-bar .pagefind-ui__button {
+    background: #306998 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    margin-top: 8px !important;
+    cursor: pointer !important;
+}
+.wiki-search-bar .pagefind-ui__button:hover { background: #1e4f72 !important; }
+kbd.search-shortcut-hint {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8e8e8;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div style="background:#fffde7;color:#333;padding:14px 20px;font-family:-apple-system,sans-serif;font-size:14px;text-align:left;border-bottom:2px solid #f9a825;line-height:1.6;">
+This wiki is in the process of being archived due to lack of usage and the resources necessary to serve it &mdash; predominately to bots, crawlers, and LLM companies. Edits are discouraged.<br>
+Pages are preserved as they were at the time of archival. For current information, please visit <a href="https://www.python.org/" style="color:#306998;">python.org</a>.<br>If a change to this archive is absolutely needed, requests can be made via the <a href="mailto:infrastructure@python.org" style="color:#306998;">infrastructure@python.org</a> mailing list.
+</div>
+<div style="background:#f8f8f8;padding:8px 20px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<a href="FrontPage.html"><img src="logo.png" style="height:40px;"></a>
+<nav style="display:flex;gap:16px;font-size:15px;font-family:-apple-system,sans-serif;">
+<a href="FrontPage.html" style="color:#306998;text-decoration:none;">Home</a>
+<a href="TitleIndex.html" style="color:#306998;text-decoration:none;">All Pages</a>
+<a href="RecentChanges.html" style="color:#306998;text-decoration:none;">Recent Changes</a>
+</nav>
+</div>
+<div class="wiki-search-bar">
+<div id="search"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  new PagefindUI({element:"#search",showSubResults:false,showImages:false,autofocus:false,resetStyles:false,baseUrl:"/"});
+  var inp=document.querySelector(".pagefind-ui__search-input");
+  if(inp){
+    inp.placeholder="Search the wiki archive...";
+    var hint=document.createElement("kbd");
+    hint.className="search-shortcut-hint";
+    hint.innerHTML=(navigator.platform.indexOf("Mac")>-1?"⌘":"Ctrl")+"K";
+    inp.parentNode.style.position="relative";
+    inp.parentNode.appendChild(hint);
+    document.addEventListener("keydown",function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();inp.focus();inp.select();hint.style.display="none";}
+    });
+    inp.addEventListener("focus",function(){hint.style.display="none";});
+    inp.addEventListener("blur",function(){if(!inp.value)hint.style.display="";});
+  }
+});
+</script>
+</div>
+<div id="page">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867">
+<h1 id="SESSION_STAFF_INSTRUCTIONS">SESSION STAFF INSTRUCTIONS</h1>
+<span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line874">David Goodger had suggested INpycon use their speaker notes which Doug had mailed in. Parts that may not be relevant to INPyCon have been edited.  <span class="anchor" id="line-4"></span><span class="anchor" id="line-5"></span><p class="line867">
+<h2 id="Speaker.2FSession_notes">Speaker/Session notes</h2>
+<span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span><p class="line862">The key to a great conference is simple: <strong>communication</strong>.  <span class="anchor" id="line-8"></span>Below is a list of instructions for presenters and the session staff. Even if the instructions are not for you, please read them all so you understand what everyone is doing and how we are all working together. In truth, there are only 3 rules: <span class="anchor" id="line-9"></span><span class="anchor" id="line-10"></span><ol type="1"><li>Do what works. <span class="anchor" id="line-11"></span></li><li>Do not do what does not work. <span class="anchor" id="line-12"></span></li><li>Share with everyone else what #1 and #2 are. <span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span></li></ol><p class="line867"><strong>#3 is the second most important rule</strong>. <span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span><p class="line874">In short if something below is not working, don't do it. Just because its on this wiki-page does not mean it is the right thing to do. <span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span><p class="line874">These notes can be printed out and given to your local volunteers who will be manning the Green Room and conference operations. <span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span><p class="line862">Oh, and in case you were wondering, the most important rule is: <strong>HAVE FUN! (seriously!)</strong> <span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span><p class="line867">
+<h1 id="Helpful_Instructions.2FQuick-Sheets">Helpful Instructions/Quick-Sheets</h1>
+<span class="anchor" id="line-23"></span><span class="anchor" id="line-24"></span><p class="line867">
+<h2 id="Speaker_Information">Speaker Information</h2>
+<span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span><ul><li>Go to the Green Room at least 10min before your talk to get the latest information, co-ordinate with Session Staff, and test your equipment. <span class="anchor" id="line-27"></span></li><li><p class="line862">Your machine resolution should be at 1024x768 resolution if possible. Use high-contrast fonts &amp; large lettering for slides.  <span class="anchor" id="line-28"></span></li><li>Feel free to use the Green Room at any time. Printers, snacks, and drinks will be available any time during the day. <span class="anchor" id="line-29"></span></li><li>Session Staff will ask you for your slides, and they can upload them to the website for you. <span class="anchor" id="line-30"></span></li><li>Alert Session Staff to any requirements like machine audio. <span class="anchor" id="line-31"></span></li><li>Introduce yourself to the room session chair and let them know about any special introduction information. <span class="anchor" id="line-32"></span></li><li>All microphones are wireless lapel clip this year. Have the Session Chair help you. <span class="anchor" id="line-33"></span></li><li>The Session Chair will start the talk with an introduction and end the talk with a thank you. <span class="anchor" id="line-34"></span></li><li>Do not use a laser pointer. Only attendees in the first row can see it. <span class="anchor" id="line-35"></span></li><li>Face the audience and project. The audio system does not cover the first few rows. <span class="anchor" id="line-36"></span></li><li>Repeat or summarize all questions before answering them. <span class="anchor" id="line-37"></span></li><li>Respect questions, even newbie or silly ones. <span class="anchor" id="line-38"></span></li><li>Attempt to introduce yourself to your Session Staff earlier in the conference. <span class="anchor" id="line-39"></span><span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span></li></ul><p class="line867">
+<h2 id="Session_Staff_Information">Session Staff Information</h2>
+<span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span><p class="line862">Along with speakers we also have session staff. The session staff are broken into <strong>session chairs</strong> and <strong>session runners</strong>. The chairs sit in the presentation room and assist the speaker and moderate when needed. The runners track down speakers, make sure they are prepared well before getting to the presentation room, and act as a second body for the session chairs whom are stuck in the rooms.  <span class="anchor" id="line-44"></span><span class="anchor" id="line-45"></span><ul><li>Go to the Green Room 15min before your session starts to co-ordinate with other Session Staff and get up to date information. <span class="anchor" id="line-46"></span></li><li>Return your equipment to the Green Room after your session. <span class="anchor" id="line-47"></span></li><li>Speakers are volunteers too. Please be polite and courteous at all times. <span class="anchor" id="line-48"></span></li><li>Communicate with other Session Staff to get everyone up to speed on the latest information including radio channel number and other changes. <span class="anchor" id="line-49"></span></li><li>If some plan or procedure does not work, communicate that fact and try to find something which does work with others. <span class="anchor" id="line-50"></span></li><li>Attempt to introduce yourself to your session partner and speakers earlier in the conference. <span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span></li></ul><p class="line867">
+<h3 id="Session_Runner_Information">Session Runner Information</h3>
+<span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span><ul><li>Be in the Green Room 10min before each talk to meet the speaker. <span class="anchor" id="line-55"></span></li><li>Help the speaker set up their laptop on the test projector with the slides ready to present. <span class="anchor" id="line-56"></span></li><li>Ask the speaker about any special requirements, such as machine audio, which will require help from the A/V Staff. <span class="anchor" id="line-57"></span></li><li>Ask the presenter if they can copy their slides onto a provided USB drive for copying up to the website. <span class="anchor" id="line-58"></span></li><li>Escort the speaker to the presentation room 5min before the talk is to start and introduce them to the Session Chair. <span class="anchor" id="line-59"></span></li><li>Help the previous speaker disconnect their equipment (if there is one) and the new speaker hook up theirs (if needed). <span class="anchor" id="line-60"></span></li><li>If there is interest in an Open Space talk from the previous talk, ask if those interested would like assistance with getting a room and posting to the board. <span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span></li></ul><p class="line867">
+<h3 id="Session_Chair_Information">Session Chair Information</h3>
+<span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span><ul><li>Don't forget your Stop Watch and Signs from the Green Room. <span class="anchor" id="line-65"></span></li><li>Return your equipment to the Green Room after your session. <span class="anchor" id="line-66"></span></li><li>Ask the speakers how they would like to be introduced, if there's anything particular you should mention in your introduction. <span class="anchor" id="line-67"></span></li><li>Ask how the speaker's name is pronounced. <span class="anchor" id="line-68"></span></li><li><p class="line862">Ask the speakers how much time they want for Q&amp;A, and how they want to be timed: if they want reminders at 15min, 10min, 5min. <span class="anchor" id="line-69"></span></li><li>Ask the speakers how they would like to handle questions: would they prefer to handle this phase of the session themselves, or would they like your help? Remind them to repeat questions. <span class="anchor" id="line-70"></span></li><li>When the presenter is ready at the beginning of the talk, signal the A/V Team and wait for their go signal. <span class="anchor" id="line-71"></span></li><li><p class="line862">If there are any announcements, please read them in a loud, clear voice. <strong>Use the microphone!</strong> <span class="anchor" id="line-72"></span></li><li><p class="line862">Introduce each talk with the title, speaker, and how long the talk will last 30, 45, or 60 minutes including any Q&amp;A: "This is 'How to introduce a talk.' by Someone. This will be a 45min talk including 10min dedicated to Questions and answers at the end." <span class="anchor" id="line-73"></span></li><li>If the speaker asked for help with questions, you should ask the audience for questions at the end of the presentation, and indicate whose question should be taken next. Either you or the speaker should repeat the question into the microphone. <span class="anchor" id="line-74"></span></li><li>Make sure talks finish on time, as a courtesy to the subsequent speakers and to the audience. "I'm afraid we have to move to the next talk right now." <span class="anchor" id="line-75"></span></li><li>If there is sufficient interest suggest an Open Space followup. "If anyone is interested in further discussion please consider an Open Space followup; a Session Runner can help those interested." <span class="anchor" id="line-76"></span></li><li>Remember to thank the speaker and the audience for their participation; start the applause. <span class="anchor" id="line-77"></span></li><li>Try to clear the Podium and usher attendees away from the podium: the Session Runner will arrive with the next speaker 5min before the next talk if all goes to plan) and manage setup and Open Space handoff. <span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span></li></ul><p class="line867"><hr /><p class="line874"> <span class="anchor" id="line-80"></span><a href="./CategoryPyConIndia.html">CategoryPyConIndia</a> <span class="anchor" id="line-81"></span><span class="anchor" id="bottom"></span></div>
+</div>
+<hr>
+2026-02-14 16:12
+</body>
+</html>
