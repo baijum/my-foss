@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>BangPypers/IRCLogs</title>
+<link rel="stylesheet" type="text/css" media="all" charset="utf-8" href="europython/css/common.css">
+<link rel="stylesheet" type="text/css" media="screen" charset="utf-8" href="europython/css/screen.css">
+<link rel="stylesheet" type="text/css" media="print" charset="utf-8" href="europython/css/print.css">
+<style type="text/css">
+ul.pagetitle{
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+li.pagetitle{
+  display: inline;
+  margin: 0;
+}
+td.noborder {
+  border: 0;
+}
+</style>
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<style type="text/css">
+div#sidebar { display: none !important; }
+div#content { margin-left: 0 !important; padding: 0 16px !important; }
+ul#pagetrail { margin-left: 0 !important; }
+#pageinfo { margin-left: 0 !important; }
+#page { max-width: 960px; margin: 0 auto; padding: 16px 0; }
+
+/* Pagefind overrides */
+.wiki-search-bar { background: #f0f0f0; padding: 10px 20px; border-bottom: 1px solid #ddd; }
+.wiki-search-bar .pagefind-ui { max-width: 960px; margin: 0 auto; }
+.wiki-search-bar .pagefind-ui__form { position: relative !important; }
+.wiki-search-bar .pagefind-ui__search-input {
+    font-size: 16px !important;
+    padding: 10px 44px !important;
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+.wiki-search-bar .pagefind-ui__search-clear {
+    position: absolute !important;
+    top: 20px !important;
+    right: 12px !important;
+    font-size: 13px !important;
+    padding: 4px 8px !important;
+}
+.wiki-search-bar .pagefind-ui__results-area {
+    max-width: 960px !important;
+    margin: 0 auto !important;
+}
+.wiki-search-bar .pagefind-ui__result {
+    padding: 12px 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+.wiki-search-bar .pagefind-ui__result-link {
+    color: #306998 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.wiki-search-bar .pagefind-ui__result-excerpt {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.5 !important;
+}
+.wiki-search-bar .pagefind-ui__message {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 8px 0 !important;
+}
+.wiki-search-bar .pagefind-ui__button {
+    background: #306998 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    margin-top: 8px !important;
+    cursor: pointer !important;
+}
+.wiki-search-bar .pagefind-ui__button:hover { background: #1e4f72 !important; }
+kbd.search-shortcut-hint {
+    position: absolute;
+    right: 56px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e8e8e8;
+    color: #888;
+    font-family: -apple-system, sans-serif;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div style="background:#fffde7;color:#333;padding:14px 20px;font-family:-apple-system,sans-serif;font-size:14px;text-align:left;border-bottom:2px solid #f9a825;line-height:1.6;">
+This wiki is in the process of being archived due to lack of usage and the resources necessary to serve it &mdash; predominately to bots, crawlers, and LLM companies. Edits are discouraged.<br>
+Pages are preserved as they were at the time of archival. For current information, please visit <a href="https://www.python.org/" style="color:#306998;">python.org</a>.<br>If a change to this archive is absolutely needed, requests can be made via the <a href="mailto:infrastructure@python.org" style="color:#306998;">infrastructure@python.org</a> mailing list.
+</div>
+<div style="background:#f8f8f8;padding:8px 20px;border-bottom:1px solid #ddd;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+<a href="FrontPage.html"><img src="logo.png" style="height:40px;"></a>
+<nav style="display:flex;gap:16px;font-size:15px;font-family:-apple-system,sans-serif;">
+<a href="FrontPage.html" style="color:#306998;text-decoration:none;">Home</a>
+<a href="TitleIndex.html" style="color:#306998;text-decoration:none;">All Pages</a>
+<a href="RecentChanges.html" style="color:#306998;text-decoration:none;">Recent Changes</a>
+</nav>
+</div>
+<div class="wiki-search-bar">
+<div id="search"></div>
+<script>
+window.addEventListener("DOMContentLoaded",function(){
+  new PagefindUI({element:"#search",showSubResults:false,showImages:false,autofocus:false,resetStyles:false,baseUrl:"/"});
+  var inp=document.querySelector(".pagefind-ui__search-input");
+  if(inp){
+    inp.placeholder="Search the wiki archive...";
+    var hint=document.createElement("kbd");
+    hint.className="search-shortcut-hint";
+    hint.innerHTML=(navigator.platform.indexOf("Mac")>-1?"⌘":"Ctrl")+"K";
+    inp.parentNode.style.position="relative";
+    inp.parentNode.appendChild(hint);
+    document.addEventListener("keydown",function(e){
+      if((e.metaKey||e.ctrlKey)&&e.key==="k"){e.preventDefault();inp.focus();inp.select();hint.style.display="none";}
+    });
+    inp.addEventListener("focus",function(){hint.style.display="none";});
+    inp.addEventListener("blur",function(){if(!inp.value)hint.style.display="";});
+  }
+});
+</script>
+</div>
+<div id="page">
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867"><a class="nonexistent" href="./WikiPage.html">WikiPage</a> to hold all #bangpypers meeting logs. <span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line862">[<a class="http" href="http://wiki.python.org/moin/BangPypers/IRCLogs/2009March03">http://wiki.python.org/moin/BangPypers/IRCLogs/2009March03</a>] <span class="anchor" id="line-4"></span><hr /><p class="line874"> <span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span><p class="line867"><a href="./CategoryPythonIndia.html">CategoryPythonIndia</a> <span class="anchor" id="line-7"></span><a href="./CategoryUsergroups.html">CategoryUsergroups</a> <span class="anchor" id="line-8"></span><span class="anchor" id="bottom"></span></div>
+</div>
+<hr>
+2026-02-14 16:07
+</body>
+</html>
