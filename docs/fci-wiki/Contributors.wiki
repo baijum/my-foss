@@ -1,0 +1,101 @@
+We are trying to capture the list of Indian FOSS contributors here. This means, I suppose, Indians in India, as contributions of Indians in foreign is huge, and not a subject of the debate here. Also contribution to application software finds a place here. We could also think of adding background information on the developers like background: IT/Non-IT, Profession: Student/Employee/Entrepreneur, if employee - MNC or local. Big or small. This may help pinpoint the type or person who contributes to FOSS. Also, an important one, is the person contributing code in the course of employment?
+
+{{featured-contributor}}
+
+There is another article trying to capture the [[challenges]] Indian FOSS contributors have to face.
+
+Note: Please add your name in sorted manner by last name.
+
+# [[Nagappan A]] — ldtp, GNOME
+# [[Praveen A]] — Debian Installer Malayalam Localization, Swathanthra Malayalam Computing
+# [[Abhas Abhinav]] — deepofix
+# [[Kumar Appaiah]] — Debian
+# [[Anivar Aravind]] — Swathanthra Malayalam Computing, Moving Republic
+# [[Anand Avati]] — freetalk, freehoo, gluster
+# [[Ramprasad B]] — GNU Emacs, gnu.org, FSF, Inc.
+# [[Rahul Bhalerao]] — Fedora, Samyak and Indic Computing
+# [[Runa Bhattacharjee]] — GNOME i18n, Fedora, IndLinux, Ankur Bangla Project
+# [[Pradeepto Bhattacharya]] — KDE
+# [[Suparna Bhattacharya]] — Linux Kernel
+# [[Biju Chacko]] — XFCE
+# Vivek Cherian — Indlinux, OpenStack, FOSS Malayalam Project
+# [[Sashank Dara]] — Lingua-Franca
+# [[Kushal Das]] — Fedora, OpenPCD, Chotha, Ria
+# [[Indranil Das Gupta]] — Koha, DSpace
+# [[Sayamindu Dasgupta]] — GNOME, IndLinux, Ankur Bangla Project, Free Bangla Fonts Project, OpenOffice.org
+# [[Nagarjuna G]] — gnowledge.org, FSF-I, GNOWSYS
+# [[Shivkumar G]] — Belenix
+# [[Ankita Garg]] — Linux Kernel
+# [[Moinak Ghosh]] — Belenix
+# [[Nilamdyuti Goswami]] — GNOME, LibreOffice, Mozilla
+# [[Satyaakam Goswami]] — Adempiere, Sugar, Fossevents.in, Fossacademy.org
+# [[Anil Gulecha]] — Belenix, OpenSolaris Live Media
+# [[Dinakar Guniguntala]] — Linux Kernel
+# [[Shreyank Gupta]] — ldtp
+# [[Swapnil Hajare]] — Marathi l10n, Indictrans
+# [[Varun Hiremath]] — Debian
+# [[Asmita K]] — Gargi font
+# [[Chaitanya K]] — Festival-te, Swecha
+# [[Prasad Ramamurthy Kadambi]] — Debian
+# [[Srinivasa Raghavan Kandala]] — IndicIME
+# [[Sirtaj Singh Kang]] — KDE
+# [[G Karunakar]] — Indlinux, Debian
+# [[Nitin Reddy Katkam]] — WordPress, phpBB
+# [[Bhasker V Kode]] — The Returnable Project
+# [[Joseph Koshy]] — FreeBSD, Indic-computing
+# [[Suzuki KP]] — Linux Kernel
+# [[Naba Kumar]] — Anjuta
+# [[Vijay Kumar]] — OpenOffice
+# [[Baiju M]] — ZOPE, Malayalam l10n, FSF-I
+# [[Students of TCE college Madurai]] — admin software
+# [[Shyam Mani]] — Gentoo
+# [[Raj Mathur]] — perl stuff
+# [[Ananth N Mavinakayanahalli]] — Linux Kernel
+# [[Kartik Mistry]] — Debian
+# [[Soumyadip Modak]] — Debian, IndLinux, Ankur Bangla Project
+# [[Prashanth Mohan]] — ldtp
+# [[Sunil Mohan Adapa]] — Swecha, IndLinux
+# [[Gora Mohanty]] — Indlinux
+# [[Ramakrishnan Muthukrishnan]] - Official Debian Developer, GNU Radio
+# [[Anant Narayanan]] — Gentoo, PHP-GTK, GNU Parted, Plan 9 from Bell Labs
+# [[Ketan Padegaonkar]] — SWTBot, JCCTray
+# [[Prasanna Panchamukhi]] — Linux Kernel
+# [[Ankit Patel]] — IndianOSS, GNOME i18n, Fedora
+# [[Priti Patil]] — Marathi l10n, Janabhaaratii
+# [[Srichand Pendyala]] — GNOME, Java-GNOME
+# [[Ani Peter]] — GNOME l10n, Fedora
+# [[Anand Pillai]] — HarvestMan
+# [[Gautham Shenoy R]] — Linux Kernel
+# [[Vivek Rai]] - IndLinux, Hindi l10n
+# [[Ganesan Rajagopal]] - Official Debian Developer (maintainer of ipsec-tools package)
+# [[A Vinoth Rajesh]] — Project Vismaya
+# [[Vasudev Ram]] — [http://www.dancingbison.com/products.html xtopdf]
+# [[RKVS Raman]] — BharateeyaOO.o Group, OpenOffice l10n
+# [[Ramanraj]] — CALPP
+# [[GT Rao]] — Fossyatra.in, Fossyatra.wordpress.com
+# [[Srivatsan Ravi]] — Freenet
+# [[Ramakrishna Reddy]] — entrans, IndLinux
+# [[Tarique Sani]] — PHP, Coppermine
+# [[Dipankar Sarma]] — Linux Kernel
+# [[Subramanya Sastry]] — Newsrack, Servelots
+# [[Surekha Sastry]] — IndicIME
+# [[Anurag Seetha]] — Gnome i18n, IndLinux
+# [[Amit Shah]] — Fedora, Debian, Linux, QEMU
+# [[Monica Shah]] — Devanagari fonts
+# [[Rajeev Sharma]] — OSCAR, Linux with IBM i5OS, Zope
+# [[Ravishankar Shrivastava]] — IndLinux, OpenOffice l10n
+# [[Balbir Singh]] — Linux Kernel
+# [[Maneesh Soni]] — Linux Kernel
+# [[Shreyas Srinivasan]] — GNOME, Evolution, OpenOffice.org
+# [[Rahul Sundaram]] — Fedora Project Board member
+# [[Philip Tellis]] — libyahoo2, ayttm, httptype, HTML.Template.java, getmail.com, rssyn
+# [[User:Praba_tuty|Prabakaran Thirumalai]] — Founder, CSQL Main Memory Database and Cache
+# [[Santhosh Thottingal]]— Dhvani TTS, GNOME Malayalam, Debian Malayalam, Aspell-ml, Swathanthra Malayalam Computing
+# [[Gopal V]] — DotGNU, PHP-APC
+# [[Srivatsa V]] — Linux Kernel
+# [[Kalyan Varma]] — Perl Modules, OpenSSL
+# [[Nagarjuna Venna]] — Padma
+# [[Vignesh]] - Swecha, entrans
+# [[User:Vincentvikram|Vikram Vincent]] — GNU/Hurd, Debian-Installer, Swatantra.org, FSF
+[[Category:Milan]]
+[[Category:Engineer]]

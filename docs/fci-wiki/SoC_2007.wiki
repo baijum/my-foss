@@ -1,0 +1,113 @@
+==Selected Participants==
+
+We have about 60 Indian students in GSoC this year; including 3 from my college. We sincerely hope that atleast 30 of these students will stick around to become permanent contributors to their respective projects.
+
+A non-comprehensive list (may have missed out the NRIs): Name, Mentor, Project. (Quite a few Indian mentors out there too):
+
+# Jasleen Singh, Arockiasamy Mohanraj, Design and implementation a better document inspector
+#Ravinder Reddy, Katherine Marsden, Convert Derby tests to JUnit and fix Derby bugs
+# Baishampayan Ghose, Michael Philip Sparks, Extending the web-server component in Kamaelia to make it useful as a general purpose web-server component
+#  Anant Narayanan, Devon H. O'Dell, Alternative Implementations of 9P: PHP and JavaScript
+# Tara Gilliam, Michael Philip Sparks, Visual Editor for Creation & Composition of Shard Components
+# Arun Raghavan, Joe Shaw, A Xesam-based D-Bus interface for Beagle
+# Dawn Thomas, Rick Riolo , Urbance: An agent-based approach to Architectural Design
+# Nitin Gupta, Dr. Tarique Sani, AJAX Support in Coppermine with an API
+# Thejaswi Puthraya, Simon Blanchard, Implementing Check Constraints on Models
+# Neil Joshi, Eugene Lazutkin, Pseudo 3-D Charting
+# Amila Sampath, Theodore Serbinski, Designing a new core theme for Drupal
+# Prashant Deva, Philippe Ombredanne, New Eclipse update manager
+# Udayan Kumar, Martin Connor, Porting Etherboot drivers to gPXE
+# Akhil Kumar Meshram, Pierrick Brihaye, eXist eXtension to teXt Search
+# Debarshi Ray, Sankarshan Mukhopadhyay, An offline package update/installation facility for Pirut.
+# Ria Das, Jeff Sheltren, Publication of all man and info pages for each release through a web interface
+# Vivek B, Yutaka Niibe, Designing an educational microprocessor and led display using the same (in verilog).
+# Attilio Rao, Roberson, Rewriting lockmgr(9)
+# Swati Goyal, Matthew John Toseland, Improving Search in FreeNet
+# Srivatsan, Florent Daignière, DOS resistant link level encryption using JFKi key management protocol
+# Uday, Jack Bates,   Web based Image Manipulation
+# Ramnath R Iyer, Dirk Haun, Web services API for Geeklog
+# Raghavendra Narasimhan V, Christoph Egger, OpenGL support for GGI
+# Vikram Kumar V B, Christoph Egger, Improve XGGI by implementing some X extensions.
+# Srijak Rijal, Sam Vilain, Gittorrent Server and Peer
+# Sayamindu Dasgupta, Federico Mena-Quintero, Extending the lockdown framework in GNOME and making it even more deployment friendly
+# Imran Patel, Xan López Saborido, Integrating Epiphany Bookmarks and Browsing History For GNOME-wide Access
+# Rakesh Pandit, Nagarjuna Gadiraju, Graphical navigation/representation of knowledge base; and interfacing with other knowledge systems.
+# Chintan Agarwal, Derek Atkins, QIF Importer Rewrite
+# Krishna Kishore Annapureddy, François Revol, Implement a precache algorithm along with aging policy for the file system caches
+# Avi Mehta, Rastin Mehr, Implementation of mootools in Joomla! 1.5 framework
+# Shivasharan Rao, Jonathan Riddell, SQL Code Generation and Enhanced Entity Relationship Models for Umbrello
+# Piyush Verma, Andreas Pakulat, Python Support for KDevelop4
+# Anirudh Ramesh, Cornelius Schumacher, Bridge the gap between KitchenSync and OpenSync
+# Sharon Myrtle Paradesi, Robert Kaye, Using Collaborative Filtering to generate Relationships between artists for MusicBrainz
+# Nidhi Rawal, Sebastien Pouliot, Gendarme: The problem finder
+# Mayank Jain, David Jesús Horat Flotats, Moodle Voice
+# Udit Sajjanhar, Petr Skoda, Secure RSS Feeds
+# Srirang G Dooddihal, Dan Mosedale, Implementing cross-session download resume
+# Kunal Kumar D Jain, Dietrich Ayala, Places: Indexing Visited Pages
+# K.Harishankaran, Nagappan, Firefox automation & Tinderbox integration
+# Sumantra R. Kundu, William Studenmund, A Framework For Enforcing QoS Inside the NetBSD UVM
+# Deepank Gupta, Werner Almesberger, Ad hoc communication via Bluetooth
+# Sashikanth Raju S Damaraju, Paul Biondich, Clinical Data Visualization Tools
+# Rahul Murmuria, William Sommerfeld, Porting Racoon2 to OpenSolaris
+#Amit Vyas, DongInn Kim, Globus/Condor Package for OSCAR
+#Siddharth Angrish, Simon Lin, Learning a Context Free Grammar by reading Corpus in a given language
+#Swanand Janardan Deodhar, Shashank T. Date, Framework for ETL and Datamining operations in Ruby
+#Shobhit Jindal, Pavel Tankov, SSH Support in SIP Communicator using JCraft SSH2 Java Implementation
+#Hiran V, Hussain K.H, Unicode Standard Malayalam Font
+#Antony Francis Maliakal, Anivar A Aravind, Akshara OCR
+#Shyam K, Santhosh Thottingal, Basic Voice Recognition System for malayalam
+#Mobin M,    Praveen A, MalluTux
+#Jinesh KJ, Suresh P, Comprehensive malayalam input system for GNU/Linux
+#Sourav Pal, Jean-Paul Saman, RTSP Streaming Server in VLC
+#Nageswara Rao M, Abraham Moolenaar, Integrating vim editor with eclipse
+#Ishaan Dalal, Monty Montgomery, Sinusoidal coding for Ghost
+#Vandan Parikh, Ludovic Dubost, XWiki Offline
+#Nikhil N, Baiju Muthukadan, Run Zope 3 using Python 2.5
+#Gartheeban Ganeshapillai, Kaustubh Srikanth, Auto Completion of
+links
+
+* Thanks to Anant Narayanan of ILUG-BOM for compiling [http://www.mail-archive.com/linuxers@mm.glug-bom.org/msg09185.html this list]
+
+For complete list of Projects,Mentors, Organizations visit http://www.third-bit.com/soc2007.html
+
+==Timeline==
+
+(see [WWW] Google's FAQ)
+
+March 5: Mentoring organizations can begin submitting applications to Google
+
+March 12: Mentoring organization application deadline
+
+March 13: Google program administrators review organization applications
+
+March 14: List of accepted mentoring organizations published on code.google.com; student application period opens
+
+March 24: Student application deadline
+
+Interim Period: Mentoring organizations review and rank student proposals; where necessary, mentoring organizations may request further proposal detail from the student applicant
+
+April 9: List of accepted student applications published on code.google.com
+
+Interim Period: Students learn more about their project communities
+
+May 28: Students begin coding for their GSoC projects; Google begins issuing initial student payments
+
+Interim Period: Mentors give students a helping hand and guidance on their projects
+
+July 9: Students upload code to code.google.com/hosting; mentors begin mid-term evaluations
+
+July 16: Mid-term evaluation deadline; Google begins issuing mid-term student payments
+
+August 20: Students upload code to code.google.com/hosting; mentors begin final evaluations; students begin final program evaluations
+
+August 31: Final evaluation deadline; Google begins issuing student and mentoring organization payments
+
+
+==Ideas==
+
+==Mentoring Organisations==
+
+# [[SMC/SoC/2007| Swathanthra Malayalam Computing]]
+
+[[Category:Google_Summer_of_Code]]
+<nowiki>Insert non-formatted text here</nowiki>

@@ -1,0 +1,157 @@
+'''Bylaw of Swathanthra Malayalam Computing'''
+
+(''A Society to be registered under the Travancore-Cochin Literary, Scientific and Charitable Societies Act of 1955'')
+
+== Name ==
+
+#The Society is to be registered under the Travancore-Cochin Literary, Scientific and Charitable Societies Act of 1955.
+#The Society shall be called ''Swathanthra Malayalam Computing'' or ''SMC'' for short. In the rest of this document, ''SMC'' will be referred to as ''the Society''.
+
+== Definitions ==
+
+#''SMC'' shall mean Swathanthra Malayalam Computing
+#''IT'' shall mean Information Technology.
+#''ICT'' shall mean Information and Communication Technologies.
+#''ExeCom'' shall mean the Executive Committee or the Office Bearers of the Society.
+#''Co-ordinator'' shall mean the Chief Functionary, or the Chief Executive Officer of the Society.
+#''Act'' means the Travancore-Cochin Literary, Scientific and Charitable Societies Act, 1955.
+
+== Aims and Objectives ==
+
+The Society shall have the following objective:
+
+Remove the language barrier to computing and bring the fruits of ICT to common people in Malayalam. Our efforts will focus only on Free Software.
+
+Specific steps to reach this goal are:
+
+# Localisation of Free Softwares to Malayalam.
+# Maintain Malayalam support in Free Software libraries providing multi-language support.
+# Develop new tools to support Malayalam users.
+# Work towards community standards in Malayalam Computing.
+# Promote Free Software philosophy in Malayalam.
+# Giving training to people on using Computers in Malayalam.
+# Mentoring students for doing free software projects for Malayalam Language.
+# Developing accessibility  softwares for disabled users.
+
+== Offices ==
+
+# The registered office of the Society shall be situated in Thrissur
+
+== Memberships ==
+
+# The membership of the Society is open to all individuals subject to the following conditions:
+## Should have a demonstrable link with the Free Software community in general and Malayalam computing in particular.
+## Should be accepted by two thirds majority of members of General Body.
+## Should fulfill any other criteria fixed from time to time by the Executive Committee (ExeCom) of the Society
+# Membership may be cancelled by death or expulsion. In the latter case, two thirds majority of the members present in a General Body need to approve the expulsion which has to be proposed by the ExeCom.
+
+== General Body ==
+
+# The General Body is the supreme authority in all matters of the Society.
+# The General Body consists of all the members of the Society.
+# The General Body shall meet at least once every financial year (April 1st to March 31st ). In addition, it may meet any number of times as required.
+# A notice of two weeks is required for convening a meeting of the General Body.
+# The quorum for the General Body shall be 50 percent of members. If after the expiry of 30 minutes after the time fixed for the meeting, the meetings shall be adjourned for such a date as the Secretary may fix if there is no quorum. No quorum shall be necessary for a meeting adjourned for want of quorum.
+# One meeting of the General Body shall be designated as the Annual General Body meeting. This meeting shall, inter alia,
+## Discuss the Annual Report of Activities and the audited statements of account, and pass them after satisfying themselves of their veracity.
+## Appoint auditors for the following year.
+## Consider awarding membership to those recommended by the ExeCom.
+## Elect the Executive Committee (ExeCom) for the next term by simple ballot.
+## Discuss and pass the Annual Budgets and work plans presented by the ExeCom.
+# All properties, movable and immovable of the society shall vest with the General Body.
+# Decisions shall be taken by a majority of votes of the members present and voting.
+# The General body shall have all such powers and shall perform all such functions as are necessary or proper for achievement or furtherance of the objectives of the Society.
+
+== Management and Control ==
+
+The management and control of the society is entrusted to the Executive Committee of the Society to be elected annually by the General Body and shall be carried on in accordance with the bye-laws. The names, addresses and designation of the present members of the Executive Committee are subscribed hereunder:-
+
+ Sl. No.     Name and Address                         Designation     Signature
+
+== Executive Committee (ExeCom) ==
+
+# The ExeCom shall consist of eleven members elected from the General body by simple ballot.
+# The ExeCom shall, in their first meeting, elect a President, Secretary and Treasurer.
+# The ExeCom shall meet once a month during which the Co-ordinator will present a report of activities.
+# The ExeCom shall be authorized to mobilize funds for the smooth conduct of the Society from any appropriate agency, if necessary by pledging the assets of the Society, in the forms of grant or loans or any other financial instruments.
+# The ExeCom may enter into any agreement with any agency, within the country or without, for successful achievement of the objectives of the Society.
+# The ExeCom shall appoint the Co-ordinator if the vacancy arises.
+# The ExeCom shall frame the rules of work for all employees of the Society.
+# The ExeCom shall be empowered to take disciplinary action against the Coordinator if required.
+# The ExeCom may delegate any of its powers to the Co-ordinator or to one or more designated members of the ExeCom in the form of a subcommittee or Task Force through a resolution directed at this purpose.
+# The ExeCom shall evaluate the performance of the Co-ordinator at least once every year.
+# Decisions shall be taken by a majority of votes of the members present and voting.
+# In the event of a tie, the Secretary shall have a casting vote.
+# ExeCom Meetings: The ExeCom shall meet only in the presence of the Secretary. But, in unforeseen circumstances, if the Secretary is not able to attend, he can authorize one of the members of the ExeCom in writing to Chair the meeting. The Meetings shall be convened atleast once in three months and as often as necessary, as per the direction of the Secretary of the Society. Three days notice shall be given for a meeting. However, in an emergency, the Secretary may convene the meeting within 24 hours.
+# Quorum for ExeCom meeting: The quorum for meeting of the ExeCom shall be three. If within 30 minutes from the time appointed for a meeting, the quorum is not present, meeting if convened upon the requisition of the members, shall be dissolved and in any other case, it shall stand adjourned to the same day and the same time and at the same place following week. This adjourned meeting shall proceed with, whether there is quorum or not.
+# The ExeCom may transact urgent matters by circulation of papers, if so desired by the Secretary.
+
+== Office Bearers ==
+
+=== President ===
+
+# The President shall preside over all meetings of the ExeCom
+# The President shall direct the secretary to convene ExeCom and General Body meetings
+# The President shall maintain general oversight over the activities of the Society
+
+
+=== Secretary ===
+
+# The Secretary shall convene ExeCom meetings.
+# The Secretary shall convene General Body meetings upon instructions from the ExeCom
+# The Secretary shall present a report of activities at the Annual General Body meeting
+# The Secretary shall represent the Society for any negotiation, contract, or agreement provided that the ExeCom decision exists for this purpose.
+# The Secretary shall appoint and remove staff provided the decision for this has been adopted by the ExeCom. The executive secretary will also arrange for period appraisal of the performance of the staff of the Society and take remedial action where required.
+# The Secretary shall prepare and present work plans, budgets, and any other documents to the ExeCom and subsequently to the Annual General Meeting.
+# The Secretary will be responsible for operations of the office and he can delegate his duties and responsibilities to ExeCom members or employed persons
+
+=== Treasurer===
+
+# The Treasurer shall arrange for books of account to be maintained
+# The Treasurer shall arrange for audit of the books of account, and present the Statement of accounts for approval at the Annual General Meeting
+
+== Co-ordinator==
+
+# The Co-ordinator shall carry out all the day-to-day activities of the Society. In this, the Co-ordinator shall be guided by the bye-laws of the Society as well the policies and decisions of the ExeCom. And Secretary
+
+# The Co-ordinator shall arrange for the safe keeping of all the records and correspondence of the Society.
+
+== Funds Management ==
+
+# The Treasurer will be generally in charge of the finances of the Society.
+# All bank accounts of the Society shall be jointly operated by the persons authorized by the Board.
+
+== Amendments ==
+
+# These bye-laws can be amended through a proposal put forward by the ExeCom and circulated before a General Body meeting convened, inter alia, for this purpose.
+# The proposed amendment has to be approved by 2/3 rd of members present, provided a quorum exists.
+
+== Termination ==
+
+On dissolution of the Society, it shall be amalgamated with any other society having similar objectives and duly registered under the then relevant acts together with all assets and liabilities or the assets after discharging all charges and obligations shall be transferred to the Government. Assets and profits shall not be distributed among the members of the association.
+
+== Operations of Bank Accounts ==
+
+An account or accounts may be opened in the name of the Society in such Bank or Banks as the ExeCom may decide from time to time. All cheques shall be signed by Treasurer and Secretary.
+
+== Raising of Loans ==
+
+The ExeCom is empowered to raise loans from individual, bank, Governmental Organisations, or other financial institutions either by pledge, mortgage or otherwise of any of the assets, property, movable or immovable rights, easements etc to attain the objects/purposes of the Society on such terms and conditions that the ExeCom may from time to time decide. The Secretary or in his absence any office bearer shall execute all documents/agreements on behalf of the Society.
+
+== Founding Members ==
+#Baiju Muthukadan
+#Santhosh Thottingal
+#Praveen Arimbrathodiyil
+#Anivar Aravind
+#Ani Peter
+#Hiran V
+#Suresh P
+#Manilal K.M
+#V.Sasikumar
+#Vimal Joseph
+#Aashik Salahuddeen
+#Anilkumar K V
+#Pramod C.E
+#K.H Hussain
+#C.K Raju
+#Seena Sreevalson<br />

@@ -1,0 +1,19 @@
+== SMC Contributors in Foss.in==
+Four Contributors of [[SMC]] namely Baiju M, Santhosh Thottingal , Shyam K, Jaganadh.G are participating in [http://foss.in FOSS.in] as  speakers. 
+
+
+[[Image:Smc-foss-in-2007.JPG|thumb|300px|ഫോസ്.ഇന്‍ പരിപാടിയില്‍ SMC പ്രവര്‍ത്തകര്‍]]
+
+=== Talk Details ===
+*[http://foss.in/2007/register/speakers/talkdetailspub.php?talkid=370 Dhvani: Indian Language Text to Speech System- Demo, Adding Language support, Usage]
+*[http://foss.in/2007/register/speakers/talkdetailspub.php?talkid=379 A crash course on Speech Recognition and using CMU sphinx to build ASRs]
+*[http://foss.in/2007/register/speakers/talkdetailspub.php?talkid=436 Linguistic Localization Frame Work for Open Office.org]
+
+== Towards the Free Standards in Indic Computing ==
+* Importance of Free Standards in  the field of Language Computing
+
+== Localising FOSS in education ==
+
+
+==അനിവറിന്റെ റിപ്പോര്‍ട്ട്==
+* [http://groups.google.com/group/smc-discuss/msg/e741370f712c7a05? ഗൂഗിളിലെ കൂട്ടത്തിലെ ശേഖരത്തില്‍ നിന്നും]

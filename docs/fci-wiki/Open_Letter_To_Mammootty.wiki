@@ -1,0 +1,319 @@
+'''Open Letter to Mammootty to Reconsider Promotion of Microsoft and their Proprietary Softwares'''
+
+We request all of you to blog on this and add your link to [[Open Letter To Mammootty/Protest_Blog_Posts| Protest Blog posts]] page.
+
+A malayalam version of this letter is available [[Open Letter To Mammootty/malayalam|here ]] . Please help to complete this Translation [[Open Letter To Mammootty/malayalam|മമ്മൂട്ടിയ്ക്കൊരു തുറന്ന കത്തു് ]]
+
+=== Context ===
+
+Microsoft will be [http://www.aol.in/bollywood/story/2008040806139012000006/India/index.html signing up] Malayalam movie star [http://en.wikipedia.org/wiki/Mammootty Mammootty] as one of the brand ambassadors for the Computer Literacy programme that is to be organized soon in Kerala, a Southern Indian State well known for its pro-free software policies. This is an open letter by Free Software Activists, Supporters and Users of Kerala to Mammootty.
+
+===Open Letter to Mamootty from Free Software Community===
+
+Dear Bharat Mammootty,
+
+This letter is to express our deepest disappointment in your involvement with Microsoft to launch their [http://www.aol.in/bollywood/story/2008040806139012000006/India/index.html e-literacy program in Kerala] and is based on the belief that you have high social convictions and commitment to the people of Kerala.
+
+Kerala's civil society had in the past been delighted by [http://www.hinduonnet.com/2004/03/26/stories/2004032600971500.htm your decision to dissociate with the Coca-Cola advertisement] project as a response to the resource exploitation and pollution caused by the corporate body. However, people of Kerala will be bewildered to see that you are lending your name and fame to support a [http://www.groklaw.net/article.php?story=20070923170905803 devastatingly nefarious techno-monopolistic campaign] unleashed by Microsoft in our state. We feel your move is both ill-advised and harmful.
+
+Being the Director of a major media initiative (Kairali TV, Malayalam Communications Limited) that claims to be people-oriented both in terms of its initial resource mobilization tactics as well as its professed commitment to people's causes, it is embarrassing to see that such concerns are completely sidelined in favor of a hideous agenda of a major US based multi-national IT giant, despised even in US for its monopolistic tendencies. In fact there are records of this company [http://www.wired.com/software/coolapps/news/2007/08/ooxml_vote using underhanded tactics to enforce its views] on an organization like ISO which maintains international standards for public benefit.
+
+We are assuming that you were not given enough information about the IT Scenario we live in.
+
+Software is a tool and a means with which we can achieve a lot of things. In this respect, it is similar to infrastructure like roads and rails. Using Microsoft software is akin to using a road built by a private agency who levies a charge for its use. Any further development of that road and the terms of usage of that road will be subject to the whims of that private agency alone, however insane it may be. Free Software is like an alternate road , with equal or better quality. It is community owned - public property. What modifications have to be done, and where it has to be done is driven by public need and is not influenced by a private party.
+
+When we use Microsoft's products, which do not give the four essential freedoms in Computing (Right to study, Right to copy, Right to modify and Right to Redistribute software), we are becoming helpless creatures. Non-free softwares like Windows are designed to keep users helpless and prohibit cooperation. On the other hand, Free software believes in sharing and cooperation.
+
+For your kind attention, Microsoft, the company with which you plan to sign the contract, has a track record of being fined $1.35 billion for Antitrust Charges in European Union for not complying with EU standards and trying to avoid giving essential information required for interoperability to others by asking for a huge price. As the report says, "Microsoft was the first company in 50 years of EU competition policy that the commission has had to fine for failure to comply with an antitrust decision," [http://www.hindu.com/2008/02/28/stories/2008022854441401.htm The Hindu February 28, 2008].
+
+The [http://keralaitmission.org/web/main/ITPolicy-2007.pdf Kerala state IT policy] says motto of Akshaya project is ‘making technology and e-government services accessible to common man’. For making technology and e-governance accessible to common man without vendor lock-in, Free Software (Swathanthra Software) is the only solution available.
+
+In the [http://www.aol.in/bollywood/story/2008040806139012000006/India/index.html IANS Report], you said that you want to launch the project "to help make all sections of the society IT literate". We understand and appreciate your genuine spirit. But selecting Microsoft as an accomplice would be the wrong choice. Making people literate benefits the society as a whole. Proprietary software rejects their thirst for knowledge: it says, “The knowledge you want is a secret — learning is forbidden!” Free software encourages everyone to learn. The free software community rejects the 'priesthood of technology', which keeps the general public ignorant of how technology works. The people and Government of Kerala understood it and has already [http://www.indianexpress.com/story/280323.html introduced it in our schools] and government institutions. So we request you to stand for free software and essential freedoms in computing to fulfill your mission.
+
+Since you have on several occasions expressed your support to the causes upheld by left forces in the country, we hope that it will not be news to you that CPI(M) and other progressive forces in the country have been ardent supporters of free software and as a matter of principle, detest Microsoft's monopoly built through treacherous market machinations that even the developed countries find unbearable.
+
+It is high time that you understood the implications and ramifications of your support for Microsoft. It seriously undermines your role as a socially committed artist, progressive media leader and sympathizer of leftist politics.
+
+We hope that being a thinking man, you will realize the error in endorsing proprietary software and will persist in your mission of bringing about IT to the common man via free software and open standards. As a great man who has enriched the culture of Kerala and India, please do set an example by using and promoting free software.
+
+We as a body that strives to support free standards and free society through free software, request you to reconsider your decision and be a proponent of free software to achieve your mission to help make all sections of the society IT literate.
+
+Let us build your dream together with free software.
+
+A group of free software activists, supporters and users who believe in freedom, free society and free expression of ideas.
+
+=== Endorsed by === 
+
+==== Organisations ====
+
+#[http://fci.wikia.com FOSS Communities in India]
+#[http://ilug-tvm.org GNU Linux Users Group- Thiruvanathapuram]
+#[http://smc.org.in Swathanthra Malayalam Computing]
+#[http://fci.wikia.com/wiki/Malappuram Swathantra Software User Group Malappuram]
+#[http://plus.sarovar.org Palakkad Libre Software Users Society]
+#[http://groups.yahoo.com/group/gluc GNU/Linux Users Group Calicut]
+#[http://bangalore.gnu.org.in Free Software Users Group Bangalore]
+#[http://www.ilug-cochin.org Indian Linux User Group Cochin Chapter]
+#[http://www.php-trivandrum.org/pleading-to-bharat-mammootty/ PHP Trivandrum]
+#[http://fsugtsr.org/ Free Software Users Group Thrissur]
+#[http://gnu.org.in Free Software Foundation of India]
+#[http://opensource.org.in Open Source Foundation of India]
+#[http://movingrepublic.org Movingrepublic]
+#Global Alternate Information Applications(GAIA)
+#[http://vibgyorfilm.com ViBGYOR Film Collective]
+#Keraleeyam Magazine
+#[http://Thirdeyefilms.org Third Eye Films]
+#[http://visualsearch.org Visual Search, Bangalore]
+#samalochana
+#[http://space-kerala.org SPACE]
+#Forum Kerala
+#[http://cinemela.blogspot.com Cinemela Film Festival], New Delhi
+#[http://sacw.net South Asia Citizens Web]
+#[http://konangalfilmsociety.blogspot.com KONANGAL FILM SOCIETY, COIMBATORE]
+# BMS Libre Software Users' Group (BMSLUG)
+#[http://swatantra.org Swatantra Kannada Localisation Project]
+#[mailto:chrfindia@hotmail.com COIMBATORE HUMAN RIGHTS FORUM]
+# Malayala Kalagramam Film Society,New Mahe
+# Kerala Society for Theatre Research,Sree Sankaracharya University,Kaladi.
+# Padhabhedam magazine, Calicut
+# [http://http://info.ibon.org/ IBON South Asia]
+# [http://www.fossmeet.in/nitc FOSSMeet@NITC]
+#[http://www.fireflies.in/ Fireflies- an ngo for children and youth]
+#[http://subalternstudies.com/ Subaltern Studies. An open-access media, communications, and cultural studies collective]
+#[[Indian Libre User Group - Cochin|Indian Libre User Group - Cochin
+]]
+
+
+
+
+==== Individuals ====
+
+
+# [http://kareemsblog.blogspot.com Abdulkareem UK]
+# [http://abhi.totalh.com Abhinandh]
+# [http://kavoor.info Aditya Kavoor]
+# Afthab Ellath
+# Ajai Joseph
+# [http://ajoaugustine.wordpress.com Ajo Augustine]
+# Amel Mathai
+# Amey Jahagirdar (One Happy Linux Mint User)
+# [mailto:narkaramit@yahoo.com Amit Narkar]
+# [http://suranaamit.blogspot.com/ Amit Surana]
+# [http://ab.freeshell.org/ Anand Babu Periasamy]
+# Anand Haridas
+# [http://ilug-tvm.org/ Anand S Babu]
+# [http://www.astro.psu.edu/users/anand/ Anand Narayanan]
+# Ani Peter
+# Anish Bhaskaran
+# [http://anivar.movingrepublic.org Anivar Aravind]
+# Anoop C Jacob
+# [http://www.thondomraughts.com/ Anoop John]
+# [http://anoop.caremedia.org/ Anoop Jacob Thomas]
+# [http://gnusys.net/ Anoop P Alias]
+# [http://gnuism.blogspot.com Anoop Panavalappil]
+# [http://ilug-tvm.org/ Anoop V Muraleedharan]
+# [http://www.ilug-tvm.org Anto Jose]
+# [http://www.ilug-tvm.org Anu James]
+# [http://www.chintaadaara.blogspot.com Arun.K.R]
+# Arun Eapen
+# Asha Gopinathan IISc
+# [http://www.ilug-tvm.org Ashik Salahudeen]
+# baburajbhagavathy
+# [http://baijum81.livejournal.com/ Baiju M]
+# [http://360.yahoo.com/basilappackan Basil Baby]
+# [http://bipinthayyullathil.tk Bipin Thayyullathil]
+# Birenjith P S
+# [http://tuxychandru.blogspot.com Chandra Sekar.S]
+# [http://keralafarmer.wordpress.com/ Chandrasekharan Nair S]
+# [mailto:cibucj@gmail.com Cibu C J]
+# [http://sarkkaarkaryam.blogspot.com/ Chandra Kumar]
+# [http://ernakulam.sancharnet.in/doxa/ CK Raju]
+# [mailto:sarat@thirdeyefilms.org C.Saratchandran]
+# [[User:Desertwind|desertwind]]
+# DileepRaj, Resident Editor, Penguin Malayalam
+# Dinesh Joshi
+# [http://mayyazhi.blogspot.com/ Dr. Mahesh Mangalat]
+# [http://openspace.org.in Edwin]
+# Fr. Benny Benedict
+# [mailto:brucemathew@gmail.com/ Mr. Bruce Mathew]
+# Geethika G.
+# George John
+# Gopal menon, Film maker
+# G. Palaniappan
+# [mailto:gpramachandran@gmail.com G.P Ramachandran]
+# [http://blog.uiandtheworld.com Hafiz A Haq]
+# Harish Veeramani
+# [http://college-memories.blogspot.com Hari Vishnu]
+# [http://sacw.net Harsh Kapoor]
+# [http://versuslinux.blogspot.com/ Hiranjyoti Mahanta]
+# [http://hiraneffects.blogspot.com Hiran Venugopalan]
+# Indu.R.Nair
+# [http://nedumpala.blogspot.com Jaisen Nedumpāla]
+# [http://jsureshkumar.blogspot.com/ J Suresh Kumar]
+# [http://www.ilug-tvm.org/ Jagadish S]
+# Jayakumar Thazhath
+# Jayesh V
+# [[User:jinesh.k|Jinesh K J]]
+# [mailto:asunnyk@gmail.com/ Dr. Sunny Kuriakose Alwaye]
+# Jithu Sudhakar
+# Joby John
+# [http://infochangeindia.org John Samuel], Convenor, National Social Watch Coalition
+# Joice Mulanthanam
+# Joseph John (Saji)
+# Justin Joseph
+# [mailto:kmenonsen@gmail.com Kalyani Menon-Sen]
+# karthick.n(linux loves me)
+# [[User:kishoreasok|Kishore.A]]
+# [[User:Kmvenuannur|K.M Venugopal]]
+# K.P Sasi, Filmmaker
+# K.Satchidanandan, Poet
+# [http://www.ilug-tvm.org Kurian John]
+# [http://subalternstudies.com/?author=1 Kishore Budha]
+# M Jayadev
+# [mailto:gladmuthambi@gmail.com Madhusoodanan P]
+# [http://maravind.blogspot.com/ Mahesh Aravind]
+# [http://libregeek.blogspot.com Manilal K M]
+# Manish Sharma
+# Kiran Chand
+# [http://manusmad.blogpot.com Manu S Madhav]
+# [http://ilug-tvm.org Manuel Jose]
+# Mathew Chacko
+# Mohana Krishnan
+# Mustafa Desamangalam
+# Nimesh V
+# [http://www.ilug-tvm.org Nishan Naseer]
+# Nishanth Dhar
+# Noor Manseel Mohamed
+# [http://look-pavi.blogspot.com Pavithran S]
+# [mailto:pandavathbaburaj@gmail.com P.Baburaj]
+# P.K.Pokker, Director, Keralabhasha Institute
+# [http://pramode.net Pramode C.E]
+# Prashant Shah
+# [http://njaan.blogspot.com Pratheesh Prakash]
+# [[User:Pravs|Praveen A]]
+# Praveen Gopinath
+# Praveen P
+# Prakash Kumar Ray, Cinema Studies, SAA, JNU, New Delhi
+# Prinson.P.J
+# [http://www.rahul-ghose.co.cc/ Rahul Ghose]
+# [mailto:raja.swamy@gmail.com Raja Swamy], Austin, Texas
+# [http://ilug-tvm.org/ Rajiv R Nair]
+# [mailto:rakeshfilm@gmail.com Rakesh Sharma] Film Maker
+# [http://www.ilug-cochin.org Reju Rajeev]
+# Ranjith S. Kumar
+# Ravi Chandra Padmala
+# Renni P Mathunny
+# Sajeer.A.R
+# Sajina Raman
+# Sajith VK
+# Sam Albuquerque
+# [http://www.ilug-cochin.org Sameer Mohamed Thahir]
+# Sandeep Jairam Web Developer
+# Sanju Surendran
+# [[User:gameon|S.Anoop]]
+# Santhosh Kurian
+# [http://santhoshtr.livejournal.com Santhosh Thottingal]
+# [mailto:seetheskybelow@gmail.com Sarah Singh]
+# [http://sarathlakshman.info Sarath Lakshman]
+# [http://swatantryam.blogspot.com Sasi Kumar, V.]
+# Seena Sreevalson
+# [mailto:shabnamhashmi@gmail.com Shabnam Hasmi]
+# Shailesh Kumar Soft Developer
+# [[User:Shashank |Shashank Bharadwaj]]
+# Sheshu K R
+# [[User:aeshyamae|Shyam.k]]
+# [http://en.wikipedia.org/wiki/User:Sibi_antony Sibi Antony]
+# Siddhartha Brahma
+# Siju Mathew
+# [http://raw-ev1l.blogspot.com Sp^wN_0F_S^T^N ]
+# [http://www.ilug-cochin.org Sreenadh H]
+# [[User:Barar |Sudev]]
+# Sudhang Shankar
+# [http://sujith-h.livejournal.com Sujith Haridasan]
+# Sujith S
+# Sushovan Dhar
+# [http://samastham.wordpress.com/ Thanesh Thampi]
+# [http://thejeshgn.com/ Thejesh GN]
+# [http://overclockedfragger.wordpress.com/ The Overclocked Fragger]
+# [mailto:sreekumartt@gmail.com T.T Sreekumar]
+# Thomas Mannuthy
+# [http://www.iiitmk.ac.in/~choppell Venkatesh Choppella] IIITM-K
+# [[User:Vincentvikram|Vikram Vincent]]
+# Venu V.K
+# Vimal Joseph
+# Vineesh Thalethodi
+# Vipin Vincent
+# [http://www.bombay-arts.com Vishal Rawlley]
+# [[User:Vivekkhurana|Vivek Khurana]]
+# [http://blogbhoomi.blogspot.com/ V K Adarsh]
+# [http://yadu.deviantart.com Yadu Rajiv]
+# Yesudeep Mangalapilly
+# [http://www.gnu.org Zaheer M Kozhakkaniyil]
+# Mohan R
+# Sabeel
+# [http://anishsamuel.blogspot.com/ Anish Samuel]
+# KamalHariMenon
+# Lijeesh S D
+# Alfahed P M
+# PON.CHANDRAN, COIMBATORE
+# Pramod G Menon
+# [http://www.annyann.blogspot.com Dr Haroon Ashraf]
+# Praveen K. Prasad
+#[mailto:girish.gg@gmail.com Girish G G]
+#Sreekumar R
+#[mailto:cyber.arunmurali@gmail.com Arun Murali]
+#[http://sites.google.com/site/sarathbabumg/home Sarath Babu M G]
+#Irshad P.P, Edapal
+#Nizar Hameed, Doha
+
+=== Relates Links ===
+
+# [http://www.aol.in/bollywood/story/2008040806139012000006/India/index.html Microsoft, Mammootty to launch Kerala e-literacy programme]
+# [http://www.hindu.com/2007/03/04/stories/2007030411510400.htm CPI(M) supports Free software]
+# [http://www.globalisation.eu/briefings/competition-policy/unbundling-microsoft-windows-200709231241/ Globalization Institute's submission to European Union]
+# [http://www.indianexpress.com/story/280323.html Kerala schools use free software]
+# [http://www.gnu.org/philosophy/free-sw.html What is Free Software?]
+# [http://www.hindu.com/2008/03/09/stories/2008030953940500.htm ORUMA: the result of KSEB’s concerted efforts]
+
+===Press Release===
+
+[http://www.ilug-tvm.org/content/open-letter-mammootty-press-release-0 Open letter to Mammootty - Press release]
+
+
+
+
+
+
+==Mammootty's Response==
+
+
+
+
+
+
+May 07, 2008
+
+
+
+
+Dear Sir,
+
+'''Sub: Computer Literacy Programme for computer illiterates of Kerala, India:'''
+
+Greetings'''''' from Mammootty’s Office, Kochi!'''''
+
+This is in response to the fire ignited by free software lovers of the state against Mammootty’s alleged association with Microsoft for the Computer Literacy Programme for computer illiterates of Kerala.
+
+In this regard Mammootty would like to make it clear that Mammootty is in no way a part of the project. Mammootty has in no way associated with Microsoft nor held any discussions with them. Mammootty Fans and Welfare Association & Microsoft are envisaging the Project. As a person Mammootty is against any kind of monopoly in any area.
+
+Mammootty Fans and Welfare Association is a registered society, which is independent and Mammootty by no means a part or office bearer of it. Mammootty Fans and Welfare Association is working for the upliftment of marginalized sections of the society. As per our knowledge their major works include ‘Kazhcha 06-07’ – An eye care programme for the poor sections of the society. Through this they provided free eye surgeries & treatment to thousands. Recently announced ‘Heart to Heart’ a free open-heart surgery scheme for 100 hearts patients who are unable to afford the treatment.
+
+Mammootty believe that the reason for the Mammootty Fans and Welfare Association associating with Microsoft is a genuine one. It seems that its aim is to orient computer illiterates of Kerala. It will be a great step, if it achieves its fruit. We, Keralites can again be proud about the fact that we will be first state in India to become 100 percent computer literate like our former literacy programme. It will bring accolades to the state from worldwide and will help in increasing the reputation of the state. Mammootty is ready to join hands with any one interested in the welfare of the public.
+
+
+Yours sincerely
+
+Robert Kuriakose
+
+P R O to Mammootty
+[[Category:Campaigns]]

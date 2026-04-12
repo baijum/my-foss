@@ -1,0 +1,32 @@
+ഫോസ്സ് മീറ്റ്- നാഷണല്‍ ഇന്‍സ്റ്റിട്യൂട്ട് ഓഫ് ടെക്നോളജി- കോഴിക്കോടു് ഏപ്രില്‍ 4-6
+===അജണ്ട===
+# യൂണിക്കോഡ് 5.1 
+# സൊസൈറ്റി രജിസ്ട്രേഷന്‍
+# പ്രചരണപരിപാടികള്‍
+# www-ml
+
+===പങ്കെടുത്തവര്‍===
+# സന്തോഷ് തോട്ടിങ്ങല്‍
+# അനിവര്‍ അരവിന്ദ്
+# അനി പീറ്റര്‍
+# ശ്യാം
+# പ്രവീണ്‍ എ.
+# പ്രവീണ്‍ പ്രകാശ്
+# ഹിരണ്‍
+# ബൈജു 
+# മനു
+# ഹരി വിഷ്ണു
+# മോബിന്‍
+
+===MoM===
+# ഭാഷയ്ക്ക് ഹാനികരമായി ഒന്നും ചെയ്യേണ്ട എന്നു പൊതു അഭിപ്രായത്തിന്റെ അടിസ്ഥാനത്തില്‍ Unicode 5.0 യില്‍ നിന്ന് 5.1 ലേയ്ക്ക്  തത്കാലം മാറേണ്ട എന്നു തീരുമാനിച്ചു. ആരെങ്കിലും 5.1 ചെയ്യുന്നുണ്ടെങ്കില്‍ ഇപ്പോഴുള്ള ഡാറ്റ അപ്ലിക്കേഷനുകള്‍ എന്നിവയ്ക്ക് ഒരു ദോഷവുമുണ്ടാകരുതു്.
+# സൊസൈറ്റി [[SMC/Bylaw|ബൈലോയുടെ]] വിശദമായ പരിശോധന നടന്നു.
+
+===Related Links===
+# [http://www.fossmeet.in/nitc FOSSMeet Official Website - ഫോസ്മീറ്റ് സൈറ്റില്‍ പൊയാല്‍ നിങ്ങള്‍ക്കു കൂടുതല്‍ വിവരങ്ങള്‍ ലഭികുന്നതാണ്.]
+# [http://www.fossmeet.in/node/91 foss @ schools schedule]
+# [http://picasaweb.google.com/santhosh00/FOSSMEET2008 Santhosh's Picasa Album]
+# [http://pramode.net/2008/04/08/report-on-fossschool-fossmeetnitc-2008/ Pramode Sir's Blog post]
+# [http://hiraneffects.blogspot.com/2008/04/sunny-fossevent-funny-exam.html Hiran's blogpost]
+# [http://www.flickr.com/photos/niyam/sets/72157604446914285 Niyam's photos at Flickr]
+# [http://college-memories.blogspot.com/2007/03/foss-meet-nitc.html Hari's blog on Fossmeet 07]

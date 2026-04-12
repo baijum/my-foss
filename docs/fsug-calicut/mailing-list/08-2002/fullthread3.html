@@ -1,0 +1,222 @@
+<!-- MHonArc v2.4.9 -->
+<!--X-Subject: [fsug&#45;calicut] Re: TC&#45;Emu : OpenGL -->
+<!--X-From-R13: "[nawhfu" <znawhfuNylpbf.pb.hx> -->
+<!--X-Date: Fri, 23 Aug 2002 07:59:36 &#45;0500 (EST) -->
+<!--X-Message-Id: 018d01c24aa4$2dbc43c0$0100a8c0@DEVELOPMENT.local -->
+<!--X-Content-Type: text/plain -->
+<!--X-Reference: 20020803174037.22519.qmail@webmail7.rediffmail.com -->
+<!--X-Head-End-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//EN">
+<html>
+<head>
+<title>[fsug-calicut] Re: TC-Emu : OpenGL</title>
+</head>
+<body>
+<!--X-Body-Begin-->
+<!--X-User-Header-->
+<!--X-User-Header-End-->
+<!--X-TopPNI-->
+<hr>
+[<a href="msg00019.html">Date Prev</a>][<a href="msg00021.html">Date Next</a>][<a href="msg00002.html">Thread Prev</a>][<a href="msg00004.html">Thread Next</a>][<a href="maillist.html#00020">Date Index</a>][<a href="threads.html#00020">Thread Index</a>]
+<!--X-TopPNI-End-->
+<!--X-MsgBody-->
+<!--X-Subject-Header-Begin-->
+<h1>[fsug-calicut] Re: TC-Emu : OpenGL</h1>
+<hr>
+<!--X-Subject-Header-End-->
+<!--X-Head-of-Message-->
+<ul>
+<li><em>To</em>: &lt;fsug-calicut@xxxxxxxxxxxxx&gt;</li>
+<li><em>Subject</em>: [fsug-calicut] Re: TC-Emu : OpenGL </li>
+<li><em>From</em>: &quot;Manjush&quot; &lt;manjush@xxxxxxxxxxx&gt;</li>
+<li><em>Date</em>: Fri, 23 Aug 2002 18:24:08 +0530</li>
+</ul>
+<!--X-Head-of-Message-End-->
+<!--X-Head-Body-Sep-Begin-->
+<hr>
+<!--X-Head-Body-Sep-End-->
+<!--X-Body-of-Message-->
+<pre>
+
+Plz send the source codes in a zip to my mail id (not to group)
+see ye
+Bye
+
+Manjush G. Menon,
+Sr. Programmer (R&amp;D),
+Sofker Solutions Pvt Ltd,
+Ernakulam North,
+KERALA.
+Ph: + 91 484 393865
+      + 91 454 392968
+
+----- Original Message ----- 
+From: &quot;Bobinson KB&quot; &lt;bobinsonkb@rediffmail.com&gt;
+To: &lt;fsug-calicut@freelists.org&gt;
+Sent: Saturday, August 03, 2002 11:10 PM
+Subject: [fsug-calicut] Re: TC-Emu : OpenGL 
+
+
+&gt; 
+&gt; 
+&gt; 
+&gt;   hi all,
+&gt; 
+&gt;      These little graphics stuff can done in a much better way if 
+&gt; we use a little bit of OpenGL ( 3D also ). For linux OpneGL 
+&gt; package comes under the name Mesa. A lot of demo programs are also 
+&gt; avilable.OpenGL provides routines which give dga so this can be 
+&gt; used for complicated programs like game engines also. All major 
+&gt; games like Quake and Unreal have openGL drivers.
+&gt; 
+&gt;      In i-net lot of documentation is avilable for OpenGL.
+&gt; It will be generally for MS windows. But with small changes these 
+&gt; can be used for GNU/Linux also.
+&gt;    <A  HREF="http://nehe.gamedev.net">http://nehe.gamedev.net</A> contains tutorials Linux ports of these 
+&gt; tutorials also are avilable.
+&gt; 
+&gt;     For Linux OpenGL programming is generally done using
+&gt;   glut.h which makes the programming easier. But there is no fun 
+&gt; in using glut.
+&gt; 
+&gt;   --regards
+&gt;      bkb
+&gt; 
+&gt; 
+&gt; On Wed, 31 Jul 2002 r_sreekumar  wrote :
+&gt; &gt;
+&gt; &gt;On Wed, 31 Jul 2002 Ajith Kumar wrote :
+&gt; &gt;
+&gt; &gt;Hello all,
+&gt; &gt; &gt;
+&gt; &gt; &gt;here is a small program that will help those who want to do
+&gt; &gt; &gt;Turbo-C
+&gt; &gt; &gt;style graphics under X-window .
+&gt; &gt; &gt;-----------
+&gt; &gt; &gt;There are some people who require some minimal amount of 
+&gt; &gt;graphics
+&gt; &gt; &gt;and
+&gt; &gt; &gt;managing it using
+&gt; &gt; &gt;Turbo-C under DOS platform. Here is a program that can help 
+&gt; &gt;you
+&gt; &gt; &gt;compiling and running
+&gt; &gt; &gt;those programs with minor modifications. Turbo-C graphics
+&gt; &gt; &gt;functions are
+&gt; &gt; &gt;emulated in a crude
+&gt; &gt; &gt;manner using X-lib calls.
+&gt; &gt; &gt;A program draw.c to draw a rectangle is shown below
+&gt; &gt; &gt;
+&gt; &gt; &gt;#include &quot;xwin.c&quot;
+&gt; &gt; &gt;
+&gt; &gt; &gt;void mycode()
+&gt; &gt; &gt;{
+&gt; &gt; &gt;rectangle(100,100,200,200);
+&gt; &gt; &gt;}
+&gt; &gt; &gt;
+&gt; &gt; &gt;int main()
+&gt; &gt; &gt;{
+&gt; &gt; &gt;makeWindow (600, 500); / creates a window to draw
+&gt; &gt; &gt;return 0;
+&gt; &gt; &gt;}
+&gt; &gt; &gt;
+&gt; &gt; &gt;You just needs to include the file xwin.c, that is provided.
+&gt; &gt; &gt;Write all
+&gt; &gt; &gt;your code inside a function
+&gt; &gt; &gt;named 'mycode' . Compile it using the command
+&gt; &gt; &gt;
+&gt; &gt; &gt;gcc -o draw -I/usr/include/X11 -L/usr/X11R6/lib -lXaw3d -lXt
+&gt; &gt; &gt;-lX11
+&gt; &gt; &gt;draw.c
+&gt; &gt; &gt;
+&gt; &gt; &gt;Attaching  draw.c, demo.c and a Makefile.
+&gt; &gt; &gt;Your feedback  would be nice.
+&gt; &gt; &gt;
+&gt; &gt; &gt;ajith
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;-- Binary/unsupported file stripped by Ecartis --
+&gt; &gt;-- Type: application/x-gzip
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;---------------------------------------------
+&gt; &gt;FSUG-Calicut Home Page :
+&gt; &gt;<A  HREF="http://www.freelists.org/webpage/fsug-calicut">http://www.freelists.org/webpage/fsug-calicut</A>
+&gt; &gt;---------------------------------------------
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; &gt;
+&gt; 
+&gt; __________________________________________________________
+&gt; Give your Company an email address like
+&gt; ravi @ ravi-exports.com.  Sign up for Rediffmail Pro today!
+&gt; Know more. <A  HREF="http://www.rediffmailpro.com/signup/">http://www.rediffmailpro.com/signup/</A>
+&gt; 
+&gt; ---------------------------------------------
+&gt; FSUG-Calicut Home Page :
+&gt; <A  HREF="http://www.freelists.org/webpage/fsug-calicut">http://www.freelists.org/webpage/fsug-calicut</A>
+&gt; ---------------------------------------------
+&gt; 
+&gt;    
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+&gt; 
+
+---------------------------------------------
+FSUG-Calicut Home Page :
+<A  HREF="http://www.freelists.org/webpage/fsug-calicut">http://www.freelists.org/webpage/fsug-calicut</A>
+---------------------------------------------
+
+   
+
+
+
+</pre>
+
+<!--X-Body-of-Message-End-->
+<!--X-MsgBody-End-->
+<!--X-Follow-Ups-->
+<hr>
+<!--X-Follow-Ups-End-->
+<!--X-References-->
+<ul><li><strong>References</strong>:
+<ul>
+<li><strong><a name="00001" href="msg00001.html">[fsug-calicut] Re: TC-Emu : OpenGL</a></strong>
+<ul><li><em>From:</em> Bobinson  KB</li></ul></li>
+</ul></li></ul>
+<!--X-References-End-->
+<!--X-BotPNI-->
+<ul>
+<li>Prev by Date:
+<strong><a href="msg00019.html">[fsug-calicut] Fwd:</a></strong>
+</li>
+<li>Next by Date:
+<strong><a href="msg00021.html">[fsug-calicut] Fwd: [Life] Sounds interesting Moodle 1.0</a></strong>
+</li>
+<li>Prev by thread:
+<strong><a href="msg00002.html">[fsug-calicut] IT at Schools, Kerala</a></strong>
+</li>
+<li>Next by thread:
+<strong><a href="msg00004.html">[fsug-calicut] Re: free software</a></strong>
+</li>
+<li>Index(es):
+<ul>
+<li><a href="maillist.html#00020"><strong>Date</strong></a></li>
+<li><a href="threads.html#00020"><strong>Thread</strong></a></li>
+</ul>
+</li>
+</ul>
+
+<!--X-BotPNI-End-->
+<!--X-User-Footer-->
+<!--X-User-Footer-End-->
+</body>
+</html>
+<br><HR><br>This list brought to you by <a href="http://www.freelists.org"><i>Free</i>Lists</a>

@@ -1,0 +1,83 @@
+* [[/Invitation|Invitation letter]]
+
+* Event Website: '''http://www.fossmeet.in/nitc/'''
+
+* [http://groups.yahoo.com/group/glugc Share your experiences...]
+[[Image:NITC_FOSS_MEET_2007.jpg |thumb]]
+
+==Highlights==
+'''The Honorable Chief Minister of Kerala ''Shri V S Achuthanandan'' will be the chief guest''' 
+
+(''but unfortunately he couldnt due to ongoing budget session'')
+
+The schedule is avialable [http://www.foss.nitc.ac.in/fossschedule/FOSSscheduleVersion3.4.pdf here]
+
+===Day 1===
+
+* FOSS in Professional Life By Atul Chitnis
+* Unconference by [http://www.kiruba.com Kiruba Shankar]
+* Hack the badge contest - [http://pramode-ce.livejournal.com/45508.html] [http://www.theinquirer.net/default.aspx?article=33494] Pramode CE
+* Zope Component Architecture - Baiju M
+* MySQL Storage Engine Architecture - Ramkumar Lakshminarayanan
+
+===Day 2===
+* Internationalisation and Localisation (workshop/hands-on) - Praveen A
+* [http://shakthimaan.com/downloads/glv/embedded-howto/ Alliance VLSI CAD tools HOWTO] - Shakthi Kannan
+* Embedded Systems by Aanjan 
+* How to choose open source cms - Vivek Khurana [[:Image:How_to_choose_open_source_cms.pdf| Slides (pdf)]]
+* [http://shakthimaan.com/downloads/glv/presentations/ Careers with GNU/Linux] - Shakthi Kannan
+* OpenPCD demo/hacking - Kushal Das
+* RTAI (RealTime Application Interface for Linux) workshop - Sreejith N
+* Phoenix workshop - Pramod CE
+* From Seeds to Software: Culture of Copying - Anivar Aravind, GAIA
+* Session on Dhvani Malayalam Text-to-speech engine - Santhosh Thottingal
+* Lets Play with the wiki (tutorial/hands-on ) - Hiran Venugopalan 
+* FOSS Business models By Atul Chitnis [http://atulchitnis.net/talks/nitc-biz.pdf Slides (pdf)]
+
+===Day 3===
+* Panel Discussion - Involving students in FOSS development (Pramod CE, Hiran V, Shakthi Kannan, Aanjhan R)
+* Font development workshop - Hussain KH, Suresh P
+* caching for web applications - Vivek Khurana [[:Image:Cahing_for_web_applications.pdf| Slides (pdf)]]
+* [http://technofreakatchennai.wordpress.com/2007/03/08/decorators-in-python/ Decorators in Python] - Parthan S R, NRCFOSS
+* And a lot more...(''a free lunch from the great "A MESS"'')
+
+==='''FOSS Projects Demo'''===
+''Got an exciting FOSS project to show off? Tell us what you require and be there! You can reach us [http://groups.yahoo.com/group/foss_meet_nitc here]''.
+* Akshara Malayalam OCR - Antony FM, MES Kuttippuram
+* Village Office Automation Software - Jinesh K.J, Mohd. Suhail Rehman, MES Kuttippuram
+
+==Community Meetups==
+
+* [[ സ്വതന്ത്ര മലയാളം കമ്പ്യൂട്ടിംഗ്/ഒത്തുചേരലുകള്‍/മാര്‍ച്ച് 2-4 2006| Swathanthra Malayalam Computing]]
+* [http://hurd.in/bin/view/Hurd/FOSS_Meet_At_NITC_07 hurd.in]
+
+==Blogs/Comments==
+* [http://t3.dotgnu.info Gopal V]
+[...] I've got fond memories of last year - preparing the slides at the last minute, walking about in that big campus, spending time at Calicut beach. We had a lot of fun and I mean, A LOT. And the conference is really good, the kids do use Fedora on the desktop in their labs. The XGL demos were a particular attraction last year.
+** [http://t3.dotgnu.info/blog/conferences/no-foss-nitc.html No Calicut for me]
+* [http://atulchitnis.net/ Atul Chitnis]
+[...] NITC's FOSS event has grown in stature, and is quickly becoming one of the recognized FOSS events in India, along with Gnunify, Freedel and of course FOSS.IN.[...]
+** [http://atulchitnis.net/diary/showentry/420  In Calicut this weekend]
+* [http://pradeepto.livejournal.com/ Pradeepto]
+[...]Today, I was supposed to leave for Calicut to attend FOSS.NITC which starts tomorrow. I should be in Netravati at the moment but I am not thanks to certain issues that cropped up in the morning and I realised that I can't go today :/, I immediately booked tomorrow's flight tickets to Calicut as I didn't want to miss the conference.[...]
+** [http://pradeepto.livejournal.com/3192.html Good service is appreciated.]
+* [http://technofreakatchennai.wordpress.com Parthan]
+[...] The organizers, students belonging to various branches in NITC, did a very nice job. This is their 3rd year of conducting the FOSS meet and they did show signs of maturity.[...]
+** [http://technofreakatchennai.wordpress.com/2007/03/03/first-day-of-talks-at-fossnitc/ First day of talks at FOSS.NITC] 
+** [http://technofreakatchennai.wordpress.com/2007/03/05/fossnitc-field-report/ FOSS.NITC Field Report]
+* [http://www.tuxmaniac.com/blog/?p=33 Aanjhan]
+[...] It still amazes me “How in such a short span of time these NITC Folks have managed to make FOSS.NITC a nationwide Community event”. Keep it up guys.[...]
+** [http://www.tuxmaniac.com/blog/?p=33 FOSS.NITC - Filled with Fun and Learning]
+* Vivek Khurana
+[...] I attended recently concluded foss.nitc in Calicut. Conducted in fluctuating weather of Kerla, foss.nitc was hosted inside beautiful NIT Calicut campus, few kilometers away from civilization. [...]
+** [http://article.gmane.org/gmane.user-groups.linux.delhi/14748 foss.nitc]
+
+==Photos==
+* [http://flickr.com/photos//tags/foss.nitc on flickr (tag - foss.nitc)]
+* [http://flickr.com/photos/tuxmaniac/sets/72157594571226878/ Aanjhan]
+* [http://www.flickr.com/photos/techno_freak/ Parthan]
+
+{{foss-meet-at-nitc}}
+
+
+[[Category:Events|2007/03/02]]
