@@ -3,599 +3,580 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>malayalamlinux - Yahoo Groups Archive</title>
+  <title>My FOSS - Baiju Muthukadan's Open Source Archive</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      transition: border-color 0.2s;
+    }
+    .section-card:hover {
+      border-color: var(--accent);
+    }
+    .section-card h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+    .section-card h3 a {
+      color: var(--fg);
+    }
+    .section-card h3 a:hover {
+      color: var(--accent);
+    }
+    .section-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.5;
+    }
+    .section-card .meta {
+      font-size: 12px;
+      color: var(--accent);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .era-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .era-header h2 {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    .era-years {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0 0;
+    }
+    .link-list li {
+      padding: 4px 0;
+      font-size: 14px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .link-list li::before {
+      content: '\2192';
+      margin-right: 8px;
+      color: var(--accent);
+    }
+    .intro {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 32px;
+      color: var(--muted);
+    }
+    .hero-stats {
+      margin-bottom: 48px;
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
 
 <header>
-  <h1>malayalamlinux</h1>
-  <div class="subtitle">Yahoo Groups Archive &mdash; Malayalam GNU/Linux Project Group (2001&ndash;2003)</div>
+  <h1>My FOSS</h1>
+  <div class="subtitle">Baiju Muthukadan's Open Source Archive &mdash; 2001 to present</div>
 </header>
 
 <nav>
-  <a href="#about">About</a>
-  <a href="#history">History</a>
-  <a href="#messages">Messages</a>
-  <a href="#archive">Full Archive</a>
-  <a href="#todo">TODO</a>
-  <a href="#links">Links</a>
-  <a href="#savannah">Savannah News</a>
-  <a href="sourceforge-site.html"><strong>SourceForge Site</strong></a>
-  <a href="tripod-site.html"><strong>Personal Site</strong></a>
-  <a href="nongnu-site.html"><strong>Nongnu/SMC</strong></a>
+  <a href="#malayalam">Malayalam/SMC</a>
+  <a href="#gnome">GNOME</a>
+  <a href="#blogs">Blogs</a>
+  <a href="#python">Python</a>
+  <a href="#conferences">Conferences</a>
+  <a href="#books">Books</a>
+  <a href="#timeline">Timeline</a>
 </nav>
 
-<!-- ===== ABOUT ===== -->
-<section id="about">
-  <h2>About This Group</h2>
+<p class="intro">
+  A curated archive of my free and open source software contributions,
+  recovered from the Wayback Machine, mailing list archives, and other sources.
+  This site preserves blog posts, mailing list messages, wiki pages, conference
+  talks, and project websites that would otherwise be lost.
+</p>
 
-  <div class="stats">
-    <div class="stat-box">
-      <span class="number">55</span>
-      <span class="label">Members</span>
-    </div>
-    <div class="stat-box">
-      <span class="number">236+</span>
-      <span class="label">Messages</span>
-    </div>
-    <div class="stat-box">
-      <span class="number">53</span>
-      <span class="label">Recovered</span>
-    </div>
-    <div class="stat-box">
-      <span class="number">2001</span>
-      <span class="label">Founded</span>
-    </div>
+<div class="stats hero-stats">
+  <div class="stat-box">
+    <span class="number">25+</span>
+    <span class="label">Years</span>
   </div>
+  <div class="stat-box">
+    <span class="number">274</span>
+    <span class="label">Blog Posts</span>
+  </div>
+  <div class="stat-box">
+    <span class="number">500+</span>
+    <span class="label">Messages</span>
+  </div>
+  <div class="stat-box">
+    <span class="number">2</span>
+    <span class="label">Books</span>
+  </div>
+</div>
 
-  <div class="info-card">
-    <dl class="info-grid">
-      <dt>Group Name</dt>
-      <dd>malayalamlinux</dd>
-      <dt>Full Title</dt>
-      <dd>Malayalam GNU/Linux Project Group</dd>
-      <dt>Email</dt>
-      <dd>malayalamlinux@yahoogroups.com</dd>
-      <dt>Subscribe</dt>
-      <dd>malayalamlinux-subscribe@yahoogroups.com</dd>
-      <dt>Created</dt>
-      <dd>December 21, 2001</dd>
-      <dt>Founded by</dt>
-      <dd>Baiju M, NIT Calicut</dd>
-      <dt>Members</dt>
-      <dd>55</dd>
-      <dt>Active Period</dt>
-      <dd>2001&ndash;2003</dd>
-      <dt>Visibility</dt>
-      <dd>Public (messages visible to all)</dd>
-      <dt>Moderation</dt>
-      <dd>Unmoderated</dd>
-      <dt>Category</dt>
-      <dd>Computers &amp; Internet / Software / Operating Systems / Unix / Linux</dd>
-      <dt>SourceForge</dt>
-      <dd><a href="https://sourceforge.net/projects/malayalamlinux/">sourceforge.net/projects/malayalamlinux</a></dd>
-      <dt>Succeeded by</dt>
-      <dd><a href="https://smc.org.in">Swathanthra Malayalam Computing (SMC)</a></dd>
-    </dl>
+<!-- ===== MALAYALAM GNU/LINUX & SMC ===== -->
+<section id="malayalam">
+  <div class="era-header">
+    <h2>Malayalam GNU/Linux &amp; SMC</h2>
+    <span class="era-years">2001&ndash;2003</span>
   </div>
 
   <p>
-    This Yahoo Group was the original communication channel for the Malayalam
-    GNU/Linux Project, which aimed to translate X, GNOME, and KDE into
-    <strong>Malayalam</strong>&mdash;the language spoken by 38 million people,
-    primarily in Kerala, India.
+    The Malayalam GNU/Linux project aimed to translate X, GNOME, and KDE into
+    Malayalam&mdash;the language spoken by 38 million people in Kerala, India.
+    Started as &ldquo;Malayalam Linux Online&rdquo; by Baiju M at NIT Calicut,
+    the project later became
+    <a href="https://smc.org.in">Swathanthra Malayalam Computing (SMC)</a>.
   </p>
-  <p>
-    The group&rsquo;s description, as captured by the Wayback Machine in 2019, read:
-  </p>
-  <blockquote style="border-left: 3px solid var(--accent); padding: 12px 20px; margin: 16px 0; background: var(--accent-light); border-radius: 0 4px 4px 0; font-style: italic;">
-    &ldquo;This project is moved to
-    <a href="https://savannah.nongnu.org/projects/smc">https://savannah.nongnu.org/projects/smc</a>
-    with a new name <strong>Swathanthra Malayalam Computing</strong>.
-    Please join the mailing lists there.&rdquo;
-  </blockquote>
 
+  <div class="section-grid">
+    <div class="section-card">
+      <div class="meta">Yahoo Group &middot; 236+ messages &middot; 55 members</div>
+      <h3><a href="yahoo-group.html">malayalamlinux Yahoo Group Archive</a></h3>
+      <p>
+        The original communication channel for the project. 53 message subjects
+        recovered from Wayback Machine snapshots, plus group metadata and history.
+        Includes 8 recovered Savannah news posts.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">SourceForge &middot; 67 files recovered</div>
+      <h3><a href="sourceforge-site.html">SourceForge Project Site</a></h3>
+      <p>
+        Full recovery of malayalamlinux.sourceforge.net&mdash;HTML pages, screenshots,
+        GTK+ transliteration input method source code, Inscript keyboard layouts,
+        Compose files, and a 131 KB English-Malayalam translation glossary.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Tripod &middot; Personal site</div>
+      <h3><a href="tripod-site.html">Personal Site (Tripod)</a></h3>
+      <p>
+        Baiju M's early personal website on Tripod, recovered from the Wayback Machine.
+        Contains project updates and links from the early period of Malayalam computing work.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Savannah/Nongnu &middot; Project page</div>
+      <h3><a href="nongnu-site.html">SMC on Savannah (Nongnu)</a></h3>
+      <p>
+        The GNU Savannah project page for Swathanthra Malayalam Computing, where the
+        project moved after outgrowing the Yahoo Group. Includes project metadata
+        and mailing list references.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Fandom Wiki &middot; 13 pages</div>
+      <h3><a href="fci-wiki/">FCI Fandom Wiki Pages</a></h3>
+      <p>
+        Wiki pages from the Free Culture India (FCI) Fandom wiki related to SMC activities,
+        including meetup notes, KDE release parties, contributor lists, SMC bylaws,
+        FOSS.IN 2007 planning, and the Summer of Code 2007 page.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Geocities &middot; 451 mailing list messages</div>
+      <h3><a href="fsug-calicut/">FSUG-Calicut (Geocities)</a></h3>
+      <p>
+        The Free Software Users Group Calicut website recovered from Geocities,
+        including 451 mailing list messages documenting the free software community
+        in Calicut (Kozhikode), Kerala.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">FSF India Forum</div>
+      <h3><a href="gnu-org-in-forum/i18n.html">FSF India Forum &mdash; i18n Page</a></h3>
+      <p>
+        The internationalization (i18n) page from the FSF India Forum (gnu.org.in),
+        documenting Indian language computing efforts and localization resources.
+      </p>
+    </div>
+  </div>
 </section>
 
-<!-- ===== HISTORY ===== -->
-<section id="history">
-  <h2>History</h2>
+<!-- ===== GNOME ===== -->
+<section id="gnome">
+  <div class="era-header">
+    <h2>GNOME Contributions</h2>
+    <span class="era-years">2002, 2007</span>
+  </div>
+
+  <p>
+    Mailing list contributions to GNOME desktop development&mdash;from early Malayalam
+    rendering and Compose file work on gtk-i18n-list in 2002, to a BrowserView
+    widget patch discussion on gnome-web-list in 2007.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-card">
+      <div class="meta">gtk-i18n-list &middot; October&ndash;November 2002 &middot; 4 messages</div>
+      <h3><a href="gnome-mail/gtk-i18n-list-2002-October-msg00027.html">Malayalam Compose File &amp; Rendering</a></h3>
+      <p>
+        Two threads on the GTK+ internationalization list: proposing a Malayalam Compose
+        file for XFree86 and discussing Malayalam rendering support in GTK2/Pango.
+      </p>
+      <ul class="link-list">
+        <li><a href="gnome-mail/gtk-i18n-list-2002-October-msg00027.html">Malayalam Compose sequences (Oct 2002)</a></li>
+        <li><a href="gnome-mail/gtk-i18n-list-2002-October-msg00029.html">Reply: Compose file</a></li>
+        <li><a href="gnome-mail/gtk-i18n-list-2002-November-msg00012.html">Malayalam rendering (Nov 2002)</a></li>
+        <li><a href="gnome-mail/gtk-i18n-list-2002-November-msg00013.html">Reply: rendering discussion</a></li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">gnome-web-list &middot; December 2007 &middot; 5 messages</div>
+      <h3><a href="gnome-mail/gnome-web-list-2007-December-msg00044.html">BrowserView Patch Thread</a></h3>
+      <p>
+        Discussion about a BrowserView widget patch for the GNOME web infrastructure,
+        covering implementation details and review feedback.
+      </p>
+      <ul class="link-list">
+        <li><a href="gnome-mail/gnome-web-list-2007-December-msg00044.html">Initial patch (msg00044)</a></li>
+        <li><a href="gnome-mail/gnome-web-list-2007-December-msg00049.html">Follow-up (msg00049)</a></li>
+        <li><a href="gnome-mail/gnome-web-list-2007-December-msg00054.html">Discussion (msg00054)</a></li>
+        <li><a href="gnome-mail/gnome-web-list-2007-December-msg00065.html">Review (msg00065)</a></li>
+        <li><a href="gnome-mail/gnome-web-list-2007-December-msg00066.html">Final (msg00066)</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOGS ===== -->
+<section id="blogs">
+  <div class="era-header">
+    <h2>Blogs</h2>
+    <span class="era-years">2004&ndash;2014</span>
+  </div>
+
+  <p>
+    A decade of blogging about Python, Zope, open source, and technology.
+    All posts recovered from the Wayback Machine and preserved as static HTML.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-card">
+      <div class="meta">LiveJournal &middot; 128 posts &middot; 2004&ndash;2011</div>
+      <h3><a href="livejournal/posts/">LiveJournal Blog</a></h3>
+      <p>
+        128 blog posts from baijum81.livejournal.com covering Python, Zope,
+        free software advocacy, and personal reflections on open source development
+        in India.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Blogspot &middot; 146 posts &middot; 2004&ndash;2014</div>
+      <h3><a href="blogspot/posts/">Blogspot Blog</a></h3>
+      <p>
+        146 posts from the Blogspot blog, covering Python programming, Zope/Plone
+        development, BangPypers community activities, conference reports, and
+        workshop announcements.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">muthukadan.net &middot; 21 posts + articles + books</div>
+      <h3><a href="muthukadan.net/">Personal Website (muthukadan.net)</a></h3>
+      <p>
+        The personal website with blog posts, technical articles, the ZCA book,
+        and the Zope 3 Book. Includes the complete source and built versions of
+        both books.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PYTHON COMMUNITY ===== -->
+<section id="python">
+  <div class="era-header">
+    <h2>Python Community</h2>
+    <span class="era-years">2007&ndash;2014</span>
+  </div>
+
+  <p>
+    Active involvement in the Indian Python community through BangPypers
+    (Bangalore Python User Group), PyCon India, and PyCon US.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-card">
+      <div class="meta">Python Wiki &middot; 25 pages</div>
+      <h3><a href="python-wiki/">BangPypers Wiki Pages</a></h3>
+      <p>
+        Wiki pages from the Python.org wiki related to BangPypers&mdash;meeting notes,
+        presentation topics, PyCon India planning (proposals, logistics, volunteering),
+        and the list of Python companies in India.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Meetup.com &middot; 27 events</div>
+      <h3><a href="meetup-bangpypers/">BangPypers Meetup Events</a></h3>
+      <p>
+        27 BangPypers meetup event pages recovered from Meetup.com, documenting
+        regular Python community gatherings in Bangalore with talk descriptions,
+        venues, and attendee information.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">PyCon India &middot; 2009&ndash;2013</div>
+      <h3>PyCon India Talks &amp; Awards</h3>
+      <p>
+        Conference talks and recognition at India's premier Python conference.
+      </p>
+      <ul class="link-list">
+        <li><a href="pycon-india/pycon-india-2009-talk-21.html">PyCon India 2009 &mdash; &ldquo;Buildout&rdquo;</a></li>
+        <li><a href="pycon-india/pycon-india-2010-talk-bluebream.html">PyCon India 2010 &mdash; &ldquo;BlueBream&rdquo;</a></li>
+        <li><a href="pycon-india/kenneth-gonsalves-award-2013.html">Kenneth Gonsalves Award 2013</a></li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">PyCon US 2011</div>
+      <h3><a href="pyvideo/">PyCon US 2011 Lightning Talk</a></h3>
+      <p>
+        Lightning talk at PyCon US 2011 (Atlanta), recovered from PyVideo.
+        Includes the speaker profile and talk video reference page.
+      </p>
+      <ul class="link-list">
+        <li><a href="pyvideo/pycon-us-2011-saturday-morning-lightning-talks.html">Saturday morning lightning talks</a></li>
+        <li><a href="pyvideo/speaker-baiju-muthukaden.html">Speaker profile</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONFERENCES & WORKSHOPS ===== -->
+<section id="conferences">
+  <div class="era-header">
+    <h2>Conferences &amp; Workshops</h2>
+    <span class="era-years">2007&ndash;2017</span>
+  </div>
+
+  <p>
+    Conference presentations, workshop facilitation, and community events
+    across India.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-card">
+      <div class="meta">FOSS.IN 2007 &middot; 2 talks + slides</div>
+      <h3><a href="fossin-2007/">FOSS.IN 2007 Talks</a></h3>
+      <p>
+        Two talks at FOSS.IN 2007 (Bangalore): &ldquo;Component Software&rdquo;
+        and &ldquo;Contributing to Zope.&rdquo; Includes talk pages and
+        presentation slides (PDF).
+      </p>
+      <ul class="link-list">
+        <li><a href="fossin-2007/talk-430-component-software.html">Component Software</a> (<a href="fossin-2007/slides-430-component-software.pdf">slides</a>)</li>
+        <li><a href="fossin-2007/talk-432-contributing-to-zope.html">Contributing to Zope</a> (<a href="fossin-2007/slides-432-contributing-to-zope.pdf">slides</a>)</li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Workshops &middot; 28 photos &middot; 2016&ndash;2017</div>
+      <h3><a href="muthukadan.net/images/workshops/">Go Workshop Photos</a></h3>
+      <p>
+        Photos from Go (Golang) workshops conducted at multiple venues including
+        Sahrdaya College of Engineering, various Calicut locations, and
+        GopherCon India. Covering workshops from 2016 to 2017.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Blogspot images &middot; 45 images</div>
+      <h3><a href="blogspot/images/">Python Workshop &amp; Event Photos</a></h3>
+      <p>
+        Photos from Python workshops, BangPypers meetups, and other community events,
+        recovered from the Blogspot blog image archives.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKS & DOCUMENTATION ===== -->
+<section id="books">
+  <div class="era-header">
+    <h2>Books &amp; Documentation</h2>
+    <span class="era-years">2007&ndash;2012</span>
+  </div>
+
+  <p>
+    Technical books on the Zope ecosystem, freely available online and translated
+    into multiple languages by the community.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-card">
+      <div class="meta">Book &middot; Multiple editions &middot; 3 languages</div>
+      <h3><a href="muthukadan.net/docs/zca.html">A Comprehensive Guide to Zope Component Architecture</a></h3>
+      <p>
+        The ZCA book&mdash;a comprehensive guide to Zope Component Architecture,
+        one of the most widely-read resources on the topic. Community-translated
+        into Spanish and French. Available in HTML, PDF, and plain text.
+      </p>
+      <ul class="link-list">
+        <li><a href="muthukadan.net/docs/zca.html">English (HTML)</a> &middot; <a href="muthukadan.net/docs/zca.pdf">PDF</a> &middot; <a href="muthukadan.net/docs/zca.txt">Text</a></li>
+        <li><a href="muthukadan.net/docs/zca-es.html">Spanish (HTML)</a> &middot; <a href="muthukadan.net/docs/zca-es.pdf">PDF</a></li>
+        <li><a href="muthukadan.net/docs/zca-fr.html">French (HTML)</a> &middot; <a href="muthukadan.net/docs/zca-fr.pdf">PDF</a></li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <div class="meta">Book &middot; Web application framework</div>
+      <h3><a href="muthukadan.net/docs/tzb.html">The Zope 3 Book</a></h3>
+      <p>
+        A book on building web applications with Zope 3 (later known as BlueBream),
+        covering the framework's component-based architecture, content management,
+        and web development patterns.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section id="timeline">
+  <h2>Journey Timeline</h2>
 
   <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-date">2001</div>
       <div class="timeline-text">
-        Baiju M, a student at NIT Calicut, starts a community called
-        <strong>&ldquo;Malayalam Linux Online&rdquo;</strong>.
+        Starts <strong>&ldquo;Malayalam Linux Online&rdquo;</strong> community as a student
+        at NIT Calicut. Creates the <a href="yahoo-group.html">malayalamlinux Yahoo Group</a>
+        on December 21.
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">December 21, 2001</div>
+      <div class="timeline-date">January 2002</div>
       <div class="timeline-text">
-        The <strong>malayalamlinux</strong> Yahoo Group is created.
-        The goal: translate X, GNOME, and KDE into Malayalam.
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">January 17, 2002</div>
-      <div class="timeline-text">
-        The <strong>Malayalam GNU/Linux</strong> project is registered on
-        SourceForge by baijum81, karunakar, malayalamlinux, and shaji.
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2002&ndash;2003</div>
-      <div class="timeline-text">
-        Peak activity period. Discussions cover Malayalam in GTK2,
-        Unicode encoding for Malayalam, Chillaksharam properties,
-        Varamozhi input method, technical term translations, and
-        collaboration with Indic computing standards groups.
+        Registers the <a href="sourceforge-site.html">Malayalam GNU/Linux project on SourceForge</a>.
+        Develops GTK+ transliteration input method, Inscript keyboard layouts, and Malayalam
+        Compose files.
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-date">October 2002</div>
       <div class="timeline-text">
-        The community adopts the name <strong>Swathanthra Malayalam
-        Computing (SMC)</strong> and moves to Savannah. The Yahoo Group
-        remains but activity shifts to SMC mailing lists.
+        Submits <a href="gnome-mail/gtk-i18n-list-2002-October-msg00027.html">Malayalam Compose
+        sequences</a> to the GTK+ i18n mailing list. The community adopts the name
+        <strong>Swathanthra Malayalam Computing (SMC)</strong> and moves to
+        <a href="nongnu-site.html">GNU Savannah</a>.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2002&ndash;2003</div>
+      <div class="timeline-text">
+        Peak activity: publishes 8 news posts on Savannah covering Malayalam in GNOME 2,
+        GNU Emacs Malayalam support, GPL translation, and free Malayalam fonts.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2004</div>
+      <div class="timeline-text">
+        Begins blogging on <a href="livejournal/posts/">LiveJournal</a> and
+        <a href="blogspot/posts/">Blogspot</a>. Writes about Python, Zope, and
+        free software advocacy.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2007</div>
+      <div class="timeline-text">
+        Speaks at <a href="fossin-2007/">FOSS.IN 2007</a> on &ldquo;Component Software&rdquo;
+        and &ldquo;Contributing to Zope.&rdquo; Contributes a
+        <a href="gnome-mail/gnome-web-list-2007-December-msg00044.html">BrowserView patch</a>
+        to GNOME web infrastructure. Active in the <a href="python-wiki/">BangPypers</a> community.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2007&ndash;2012</div>
+      <div class="timeline-text">
+        Authors the <a href="muthukadan.net/docs/zca.html">ZCA book</a> and the
+        <a href="muthukadan.net/docs/tzb.html">Zope 3 Book</a>. The ZCA book is
+        community-translated into Spanish and French.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2009</div>
+      <div class="timeline-text">
+        Presents <a href="pycon-india/pycon-india-2009-talk-21.html">&ldquo;Buildout&rdquo;</a>
+        at PyCon India 2009. Organizes <a href="meetup-bangpypers/">BangPypers meetups</a>
+        in Bangalore.
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-date">2010</div>
       <div class="timeline-text">
-        SMC formalizes as a registered non-profit charitable society.
+        Presents <a href="pycon-india/pycon-india-2010-talk-bluebream.html">&ldquo;BlueBream&rdquo;</a>
+        at PyCon India 2010. SMC formalizes as a registered non-profit society.
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">April 2017</div>
+      <div class="timeline-date">2011</div>
       <div class="timeline-text">
-        Archive Team captures the malayalamlinux Yahoo Group via the
-        Yahoo Groups API. The data is stored as a 617 KB WARC file.
+        Delivers a <a href="pyvideo/pycon-us-2011-saturday-morning-lightning-talks.html">lightning
+        talk at PyCon US 2011</a> in Atlanta.
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">December 2020</div>
+      <div class="timeline-date">2013</div>
       <div class="timeline-text">
-        Yahoo Groups shuts down permanently. All content deleted.
+        Receives the <a href="pycon-india/kenneth-gonsalves-award-2013.html">Kenneth Gonsalves
+        Award</a> at PyCon India 2013 for contributions to the Indian Python community.
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2016&ndash;2017</div>
+      <div class="timeline-text">
+        Conducts <a href="muthukadan.net/images/workshops/">Go (Golang) workshops</a>
+        at multiple colleges and venues across India.
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-date">April 2026</div>
       <div class="timeline-text">
-        This partial archive is recovered from the Wayback Machine.
-        53 message subjects extracted from cached listing pages.
+        This archive is assembled&mdash;recovering content from the Wayback Machine,
+        mailing list archives, and other sources before it is lost permanently.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== MESSAGES ===== -->
-<section id="messages">
-  <h2>Recovered Messages</h2>
-
-  <div class="notice">
-    <strong>Partial recovery only.</strong>
-    53 of 236+ message subjects were recovered from Wayback Machine listing
-    page snapshots. Message bodies are not available&mdash;Yahoo returned
-    HTTP 999 (bot blocking) for individual message pages, so the Wayback
-    Machine only saved error pages. The full message content exists in a
-    restricted WARC file on archive.org (see <a href="#archive">Full Archive</a>).
-  </div>
-
-  <table class="message-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Subject</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="msg-gap"><td colspan="2">Messages #1&ndash;60 &mdash; not captured by Wayback Machine</td></tr>
-      <tr><td class="msg-num">61</td><td class="msg-subject">which is the best Linux ?</td></tr>
-      <tr><td class="msg-num">62</td><td class="msg-subject">Malayalam in GTK2</td></tr>
-      <tr><td class="msg-num">63</td><td class="msg-subject">Re: Malayalam in GTK2</td></tr>
-      <tr><td class="msg-num">64</td><td class="msg-subject">Re: Malayalam in GTK2</td></tr>
-      <tr><td class="msg-num">65</td><td class="msg-subject">Re: Malayalam in GTK2</td></tr>
-      <tr><td class="msg-num">66</td><td class="msg-subject">Re: Help needed on resource creation..</td></tr>
-      <tr><td class="msg-num">67</td><td class="msg-subject">CELLPADDING</td></tr>
-      <tr><td class="msg-num">68</td><td class="msg-subject">Re: CELLPADDING</td></tr>
-      <tr><td class="msg-num">69</td><td class="msg-subject">(no subject)</td></tr>
-      <tr><td class="msg-num">70</td><td class="msg-subject">Re: (unknown)</td></tr>
-      <tr><td class="msg-num">71</td><td class="msg-subject">Re: (unknown)</td></tr>
-      <tr><td class="msg-num">72</td><td class="msg-subject">Re: Virusssss ...</td></tr>
-      <tr><td class="msg-num">73</td><td class="msg-subject">Re: Virusssss ...</td></tr>
-      <tr><td class="msg-num">74</td><td class="msg-subject">New file uploaded to malayalamlinux</td></tr>
-      <tr><td class="msg-num">75</td><td class="msg-subject">Project Group status</td></tr>
-      <tr><td class="msg-num">76</td><td class="msg-subject">Technical terms translation</td></tr>
-      <tr><td class="msg-num">77</td><td class="msg-subject">New file uploaded to malayalamlinux</td></tr>
-      <tr><td class="msg-num">78</td><td class="msg-subject">New file uploaded to malayalamlinux</td></tr>
-      <tr><td class="msg-num">79</td><td class="msg-subject">Re: New file uploaded to malayalamlinux</td></tr>
-      <tr><td class="msg-num">80</td><td class="msg-subject">KBip project</td></tr>
-      <tr><td class="msg-num">81</td><td class="msg-subject">Re: KBip project</td></tr>
-      <tr><td class="msg-num">82</td><td class="msg-subject">- MuLinux, very important! -</td></tr>
-      <tr><td class="msg-num">83</td><td class="msg-subject">MCSE CCNA OCP JAVA -- Real Exam Questions</td></tr>
-      <tr><td class="msg-num">84</td><td class="msg-subject">Varamozhi</td></tr>
-      <tr><td class="msg-num">85</td><td class="msg-subject">Re: MCSE CCNA OCP JAVA -- Real Exam Questions</td></tr>
-      <tr><td class="msg-num">86</td><td class="msg-subject">unicode malayalam</td></tr>
-      <tr><td class="msg-num">87</td><td class="msg-subject">Re: unicode malayalam</td></tr>
-      <tr><td class="msg-num">88</td><td class="msg-subject">Re: unicode malayalam</td></tr>
-      <tr><td class="msg-num">89</td><td class="msg-subject">Re: unicode malayalam</td></tr>
-      <tr><td class="msg-num">90</td><td class="msg-subject">Re: unicode malayalam</td></tr>
-      <tr><td class="msg-num">91</td><td class="msg-subject">Re: [Indlinux-group] Re: [malayalamlinux] unicode malayalam</td></tr>
-      <tr><td class="msg-num">92</td><td class="msg-subject">Fwd: [Indic-computing-standards] The linguistic properties of Malayalam</td></tr>
-      <tr><td class="msg-num">93</td><td class="msg-subject">Re: unicode malayalam</td></tr>
-      <tr><td class="msg-num">94</td><td class="msg-subject">Re: unicode malayalam</td></tr>
-      <tr><td class="msg-num">95</td><td class="msg-subject">Re: unicode malayalam</td></tr>
-      <tr><td class="msg-num">96</td><td class="msg-subject">Re: unicode malayalam</td></tr>
-      <tr><td class="msg-num">97</td><td class="msg-subject">Re: The linguistic properties of Malayalam &ldquo;Chillaksharam&rdquo;s?</td></tr>
-      <tr><td class="msg-num">98</td><td class="msg-subject">Re: The linguistic properties of Malayalam &ldquo;Chillaksharam&rdquo;s?</td></tr>
-      <tr><td class="msg-num">99</td><td class="msg-subject">sorting cillus</td></tr>
-      <tr><td class="msg-num">100</td><td class="msg-subject">Fwd: link to mal, the programming language</td></tr>
-      <tr><td class="msg-num">101</td><td class="msg-subject">Re: Fwd: link to mal, the programming language</td></tr>
-      <tr><td class="msg-num">102</td><td class="msg-subject">Re: [Indic-computing-standards] Re: [Indic-computing-devel] Hi All!</td></tr>
-      <tr><td class="msg-num">103</td><td class="msg-subject">Re: [Indic-computing-standards] Hi All!</td></tr>
-      <tr><td class="msg-num">104</td><td class="msg-subject">Re: Hi All!</td></tr>
-      <tr><td class="msg-num">105</td><td class="msg-subject">heard in the Unicode forum :)</td></tr>
-      <tr><td class="msg-num">106</td><td class="msg-subject">Varamozhi now supports Unicode</td></tr>
-      <tr><td class="msg-num">107</td><td class="msg-subject">[Indic-computing-standards] Re: [Indic-computing-devel] Hi All!</td></tr>
-      <tr><td class="msg-num">108</td><td class="msg-subject">how to encode chill~ glyphs in unicode</td></tr>
-      <tr><td class="msg-num">109</td><td class="msg-subject">Unsubscribe me form this group</td></tr>
-      <tr><td class="msg-num">110</td><td class="msg-subject">Re: [Indic-computing-standards] Re: [Indic-computing-devel] Hi All!</td></tr>
-      <tr><td class="msg-num">111</td><td class="msg-subject">Re: [Indic-computing-standards] Re: [Indic-computing-devel] Hi All!</td></tr>
-      <tr class="msg-gap"><td colspan="2">Messages #112&ndash;234 &mdash; not captured by Wayback Machine</td></tr>
-      <tr><td class="msg-num">235</td><td class="msg-subject">Bill Gates Promis to Mallus</td></tr>
-      <tr><td class="msg-num">236</td><td class="msg-subject">Re: Showcasing Indian language support in OpenSource stall at Linux</td></tr>
-    </tbody>
-  </table>
-
-  <h3>Discussion Topics</h3>
-  <p>From the recovered subjects, the group discussed:</p>
-  <p>
-    <span class="tag">Malayalam GTK2</span>
-    <span class="tag">Unicode Malayalam</span>
-    <span class="tag">Chillaksharam</span>
-    <span class="tag">Varamozhi</span>
-    <span class="tag">KBip Project</span>
-    <span class="tag">Indic Computing Standards</span>
-    <span class="tag">Technical Translation</span>
-    <span class="tag">Chillu Glyphs</span>
-    <span class="tag">Indian Language Support</span>
-  </p>
-</section>
-
-<!-- ===== FULL ARCHIVE ===== -->
-<section id="archive">
-  <h2>Full Archive (Restricted)</h2>
-
-  <div class="notice">
-    <strong>The complete archive exists but is access-restricted.</strong>
-    Archive Team captured the full Yahoo Group via the Yahoo Groups API in
-    April 2017. The data is stored on archive.org but all files are marked
-    private. See <a href="#todo">TODO</a> for steps to request access.
-  </div>
-
-  <div class="info-card">
-    <dl class="info-grid">
-      <dt>Archive.org Item</dt>
-      <dd><a href="https://archive.org/details/yahoo-groups-2017-04-01T21-03-27Z-cdf32a">yahoo-groups-2017-04-01T21-03-27Z-cdf32a</a></dd>
-      <dt>File</dt>
-      <dd><code style="background: var(--code-bg); padding: 2px 6px; border-radius: 3px;">malayalamlinux.t2r3gpB.warc.gz</code></dd>
-      <dt>Size</dt>
-      <dd>617 KB</dd>
-      <dt>Format</dt>
-      <dd>Web ARChive GZ (contains Yahoo Groups API JSON responses)</dd>
-      <dt>Collection</dt>
-      <dd>Archive Team Yahoo! Groups (<code style="background: var(--code-bg); padding: 2px 6px; border-radius: 3px;">archiveteam_yahoogroups</code>)</dd>
-      <dt>Captured</dt>
-      <dd>April 1, 2017</dd>
-      <dt>Uploaded by</dt>
-      <dd>lars+archive@6xq.net (Archive Team)</dd>
-      <dt>Status</dt>
-      <dd><span class="status-restricted">access-restricted-item: true</span></dd>
-    </dl>
-  </div>
-
-  <h3>Wayback Machine Snapshots Used</h3>
-  <table class="wayback-table">
-    <thead>
-      <tr><th>Date</th><th>URL</th><th>Status</th><th>Content</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2004-11-27</td>
-        <td><code>/group/malayalamlinux/</code></td>
-        <td><span class="status-200">200</span></td>
-        <td>Group homepage</td>
-      </tr>
-      <tr>
-        <td>2004-12-12</td>
-        <td><code>/group/malayalamlinux/messages/61</code></td>
-        <td><span class="status-200">200</span></td>
-        <td>Message listing (msgs #61&ndash;90)</td>
-      </tr>
-      <tr>
-        <td>2003-12-16</td>
-        <td><code>/group/malayalamlinux/messages/82</code></td>
-        <td><span class="status-200">200</span></td>
-        <td>Message listing (msgs #82&ndash;111)</td>
-      </tr>
-      <tr>
-        <td>2003-12-16</td>
-        <td><code>/group/malayalamlinux/messages/235</code></td>
-        <td><span class="status-200">200</span></td>
-        <td>Message listing (msgs #235&ndash;236)</td>
-      </tr>
-      <tr>
-        <td>2014-12-24</td>
-        <td><code>/neo/groups/malayalamlinux/info</code></td>
-        <td><span class="status-200">200</span></td>
-        <td>Neo-interface group info</td>
-      </tr>
-      <tr>
-        <td>2019-12-17</td>
-        <td><code>/api/v1/groups/malayalamlinux/</code></td>
-        <td><span class="status-200">200</span></td>
-        <td>API group metadata (JSON)</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>Yahoo Groups Shutdown Timeline</h3>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">October 28, 2019</div>
-      <div class="timeline-text">Uploading new content disabled</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">December 14, 2019</div>
-      <div class="timeline-text">All content made unavailable</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">October 12, 2020</div>
-      <div class="timeline-text">Creation of new groups disabled</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">December 16, 2020</div>
-      <div class="timeline-text">Web interface and mailing lists shut down permanently</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TODO ===== -->
-<section id="todo">
-  <h2>TODO</h2>
-
-  <ul class="todo-list">
-    <li>
-      <strong>Request access to the full WARC archive</strong>
-      <span class="detail">
-        Email the following as the original group founder to request access
-        to item <code>yahoo-groups-2017-04-01T21-03-27Z-cdf32a</code>:<br>
-        &bull; Archive Team uploader: lars+archive@6xq.net<br>
-        &bull; Archive Team: archiveteam@archiveteam.org<br>
-        &bull; Internet Archive: info@archive.org<br>
-        &bull; Reference:
-        <a href="https://datahorde.org/how-to-recover-your-yahoo-groups-from-the-internet-archive/">Data Horde recovery guide</a>
-      </span>
-    </li>
-    <li>
-      <strong>Parse WARC file once obtained</strong>
-      <span class="detail">
-        Extend <code>extract_yahoo_group.py</code> to parse the WARC file
-        (contains Yahoo Groups API JSON responses) and extract full message
-        bodies, authors, and dates into readable format (text, mbox, and
-        this HTML site).
-      </span>
-    </li>
-    <li>
-      <strong>Check with other early members</strong>
-      <span class="detail">
-        Contact karunakar, shaji, and others listed on the SourceForge
-        project to see if anyone has personal email archives of the mailing
-        list from 2001&ndash;2003.
-      </span>
-    </li>
-    <li>
-      <strong>Check personal email archives</strong>
-      <span class="detail">
-        Messages sent to the group were also delivered to members via email.
-        Old email backups (Thunderbird, Outlook, Gmail) may contain the full
-        message history.
-      </span>
-    </li>
-    <li>
-      <strong>Cross-reference with SMC archives</strong>
-      <span class="detail">
-        Some discussions may have continued on the SMC mailing lists at
-        <a href="https://lists.smc.org.in">lists.smc.org.in</a> after the
-        group was renamed. Early SMC list archives may overlap with the
-        Yahoo Group period.
-      </span>
-    </li>
-  </ul>
-</section>
-
-<!-- ===== SAVANNAH NEWS ===== -->
-<section id="savannah">
-  <h2>Recovered Savannah News Posts</h2>
-
-  <div class="notice">
-    <strong>8 deleted news posts recovered from the Wayback Machine.</strong>
-    Between October 2002 and March 2003, Baiju M published 8 news updates on the
-    SMC Savannah project page. These posts were removed at some point after 2012.
-    The titles, dates, and authorship were recovered from a
-    <a href="https://web.archive.org/web/20120529231604/http://savannah.nongnu.org/news/?group=smc">May 2012 Wayback Machine snapshot</a>.
-    The individual news pages (<code>?id=1148</code>, etc.) were never captured, so
-    only the titles survive &mdash; not the full body text.
-  </div>
-
-  <table class="message-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Date</th>
-        <th>Title</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="msg-num">1148</td>
-        <td style="white-space: nowrap;">2002-10-21</td>
-        <td class="msg-subject">Swathanthra Malayalam Computing Project</td>
-        <td><span class="status-999">Deleted</span></td>
-      </tr>
-      <tr>
-        <td class="msg-num">1151</td>
-        <td style="white-space: nowrap;">2002-10-22</td>
-        <td class="msg-subject">SMC Mailing Lists</td>
-        <td><span class="status-999">Deleted</span></td>
-      </tr>
-      <tr>
-        <td class="msg-num">1164</td>
-        <td style="white-space: nowrap;">2002-10-25</td>
-        <td class="msg-subject">Website updated</td>
-        <td><span class="status-999">Deleted</span></td>
-      </tr>
-      <tr>
-        <td class="msg-num">1187</td>
-        <td style="white-space: nowrap;">2002-10-31</td>
-        <td class="msg-subject">GPL translation</td>
-        <td><span class="status-999">Deleted</span></td>
-      </tr>
-      <tr>
-        <td class="msg-num">1234</td>
-        <td style="white-space: nowrap;">2002-11-15</td>
-        <td class="msg-subject">Malayalam in GNOME 2</td>
-        <td><span class="status-999">Deleted</span></td>
-      </tr>
-      <tr>
-        <td class="msg-num">1282</td>
-        <td style="white-space: nowrap;">2002-11-29</td>
-        <td class="msg-subject">Akruti Malayalam fonts</td>
-        <td><span class="status-999">Deleted</span></td>
-      </tr>
-      <tr>
-        <td class="msg-num">1603</td>
-        <td style="white-space: nowrap;">2003-03-01</td>
-        <td class="msg-subject">GNU Emacs now supports Malayalam</td>
-        <td><span class="status-999">Deleted</span></td>
-      </tr>
-      <tr>
-        <td class="msg-num">1616</td>
-        <td style="white-space: nowrap;">2003-03-03</td>
-        <td class="msg-subject">Free 8-bit Malayalam fonts</td>
-        <td><span class="status-999">Deleted</span></td>
-      </tr>
-      <tr style="border-top: 3px solid var(--border);">
-        <td class="msg-num"><a href="https://savannah.nongnu.org/news/?id=4572">4572</a></td>
-        <td style="white-space: nowrap;">2006-09-18</td>
-        <td class="msg-subject">SMC Reloaded! <span class="tag">handover</span></td>
-        <td><span class="status-200">Live</span></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p style="margin-top: 16px;">
-    All 8 deleted posts were authored by <strong>baijum81</strong> and were still
-    visible in the Wayback Machine capture from
-    <a href="https://web.archive.org/web/20120529231604/http://savannah.nongnu.org/news/?group=smc">May 29, 2012</a>.
-    The handover post (id=4572, &ldquo;SMC Reloaded!&rdquo;) is the oldest surviving
-    news item on the
-    <a href="https://savannah.nongnu.org/news/?group=smc">current live page</a>,
-    which now shows 23 news items in total.
-  </p>
-</section>
-
-<!-- ===== SOURCEFORGE SITE ===== -->
-<section id="sourceforge">
-  <h2>Recovered SourceForge Website</h2>
-
-  <p>
-    The project website at <code>malayalamlinux.sourceforge.net</code> has been
-    fully recovered from the Wayback Machine &mdash; <strong>67 files</strong>
-    including HTML pages, screenshots, source code, locale files, and translation
-    glossaries.
-  </p>
-
-  <div class="stats">
-    <div class="stat-box">
-      <span class="number">67</span>
-      <span class="label">Files recovered</span>
-    </div>
-    <div class="stat-box">
-      <span class="number">8</span>
-      <span class="label">Screenshots</span>
-    </div>
-    <div class="stat-box">
-      <span class="number">131 KB</span>
-      <span class="label">Glossary (PO)</span>
-    </div>
-  </div>
-
-  <div class="info-card">
-    <p>Key content recovered:</p>
-    <ul style="margin-left: 20px; line-height: 2;">
-      <li>Project details, FAQ, and Malayalam International HOWTO</li>
-      <li>Malayalam fonts (TTF/OTF) metadata and GPL license</li>
-      <li>GTK+ transliteration input method source code (C)</li>
-      <li>Inscript keyboard layout and Compose files</li>
-      <li>OpenOffice.org Malayalam support guide</li>
-      <li>Translation glossary (English&ndash;Malayalam, 131 KB PO file)</li>
-      <li>Screenshots of Malayalam rendering in GNOME, Yudit, and locale</li>
-      <li>Education proposals (Computer Laboratory for Schools)</li>
-      <li>Curated bookmarks and L10n project links</li>
-    </ul>
-    <p style="margin-top: 12px;">
-      <a href="sourceforge-site.html"><strong>View the full recovered SourceForge site &rarr;</strong></a>
-    </p>
-  </div>
-</section>
-
-<!-- ===== LINKS ===== -->
-<section id="links">
-  <h2>Related Links</h2>
-  <div class="info-card">
-    <ul style="list-style: none; padding: 0;">
-      <li style="padding: 6px 0; border-bottom: 1px solid var(--border);">
-        <a href="https://smc.org.in">Swathanthra Malayalam Computing (SMC)</a>
-        &mdash; the successor community
-      </li>
-      <li style="padding: 6px 0; border-bottom: 1px solid var(--border);">
-        <a href="https://savannah.nongnu.org/projects/smc">SMC on Savannah</a>
-        &mdash; project page on GNU Savannah
-      </li>
-      <li style="padding: 6px 0; border-bottom: 1px solid var(--border);">
-        <a href="https://en.wikipedia.org/wiki/Swathanthra_Malayalam_Computing">SMC on Wikipedia</a>
-        &mdash; history and overview
-      </li>
-      <li style="padding: 6px 0; border-bottom: 1px solid var(--border);">
-        <a href="https://sourceforge.net/projects/malayalamlinux/">Malayalam GNU/Linux on SourceForge</a>
-        &mdash; the original project page (registered 2002)
-      </li>
-      <li style="padding: 6px 0; border-bottom: 1px solid var(--border);">
-        <a href="https://12.smc.org.in/en.html">12th year of SMC</a>
-        &mdash; mentions founding as &ldquo;Malayalam Linux Online&rdquo;
-      </li>
-      <li style="padding: 6px 0; border-bottom: 1px solid var(--border);">
-        <a href="https://archive.org/details/archiveteam_yahoogroups">Archive Team Yahoo! Groups</a>
-        &mdash; the archive collection on Internet Archive
-      </li>
-      <li style="padding: 6px 0;">
-        <a href="https://datahorde.org/how-to-recover-your-yahoo-groups-from-the-internet-archive/">Yahoo Groups recovery guide</a>
-        &mdash; Data Horde guide to recovering Yahoo Groups data
-      </li>
-    </ul>
-  </div>
-</section>
-
 <footer>
   <p>
-    Recovered from the Wayback Machine on April 11, 2026.<br>
-    This archive is incomplete. If you have copies of the original emails, please contribute.
+    Assembled from the Wayback Machine, mailing list archives, and other sources.<br>
+    This is a personal archive of open source contributions by Baiju Muthukadan.
   </p>
 </footer>
 
