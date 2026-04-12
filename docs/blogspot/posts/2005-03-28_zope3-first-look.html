@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zope3 first look</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Zope3 first look</h1>
+<div class="meta">
+<strong>Date:</strong> 2005-03-28<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2005/03/zope3-first-look.html">https://baijum.blogspot.com/2005/03/zope3-first-look.html</a>
+</div>
+<div class="content">
+Just now I downloaded Debian packages of Zope X3 from:<br/>http://people.debian.org/~doko/zope3/<br/><br/>First I tried to install zope3-lib_3.0.0-4_i386.deb<br/>but it shows dependency for python2.3-zopeinterface,<br/>then I installed python2.3-zopeinterface_3.0.0-4_i386.deb<br/>after that zope3-lib_3.0.0-4_i386.deb<br/><br/>(I had already installed Zope 2.7 )<br/><br/>To work Zope 3 for me, I did following things too:<br/><br/>1. Edited /usr/lib/zopex3/bin/mkzopeinstance <br/>      replced python2.4 with python2.3<br/><br/>2. #cd /usr/lib/zopex3/zopeskel (I don't know, this is necessary or not)<br/>   #python ../bin/mkzopeinstance -u baiju:password -d /tmp/zope3<br/><br/>3. Edited /tmp/zope3/etc/zope.conf (Changed ports to 70XX)<br/>   <server><br/>      type HTTP<br/>      address 7080<br/>   </server><br/>   <server><br/>      type FTP<br/>      address 7021<br/>   </server><br/><br/>4. #/tmp/zope3/bin/runzope<br/><br/><br/>Now I opened http://localhost:7080 in Fire Fox , I can see Zope 3 running :)
+</div>
+</body>
+</html>

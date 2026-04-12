@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>getdefault method for python dictionary</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>getdefault method for python dictionary</h1>
+<div class="meta">
+<strong>Date:</strong> 2005-09-02<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2005/09/getdefault-method-for-python-dictionary.html">https://baijum.blogspot.com/2005/09/getdefault-method-for-python-dictionary.html</a>
+</div>
+<div class="content">
+In this blog:<br/><br/>    http://blogs.nuxeo.com/sections/blogs/ruslan_spivak/2005_09_01_btrees-setdefault<br/><br/>Blogger says that Python's dictionary method, 'setdefault' without explicit default<br/> is confusing and useless.  Now I think there should be a 'getdefault' method<br/>which also requires two explicit arguments, it will return explicit default<br/>if no key exists.<br/><br/>Here is an example:<br/><pre><br/>>>> d = {1: None}<br/>>>> print d.getdefault(1, 'Hi')<br/>None<br/>>>> print d.getdefault(2, 'Hi')<br/>'Hi'<br/></pre><br/>Hmm.. there is already a 'get' method. If we have 'getdefault'<br/> then 'get' can be deprecated, Here is the reason:<br/><pre><br/>>>> d = {1: None}<br/>>>> print d.get(1)<br/>None<br/>>>> print d.get(2)<br/>None<br/></pre><br/>See, here I didn't thought about any use cases.
+</div>
+</body>
+</html>

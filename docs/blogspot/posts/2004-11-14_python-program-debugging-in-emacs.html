@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python program debugging in Emacs</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Python program debugging in Emacs</h1>
+<div class="meta">
+<strong>Date:</strong> 2004-11-14<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2004/11/python-program-debugging-in-emacs.html">https://baijum.blogspot.com/2004/11/python-program-debugging-in-emacs.html</a>
+</div>
+<div class="content">
+Today I tried to debug my python programs:<br/>C-c C-c was not working from python-mode to execute the programs.<br/>I found a solution from here:<br/>http://www.techietalk.org/emacs_python-mode_questions_C-c_C-c_and_broken_docstring_fill-6007726-1282-a.html<br/>--------------------------------------------------------------------------------------------------------------------------------------------------<br/>      ;; TBD: a horrible hack, but why create new Custom variables?                                              <br/>      (let ((cmd (concat (if (eq shell (quote cpython))<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "python"<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "jython")<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (if (string-equal py-which-bufname "JPython")<br/>&nbsp;" -" ""))))<br/>--------------------------------------------------------------------------------------------------------------------------------------------------<br/><br/>And I put this macro to my .emacs file (for jumping to exceptions),<br/>But to jump to last exception just press C-x b OR C-x 4 b<br/>(fset 'goto-exception<br/>   "\C-a\C-s\"\C-@\C-s\"\C-[OD\367\C-x4f\C-a\C-y\C-k\C-m\C-xo\C-sline\C-@\C-s,\C-[OD\367\C-xo\370got\C-il\C-i\C-m\C-y\C-m")<br/>(global-set-key "\C-x\C-g" 'goto-exception)
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buildout and setuptools</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Buildout and setuptools</h1>
+<div class="meta">
+<strong>Date:</strong> 2008-04-24<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2008/04/buildout-and-setuptools.html">https://baijum.blogspot.com/2008/04/buildout-and-setuptools.html</a>
+</div>
+<div class="content">
+(A comment to <a href="http://palladion.com/home/tseaver/obzervationz/2008/bulidout_vs_plain_setuptools">blog post by Tres Seavor</a> -- I can't figure out how to add comment there, so this post.)<br/><br/><a href="http://pypi.python.org/pypi/zc.buildout">Buildout</a> is build tool which can be used for any Python packages and<br/>not something only for Zope.  Since it is created Jim Fulton, the Zope<br/>Pope, naturally there are many early adopters from Zope community.<br/>Buildout itself may not be enough for all purposes, but it can be<br/>extended using "recipes", the extension mechanism provided by<br/>Buildout.  Buildout use setuptools, but it's not for replacing it.<br/>You can make use all features of setuptools while using Buildout.  So,<br/>all the strengths of setuptools are available for Buildout also.<br/><br/>A buildout.cfg of a Python need not to have duplicate information<br/>given in setup.py .  For example, a typical configuration file for a<br/>package will be like this:<br/><pre><br/>   [buildout]<br/>   develop = .<br/>   parts =<br/></pre><br/>As you can see above there is no additional detail, the only<br/>information given is the packages required to be developed.<br/>(Here . means package in the current directory)<br/><br/>As you know any build system should have some kind of configuration,<br/>if you think its a clutter, well I don't know what to say.<br/><br/>Most of the packages are setuptools based and so you can run any<br/>command provided by setuptools.  But if you want to get the benefits<br/>of using Buildout you should learn the Buildout system.  Then you will<br/>be able to overcome the "foreign feeling".<br/><br/>As I said, Buildout doesn't prevent you from running any setuptools<br/>command.  For example if your package's setup.py is configured to run<br/>'test' command, you can run it.  There are some buildout recipe which<br/>helps you to run tests in some weired way, but that is not a problem<br/>of buildout !  That recipe may have it's own reason for doing it that<br/>way, like handle extra dependencies, be more explicit, use a<br/>particular test runner etc..  If you don't want this recipe, it's OK,<br/>use your old setuptools test mechanism.
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>First look at test layers from zope.testing</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>First look at test layers from zope.testing</h1>
+<div class="meta">
+<strong>Date:</strong> 2006-11-01<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2006/11/first-look-at-test-layers-from.html">https://baijum.blogspot.com/2006/11/first-look-at-test-layers-from.html</a>
+</div>
+<div class="content">
+Recently Zope team has released zope.testing version 3.0 .<br/>For more info : http://cheeseshop.python.org/pypi/zope.testing<br/>To install : # easy_install zope.testing<br/><br/>This is an independent testing framework which can be used outside Zope.<br/>One of the interesting feature is test layers.  I think next Zope 3 release (3.4)<br/>will make use test layers heavily, so I started looking at this feature.<br/><br/>The test layer API is here:<br/> http://svn.zope.org/zope.testing/trunk/src/zope/testing/testrunner-layers-api.txt?view=auto<br/><br/>I will show you a simple example.<br/><br/>First a 'hello.py':<br/><pre><br/>def hello():<br/>    return 'Hello'<br/></pre><br/><br/>Then 'tests.py':<br/><pre><br/>import hello<br/>import unittest<br/><br/>class FirstLayer(object):<br/>    pass<br/><br/>class TestHello(unittest.TestCase):<br/>    layer = FirstLayer<br/>    def test_hello(self):<br/>        assert hello.hello() == 'Hello'<br/><br/>def test_suite():<br/>    return unittest.TestSuite((unittest.makeSuite(TestHello)))<br/></pre><br/><br/>The only thing to note here is the 'layer' attribute of 'TestHello' class.<br/>We can add 'setUp' and 'tearDown' methods to 'FirstLayer' class.<br/><br/>Now create a script, 'runtest.py':<br/><pre><br/>import sys<br/>from zope.testing import testrunner<br/>defaults = ['--test-path', '.', '--tests-pattern', 'tests$',]<br/>testrunner.run(defaults)<br/></pre><br/><br/>When running the script, you will get something like:<br/><pre><br/>Running tests.FirstLayer tests:<br/>  Set up tests.FirstLayer in 0.000 seconds.<br/>  Ran 1 tests with 0 failures and 0 errors in 0.000 seconds.<br/>Tearing down left over layers:<br/>  Tear down tests.FirstLayer in 0.000 seconds.<br/></pre>
+</div>
+</body>
+</html>

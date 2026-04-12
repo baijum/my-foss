@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Programming - Installation</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Go Programming - Installation</h1>
+<div class="meta">
+<strong>Date:</strong> 2013-09-05<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2013/09/go-programming-installation.html">https://baijum.blogspot.com/2013/09/go-programming-installation.html</a>
+</div>
+<div class="content">
+<div class="separator" style="clear: both; text-align: left;">
+I was playing with <a href="http://golang.org/">Go programming language</a> (Golang) recently. Go looks like an interesting programming language. &nbsp;I will show you how you can install Go in a 64 bit GNU/Linux system.</div>
+<h2 style="background-color: white; border-bottom-color: rgb(238, 238, 238); border-bottom-style: solid; border-bottom-width: 1px; cursor: text; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 2em; line-height: 1.7; margin: 1em 0px 15px; padding: 0px; position: relative; text-rendering: optimizelegibility;">
+Installation</h2>
+<div>
+<div style="background-color: white; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">
+<div style="margin-bottom: 15px; margin-top: 15px;">
+To install Go in a 64 bit GNU/Linux:</div>
+<pre style="background-color: #f8f8f8; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px; border: 1px solid rgb(221, 221, 221); font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 13px; line-height: 19px; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 6px 10px;">cd $HOME
+wget -c https://go.googlecode.com/files/go1.1.2.linux-amd64.tar.gz
+tar zxvf go1.1.2.linux-amd64.tar.gz
+mkdir mygo
+</pre>
+<div style="margin-bottom: 15px; margin-top: 15px;">
+You can download source and binary packages of Go from from here:&nbsp;<a href="https://code.google.com/p/go/downloads/list" style="color: #4183c4; text-decoration: none;">https://code.google.com/p/go/downloads/list</a></div>
+<div style="margin-bottom: 15px; margin-top: 15px;">
+To set PATH and other environment variables, add these lines at the end of $HOME/.bashrc:</div>
+<pre style="background-color: #f8f8f8; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px; border: 1px solid rgb(221, 221, 221); font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 13px; line-height: 19px; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 6px 10px;">export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+
+export GOPATH=$HOME/mygo
+export PATH=$PATH:$GOPATH/bin
+</pre>
+</div>
+<div style="background-color: white; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">
+<h2 style="border-bottom-color: rgb(238, 238, 238); border-bottom-style: solid; border-bottom-width: 1px; cursor: text; font-size: 2em; line-height: 1.7; margin: 1em 0px 15px; padding: 0px; position: relative; text-rendering: optimizelegibility;">
+<a class="anchor" href="https://gist.github.com/baijum/5976608#running-a-program" name="running-a-program" style="bottom: 0px; color: #4183c4; cursor: pointer; display: block; left: 0px; margin-left: -30px; padding-left: 30px; position: absolute; text-decoration: none; top: 0px;"><span class="mini-icon mini-icon-link"></span></a>Running a program</h2>
+<div style="margin-bottom: 15px; margin-top: 15px;">
+To run a program:</div>
+<pre style="background-color: #f8f8f8; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px; border: 1px solid rgb(221, 221, 221); font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 13px; line-height: 19px; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 6px 10px;">go run &lt;program.go&gt;
+</pre>
+<div style="margin-bottom: 15px; margin-top: 15px;">
+Here is an example hello world program:</div>
+<pre style="background-color: #f8f8f8; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px; border: 1px solid rgb(221, 221, 221); font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 13px; line-height: 19px; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 6px 10px;">package main
+
+import "fmt"
+
+func main() {
+    fmt.Printf("Hello, world.\n")
+}
+</pre>
+<div style="margin-bottom: 15px; margin-top: 15px;">
+Save the above code in a hello.go and run it like this:</div>
+<pre style="background-color: #f8f8f8; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px; border: 1px solid rgb(221, 221, 221); font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 13px; line-height: 19px; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 6px 10px;">go run hello.go
+</pre>
+</div>
+<div style="background-color: white; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">
+<h2 style="border-bottom-color: rgb(238, 238, 238); border-bottom-style: solid; border-bottom-width: 1px; cursor: text; font-size: 2em; line-height: 1.7; margin: 1em 0px 15px; padding: 0px; position: relative; text-rendering: optimizelegibility;">
+<a class="anchor" href="https://gist.github.com/baijum/5976608#resources" name="resources" style="bottom: 0px; color: #4183c4; cursor: pointer; display: block; left: 0px; margin-left: -30px; padding-left: 30px; position: absolute; text-decoration: none; top: 0px;"><span class="mini-icon mini-icon-link"></span></a></h2>
+</div>
+</div>
+<div>
+<div style="background-color: white; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">
+<div style="margin-bottom: 15px; margin-top: 15px;">
+You can build (compile) and run the binary like this:</div>
+<pre style="background-color: #f8f8f8; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px; border: 1px solid rgb(221, 221, 221); font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 13px; line-height: 19px; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 6px 10px;">go build hello.go
+</pre>
+<pre style="background-color: #f8f8f8; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px; border-top-left-radius: 3px; border-top-right-radius: 3px; border: 1px solid rgb(221, 221, 221); font-family: Consolas, 'Liberation Mono', Courier, monospace; font-size: 13px; line-height: 19px; margin-bottom: 15px; margin-top: 15px; overflow: auto; padding: 6px 10px;">./hello</pre>
+</div>
+<div style="background-color: white; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 15px; line-height: 25px;">
+<h2 style="border-bottom-color: rgb(238, 238, 238); border-bottom-style: solid; border-bottom-width: 1px; cursor: text; font-size: 2em; line-height: 1.7; margin: 1em 0px 15px; padding: 0px; position: relative; text-rendering: optimizelegibility;">
+<a class="anchor" href="https://gist.github.com/baijum/5976608#resources" name="resources" style="bottom: 0px; color: #4183c4; cursor: pointer; display: block; left: 0px; margin-left: -30px; padding-left: 30px; position: absolute; text-decoration: none; top: 0px;"><span class="mini-icon mini-icon-link"></span></a></h2>
+</div>
+</div>
+<div class="separator" style="clear: both; text-align: left;">
+Here is the screencast I created with same notes.</div>
+<div class="separator" style="clear: both; text-align: center;">
+<br /></div>
+<div class="separator" style="clear: both; text-align: center;">
+<iframe allowfullscreen='allowfullscreen' webkitallowfullscreen='webkitallowfullscreen' mozallowfullscreen='mozallowfullscreen' width='320' height='266' src='https://www.youtube.com/embed/v1xachM-Syg?feature=player_embedded' frameborder='0'></iframe></div>
+<br />
+I am looking forward to your feedback.
+</div>
+</body>
+</html>

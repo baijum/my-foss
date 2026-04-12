@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sqlite usage</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Sqlite usage</h1>
+<div class="meta">
+<strong>Date:</strong> 2006-09-15<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2006/09/sqlite-usage.html">https://baijum.blogspot.com/2006/09/sqlite-usage.html</a>
+</div>
+<div class="content">
+This is a simple tutorial(?) to use sqlite.  I used pysqlite 1.0.1 in Python 2.3,<br/>which is the default in Debian 3.1 (Sarge).<br/><br/>The latest pysqlite version is 2.3.2, Visit this site for more info:<br/>http://initd.org/tracker/pysqlite<br/><br/><pre><br/>"""sqlite_usage.py: sqlite module usage with examples<br/><br/>First import sqlite::<br/><br/>  >>> import sqlite<br/>  <br/>Create a temporary directory::<br/><br/>  >>> import tempfile<br/>  >>> tempdir = tempfile.mkdtemp()<br/>  <br/>Now create a db file::<br/><br/>  >>> import os<br/>  >>> dbfile = os.path.join(tempdir, 'testdb.sdb')<br/>  <br/>Now connect to db and create a cursor::<br/><br/>  >>> conn = sqlite.connect(dbfile)<br/>  >>> cr = conn.cursor()<br/><br/>Create a table::<br/><br/>  >>> cr.execute("CREATE TABLE first_table (a INT)")<br/><br/>Insert a value and get::<br/><br/>  >>> cr.execute("INSERT INTO first_table (a) values (1)")<br/>  >>> cr.execute("SELECT a FROM first_table")<br/>  >>> cr.fetchall()<br/>  [(1,)]<br/><br/>Test commit and rollback::<br/><br/>  >>> conn.commit()<br/>  >>> cr.execute("DELETE FROM first_table")<br/>  >>> cr.execute("SELECT a FROM first_table")<br/>  >>> cr.fetchall()<br/>  []<br/>  >>> #now rollback and query again<br/>  >>> conn.rollback()<br/>  >>> cr.execute("SELECT a FROM first_table")<br/>  >>> cr.fetchall()<br/>  [(1,)]<br/>  <br/>Insert more values as parameters::<br/><br/>  >>> cr.execute("CREATE TABLE second_table (a INT, b VARCHAR(20))")<br/>  >>> cr.execute("INSERT INTO second_table (a, b) VALUES (%s, %s)",<br/>  ... (1, 'hi1'))<br/>  >>> cr.execute("SELECT a, b FROM second_table")<br/>  >>> cr.fetchone()<br/>  (1, 'hi1')<br/><br/>Insert more values using executemany::<br/><br/>  >>> cr.executemany("INSERT INTO second_table (a, b) VALUES (%s, %s)",<br/>  ... [(2, 'hi2'), (3, 'hi3')])<br/>  >>> cr.execute("SELECT a, b FROM second_table")<br/>  >>> rst = cr.fetchall()<br/>  >>> (2, 'hi2') in rst<br/>  True<br/>  >>> (3, 'hi3') in rst<br/>  True<br/><br/>Hmm.. there is no rewind::<br/><br/>  >>> cr.rewind<br/>  Traceback (most recent call last):<br/>  ...<br/>  AttributeError: rewind<br/><br/>Views are supported::<br/><br/>  >>> cr.execute("CREATE VIEW first_second_view \<br/>          AS SELECT a.a AS a1, b.a AS a2, b.b \<br/>          FROM first_table AS a LEFT JOIN second_table AS b \<br/>          ON a.a = b.a")<br/>  >>> cr.execute("SELECT a1, a2, b FROM first_second_view")<br/>  >>> cr.fetchone()<br/>  (1, 1, 'hi1')<br/><br/>Cleanup tempdir::<br/><br/>  >>> import shutil<br/>  >>> shutil.rmtree(tempdir)<br/><br/>"""<br/><br/>def _test():<br/>    import doctest<br/>    return doctest.testmod()<br/><br/>if __name__ == '__main__':<br/>    _test()<br/>    pass<br/></pre>
+</div>
+</body>
+</html>

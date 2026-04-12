@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moving from Python to Java :(</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Moving from Python to Java :(</h1>
+<div class="meta">
+<strong>Date:</strong> 2005-04-28<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2005/04/moving-from-python-to-java.html">https://baijum.blogspot.com/2005/04/moving-from-python-to-java.html</a>
+</div>
+<div class="content">
+For last 9 months my company was developing an <br/>enterprise application. Our main language was Python.<br/>Its going to implement all over India by next few months.<br/><br/>Next month we will start our new project, Java will be our main<br/>language. Now I started refreshing my Java. And this is one thought<br/>came to me today, when I looked into Strings in Java.<br/><br/>One of Python's primary design principle is that: <br/>"Special cases aren't special enough to break the rules."<br/>That is, the language should avoid having privileged features<br/>that you can't reuse for other purposes. The consequence of this<br/>principle is, more generalisation of syntax and semantics <br/>of a language.<br/><br/>In Python : (of course, there are better ways)<br/><pre><br/>  age = 9<br/>  print "He is " + str(age) + " years old."<br/></pre><br/>In Java:<br/><pre><br/>  int age = 9;<br/>  String s = "He is " + age + " years old.";<br/>  System.out.println(s);<br/></pre><br/>Concatenating string and integer like this is possible in Java,<br/>because it is a "special case".<br/><br/>So, I should be very much bothered about Java's special cases.<br/>Otherwise I will code something like :<br/><pre><br/>  String s = "four: " + 2 + 2;<br/>  System.out.println(s);<br/></pre><br/>See, here I should have been written :<br/><pre><br/>  String s = "four: " + (2 + 2);<br/></pre><br/>Brackets (()), plus (+) and quotes ("") put together in different<br/>ways makes lots of special cases.<br/><br/>Now I dream that I am writing Python code as did in the last 9 months.
+</div>
+</body>
+</html>

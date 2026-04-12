@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zope 3 applications from eggs and buildout</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Zope 3 applications from eggs and buildout</h1>
+<div class="meta">
+<strong>Date:</strong> 2007-04-04<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2007/04/zope-3-applications-from-eggs-and.html">https://baijum.blogspot.com/2007/04/zope-3-applications-from-eggs-and.html</a>
+</div>
+<div class="content">
+Here I will introduce two Zope 3 applications created solely<br/>from <a href="http://peak.telecommunity.com/DevCenter/setuptools">eggs</a> using <a href="http://cheeseshop.python.org/pypi/zc.buildout">Buildout</a>.<br/><br/>First application will display 'Hello' when you access<br/>http://localhost:8080/hello .  You can checkout this from here:<br/>svn://svn.zope.org/repos/main/Sandbox/baijum/z3hello/trunk .<br/><br/>Here is the steps to run the application:<br/><br/>&nbsp; $ svn co svn://svn.zope.org/repos/main/Sandbox/baijum/z3hello/trunk z3hello<br/>&nbsp; $ cd z3hello<br/>&nbsp; $ python2.4 bootstrap.py<br/>&nbsp; $ ./bin/buildout -N<br/>&nbsp; $ ./bin/instance start<br/><br/>Now, from your browser go to : http://localhost:8080/hello<br/><br/>Running bootstrap.py will install setuptools and zc.buildout and it<br/>will create a directory for building your the application.  You can<br/>run `bin/buildout` script created by bootstrap.py to build the<br/>application.  Then you are ready to start server using `bin/instance`<br/>script created by buildout command.<br/><br/>You can try the ZWiki (Zope 3 version) similarly:<br/><br/>&nbsp; $ svn co svn://svn.zope.org/repos/main/zwiki/branches/baijum-experimental-zwiki zwiki<br/>&nbsp; $ cd zwiki<br/>&nbsp; $ python2.4 bootstrap.py<br/>&nbsp; $ ./bin/buildout -N<br/>&nbsp; $ ./bin/instance start<br/><br/>To see Wikis in action, go into the management interface and add a<br/>Wiki object named `mywiki`. Leave the two preselected options.<br/><br/>To access ZMI: http://localhost:8080/manage (username: admin,<br/>               password: admin)&nbsp; Then visit: http://localhost:8080/++skin++wiki/mywiki<br/><br/>I know there are many "Why" questions.  I suggest you to read about<br/>Setuptools and Buildout for the answers.  And if you know the<br/>questions with answers, I welcome you to add it here as comments! :)
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trove categories for Buildout recipes and extensions</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Trove categories for Buildout recipes and extensions</h1>
+<div class="meta">
+<strong>Date:</strong> 2011-01-26<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2011/01/trove-categories-for-buildout-recipes.html">https://baijum.blogspot.com/2011/01/trove-categories-for-buildout-recipes.html</a>
+</div>
+<div class="content">
+Currently there are <a href="http://pypi.python.org/pypi?:action=browse&amp;c=512">270+ distributions</a> with<strong> &quot;Framework :: Buildout&quot;</strong>&nbsp;trove category in PyPI. Now it's becoming bit inconvenient to identify whether a distribution contains a Buildout recipe or extension. &nbsp;( Recipes and extensions are two types of plugin mechanisms supported by Buildout). &nbsp;Now there is a solution -- <a href="http://mail.python.org/pipermail/catalog-sig/2011-January/003431.html">two sub-categories are added</a>.&nbsp;<br /><br />If you publish Buildout recipes or extensions to PyPI, please use the new trove classifiers in addition to the existing &quot;Framework :: Buildout&quot;.<br /><br />If you are developing a recipe, use this classifier:<br /><br /> <div style="margin-left: 40px; ">classifiers=[<br />   ...<br />   &quot;Framework :: Buildout&quot;,<br />   &quot;Framework :: Buildout :: Recipe&quot;,<br />   ...<br />   ],</div>If you are developing an extension, use this classifier:<br /><br /> <div style="margin-left: 40px; ">classifiers=[<br />   ...<br />   &quot;Framework :: Buildout&quot;,<br />   &quot;Framework :: Buildout :: Extension&quot;,<br />   ...<br />   ],</div><div>&nbsp;</div><div>If the distribution contains both extension and recipe, use:</div><div>&nbsp;</div><div style="margin-left: 40px; ">classifiers=[</div><div style="margin-left: 40px; ">...<br />   &quot;Framework :: Buildout&quot;,<br />   &quot;Framework :: Buildout :: Extension&quot;,<br />   &quot;Framework :: Buildout :: Recipe&quot;,<br />   ...<br />   ],</div><br />I hope recipe/extension authors will add these sub-categories to their setup.py in the upcoming releases.
+</div>
+</body>
+</html>

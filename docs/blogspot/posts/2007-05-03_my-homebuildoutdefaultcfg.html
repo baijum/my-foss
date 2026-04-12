@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My $HOME/.buildout/default.cfg</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>My $HOME/.buildout/default.cfg</h1>
+<div class="meta">
+<strong>Date:</strong> 2007-05-03<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2007/05/my-homebuildoutdefaultcfg.html">https://baijum.blogspot.com/2007/05/my-homebuildoutdefaultcfg.html</a>
+</div>
+<div class="content">
+Buildout is a tool which can used for any kind of applications, though<br/>it is more suitable for Python based applications.  <a<br/>href="http://cheeseshop.python.org/pypi/zc.buildout">Buildout</a> is a<br/>cool program which provides support for creating, assembling and<br/>deploying applications, especially Python applications.  You can build<br/>applications using Buildout recipes.  Recipes are Python programs<br/>which follows a pattern to build various parts of an application.  For<br/>example, a recipe will install Python eggs and another one will<br/>install test runner etc.  Applications can be assembled from multiple<br/>parts with different configurations.  A part can be a Python egg or<br/>any other program.  Buildout make use Python eggs and so <a<br/>href="http://peak.telecommunity.com/DevCenter/setuptools">setuptools</a>.<br/>To install, Buildout just enter this command: easy_install zc.buildout<br/>(Of course, you should have installed <a<br/>href="http://peak.telecommunity.com/DevCenter/EasyInstall">easy_install</a><br/>to run this command)<br/><br/>I would like to share my default Buildout configuration<br/>($HOME/.buildout/default.cfg) here:<br/><pre><br/>[buildout]<br/>newest = false<br/>eggs-directory = /mbaiju/eggs<br/>find-links = http://download.zope.org/distribution/<br/></pre><br/><br/>These options are available for all buildouts in my system.  Sure, I<br/>can override these options for individual buildouts.  One of my<br/>earlier <a href="http://baijum81.livejournal.com/19795.html">post</a><br/>had given hint for using simple buildouts.  There, I used<br/>"./bin/buildout -N" to run the buildout.  See yourself what -N do from<br/>help:<br/><br/><pre><br/>$ buildout --help<br/>...<br/>  -N<br/><br/>    Run in non-newest mode.  This is equivalent to the assignment <br/>    buildout:newest=false.  With this setting, buildout will not seek<br/>    new distributions if installed distributions satisfy it's<br/>    requirements. <br/>...<br/></pre><br/><br/>So adding "newest=false" option helps to avoid the "-N" switch.<br/>IMO, this should be the default for buildout.<br/><br/>The "eggs-directory" option is really useful if you want to use<br/>multiple buildouts from same machine, especially when developing<br/>applications.  If this option is not set each buildout will download<br/>and store all egg dependencies in it's own folder, by default "./eggs"<br/>directory in your buildout.<br/><br/>I set "find-links = http://download.zope.org/distribution/", because<br/>my normal buildouts are Zope 3 related, and Zope 3 project place all<br/>new eggs there.  If this option is not set, buildout will fetch egg<br/>from<br/>Python's <a href="http://cheeseshop.python.org/pypi/">cheeseshop</a>.
+</div>
+</body>
+</html>

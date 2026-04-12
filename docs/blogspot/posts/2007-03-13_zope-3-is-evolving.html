@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zope 3 is evolving !</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Zope 3 is evolving !</h1>
+<div class="meta">
+<strong>Date:</strong> 2007-03-13<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2007/03/zope-3-is-evolving.html">https://baijum.blogspot.com/2007/03/zope-3-is-evolving.html</a>
+</div>
+<div class="content">
+Zope 3.4 alpha 1 release is planned in first week of April, 2007 [1].<br/>Zope 3.4 release will be based on eggs and buildouts.  So you can use<br/>the individual parts without using the whole Zope 3.  Suppose you want<br/>to use 'zope.interface', just 'easy_install zope.interface' will do it<br/>for you.  And if you want 'zope.component' [2], use 'easy_install<br/>zope.component'.  And there are many packages like this which does not<br/>requires the whole Zope 3 (eg: zope.event, zope.deferredimport,<br/>zope.testing, zope.testbrowser etc.).  Most of them are available from<br/>PyPI now !<br/><br/>And zc.buildout [3] is going to change how we develop and deploy Zope<br/>3.  If I want to modify (new feature/bug fix) zope.testbrowser I need<br/>not to checkout the whole Zope 3 and start coding, rather I can<br/>checkout zope.testbrowser and run 'buildout' command.  It will setup<br/>an environment where I can start working.<br/><br/>After 3.4 release, individual packages will be having it's own release<br/>cycle.<br/><br/> [1] http://wiki.zope.org/zope3/RoadMap<br/> [2] http://wiki.zope.org/zope3/ZopeComponentArchitecture<br/> [3] http://cheeseshop.python.org/pypi/zc.buildout/
+</div>
+</body>
+</html>

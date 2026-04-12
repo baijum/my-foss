@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Zope community use namespace packages ?</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Why Zope community use namespace packages ?</h1>
+<div class="meta">
+<strong>Date:</strong> 2007-09-25<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2007/09/why-zope-community-use-namespace.html">https://baijum.blogspot.com/2007/09/why-zope-community-use-namespace.html</a>
+</div>
+<div class="content">
+Zope project and the community in general use lots of namespaces<br />packages.  Though, we have some non-namespace packages like<br />ZODB3,ZConfig etc.  Zope community has created many namespaces<br />for packages like `zope`, `zope.app`, `zc`, `z3c`, `lovely` etc.  Here<br />`zc` stands for Zope Corporation, `z3c` for Zope 3 Community and<br />lovely for Lovely Systems' packages.<br /><br />Python is a language with namespace support at many levels.<br />Remember, the last line of Zen of Python reads like this: "Namespaces<br />are one honking great idea -- let's do more of those!"<br />Take it positively, don't interpret it more ;)<br /><br />A namespace package will not have any method,class or any other<br />objects defined in that level.  So a normal namespace package will be<br />only having an empty `__init__.py` file.  Eggs and setuptools provides<br />some new advantages for the distribution of namespace packages.  So,<br />normally a namespace package's `__init__.py` file will contain<br />something like this:<br /><pre><br /> import pkg_resources<br /> pkg_resources.declare_namespace('zope')<br /></pre><br />That's all you required to put in your namespace package's<br />`__init__.py` file.  But you also will be required to add one more<br />keyword argument for `setup` function in your `setup.py` script like<br />this:<br /><pre><br />  namespace_packages=['zope']<br /></pre><br />You can even have nested namespace packages, in that case you have to<br />add it like this:<br /><pre><br />  namespace_packages=['zope', 'zope.app'],<br /></pre><br />Remember, Zen of Python also says: "Flat is better than nested." .<br />Even though Zope use `zope.app` nested namespace package, Zope<br />community discourage nested namespace packages.  The `zope.app`<br />namespace may be consider as a mistake of Zope project.<br /><br />The `zope` and `zope.app` were the first namespace packages used by<br />Zope.  I still remember <a href="http://mail.zope.org/pipermail/zope3-dev/2006-December/021352.html">the appraisal I got from Jim Fulton</a> after<br />implementing his proposal for making `zope.app` a pure namespace<br />package.<br /><br />Here I will list some advantages of namespace packages.  Feel free to<br />add/explain anything you found. :)<br /><br /><br /><ol><li> Better grouping for projects/community/companies</li><li>Better name for packages and don't worry about a name conflict</li><li>Re-use package name in different namespaces</li><li>Easy distribution as eggs</li></ol><br />I think the last point requires bit explanation.  Consider two<br />packages in same namespace, `zope.interface` and `zope.testbrowser`.<br />In Python, package name is tied to directory structure.  So, in normal<br />distutils based distribution both `interface` and `testbrowser` should<br />be under `zope` directory.  But setuptools and eggs allows you to<br />install both separately and still use both.<br /><br />Let's save some names for new generation smart Python programmers !<br />Don't pollute top-level names, use namespace packages !!
+</div>
+</body>
+</html>

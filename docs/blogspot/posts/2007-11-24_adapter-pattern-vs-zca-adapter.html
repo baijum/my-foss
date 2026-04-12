@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adapter pattern vs ZCA adapter</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Adapter pattern vs ZCA adapter</h1>
+<div class="meta">
+<strong>Date:</strong> 2007-11-24<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2007/11/adapter-pattern-vs-zca-adapter.html">https://baijum.blogspot.com/2007/11/adapter-pattern-vs-zca-adapter.html</a>
+</div>
+<div class="content">
+This is a section I added to <a href="http://www.muthukadan.net/docs/zca.html">ZCA book</a> recently.  I am not a pattern guru,<br/>so please correct me if anthing is not correct or required more explanation. <br/>Thanks !<br/><br/><br/><pre><br/>Adapter pattern<br/>~~~~~~~~~~~~~~~<br/><br/>The adapter concept in Zope Component Architecture and the classic<br/>`adapter pattern` as described in Design Patterns book are very<br/>similar.  But the intent of ZCA adapter usage is more wider than the<br/>`adapter pattern` itself.  The intent of `adapter pattern` is to<br/>convert the interface of a class into another interface clients<br/>expect.  This allows classes work together that couldn't otherwise<br/>because of incompatible interfaces.  But in the `motivation` section<br/>of Design Patterns book, GoF says: "Often the adapter is responsible<br/>for functionality the adapted class doesn't provide".  ZCA adapter has<br/>more focus on adding functionalities than creating a new interface for<br/>an adapted object (adaptee).  ZCA adapter lets adapter classes extend<br/>functionality by adding methods.  (It would be interesting to note<br/>that `Adapter` was known as `Feature` in earlier stage of ZCA<br/>design. ) [#feature]_<br/><br/>The above paragraph has a quote from Gang of Four book, it ends like<br/>this: " ...adapted class doesn't provide".  But in the next sentence I<br/>used "adapted object" instead of "adapted class", because GoF<br/>describes about two variants of adapters based on implementations.<br/>The first one is called `class adapter` and the other one is called<br/>`object adapter`.  A class adapter uses multiple inheritance to adapt<br/>one interface to another, on the other hand an object adapter relies<br/>on object composition.  ZCA adapter is following object adapter<br/>pattern, which use delegation as a mechanism for composition.  GoF's<br/>second principle of object-oriented design goes like this: "Favor<br/>object composition over class inheritance".  For more details about<br/>this subject please read Design Patterns book.<br/><br/>The major attraction of ZCA adapter are the explicit interface for<br/>components and the component registry.  ZCA adapter components are<br/>registered in component registry and looked up by client objects using<br/>interface and name when required.<br/><br/>.. [#feature] Thread discussing renaming of `Feature` to `Adapter`:<br/>   http://mail.zope.org/pipermail/zope3-dev/2001-December/000008.html<br/></pre>
+</div>
+</body>
+</html>

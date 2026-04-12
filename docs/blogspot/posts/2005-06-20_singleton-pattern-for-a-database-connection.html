@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singleton pattern for a database connection</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>Singleton pattern for a database connection</h1>
+<div class="meta">
+<strong>Date:</strong> 2005-06-20<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2005/06/singleton-pattern-for-database.html">https://baijum.blogspot.com/2005/06/singleton-pattern-for-database.html</a>
+</div>
+<div class="content">
+I think I understood Singleton pattern, any suggestion?<br/><pre><br/>from pyPgSQL import PgSQL<br/><br/>class Database(object):<br/>    _sigletons = {}<br/>    def __new__(cls):<br/>        if cls not in cls._sigletons:<br/>            cls._connection = PgSQL.connect(database='dbname',<br/>                                            user='username',<br/>                                            password='passwd',<br/>                                            host='hostname')<br/>            cls._sigletons[cls] = object.__new__(cls)<br/>            pass<br/>        return cls._sigletons[cls]<br/>    <br/>    def __init__(self):<br/>        self.connection = Database._connection<br/>        pass<br/>    <br/>    def cursor(self):<br/>        return self.connection.cursor()<br/>    <br/>    #other methods follows here<br/></pre><br/>#just to test logjam
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A work in progress chapter from Zope Guide</title>
+<style>
+body { font-family: sans-serif; max-width: 800px; margin: 2em auto; padding: 0 1em; line-height: 1.6; }
+h1 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+img { max-width: 100%; height: auto; }
+.meta { color: #666; font-size: 0.9em; margin-bottom: 2em; }
+</style>
+</head>
+<body>
+<h1>A work in progress chapter from Zope Guide</h1>
+<div class="meta">
+<strong>Date:</strong> 2006-09-19<br>
+<strong>Source:</strong> <a href="https://baijum.blogspot.com/2006/09/work-in-progress-chapter-from-zope.html">https://baijum.blogspot.com/2006/09/work-in-progress-chapter-from-zope.html</a>
+</div>
+<div class="content">
+This is a work in progress chapter from Zope Guide:<br/>http://kpug.zwiki.org/ZopeGuide<br/>Please contribute! especially grammer mistakes :)<br/><br/><pre><br/>Unit testing<br/>************<br/><br/><br/>Introduction<br/>------------<br/><br/>In this chapter, you will learn more about unit testing.  Zope 3 use `doctest`<br/>based unit testing heavily.  Zope 3 preferes test driven development (TDD).<br/><br/>To explain the idea, consider a use case.  A module is required with a function<br/>which returns 'Good morning, name!'.  The name will be given as argument.<br/>Before writing the real code write the unit test for this.  Infact you will be<br/>writing the real code and it's test cases almost in parallel.  So just create a<br/>file named `example1.py` with just the function definition::<br/><br/>  def goodmorning(name):<br/>      "This returns a good morning message"<br/><br/>See you are not yet wrote the logic yet.  But this is necessary to run tests<br/>successfully with failures!.  Ok, now create a file named `example1.txt`<br/>with test cases, use ReStructuredText format::<br/><br/>  These are test for `example1` module.<br/><br/>  First import the module::<br/><br/>    >>> import example1<br/><br/>  Now call the function `goodmorning` with out any argument::<br/><br/>    >>> example1.goodmorning()<br/>    Traceback (most recent call last):<br/>    ...<br/>    TypeError: goodmorning() takes exactly 1 argument (0 given)<br/><br/>  Now call the function `goodmorning` with one argument::<br/><br/>    >>> example1.goodmorning('Jack')<br/>    'Good morning, Jack!'<br/><br/>See the examples are written like executed from prompt.  You can use your<br/>python prompt and copy paste from there.  Now create another file<br/>`test_example1.py` with this content::<br/><br/>  import unittest<br/>  import doctest<br/><br/>  def test_suite():<br/>      return unittest.TestSuite((<br/>          doctest.DocFileSuite('example1.txt'),<br/>          ))<br/>          <br/>  if __name__ == '__main__':<br/>      unittest.main(defaultTest='test_suite')<br/><br/>This is just a boilerplate code for running the test.  Now run the test using<br/>`python2.4 test_example1.py` command.<br/>You will get output with following text::<br/><br/>  File "example1.txt", line 16, in example1.txt<br/>  Failed example:<br/>      example1.goodmorning('Jack')<br/>  Expected:<br/>      'Good morning, Jack!'<br/>  Got nothing<br/><br/>Now one test failed, so implement the function now::<br/><br/>  def goodmorning(name):<br/>      "This returns a good morning message"<br/>      return "Good morning, %s!" % name<br/><br/>Now run the test again, it will run without failures.<br/><br/>Now start thinking about other functionalities required for the module.  Before<br/>start coding write about it in text file.  Decide API, write test, write code,<br/>than continue this cycle untill you finish your requirements.<br/></pre>
+</div>
+</body>
+</html>
