@@ -1,19 +1,21 @@
-# Malayalam GNU/Linux Project Group - Yahoo Groups Archive
+# My FOSS - Open Source Contributions Archive
 
-This repository contains a partial archive recovery of the **malayalamlinux** Yahoo
-Group, the original mailing list for the Malayalam GNU/Linux Project.
+A personal archive of my early Free and Open Source Software (FOSS) contributions
+and web presence, recovered from the Wayback Machine and other sources.
 
-## Group History
+## Archive Contents
+
+### Malayalam GNU/Linux Yahoo Group (2001-2003)
+
+The original mailing list for the Malayalam GNU/Linux Project.
 
 - **Group name:** malayalamlinux
 - **Email:** malayalamlinux@yahoogroups.com
 - **Created:** December 21, 2001
 - **Founded by:** Baiju M, student at NIT Calicut
 - **Members:** 55
-- **Category:** Computers & Internet / Software / Operating Systems / Unix / Linux
 - **Active period:** 2001-2003
-- **SourceForge project:** https://sourceforge.net/projects/malayalamlinux/ (registered 2002-01-17)
-- **Subscription address:** malayalamlinux-subscribe@yahoogroups.com
+- **SourceForge project:** https://sourceforge.net/projects/malayalamlinux/
 
 In 2001, this community started as "Malayalam Linux Online" with the goal of
 translating X, GNOME, and KDE into Malayalam. About ten months later, it adopted
@@ -24,37 +26,18 @@ SMC went on to become India's largest language technology developer community,
 maintaining Malayalam fonts and tools upstream for Fedora, Debian, GNOME, KDE,
 Firefox, and LibreOffice. It is now at https://smc.org.in
 
-## What's in This Archive
+**Files:**
 
-### Recovered Data
-
-| File | Description |
+| Path | Description |
 |------|-------------|
 | `archive/malayalamlinux_messages.txt` | 53 message subjects in readable text format |
 | `archive/malayalamlinux_messages.json` | Same data in JSON format |
 | `archive/extract_yahoo_group.py` | Python script used to extract data from the Wayback Machine |
 
-### Recovered Message Subjects (53 of 236+)
+### SourceForge Website (67 files)
 
-Messages #61-111 and #235-236 were recovered from Wayback Machine listing pages.
-Topics discussed include:
-
-- Malayalam in GTK2 (messages #62-65)
-- Technical terms translation (#76)
-- KBip project (#80-81)
-- Varamozhi (#84, #106)
-- Unicode Malayalam (#86-96)
-- The linguistic properties of Malayalam "Chillaksharam"s (#92, #97-98)
-- Sorting cillus (#99)
-- Indic computing standards (#102-104, #107, #110-111)
-- How to encode chillu glyphs in Unicode (#108)
-- Bill Gates Promis to Mallus (#235)
-- Showcasing Indian language support in OpenSource stall at Linux (#236)
-
-### Recovered SourceForge Website (67 files)
-
-The project website at `malayalamlinux.sourceforge.net` has been fully recovered
-from the Wayback Machine. 67 files were downloaded including:
+The project website at `malayalamlinux.sourceforge.net`, fully recovered
+from the Wayback Machine.
 
 - Project details, FAQ, and Malayalam International HOWTO
 - Malayalam fonts (TTF/OTF) metadata and GPL license
@@ -63,29 +46,24 @@ from the Wayback Machine. 67 files were downloaded including:
 - OpenOffice.org Malayalam support guide
 - Translation glossary (English-Malayalam, 131 KB PO file)
 - Screenshots of Malayalam rendering in GNOME, Yudit, and locale
-- Education proposals (Computer Laboratory for Schools)
-- Curated bookmarks and L10n project links
 
-Files are in `docs/sourceforge/` and viewable at `docs/sourceforge-site.html`.
+**Path:** `docs/sourceforge/`
 
-### Recovered Personal Website (24 files)
+### Personal Website - baijum81.tripod.com (24 files)
 
-The personal website at `baijum81.tripod.com` has been fully recovered from the
-Wayback Machine. 24 files downloaded including:
+Personal website fully recovered from the Wayback Machine.
 
 - Personal pages: About, Story (biography), Friends, Contact, "Free as in Freedom"
 - Photos: Profile photo, 1984 family photo from Mukkam, Ooty trip photos
 - SMC section: 4 Malayalam rendering screenshots, Pango diff, XKB layout
 - Font sources: 4 Akruti Malayalam FontForge (.sfd) files + MalOtf.ttf
 
-Files are in `docs/tripod/` and viewable at `docs/tripod-site.html`.
+**Path:** `docs/tripod/`
 
-### Recovered Savannah News Posts (9 posts)
+### Savannah News Posts (9 posts)
 
-8 deleted news posts by baijum81 on the SMC Savannah project page were recovered
-from a [May 2012 Wayback Machine snapshot](https://web.archive.org/web/20120529231604/http://savannah.nongnu.org/news/?group=smc).
-Only titles, dates, and authorship were captured -- the individual news pages
-were never archived by the Wayback Machine.
+8 deleted news posts by baijum81 on the SMC Savannah project page, recovered
+from a May 2012 Wayback Machine snapshot.
 
 | ID | Date | Title |
 |----|------|-------|
@@ -99,70 +77,82 @@ were never archived by the Wayback Machine.
 | 1616 | 2003-03-03 | Free 8-bit Malayalam fonts |
 | 4572 | 2006-09-18 | SMC Reloaded! (handover post, still live) |
 
-### What's Missing
+### FCI Fandom Wiki - SMC Pages (13 pages)
 
-- **Message bodies** -- Yahoo returned 999 (bot blocking) for individual message
-  pages, so the Wayback Machine only saved error pages, not actual content.
-- **Messages #1-60 and #112-234** -- These ranges were not captured in any
-  Wayback Machine listing page snapshots.
-- **Files, photos, and member list** -- Not captured by the Wayback Machine.
+Pages from the SMC wiki at `fci.fandom.com` that mention Baiju/ബൈജു,
+saved as both rendered HTML and wikitext source.
 
-## The Full Archive (Restricted)
+Includes: SMC/Foss.in/2007, SMC/Payyans, Contributors, SMC/Bylaw,
+SoC/2007, Open Letter To Mammootty, KDE Release party, meeting notes,
+and contributor lists.
 
-The complete message archive exists as a WARC file on the Internet Archive, but is
-currently access-restricted:
+**Path:** `docs/fci-wiki/`
 
-- **Item:** `yahoo-groups-2017-04-01T21-03-27Z-cdf32a`
-- **File:** `malayalamlinux.t2r3gpB.warc.gz` (617 KB)
-- **Collection:** Archive Team Yahoo! Groups (`archiveteam_yahoogroups`)
-- **Status:** `access-restricted-item: true`, all files marked `private: true`
-- **Uploader:** `lars+archive@6xq.net` (Archive Team)
-- **Item URL:** https://archive.org/details/yahoo-groups-2017-04-01T21-03-27Z-cdf32a
+### FSUG-Calicut Geocities Website (10 files)
 
-This WARC file was captured via the Yahoo Groups API in April 2017 and contains
-JSON-formatted message data. Once obtained, the `extract_yahoo_group.py` script
-can be extended to parse the WARC and extract full message bodies.
+The Free Software User Group - Calicut website at `geocities.com/fsug_calicut/`,
+recovered from the Wayback Machine. Geocities shut down in 2009.
 
-## Wayback Machine Captures
+- Homepage (early 2002 version + updated 2003 version renamed to FSUG-Kozhikode)
+- Mailing list info page (fsug-calicut@freelists.org)
+- Meeting info, news pages
+- GNU head mascot and FreeLists logo images
 
-The following Wayback Machine snapshots were used for this recovery:
+**Path:** `docs/fsug-calicut/`
 
-| Date | URL | Status | Content |
-|------|-----|--------|---------|
-| 2004-11-27 | `/group/malayalamlinux/` | 200 | Group homepage |
-| 2004-12-12 | `/group/malayalamlinux/messages/61` | 200 | Message listing (msgs #61-90) |
-| 2003-12-16 | `/group/malayalamlinux/messages/82` | 200 | Message listing (msgs #82-111) |
-| 2003-12-16 | `/group/malayalamlinux/messages/235` | 200 | Message listing (msgs #235-236) |
-| 2014-12-24 | `/neo/groups/malayalamlinux/info` | 200 | Neo-interface group info |
-| 2019-12-17 | `/api/v1/groups/malayalamlinux/` | 200 | API group metadata (JSON) |
+### FSUG-Calicut Mailing List Archive (570 files)
+
+Full mailing list archive from `freelists.org/archives/fsug-calicut/`, recovered
+from the Wayback Machine.
+
+- **451 individual messages** with full headers, body text, and threading
+- **119 index/thread listing pages**
+- **34 monthly folders** spanning June 2002 to November 2005
+- **Total size:** 6.1 MB
+
+**Path:** `docs/fsug-calicut/mailing-list/`
+
+### FSF India Forum - i18n Projects Page
+
+Page authored by Baiju M at `forum.gnu.org.in` listing Free Software i18n/l10n
+projects for Indian languages (SMC, IndLinux, Tamil Linux, Kannada, Bengali,
+Punjabi, and others). Copyright 2002, 2003 Baiju M, GFDL licensed.
+
+Recovered from Wayback Machine snapshot dated April 2003.
+
+**Path:** `docs/gnu-org-in-forum/i18n.html`
+
+### GNOME Mailing List Posts
+
+Posts by Baiju M to GNOME mailing lists, downloaded from `mail.gnome.org`.
+
+**gtk-i18n-list (2002):**
+- Oct 17, 2002: "Compose file not working" -- Malayalam locale Compose file issue
+- Nov 23, 2002: "Rendering support in printing" -- Malayalam rendering in print preview
+
+**gnome-web-list (2007):**
+- Dec 13, 2007: "[PATCH] Fix deprecation warning due to 'BrowserView' importing" --
+  Patch for the GNOME website Plone theme, plus namespace packaging discussion
+
+Each thread includes follow-up replies.
+
+**Path:** `docs/gnome-mail/`
+
+## Recovery Tools
+
+| Script | Description |
+|--------|-------------|
+| `archive/extract_yahoo_group.py` | Extract Yahoo Group data from Wayback Machine |
+| `archive/download_sourceforge.py` | Download SourceForge site from Wayback Machine |
+| `archive/download_tripod.py` | Download Tripod site from Wayback Machine |
+| `archive/download_nongnu.py` | Download Savannah/Nongnu site from Wayback Machine |
 
 ## TODO
 
-- [ ] **Request access to the full WARC archive.** Email the following as the
-      original group founder to request access:
-  - Archive Team uploader: `lars+archive@6xq.net`
-  - Archive Team: `archiveteam@archiveteam.org`
-  - Internet Archive: `info@archive.org`
-  - Reference item: `yahoo-groups-2017-04-01T21-03-27Z-cdf32a`
-  - Reference guide: https://datahorde.org/how-to-recover-your-yahoo-groups-from-the-internet-archive/
-- [ ] **Parse WARC file once obtained.** Extend `extract_yahoo_group.py` to parse
-      the WARC file (contains Yahoo Groups API JSON responses) and extract full
-      message bodies, authors, and dates into readable format (text and mbox).
-- [ ] **Check with other early members** (karunakar, shaji, and others listed on
-      the SourceForge project) whether anyone has personal email archives of
-      the mailing list from 2001-2003.
-- [ ] **Check personal email archives.** Messages sent to the group were also
-      delivered to members via email. Old email backups may contain the full
-      message history.
-- [ ] **Cross-reference with SMC archives.** Some discussions may have continued
-      on the SMC mailing lists at `lists.smc.org.in` after the group was renamed.
-
-## Yahoo Groups Shutdown Timeline
-
-- **2019-10-28** -- Uploading new content disabled
-- **2019-12-14** -- All content made unavailable
-- **2020-10-12** -- Creation of new groups disabled
-- **2020-12-16** -- Web interface and mailing lists shut down permanently
+- [ ] **Request access to the full Yahoo Group WARC archive.** The complete message
+      archive exists as a WARC file on the Internet Archive but is currently
+      access-restricted (item: `yahoo-groups-2017-04-01T21-03-27Z-cdf32a`).
+- [ ] **Check personal email archives** for mailing list messages from 2001-2003.
 
 ## Related Links
 
@@ -171,5 +161,3 @@ The following Wayback Machine snapshots were used for this recovery:
 - SMC on Wikipedia: https://en.wikipedia.org/wiki/Swathanthra_Malayalam_Computing
 - SourceForge project: https://sourceforge.net/projects/malayalamlinux/
 - 12th year of SMC: https://12.smc.org.in/en.html
-- Archive Team Yahoo! Groups: https://archive.org/details/archiveteam_yahoogroups
-- Yahoo Groups recovery guide: https://datahorde.org/how-to-recover-your-yahoo-groups-from-the-internet-archive/
