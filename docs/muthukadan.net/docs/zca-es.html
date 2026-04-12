@@ -1,0 +1,4366 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.4.1: http://docutils.sourceforge.net/" />
+<title>Arquitectura de Componentes de Zope</title>
+<style type="text/css">
+
+/*
+:Author: Fred L. Drake, Jr.
+:date: $Date: 2004/03/31 22:31:05 $
+:version: $Revision: 1.7 $
+
+This stylesheet combines some ideas from the two stylesheets
+distributed with docutils and enhances them for Zope 3 documentation.
+*/
+
+@import url(default.css);
+
+body {
+  margin: 0px 1em 1em 4em;
+  padding: 0px; }
+
+h1.title {
+  font-size: 150%;
+  min-height: 42px; }
+
+div.section {
+  margin: 0px 0px 1.5em 0px; }
+
+div.section h1 {
+  background-color: rgb(230,230,230);
+  margin-left: -2em;
+  padding: 0.2em;
+  padding-left: 0.35em;
+  padding-top: 0.35em;
+  /* This grey underline make this more visually distinctive on LCD
+     monitors, which often don't have enough contrast. */
+  border-right: thin solid rgb(180,180,180);
+  border-bottom: thin solid rgb(180,180,180); }
+
+div.section div.section div.section h3 {
+  margin-left: -1.9em;
+  margin-bottom: -0.5em; }
+
+h1 {
+  font-family: sans-serif;
+  font-size: 135%; }
+
+h2 {
+  font-family: sans-serif;
+  font-size: 120%; }
+
+h3 {
+  font-family: sans-serif;
+  font-size: 105%; }
+
+h4 {
+  font-family: sans-serif;
+  font-size: 100%; }
+
+h5 {
+  font-family: sans-serif;
+  font-size: 100%; }
+
+h6 {
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 100%; }
+
+hr {
+  width: 75%; }
+
+.literal .pre {
+  background-color: white;
+  font-family: lucidatypewriter, "lucida typewriter", sans-serif; }
+
+.literal-block {
+  border: thin solid rgb(180,180,180);
+  font-family: lucidatypewriter, "lucida typewriter", monospace;
+  font-size: 80%;
+  padding: 0.5em; }
+
+table.table {
+  margin-left: 2em;
+  margin-right: 2em; }
+
+table.table thead {
+  background-color: rgb(230,230,230); }
+
+dt {
+  font-weight: bold; }
+
+/* docutils uses the "option" class with both "col" and "span"
+   elements, so we have to be explicit here */
+.option-list span.option {
+  font-weight: bold; }
+
+.option-list kbd {
+  font-family: inherit; }
+
+</style>
+</head>
+<body>
+<div class="document" id="arquitectura-de-componentes-de-zope">
+<h1 class="title">Arquitectura de Componentes de Zope</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr class="field"><th class="docinfo-name">Autor:</th><td class="field-body">Baiju M</td>
+</tr>
+<tr><th class="docinfo-name">Version:</th>
+<td>0.4.2</td></tr>
+<tr class="field"><th class="docinfo-name">URL original:</th><td class="field-body"><a class="reference" href="http://www.muthukadan.net/docs/zca.pdf">http://www.muthukadan.net/docs/zca.pdf</a></td>
+</tr>
+<tr class="field"><th class="docinfo-name">Traductor:</th><td class="field-body">Lorenzo Gil Sanchez &lt;<a class="reference" href="mailto:lgs&#64;sicem.biz">lgs&#64;sicem.biz</a>&gt;</td>
+</tr>
+<tr class="field"><th class="docinfo-name">URL en español:</th><td class="field-body"><a class="reference" href="http://www.muthukadan.net/docs/zca-es.pdf">http://www.muthukadan.net/docs/zca-es.pdf</a></td>
+</tr>
+</tbody>
+</table>
+<p>Copyright (C) 2007 Baiju M &lt;baiju.m.mail AT gmail.com&gt;.</p>
+<p>Se permite la copia, distribución y/o modificación de este documento
+bajo los términos de la Licencia de Documentación Libre GNU, Versión
+1.2 o (si lo prefiere) cualquier otra versión posterior publicada por
+la Free Software Foundation.</p>
+<p>El código fuente en este documento está sujeto a la Licencia
+Pública Zope, Versión 2.1 (ZPL).</p>
+<p>EL PROGRAMA INCLUIDO EN ESTE DOCUMENTO SE OFRECE &quot;TAL CUAL&quot;
+SIN GARANTÍA DE NINGÚN TIPO, YA SEA EXPLÍCITA O IMPLÍCITA, INCLUYENDO,
+PERO SIN LIMITARSE A, LAS GARANTÍAS IMPLÍCITAS MERCANTILES Y DE
+APTITUD PARA UN PROPÓSITO DETERMINADO.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Gracias a Kent Tenney (Wisconsin, USA) y Brad Allen (Dallas, USA)
+por sus sugerencias.</p>
+</div>
+<div class="contents topic">
+<p class="topic-title first"><a id="contents" name="contents">Contents</a></p>
+<ul class="auto-toc simple">
+<li><a class="reference" href="#primeros-pasos" id="id15" name="id15">1&nbsp;&nbsp;&nbsp;Primeros pasos</a><ul class="auto-toc">
+<li><a class="reference" href="#introducci-n" id="id16" name="id16">1.1&nbsp;&nbsp;&nbsp;Introducción</a></li>
+<li><a class="reference" href="#una-breve-historia" id="id17" name="id17">1.2&nbsp;&nbsp;&nbsp;Una breve historia</a></li>
+<li><a class="reference" href="#instalaci-n" id="id18" name="id18">1.3&nbsp;&nbsp;&nbsp;Instalación</a></li>
+<li><a class="reference" href="#experimentando-con-c-digo" id="id19" name="id19">1.4&nbsp;&nbsp;&nbsp;Experimentando con código</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#un-ejemplo" id="id20" name="id20">2&nbsp;&nbsp;&nbsp;Un ejemplo</a><ul class="auto-toc">
+<li><a class="reference" href="#id9" id="id21" name="id21">2.1&nbsp;&nbsp;&nbsp;Introducción</a></li>
+<li><a class="reference" href="#enfoque-procedural" id="id22" name="id22">2.2&nbsp;&nbsp;&nbsp;Enfoque procedural</a></li>
+<li><a class="reference" href="#enfoque-orientado-a-objetos" id="id23" name="id23">2.3&nbsp;&nbsp;&nbsp;Enfoque orientado a objetos</a></li>
+<li><a class="reference" href="#el-patr-n-adaptador" id="id24" name="id24">2.4&nbsp;&nbsp;&nbsp;El patrón adaptador</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#interfaces" id="id25" name="id25">3&nbsp;&nbsp;&nbsp;Interfaces</a><ul class="auto-toc">
+<li><a class="reference" href="#id10" id="id26" name="id26">3.1&nbsp;&nbsp;&nbsp;Introducción</a></li>
+<li><a class="reference" href="#declarando-interfaces" id="id27" name="id27">3.2&nbsp;&nbsp;&nbsp;Declarando interfaces</a></li>
+<li><a class="reference" href="#implementando-interfaces" id="id28" name="id28">3.3&nbsp;&nbsp;&nbsp;Implementando interfaces</a></li>
+<li><a class="reference" href="#ejemplo-revisado" id="id29" name="id29">3.4&nbsp;&nbsp;&nbsp;Ejemplo revisado</a></li>
+<li><a class="reference" href="#interfaces-de-marcado" id="id30" name="id30">3.5&nbsp;&nbsp;&nbsp;Interfaces de marcado</a></li>
+<li><a class="reference" href="#invariantes" id="id31" name="id31">3.6&nbsp;&nbsp;&nbsp;Invariantes</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#adaptadores" id="id32" name="id32">4&nbsp;&nbsp;&nbsp;Adaptadores</a><ul class="auto-toc">
+<li><a class="reference" href="#implementaci-n" id="id33" name="id33">4.1&nbsp;&nbsp;&nbsp;Implementación</a></li>
+<li><a class="reference" href="#registro" id="id34" name="id34">4.2&nbsp;&nbsp;&nbsp;Registro</a></li>
+<li><a class="reference" href="#patr-n-de-consulta" id="id35" name="id35">4.3&nbsp;&nbsp;&nbsp;Patrón de consulta</a></li>
+<li><a class="reference" href="#recuperar-un-adaptador-usando-una-interfaz" id="id36" name="id36">4.4&nbsp;&nbsp;&nbsp;Recuperar un adaptador usando una interfaz</a></li>
+<li><a class="reference" href="#patr-n-de-adaptador" id="id37" name="id37">4.5&nbsp;&nbsp;&nbsp;Patrón de Adaptador</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#utilidad" id="id38" name="id38">5&nbsp;&nbsp;&nbsp;Utilidad</a><ul class="auto-toc">
+<li><a class="reference" href="#id14" id="id39" name="id39">5.1&nbsp;&nbsp;&nbsp;Introducción</a></li>
+<li><a class="reference" href="#utilidad-simple" id="id40" name="id40">5.2&nbsp;&nbsp;&nbsp;Utilidad simple</a></li>
+<li><a class="reference" href="#utilidad-con-nombre" id="id41" name="id41">5.3&nbsp;&nbsp;&nbsp;Utilidad con nombre</a></li>
+<li><a class="reference" href="#f-brica" id="id42" name="id42">5.4&nbsp;&nbsp;&nbsp;Fábrica</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#adaptadores-avanzados" id="id43" name="id43">6&nbsp;&nbsp;&nbsp;Adaptadores avanzados</a><ul class="auto-toc">
+<li><a class="reference" href="#multi-adaptador" id="id44" name="id44">6.1&nbsp;&nbsp;&nbsp;Multi adaptador</a></li>
+<li><a class="reference" href="#adaptador-de-subscripci-n" id="id45" name="id45">6.2&nbsp;&nbsp;&nbsp;Adaptador de subscripción</a></li>
+<li><a class="reference" href="#manejador" id="id46" name="id46">6.3&nbsp;&nbsp;&nbsp;Manejador</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#uso-de-la-zca-en-zope" id="id47" name="id47">7&nbsp;&nbsp;&nbsp;Uso de la ZCA en Zope</a><ul class="auto-toc">
+<li><a class="reference" href="#zcml" id="id48" name="id48">7.1&nbsp;&nbsp;&nbsp;ZCML</a></li>
+<li><a class="reference" href="#redefiniciones" id="id49" name="id49">7.2&nbsp;&nbsp;&nbsp;Redefiniciones</a></li>
+<li><a class="reference" href="#namechooser-elejidor-de-nombres" id="id50" name="id50">7.3&nbsp;&nbsp;&nbsp;NameChooser (Elejidor de nombres)</a></li>
+<li><a class="reference" href="#locationphysicallylocatable" id="id51" name="id51">7.4&nbsp;&nbsp;&nbsp;LocationPhysicallyLocatable</a></li>
+<li><a class="reference" href="#defaultsized" id="id52" name="id52">7.5&nbsp;&nbsp;&nbsp;DefaultSized</a></li>
+<li><a class="reference" href="#zopeversionutility" id="id53" name="id53">7.6&nbsp;&nbsp;&nbsp;ZopeVersionUtility</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#referencia" id="id54" name="id54">8&nbsp;&nbsp;&nbsp;Referencia</a><ul class="auto-toc">
+<li><a class="reference" href="#attribute" id="id55" name="id55">8.1&nbsp;&nbsp;&nbsp;Attribute</a></li>
+<li><a class="reference" href="#declaration" id="id56" name="id56">8.2&nbsp;&nbsp;&nbsp;Declaration</a></li>
+<li><a class="reference" href="#interface" id="id57" name="id57">8.3&nbsp;&nbsp;&nbsp;Interface</a></li>
+<li><a class="reference" href="#adapts" id="id58" name="id58">8.4&nbsp;&nbsp;&nbsp;adapts</a></li>
+<li><a class="reference" href="#alsoprovides" id="id59" name="id59">8.5&nbsp;&nbsp;&nbsp;alsoProvides</a></li>
+<li><a class="reference" href="#classimplements" id="id60" name="id60">8.6&nbsp;&nbsp;&nbsp;classImplements</a></li>
+<li><a class="reference" href="#classimplementsonly" id="id61" name="id61">8.7&nbsp;&nbsp;&nbsp;classImplementsOnly</a></li>
+<li><a class="reference" href="#classprovides" id="id62" name="id62">8.8&nbsp;&nbsp;&nbsp;classProvides</a></li>
+<li><a class="reference" href="#componentlookuperror" id="id63" name="id63">8.9&nbsp;&nbsp;&nbsp;ComponentLookupError</a></li>
+<li><a class="reference" href="#createobject" id="id64" name="id64">8.10&nbsp;&nbsp;&nbsp;createObject</a></li>
+<li><a class="reference" href="#directlyprovidedby" id="id65" name="id65">8.11&nbsp;&nbsp;&nbsp;directlyProvidedBy</a></li>
+<li><a class="reference" href="#directlyprovides" id="id66" name="id66">8.12&nbsp;&nbsp;&nbsp;directlyProvides</a></li>
+<li><a class="reference" href="#getadapter" id="id67" name="id67">8.13&nbsp;&nbsp;&nbsp;getAdapter</a></li>
+<li><a class="reference" href="#getadapterincontext" id="id68" name="id68">8.14&nbsp;&nbsp;&nbsp;getAdapterInContext</a></li>
+<li><a class="reference" href="#getadapters" id="id69" name="id69">8.15&nbsp;&nbsp;&nbsp;getAdapters</a></li>
+<li><a class="reference" href="#getallutilitiesregisteredfor" id="id70" name="id70">8.16&nbsp;&nbsp;&nbsp;getAllUtilitiesRegisteredFor</a></li>
+<li><a class="reference" href="#getfactoriesfor" id="id71" name="id71">8.17&nbsp;&nbsp;&nbsp;getFactoriesFor</a></li>
+<li><a class="reference" href="#getfactoryinterfaces" id="id72" name="id72">8.18&nbsp;&nbsp;&nbsp;getFactoryInterfaces</a></li>
+<li><a class="reference" href="#getglobalsitemanager" id="id73" name="id73">8.19&nbsp;&nbsp;&nbsp;getGlobalSiteManager</a></li>
+<li><a class="reference" href="#getmultiadapter" id="id74" name="id74">8.20&nbsp;&nbsp;&nbsp;getMultiAdapter</a></li>
+<li><a class="reference" href="#getsitemanager" id="id75" name="id75">8.21&nbsp;&nbsp;&nbsp;getSiteManager</a></li>
+<li><a class="reference" href="#getutilitiesfor" id="id76" name="id76">8.22&nbsp;&nbsp;&nbsp;getUtilitiesFor</a></li>
+<li><a class="reference" href="#getutility" id="id77" name="id77">8.23&nbsp;&nbsp;&nbsp;getUtility</a></li>
+<li><a class="reference" href="#handle" id="id78" name="id78">8.24&nbsp;&nbsp;&nbsp;handle</a></li>
+<li><a class="reference" href="#implementedby" id="id79" name="id79">8.25&nbsp;&nbsp;&nbsp;implementedBy</a></li>
+<li><a class="reference" href="#implementer" id="id80" name="id80">8.26&nbsp;&nbsp;&nbsp;implementer</a></li>
+<li><a class="reference" href="#implements" id="id81" name="id81">8.27&nbsp;&nbsp;&nbsp;implements</a></li>
+<li><a class="reference" href="#implementsonly" id="id82" name="id82">8.28&nbsp;&nbsp;&nbsp;implementsOnly</a></li>
+<li><a class="reference" href="#moduleprovides" id="id83" name="id83">8.29&nbsp;&nbsp;&nbsp;moduleProvides</a></li>
+<li><a class="reference" href="#nolongerprovides" id="id84" name="id84">8.30&nbsp;&nbsp;&nbsp;noLongerProvides</a></li>
+<li><a class="reference" href="#provideadapter" id="id85" name="id85">8.31&nbsp;&nbsp;&nbsp;provideAdapter</a></li>
+<li><a class="reference" href="#providehandler" id="id86" name="id86">8.32&nbsp;&nbsp;&nbsp;provideHandler</a></li>
+<li><a class="reference" href="#providesubscriptionadapter" id="id87" name="id87">8.33&nbsp;&nbsp;&nbsp;provideSubscriptionAdapter</a></li>
+<li><a class="reference" href="#provideutility" id="id88" name="id88">8.34&nbsp;&nbsp;&nbsp;provideUtility</a></li>
+<li><a class="reference" href="#providedby" id="id89" name="id89">8.35&nbsp;&nbsp;&nbsp;providedBy</a></li>
+<li><a class="reference" href="#queryadapter" id="id90" name="id90">8.36&nbsp;&nbsp;&nbsp;queryAdapter</a></li>
+<li><a class="reference" href="#queryadapterincontext" id="id91" name="id91">8.37&nbsp;&nbsp;&nbsp;queryAdapterInContext</a></li>
+<li><a class="reference" href="#querymultiadapter" id="id92" name="id92">8.38&nbsp;&nbsp;&nbsp;queryMultiAdapter</a></li>
+<li><a class="reference" href="#queryutility" id="id93" name="id93">8.39&nbsp;&nbsp;&nbsp;queryUtility</a></li>
+<li><a class="reference" href="#registeradapter" id="id94" name="id94">8.40&nbsp;&nbsp;&nbsp;registerAdapter</a></li>
+<li><a class="reference" href="#registeredadapters" id="id95" name="id95">8.41&nbsp;&nbsp;&nbsp;registeredAdapters</a></li>
+<li><a class="reference" href="#registeredhandlers" id="id96" name="id96">8.42&nbsp;&nbsp;&nbsp;registeredHandlers</a></li>
+<li><a class="reference" href="#registeredsubscriptionadapters" id="id97" name="id97">8.43&nbsp;&nbsp;&nbsp;registeredSubscriptionAdapters</a></li>
+<li><a class="reference" href="#registeredutilities" id="id98" name="id98">8.44&nbsp;&nbsp;&nbsp;registeredUtilities</a></li>
+<li><a class="reference" href="#registerhandler" id="id99" name="id99">8.45&nbsp;&nbsp;&nbsp;registerHandler</a></li>
+<li><a class="reference" href="#registersubscriptionadapter" id="id100" name="id100">8.46&nbsp;&nbsp;&nbsp;registerSubscriptionAdapter</a></li>
+<li><a class="reference" href="#registerutility" id="id101" name="id101">8.47&nbsp;&nbsp;&nbsp;registerUtility</a></li>
+<li><a class="reference" href="#subscribers" id="id102" name="id102">8.48&nbsp;&nbsp;&nbsp;subscribers</a></li>
+<li><a class="reference" href="#unregisteradapter" id="id103" name="id103">8.49&nbsp;&nbsp;&nbsp;unregisterAdapter</a></li>
+<li><a class="reference" href="#unregisterhandler" id="id104" name="id104">8.50&nbsp;&nbsp;&nbsp;unregisterHandler</a></li>
+<li><a class="reference" href="#unregistersubscriptionadapter" id="id105" name="id105">8.51&nbsp;&nbsp;&nbsp;unregisterSubscriptionAdapter</a></li>
+<li><a class="reference" href="#unregisterutility" id="id106" name="id106">8.52&nbsp;&nbsp;&nbsp;unregisterUtility</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id15" id="primeros-pasos" name="primeros-pasos">1&nbsp;&nbsp;&nbsp;Primeros pasos</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id16" id="introducci-n" name="introducci-n">1.1&nbsp;&nbsp;&nbsp;Introducción</a></h2>
+<p>Desarrollar un sistema software grande es siempre muy complicado. Se
+ha visto que un enfoque orientado a objetos para el análisis, diseño
+y programación funciona bien al tratar con sistemas grandes. El diseño
+basado en componentes, y la programación utilizando componentes se
+están haciendo muy populares últimamente. Hay muchos marcos de trabajo
+que soportan el diseño basado en componentes en diferentes lenguajes,
+algunos incluso son neutrales con respecto al lenguaje. Ejemplos de
+esto son el COM de Microsoft y el XPCOM de Mozilla.</p>
+<p>La Arquitectura de Componentes de Zope (ZCA) es un marco de trabajo
+en Python que soporta el diseño y la programación basada en componentes.
+La ZCA funciona muy bien al desarrollar sistemas de software grandes en
+Python. La ZCA no es específica al servidor de aplicaciones Zope, se
+puede utilizar para desarrollar cualquier aplicación Python. Quizás
+debería llamarse la <cite>Arquitectura de Componentes de Python</cite>.</p>
+<p>Hay dos paquetes principales relacionados con la arquitectura de
+componentes de Zope:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">zope.interface</span></tt> utilizado para definir la interfaz de un
+componente.</li>
+<li><tt class="docutils literal"><span class="pre">zope.component</span></tt> se encarga de registrar y recuperar
+componentes.</li>
+</ul>
+</blockquote>
+<p>El objetivo fundamental de la arquitectura de componentes de Zope es
+utilizar objetos Python de forma eficiente. Los componentes son objetos
+reusables con introspección para sus interfaces. Un componente provee
+una interfaz implementada en una clase, o cualquier objeto llamable.
+No importa cómo se implemente el componente, lo que importa es
+que cumpla los contratos definidos en su interfaz. Utilizando la
+arquitectura de componentes de Zope puedes distribuir la complejidad
+de sistemas entre varios componentes cooperantes. La arquitectura de
+componentes de Zope te ayuda a crear dos tipos básicos de componentes:
+<cite>adaptador</cite> y <cite>utilidad</cite>.</p>
+<p>Recuerda, la ZCA no trata sobre los componentes en sí mismo, sino sobre
+la creación, registro y recuperación de los componentes. Recuerda
+también, un <cite>adaptador</cite> es una clase Python normal (o una fábrica en
+general) y una <cite>utilidad</cite> es un objeto llamable Python normal.</p>
+<p>El marco de trabajo de la ZCA se desarrolla como parte del proyecto
+Zope 3. La ZCA, como ya se ha mencionado, es un marco de trabajo
+puramente Python, por tanto se puede utilizar en cualquier tipo de
+aplicación Python. Actualmente ambos proyectos Zope 3 y Zope 2 utilizan
+este marco de trabajo extensívamente. Hay otros muchos proyectos
+incluyendo aplicaciones no web que utilizan la Arquitectura de
+Componentes de Zope <a class="footnote-reference" href="#projects" id="id1" name="id1">[1]</a>.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id17" id="una-breve-historia" name="una-breve-historia">1.2&nbsp;&nbsp;&nbsp;Una breve historia</a></h2>
+<p>El proyecto del marco de trabajo ZCA comenzó en 2001 como parte del
+proyecto Zope 3. Fue tomando forma a partir de las lecciones aprendidas
+al desarrollar sistemas software grandes usando Zope 2. Jim Fulton fue
+el jefe de proyecto de este proyecto. Mucha gente contribuyó al diseño
+y a la implementación, incluyendo pero sin limitarse a, Stephan
+Richter, Philipp von Weitershausen, Guido van Rossum (también conocido
+como <em>Python BDFL</em>), Tres Seaver, Phillip J Eby y Martijn Faassen.</p>
+<p>Inicialmente la ZCA definía componentes adicionales; <cite>servicios</cite> y
+<cite>vistas</cite>, pero los desarrolladores se dieron cuenta de que la utilidad
+podía sustituir <cite>servicio</cite> y el multi-adaptador podía sustituir <cite>view</cite>.
+Ahora la ZCA tiene un número muy pequeño de tipos de componentes
+principales: utilidades, adaptadores, subscriptores y manejadores. En
+realidad, subscriptores y manejadores son dos tipos especiales de
+adaptadores.</p>
+<p>Durante el ciclo de la versión Zope 3.2, Jim Fulton propuso una gran
+simplificación de la ZCA <a class="footnote-reference" href="#proposal" id="id2" name="id2">[2]</a>. Con esta simplificación se creó
+una nueva interfaz única (<cite>IComponentRegistry</cite>) para registrar
+componentes locales y globales.</p>
+<p>El paquete <tt class="docutils literal"><span class="pre">zope.component</span></tt> tenía una larga lista de dependencias,
+muchas de las cuales no eran necesarias para una aplicación no Zope 3.
+Durante la PyCon 2007, Jim Fulton añadió la característica
+<tt class="docutils literal"><span class="pre">extras_require</span></tt> de setuptools para permitir la separación de la
+funcionalidad básica de la ZCA de las características adicionales
+<a class="footnote-reference" href="#extras" id="id3" name="id3">[3]</a>.</p>
+<p>Hoy el proyecto de la ZCA es un proyecto independiente con su propio
+ciclo de versiones y su repositorio Subversion. Sin embargo, los
+problemas y los errores aún se controlan como parte del proyecto
+Zope 3 <a class="footnote-reference" href="#bugs" id="id4" name="id4">[4]</a>, y la lista principal zope-dev se utiliza para los
+debates de desarrollo <a class="footnote-reference" href="#discussions" id="id5" name="id5">[5]</a>.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id18" id="instalaci-n" name="instalaci-n">1.3&nbsp;&nbsp;&nbsp;Instalación</a></h2>
+<p>El paquete <tt class="docutils literal"><span class="pre">zope.component</span></tt>, junto con el paquete <tt class="docutils literal"><span class="pre">zope.interface</span></tt>
+son el núcleo de la arquitectura de componentes Zope. Ofrecen
+facilidades para definir, registrar y buscar componentes. El paquete
+<tt class="docutils literal"><span class="pre">zope.component</span></tt> y sus dependencias están disponibles en formato
+egg (huevo) desde el Índice de Paquetes Python (PyPI) <a class="footnote-reference" href="#pypi" id="id6" name="id6">[6]</a>.</p>
+<p>Puedes instalar <tt class="docutils literal"><span class="pre">zope.component</span></tt> y sus dependencias utilizando
+<cite>easy_install</cite> <a class="footnote-reference" href="#easyinstall" id="id7" name="id7">[7]</a></p>
+<pre class="literal-block">
+$ easy_install zope.component
+</pre>
+<p>Este comando descargará <tt class="docutils literal"><span class="pre">zope.component</span></tt> y sus dependencias desde
+PyPI y los instalará en tu ruta Python.</p>
+<p>Alternativamente, puedes descargar <tt class="docutils literal"><span class="pre">zope.component</span></tt> y sus
+dependencias desde PyPI y luego instalarlos. Instala los paquetes en
+el siguiente orden. En Windows, puede que necesitas los paquetes
+binarios de <tt class="docutils literal"><span class="pre">zope.interface</span></tt> y <tt class="docutils literal"><span class="pre">zope.proxy</span></tt>.</p>
+<blockquote>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">zope.proxy</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">zope.deferredimport</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">zope.event</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">zope.deprecation</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+</ol>
+</blockquote>
+<p>Para instalar estos paquetes, después de haberlos descargados, puedes
+utilizar el comando <tt class="docutils literal"><span class="pre">easy_install</span></tt> con los huevos como argumento.
+(También puedes darle todos estos huevos como argumneto en la misma
+linea.):</p>
+<pre class="literal-block">
+$ easy_install /path/to/zope.interface-3.4.x.tar.gz
+$ easy_install /path/to/zope.proxy-3.4.x.tar.gz
+...
+</pre>
+<p>Estos métodos instalan la ZCA en el <cite>Python de sistema</cite>, en el
+directorio <tt class="docutils literal"><span class="pre">site-packages</span></tt>, lo cual puede causar problemas. En
+un mensaje a la lista de correo, Jim Fulton recomienda que no se
+utilice el Python de sistema <a class="footnote-reference" href="#systempython" id="id8" name="id8">[8]</a>.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id19" id="experimentando-con-c-digo" name="experimentando-con-c-digo">1.4&nbsp;&nbsp;&nbsp;Experimentando con código</a></h2>
+<p><tt class="docutils literal"><span class="pre">virtualenv</span></tt> ay <tt class="docutils literal"><span class="pre">zc.buildout</span></tt> son herramientas que instalan la
+ZCA en un entorno de trabajo aislado. Esto es una buena práctica
+para experimentar con código y el estar familiarizado con estas
+herramientas será beneficioso para desarrollar e implantar
+aplicaciones.</p>
+<p>Puedes instalar <tt class="docutils literal"><span class="pre">virtualenv</span></tt> usando <tt class="docutils literal"><span class="pre">easy_install</span></tt>:</p>
+<pre class="literal-block">
+$ easy_install virtualenv
+</pre>
+<p>Ahora crea un nuevo entorno así:</p>
+<pre class="literal-block">
+$ virtualenv miev
+</pre>
+<p>Esto creará un nuevo entorno virtual en el directorio <tt class="docutils literal"><span class="pre">miev</span></tt>.
+Ahora, desde dentro del directorio <tt class="docutils literal"><span class="pre">miev</span></tt>, puedes instalar
+<tt class="docutils literal"><span class="pre">zope.component</span></tt> y sus dependencias utilizando el <tt class="docutils literal"><span class="pre">easy_install</span></tt>
+que hay dentro del directorio <tt class="docutils literal"><span class="pre">miev/bin</span></tt>:</p>
+<pre class="literal-block">
+$ cd miev
+$ ./bin/easy_install zope.component
+</pre>
+<p>Ahora puedes importar <tt class="docutils literal"><span class="pre">zope.interface</span></tt> y <tt class="docutils literal"><span class="pre">zope.component</span></tt> desde
+el nuevo intérprete <tt class="docutils literal"><span class="pre">python</span></tt> dentro del directorio <tt class="docutils literal"><span class="pre">miev/bin</span></tt>:</p>
+<pre class="literal-block">
+$ ./bin/python
+</pre>
+<p>Este comando ejecutará un intérprete de Python que puedes usar
+para ejecutar el código de este libro.</p>
+<p>Utilizando <tt class="docutils literal"><span class="pre">zc.buildout</span></tt> con la receta <tt class="docutils literal"><span class="pre">zc.recipe.egg</span></tt> se
+puede crear un intérprete de Python con los huevos Python especificados.
+Primero instala <tt class="docutils literal"><span class="pre">zc.buildout</span></tt> usando el comando <tt class="docutils literal"><span class="pre">easy_install</span></tt>.
+(Puedes hacerlo también dentro de un entorno virtual). Para crear un
+nuevo buildout para experimentar con huevos Python, primero crea un
+directorio e inicialízalo  usando el comando <tt class="docutils literal"><span class="pre">buildout</span> <span class="pre">init</span></tt>:</p>
+<pre class="literal-block">
+$ mkdir mibuildout
+$ cd mibuildout
+$ buildout init
+</pre>
+<p>Ahora el nuevo directorio <tt class="docutils literal"><span class="pre">mibuildout</span></tt> es un buildout. El archivo
+de configuración predeterminado de buildout es <cite>buildout.cfg</cite> . Después
+de la inicialización, tendrá el siguiente contenido:</p>
+<pre class="literal-block">
+[buildout]
+parts =
+</pre>
+<p>Puedes cambiarlo a:</p>
+<pre class="literal-block">
+[buildout]
+parts = py
+
+[py]
+recipe = zc.recipe.egg
+interpreter = python
+eggs = zope.component
+</pre>
+<p>Ahora ejecuta el comando <tt class="docutils literal"><span class="pre">buildout</span></tt> disponible dentro del directorio
+<tt class="docutils literal"><span class="pre">mibuildout/bin</span></tt> sin ningún argumento. Esto creará un nuevo intérprete
+Python dentro del directorio <tt class="docutils literal"><span class="pre">mibuildout/bin</span></tt>:</p>
+<pre class="literal-block">
+$ ./bin/buildout
+$ ./bin/python
+</pre>
+<p>Este comando ejecutará un intérprete de Python que puedes usar
+para ejecutar el código de este libro.</p>
+<table class="docutils footnote" frame="void" id="projects" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1" name="projects">[1]</a></td><td><a class="reference" href="http://wiki.zope.org/zope3/ComponentArchitecture">http://wiki.zope.org/zope3/ComponentArchitecture</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="proposal" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2" name="proposal">[2]</a></td><td><a class="reference" href="http://wiki.zope.org/zope3/LocalComponentManagementSimplification">http://wiki.zope.org/zope3/LocalComponentManagementSimplification</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="extras" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3" name="extras">[3]</a></td><td><a class="reference" href="http://peak.telecommunity.com/DevCenter/setuptools#declaring-dependencies">http://peak.telecommunity.com/DevCenter/setuptools#declaring-dependencies</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="bugs" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4" name="bugs">[4]</a></td><td><a class="reference" href="https://bugs.launchpad.net/zope3">https://bugs.launchpad.net/zope3</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="discussions" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5" name="discussions">[5]</a></td><td><a class="reference" href="http://mail.zope.org/mailman/listinfo/zope-dev">http://mail.zope.org/mailman/listinfo/zope-dev</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="pypi" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6" name="pypi">[6]</a></td><td>Repository of Python packages: <a class="reference" href="http://pypi.python.org/pypi">http://pypi.python.org/pypi</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="easyinstall" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7" name="easyinstall">[7]</a></td><td><a class="reference" href="http://peak.telecommunity.com/DevCenter/EasyInstall">http://peak.telecommunity.com/DevCenter/EasyInstall</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="systempython" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8" name="systempython">[8]</a></td><td><a class="reference" href="http://article.gmane.org/gmane.comp.web.zope.zope3/21045">http://article.gmane.org/gmane.comp.web.zope.zope3/21045</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id20" id="un-ejemplo" name="un-ejemplo">2&nbsp;&nbsp;&nbsp;Un ejemplo</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id21" id="id9" name="id9">2.1&nbsp;&nbsp;&nbsp;Introducción</a></h2>
+<p>Considera una aplicación de gestión para registrar los huéspedes que se
+hospedan en un hotel. Python puede implementar esto de varias formas
+distintas. Empezaremos con un mirada breve a un enfoque procedural, y
+después cambiaremos a un enfoque orientado a objetos básico. Mientras
+examinamos el enfoque orientado a objetos, veremos como como podemos
+beneficiarnos de los patrones de diseño clásicos, <cite>adaptador</cite> e
+<cite>interface</cite>. Esto nos llevará al mundo de la Arquitectura de Componentes
+de Zope.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id22" id="enfoque-procedural" name="enfoque-procedural">2.2&nbsp;&nbsp;&nbsp;Enfoque procedural</a></h2>
+<p>En una aplicación de gestión, el almacenamiento de los datos es muy
+importante. Por simplicidad, este ejemplo utilizará un diccionario
+Python como almacenamiento. Las claves del diccionario serán
+identificadores únicos para un huesped en particular. Y el valor
+será otro diccionario cuyas claves son los nombres de las propiedades:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; huespedes_db = {} #clave: id único, valor: detalles en un diccionario
+</pre>
+<p>En un método simplista, una función que acepte detalles como argumentos
+es suficiente para hacer el registro. También necesitas una función
+auxiliar para obtener el próximo identificador de tu almacenamiento de
+datos.</p>
+<p>Esta función auxiliar, para obtener el próximo identificador se puede
+implementar así:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def proximo_id():
+...     claves = huespedes_db.keys()
+...     if claves == []:
+...         proximo = 1
+...     else:
+...         proximo = max(claves) + 1
+...     return proximo
+</pre>
+<p>Como puedes ver, la implementación de la función <cite>proximo_id</cite> es muy
+simple. Bueno, no es la forma ideal, pero es suficiente para explicar
+conceptos. La función primero obtiene todas las claves del
+almacenamiento en una lista y comprueba si está vacía o no. Si está
+vacía, por tanto ningún elemento esta almacenado, devuelve <cite>1</cite> como
+el próximo identificador. Y si la lista no está vacía, el próximo
+identificador se calcula sumando <cite>1</cite> al valor máximo de la lista.</p>
+<p>La función para registrar un huesped puede obtener el próximo
+identificador usando la función <cite>proximo_id</cite>, y luego asignando
+los detalles de un huesped usando un diccionario. Aquí está la función
+para obtener los detalles y almacenar en la base de datos:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def registrar_huesped(nombre, lugar):
+...     huesped_id = proximo_id()
+...     huespedes_db[huesped_id] = {
+...     'nombre': nombre,
+...     'lugar': lugar
+...     }
+</pre>
+<p>Aqui termina nuestro enfoque procedural. Será mucho más fácil
+añadir funcionalidades necesarias como almacenamiento de datos,
+diseño flexible y código testeable usando objetos.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id23" id="enfoque-orientado-a-objetos" name="enfoque-orientado-a-objetos">2.3&nbsp;&nbsp;&nbsp;Enfoque orientado a objetos</a></h2>
+<p>En una metodología orientada a objetos, puedes pensar en un objeto
+registrador que se encargue del registro. Hay muchas ventajas para
+crear un objeto que se encargue del registro. La más importante es
+que la abstracción que ofrece el objeto registrador hace el código
+más fácil de entender. Ofrece una forma de agrupar funcionalidad
+relacionada, y puede ser ampliada con herencia. Cuando se añadan
+mejoras, como cancelación y actualización de reservas, el objeto
+registrador puede crecer para tenerlas, o puede delegarselas a
+otro objeto:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class RegistradorHuesped(object):
+...
+...     def registrar(self, nombre, lugar):
+...         huesped_id = proximo_id()
+...         huespedes_db[huesped_id] = {
+...         'nombre': nombre,
+...         'lugar': lugar
+...         }
+</pre>
+<p>En esta implementación, el objeto registrador (una instancia de
+la clase RegistradorHuesped) se encarga del registro. Con este
+diseño, un objeto registrador en concreto puede realizar numerosos
+registros.</p>
+<p>Así es como puedes usar la implementación actual:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; registrador = RegistradorHuesped()
+&gt;&gt;&gt; registrador.registrar(&quot;Pepito&quot;, &quot;Pérez&quot;)
+</pre>
+<p>Los cambios de requisitos son inevitables en un proyecto real. Considera
+este caso, después de algún tiempo, un nuevo requisito se presenta:
+los huespedes también deben dar el número de teléfono para que se les
+admita. Necesitarás cambiar la implementación del objeto registrador
+para ofrecer esto.</p>
+<p>Puedes cumplir este requisito añadiendo un argumento al método
+<cite>registrar</cite> y usar ese argumento en el diccionario de valores. Aquí
+está la nueva implementación para este requisito:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class RegistradorHuesped(object):
+...
+...     def registrar(self, nombre, lugar, telefono):
+...         huesped_id = proximo_id()
+...         huespedes_db[huesped_id] = {
+...         'nombre': nombre,
+...         'lugar': lugar,
+...         'telefono': telefono
+...         }
+</pre>
+<p>Además de migrar los datos al nuevo esquema, ahora tienes que cambiar
+la forma de usar <cite>RegistradorHuesped</cite> en todos sitios. Si puedes
+abstraer los detalles de un huesped en un objeto y usarlo en el
+registro, los cambios en el código se pueden minimizar. Si sigues este
+diseño, tienes que pasarle el objeto huesped a la función en lugar de
+más argumentos. La nueva implementación con el objeto huesped quedaría
+así:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class RegistradorHuesped(object):
+...
+...     def registrar(self, huesped):
+...         huesped_id = proximo_id()
+...         huespedes_db[huesped_id] = {
+...         'nombre': huesped.nombre,
+...         'lugar': huesped.lugar,
+...         'telefono': huesped.telefono
+...         }
+</pre>
+<p>Bien, incluso con esta implementación tienes que cambiar código. El
+cambio de código con nuevos requisitos es inevitable, tu objetivo es
+poder minimizar los cambios y hacerlo mantenible.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Debes tener el coraje de hacer cualquier cambio, grande o pequeño,
+en cualquier momento. Retroalimentación inmediata es la única forma
+de que tengas el coraje. El uso de los tests automáticos te dan la
+retroalimentación inmediata y por tanto el coraje para hacer cambios.
+Para más información sobre el tema, puedes leer el libro llamado
+<cite>Extreme Programming Explained</cite> de Kent Beck.</p>
+</div>
+<p>Al introducir el objeto huesped, te has ahorrado un poco de escritura.
+Más que eso, la abstracción del objeto invitado ha hecho tu sistema
+mucho más simple y fácil de entender. Cuanto mejor se entienda mejor
+se puede restructurar y por tanto mejor se mantiene el código.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id24" id="el-patr-n-adaptador" name="el-patr-n-adaptador">2.4&nbsp;&nbsp;&nbsp;El patrón adaptador</a></h2>
+<p>Como se ha dicho antes, en una aplicación real, el objeto registrador
+puede tener funcionalidades de cancelación y/o actualización. Supón
+que hay dos método más como, <cite>cancelar_registro</cite> y
+<cite>actualizar_registro</cite>. En el nuevo diseño deberás pasar el objeto
+huesped a ambos métodos. Puedes solucionar este problema guardando
+el objeto huesped como un atributo del objeto registrador.</p>
+<p>Aquí tenemos la nueva implementación del objeto registrador que
+guarda el objeto huesped como un atributo:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class RegistradorHuespedNG(object):
+...
+...     def __init__(self, huesped):
+...         self.huesped = huesped
+...
+...     def registrar(self):
+...         huesped= self.huesped
+...         huesped_id = proximo_id()
+...         huespedes_db[huesped_id] = {
+...         'nombre': huesped.nombre,
+...         'lugar': huesped.lugar,
+...         'telefono': huesped.telefono
+...         }
+</pre>
+<p>La solución a la que has llegado es un patrón de diseño común llamado,
+<cite>Adaptador</cite>. Con este diseño, ahora puedes añadir más métodos, es decir
+más funcionalidad, si se necesita.</p>
+<p>En esta implementación, al crear la instancia tienes que pasarle el
+objeto invitado que tiene los valores como atributos. Ahora es
+necesario crear instancias separadas de <cite>RegistradorHuespedNG</cite> para
+cada objeto huesped.</p>
+<p>Ahora retrocedamos y pensemos de otra forma. Supón que eres el creador
+de este software y se lo vendes a muchos hoteles. Considera el caso en
+el que tus clientes necesitan distintos almacenamientos. Por ejemplo,
+un registrador puede almacenar los detalles en una base de datos
+relacional y otro puede almacenarlos en la Base de datos orientada a
+Objetos de Zope (ZODB). Sería mejor si puedes sustituir el objeto
+registrador por otro que almacena los detalles de los huespedes de
+otra forma distinta. Por tanto, un mecanismo para cambiar la
+implementación basado en alguna configuración será útil.</p>
+<p>La arquitectura de componentes Zope ofrece un mecanismo para sustituir
+componentes basado en configuración. Utilizando la arquitectura de
+componentes de Zope puedes registrar componentes en un registro llamado
+registro de componentes. Después, puede recuperar componentes basandose
+en la configuración.</p>
+<p>La clase <cite>RegistradorHuespedNG</cite> sigue, como ya has visto, un patrón
+llamado <cite>Adaptador</cite>. El <cite>RegistradorHuespedNG</cite> es el adaptador que
+adapta el objeto huesped (adaptado). Como puedes ver, el adaptador
+debe contener el objeto que adapta (adaptado). Esta es una
+implementación típica de un adaptador:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class Adaptador(object):
+...
+...     def __init__(self, adaptado):
+...         self.adaptado = adaptado
+</pre>
+<p>Ahora el adaptador puede usar el adaptado (llamar a sus métodos o
+acceder a sus atributos). Un adaptador puede adaptar más de un
+componente. La arquitectura de componentes zope ofrece un mecanismo
+para utilizar de forma efectiva este tipo de objetos. Así, qué
+componente se use se convierte en un problema de configuración.</p>
+<p>Este es un escenario común donde quieres usar objetos diferentes
+para hacer las mismas cosas, pero los detalles varían. Hay muchas
+situaciones en programación donde quieres usar diferentes
+implementaciones para el mismo tipo de objetos. Te ofrecemos una
+pequeña lista de otros escenarios comunes:</p>
+<blockquote>
+<ul class="simple">
+<li>Un motor wiki que soporte múltiples marcados (STX, reST, Texto
+plano, etc.)</li>
+<li>Un objeto navegador que muestre el tamaño de distintos tipos
+de objetos.</li>
+<li>Diferentes tipos de formatos de salida para datos de texto
+(PDF, HTML etc.)</li>
+<li>Cuando se desarrolla una aplicación para múltiples clientes, sus
+requisitos pueden cambiar. Mantener distintas versiones del código
+de la misma aplicación para distintos clientes es difícil. Un
+enfoque mejor sería crear distintos componentes reutilizables y
+configurarlos basandose en los requisitos específicos de cada
+cliente.</li>
+</ul>
+</blockquote>
+<p>Todos estos ejemplos señalan situaciones donde quieres hacer
+aplicaciones extensibles o enchufables. No utilices componentes
+<cite>adaptadores</cite> cuando no quieras extensibilidad o enchufabilidad.</p>
+<p>La arquitectura de componentes de Zope ofrece componentes <cite>adaptadores</cite>
+para solucionar este tipo de problemas. De hecho,
+<cite>RegistradorHuespedNG</cite> es un adaptador sin declaración de interfaz
+explícita. Este tutorial tratará los adaptadores después de introducir
+el concepto de interfaces. Las interfaces son una de las bases de los
+componentes de Zope, por tanto entender el concepto y uso de interfaces
+es muy importante.</p>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id25" id="interfaces" name="interfaces">3&nbsp;&nbsp;&nbsp;Interfaces</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id26" id="id10" name="id10">3.1&nbsp;&nbsp;&nbsp;Introducción</a></h2>
+<p><cite>Patrones de Diseño</cite> es un libro clásico de ingeniería del software
+escrito por la <cite>Banda de los Cuatro</cite> <a class="footnote-reference" href="#patternbook" id="id11" name="id11">[9]</a>. En este libro
+se recomienda: &quot;Programa contra un interfaz, no contra una
+implementación&quot;. Definir interfaces formales te ayuda a entender mejor
+el sistema. Además, las interfaces traen consigo todos los beneficios
+de la ZCA.</p>
+<p>Las interfaces definen el comportamiento y el estado de objetos. Una
+interfaz describe como se trabaja con el objeto. Si te gustan las
+metaforas, piensa en la interfaz como un <cite>contrato del objeto</cite>. Otra
+métoda que ayuda es <cite>molde de objetos</cite>. En el código, los métodos
+y los atributos forman la interfaz del objeto.</p>
+<p>La noción de interfaz es muy explícita en lenguajes modernos como
+Java, C#, VB.NET etc. Estos lenguajes también ofrecen una sintaxis
+para definir interfaces. Python tiene la noción de interfaces, per
+no es muy explícita. Para simular una definición formal de interfaces
+en C++, la <cite>Banda de los Cuatro</cite> utiliza clases con funciones
+virtuales en el libro <cite>Patrones de Diseño</cite>. De forma similar, la
+arquitectura de componentes de Zope utiliza la meta-clase heredada de
+<tt class="docutils literal"><span class="pre">zope.interface.Interface</span></tt> para definir una interfaz.</p>
+<p>La base de la orientación a objetos es la comunicación entre los
+objetos. Se utilizan mensajes para comunicación entre objetos. En
+Python, funciones, métodos o cualquier otro llamable, puede usarse
+para manipular mensajes.</p>
+<p>Por ejemplo, considera esta clase:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class Anfitrion(object):
+...
+...     def buenosdias(self, nombre):
+...         &quot;&quot;&quot;Le dice buenos dias a los huespedes&quot;&quot;&quot;
+...
+...         return &quot;¡Buenos días, %s!&quot; % nombre
+</pre>
+<p>En la clase anterior, has definido un método <cite>buenosdias</cite>. Si llamas
+al método <cite>buenosdias</cite> desde un objeto creado con esta clase, devolverá
+<cite>¡Buenos días, ...!</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; anfitrion = Anfitrion()
+&gt;&gt;&gt; anfitrion.buenosdias('Pepe')
+'¡Buenos días, Pepe!'
+</pre>
+<p>Aquí <tt class="docutils literal"><span class="pre">anfitrion</span></tt> es el objeto real. Los detalles de implementación de
+este objeto es la clase <tt class="docutils literal"><span class="pre">Anfitrion</span></tt>. Ahora, cómo se sabe cómo es el
+objeto, es decir, cuáles son los métodos y los atributos del objeto.
+Para responder a esto, tienes que ir a los detalles de implementación
+(la clase <tt class="docutils literal"><span class="pre">Anfitrion</span></tt>) del objeto o bien necesitas una documentación
+externa de la API <a class="footnote-reference" href="#api" id="id12" name="id12">[10]</a>.</p>
+<p>Puedes usar el paquete <tt class="docutils literal"><span class="pre">zope.interface</span></tt> para definir la interfaz de
+objetos. Para la clase anterior puedes especificar la interfaz así:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IAnfitrion(Interface):
+...
+...     def buenosdias(huesped):
+...         &quot;&quot;&quot;Le dice buenos dias al huesped&quot;&quot;&quot;
+</pre>
+<p>Como puedes ver, la interfaz se define usando la sentencia class de
+Python. Usamos (¿abusamos de?) la sentencia class de Python para
+definir interfaces. Para hacer que una clase sea una interfaz, debe
+heredar de <tt class="docutils literal"><span class="pre">zope.interface.Interface</span></tt>. El prefijo <tt class="docutils literal"><span class="pre">I</span></tt> de la
+interfaz es una convención.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id27" id="declarando-interfaces" name="declarando-interfaces">3.2&nbsp;&nbsp;&nbsp;Declarando interfaces</a></h2>
+<p>Ya has visto como declarar una interfaz usando <tt class="docutils literal"><span class="pre">zope.interfaz</span></tt> en
+la sección anterior. En esta sección se explicarán los conceptos en
+detalle.</p>
+<p>Considera esta interfaz de ejemplo:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+
+&gt;&gt;&gt; class IAnfitrion(Interface):
+...     &quot;&quot;&quot;Un objeto anfitrion&quot;&quot;&quot;
+...
+...     nombre = Attribute(&quot;&quot;&quot;Nombre del anfitrion&quot;&quot;&quot;)
+...
+...     def buenosdias(huesped):
+...         &quot;&quot;&quot;Le dice buenos dias al huesped&quot;&quot;&quot;
+</pre>
+<p>La interfaz, <tt class="docutils literal"><span class="pre">IAnfitrion</span></tt> tiene dos atributos, <tt class="docutils literal"><span class="pre">nombre</span></tt> y
+<tt class="docutils literal"><span class="pre">buenosdias</span></tt>. Recuerda que, al menos en Python, los métodos
+también son atributos de clases. El atributo <tt class="docutils literal"><span class="pre">nombre</span></tt> se define
+utilizando la clase <tt class="docutils literal"><span class="pre">zope.interface.Attribute</span></tt>. Cuando añades
+el atributo <tt class="docutils literal"><span class="pre">nombre</span></tt> a la interfaz <tt class="docutils literal"><span class="pre">IAnfitrion</span></tt>, no especificas
+ningún valor inicial. El propósito de definir el atributo <tt class="docutils literal"><span class="pre">nombre</span></tt>
+aquí es meramente para indicar que cualquier implementación de
+esta interfaz tendrá una atributo llamado <tt class="docutils literal"><span class="pre">nombre</span></tt>. En este
+caso, ¡ni siquiera dices el tipo que el atributo tiene que tener!
+Puedes pasar una cadena de documentación como primer argumento a
+<tt class="docutils literal"><span class="pre">Attribute</span></tt>.</p>
+<p>El otro atributo, <tt class="docutils literal"><span class="pre">buenosdias</span></tt> es un método definido usando
+una definición de función. Nótese que no hace falta <tt class="docutils literal"><span class="pre">self</span></tt>
+en las interfaces, porque <tt class="docutils literal"><span class="pre">self</span></tt> es un detalle de implementación
+de la clase. Por ejemplo, un módulo puede implementar esta
+interfaz. Si un módulo implementa esta interfaz, habrá un atributo
+<tt class="docutils literal"><span class="pre">nombre</span></tt> y una función <tt class="docutils literal"><span class="pre">buenosdias</span></tt> definida. Y la función
+<tt class="docutils literal"><span class="pre">buenosdias</span></tt> aceptará un argumento.</p>
+<p>Ahora verás como conectar <cite>interfaz-clase-objeto</cite>. Así objeto
+es la cosa viva y coleante, objetos son instancias de clases. Y
+la interfaz es la definición real del objeto, por tanto las
+clases son sólo detalles de implementación. Es por esto por lo
+que debes programar contra una interfaz y no contra una
+implementación.</p>
+<p>Ahora deberías familiarizarte con dos términos más para entender
+otros conceptos. El primero es <cite>proveer`y el otro es `implementar</cite>-
+Los objetos proveen interfaces y las clases implementan interfaces.
+En otras palabras, objetos proveen las interfaces que sus clases
+implementan. En el ejemplo anterior <tt class="docutils literal"><span class="pre">anfitrion</span></tt> (objeto) provee
+<tt class="docutils literal"><span class="pre">IAnfitrion</span></tt> (interfaz) y <tt class="docutils literal"><span class="pre">Anfitrion</span></tt> (clase) implementa
+<tt class="docutils literal"><span class="pre">IAnfitrion</span></tt> (interfaz). Un objeto puede proveer más de una
+interfaz y tambíen una clase puede implementar más de una interfaz.
+Los objetos también pueden proveer intefaces directamente, además
+de lo que sus clases implementen.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Las clases son los detalles de implementación de los objetos.
+En Python, las clases son objetos llamables, asi que por qué
+otros objetos llamables no pueden implementar una intefaz?
+Sí, es posible. Para cualquier <cite>objeto llamable</cite> puedes declarar
+que produce objetos que proveen algunas interfaces diciendo que
+el <cite>objeto llamable</cite> implementa las interfaces. Generalmente
+los <cite>objetos llamables</cite> son llamados <cite>fábricas</cite>. Como las
+funciones son objetos llamables, una función puede ser la
+<cite>implementadora</cite> de una intefaz.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id28" id="implementando-interfaces" name="implementando-interfaces">3.3&nbsp;&nbsp;&nbsp;Implementando interfaces</a></h2>
+<p>Para declarar que una clase implementa una intefaz en particular,
+utiliza la función <tt class="docutils literal"><span class="pre">zope.interface.implements</span></tt> dentro de la
+sentencia class.</p>
+<p>Considera este ejemplo, aquí <tt class="docutils literal"><span class="pre">Anfitrion</span></tt> implementa <tt class="docutils literal"><span class="pre">IAnfitrion</span></tt>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class Anfitrion(object):
+...
+...     implements(IAnfitrion)
+...
+...     nombre = u''
+...
+...     def buenosdias(self, huesped):
+...         &quot;&quot;&quot;Le dice buenos dias al huesped&quot;&quot;&quot;
+...
+...         return &quot;¡Buenos dias, %s!&quot; % huesped
+</pre>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Si te preguntas como funciona la función <tt class="docutils literal"><span class="pre">implements</span></tt>, consulta
+el mensaje del blog de James Henstridge
+(<a class="reference" href="http://blogs.gnome.org/jamesh/2005/09/08/python-class-advisors/">http://blogs.gnome.org/jamesh/2005/09/08/python-class-advisors/</a>) .
+En la sección del adaptador, verás una función <tt class="docutils literal"><span class="pre">adapts</span></tt>, que
+funciona de forma similar.</p>
+</div>
+<p>Como <tt class="docutils literal"><span class="pre">Anfitrion</span></tt> implementa <tt class="docutils literal"><span class="pre">IAnfitrion</span></tt>, instancias de
+<tt class="docutils literal"><span class="pre">Anfitrion</span></tt> proveen <tt class="docutils literal"><span class="pre">IAnfitrion</span></tt>. Hay unos cuantos métodos
+de utilidad que introspeccionan las declaraciones. La declaración
+se puede escribir fuera de la clase también. Si no escribes
+<tt class="docutils literal"><span class="pre">interface.implements(IAnfitrion)</span></tt> en el ejemplo anterior,
+entonces después de la sentencia class, puedes escribir algo como:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import classImplements
+&gt;&gt;&gt; classImplements(Anfitrion, IAnfitrion)
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id29" id="ejemplo-revisado" name="ejemplo-revisado">3.4&nbsp;&nbsp;&nbsp;Ejemplo revisado</a></h2>
+<p>Ahora volvemos a la aplicación de ejemplo. Ahora veremos como
+definir la interfaz del objeto registrador:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IRegistrador(Interface):
+...     &quot;&quot;&quot;Un registrador registrará los detalles de un objeto&quot;&quot;&quot;
+...
+...     def registrar():
+...         &quot;&quot;&quot;Registrar detalles de un objeto&quot;&quot;&quot;
+...
+</pre>
+<p>Aquí primero has importado la clase <tt class="docutils literal"><span class="pre">Interface</span></tt> del módulo
+<tt class="docutils literal"><span class="pre">zope.interface</span></tt>. Si defines una subclase de esta clase <tt class="docutils literal"><span class="pre">Interface</span></tt>,
+será una interface desde el punto de vista de la arquitectura de
+componentes de Zope. Una interfaz puede ser implementada, como ya
+has visto, en una clase o cualquier otro objeto llamable.</p>
+<p>La interfaz registrador definida aquí es <tt class="docutils literal"><span class="pre">IRegistrador</span></tt>. La cadena
+de documentación del interfaz da una idea del objeto. Al definir un
+método en la interfaz, has creado un contrato para el componente, en
+el que dice que habrá un método con el mismo nombre disponible. En
+la definición del método en la interfaz, el primer argumento no debe
+ser <cite>self</cite>, porque una intefaz nunca será instanciada ni sus métodos
+serán llamados jamás. En vez de eso, la sentencia class de la interfaz
+meramente documenta qué métodos y atributos deben aparecer en
+cualquier clase normal que diga que la implementa, y el parámetro
+<cite>self</cite> es un detalle de implementación que no necesita ser
+documentado.</p>
+<p>Como sabes, una interfaz puede también especificar atributos
+normales:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+
+&gt;&gt;&gt; class IHuesped(Interface):
+...
+...     nombre = Attribute(&quot;Nombre del huesped&quot;)
+...     lugar = Attribute(&quot;Lugar del huesped&quot;)
+</pre>
+<p>En esta interfaz, el objeto huesped tiene dos atributos que se
+especifican con documentación. Una interfaz también puede especificar
+atributos y métodos juntos. Una interfaz puede ser implementada por
+una clase, un módulo o cualquier otro objeto. Por ejemplo una
+función puede crear dinámicamente el componente y devolverlo, en
+este caso la función es una implementadora de la interfaz.</p>
+<p>Ahora ya sabes lo que es una interfaz y como definirla y usarla. En
+el próximo capítulo podrás ver como se usa una interfaz para definir
+un componente adaptador.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id30" id="interfaces-de-marcado" name="interfaces-de-marcado">3.5&nbsp;&nbsp;&nbsp;Interfaces de marcado</a></h2>
+<p>Una interfaz se puede usar para declarar que un objeto en particular
+pertenece a un tipo especial. Un interfaz sin ningún atributo o método
+se llama <cite>interfaz de marcado</cite>.</p>
+<p>Aquí tenemos una <cite>interfaz de marcado</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IHuespedEspecial(Interface):
+...     &quot;&quot;&quot;Un huesped especial&quot;&quot;&quot;
+</pre>
+<p>Esta interfaz se puede usar para declarar que un objeto es un huesped
+especial.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id31" id="invariantes" name="invariantes">3.6&nbsp;&nbsp;&nbsp;Invariantes</a></h2>
+<p>A veces te piden usar alguna regla para tu componente que implica
+a uno o más atributos normales. A este tipo de reglas se les llama
+<cite>invariantes</cite>. Puedes usar <tt class="docutils literal"><span class="pre">zope.interface.invariant</span></tt> para
+establecer <cite>invariantes</cite> para tus objetos en sus interfaces.</p>
+<p>Considera un ejemplo sencillo, hay un objeto <cite>persona</cite>. Una persona
+tiene los atributos <cite>nombre</cite>, <cite>email</cite> y <cite>telefono</cite>. ¿Cómo implementas
+una regla de validación que diga que o bien el email o bien el
+teléfono tienen que existir, pero no necesariamente los dos?</p>
+<p>Lo primero es hacer un objeto llamable, bien una simple función o
+bien una instancia llamable de una clase como esto:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def invariante_contactos(obj):
+...
+...     if not (obj.email or obj.telefono):
+...         raise Exception(
+...             &quot;Al menos una información de contacto es obligatoria&quot;)
+</pre>
+<p>Ahora defines la interfaz del objeto <cite>persona</cite> de esta manera.
+Utiliza la función <tt class="docutils literal"><span class="pre">zope.interface.invariant</span></tt> para establecer la
+invariante:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import invariant
+
+&gt;&gt;&gt; class IPersona(Interface):
+...
+...     nombre = Attribute(&quot;Nombre&quot;)
+...     email = Attribute(&quot;Direccion de email&quot;)
+...     telefono = Attribute(&quot;Numero de telefono&quot;)
+...
+...     invariant(invariante_contactos)
+</pre>
+<p>Ahora usas el método <cite>validateInvariants</cite> de la interfaz para
+validar:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class Persona(object):
+...     implements(IPersona)
+...
+...     nombre = None
+...     email = None
+...     telefono = None
+
+&gt;&gt;&gt; pepe = Persona()
+&gt;&gt;&gt; pepe.email = u&quot;pepe&#64;algun.sitio.com&quot;
+&gt;&gt;&gt; IPersona.validateInvariants(pepe)
+&gt;&gt;&gt; maria = Persona()
+&gt;&gt;&gt; IPersona.validateInvariants(maria)
+Traceback (most recent call last):
+...
+Exception: Al menos una información de contacto es obligatoria
+</pre>
+<p>Como puedes ver el objeto <cite>pepe</cite> validó sin lanzar ninguna
+excepción. Pero el objeto <cite>maria</cite> no validó la restricción de
+la invariante, por lo que se lanzó la excepción.</p>
+<table class="docutils footnote" frame="void" id="patternbook" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11" name="patternbook">[9]</a></td><td><a class="reference" href="http://en.wikipedia.org/wiki/Design_Patterns">http://en.wikipedia.org/wiki/Design_Patterns</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="api" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12" name="api">[10]</a></td><td><a class="reference" href="http://en.wikipedia.org/wiki/Application_programming_interface">http://en.wikipedia.org/wiki/Application_programming_interface</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id32" id="adaptadores" name="adaptadores">4&nbsp;&nbsp;&nbsp;Adaptadores</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id33" id="implementaci-n" name="implementaci-n">4.1&nbsp;&nbsp;&nbsp;Implementación</a></h2>
+<p>Esta sección describirá los adaptadores en detalle. La arquitectura
+de componentes de Zope, como has notado, ayuda a usar objetos
+Python de forma efectiva. Los adaptadores son uno de los componentes
+básicos usados por la arquitectura de componentes de Zope para usar
+los objetos Python de forma efectiva. Los adaptadores son objetos
+Python, pero con una interfaz bien definida.</p>
+<p>Para decir que una clase es un adaptador utiliza la función
+<cite>adapts'  definida en el paquete ``zope.component`</cite>. Aquí tenemos
+un nuevo adaptador <cite>RegistradorHuespedNG</cite> con una declaración de
+interfaz explícita:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class RegistradorHuespedNG(object):
+...
+...     implements(IRegistrador)
+...     adapts(IHuesped)
+...
+...     def __init__(self, huesped):
+...         self.huesped = huesped
+...
+...     def registar(self):
+...         huesped = self.huesped
+...         huesped_id = proximo_id()
+...         huespedes_db[huesped_id] = {
+...         'nombre': huesped.nombre,
+...         'lugar': huesped.lugar,
+...         'telefono': huesped.telefono
+...         }
+</pre>
+<p>Lo que has definido aquí es un <cite>adaptador</cite> para <cite>IRegistrador</cite>, que
+adapta el objeto <cite>IHuesped</cite>. La interfaz <cite>IRegistrador</cite> es
+implementada por la clase <cite>RegistradorHuespedNG</cite>. Así, una instancia
+de esta clase proveerá la interfaz <cite>IRegistrador</cite>.</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class Huesped(object):
+...
+...     implements(IHuesped)
+...
+...     def __init__(self, nombre, lugar, telefono):
+...         self.nombre = nombre
+...         self.lugar = lugar
+...         self.telefono = telefono
+
+&gt;&gt;&gt; pepe = Huesped(&quot;Pepito&quot;, &quot;Perez&quot;)
+&gt;&gt;&gt; registrador_pepe = RegistradorHuespedNG(pepe)
+
+&gt;&gt;&gt; IRegistrador.providedBy(registrador_pepe)
+True
+</pre>
+<p>'RegistradorHuespedNG` es simplemente un adaptador que has creado,
+puedes crear otros adaptadores que se encarguen del registro de
+huespedes de forma diferente.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id34" id="registro" name="registro">4.2&nbsp;&nbsp;&nbsp;Registro</a></h2>
+<p>Para usar este componente adaptador, tienes que registrarlo en
+un registro de componentes también conocido como administrador
+de sitios (site manager). Un administrador de sitios normalmente
+reside en un sitio. Un sitio y un administrador de sitios
+cobrarán más importancia al desarrollar una aplicación Zope 3.
+Por ahora sólo necesitas molestarte con el sitio global y el
+administrador de sitios global (o registro de componentes).
+Un administrador de sitios globales permanecerá en memoria,
+mientras que un administrador de sitios locales es persistente.</p>
+<p>Para registrar tu componente, primero obtienes el administrador
+de sitios global:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; gsm.registerAdapter(RegistradorHuespedNG,
+...                     (IHuesped,), IRegistrador, 'ng')
+</pre>
+<p>Para obtener el administrador de sitios global, tienes que llamar
+a la función <tt class="docutils literal"><span class="pre">getGlobalSiteManager</span></tt> disponible en el paquete
+<tt class="docutils literal"><span class="pre">zope.component</span></tt>. En realidad, el administrador de sitios global
+está disponible como un atributo (<tt class="docutils literal"><span class="pre">globalSiteManager</span></tt>) del
+paquete <tt class="docutils literal"><span class="pre">zope.component</span></tt>. Asi que puedes usar directamente el
+atributo <tt class="docutils literal"><span class="pre">zope.component.globalSiteManager</span></tt>. Para registrar
+el adaptador, como ves más arriba, utiliza el método
+<tt class="docutils literal"><span class="pre">registerAdapter</span></tt> del registro de componentes. El primer
+argumento debe ser la clase/fábrica de tu adaptador. El segundo
+argumento es una tupla de objetos <cite>adaptados</cite>, i.e. el objeto
+que estás adaptando. En este ejemplo, estás adaptando sólo el
+objeto <cite>IHuesped</cite>. El tercer argumento es la interfaz que provista
+por el componente adaptador. El cuarto argumento es opcional, es
+el nombre de este adaptador en particular. Al darle un nombre a
+este adaptador, es un <cite>adaptador con nombre</cite>. Si no se le da un
+nombre, de forma predeterminada será la cadena vacía ('').</p>
+<p>En el registro anterior, le has dicho la interfaz adaptada y la
+interfaz a proveer por el adaptador. Como ya le habías dicho estos
+detalles en la implementación del adaptador, no es necesario que
+se especifique de nuevo. De hecho, podrías haber hecho el registro
+así:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; gsm.registerAdapter(RegistradorHuespedNG, name='ng')
+</pre>
+<p>Hay unas API antiguas para hacer el registro, que debes evitar. Las
+funciones antiguas empiezan por <cite>provide</cite>, por ejemplo,
+<tt class="docutils literal"><span class="pre">provideAdapter</span></tt>, <tt class="docutils literal"><span class="pre">provideUtility</span></tt>, etc. Cuando desarrollas
+una aplicación Zope 3 puedes usar el lenguaje de marcas de
+configuración de Zope (ZCML) para registrar componentes. En Zope 3,
+los componentes locales (componente persistentes) pueden registrarse
+desde la Interfaz de Administración de Zope (ZMI) o también pueden
+registrarse programáticamente.</p>
+<p>Has registrado <cite>RegistradorHuespedNG</cite> con el nombre <cite>ng</cite>. De forma
+similar puedes registrar otros adaptadores con nombres distintos. Si
+un componente se registra sin nombre, de forma predeterminada será
+la cadena vacía.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Los componentes locales son componentes persistentes pero los
+componentes globales están en memoria. Los componentes globales
+serán  registrados basandose en la configuración de la aplicación.
+Los componentes locales se llevan a memoria desde la base de datos
+en el inicio de la aplicación.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id35" id="patr-n-de-consulta" name="patr-n-de-consulta">4.3&nbsp;&nbsp;&nbsp;Patrón de consulta</a></h2>
+<p>Recuperar componentes registrados a partir del registro de componentes
+se consigue mediante dos funciones disponibles en el paquete
+<tt class="docutils literal"><span class="pre">zope.component</span></tt>. Una de estas es <tt class="docutils literal"><span class="pre">getAdapter</span></tt> y la otra es
+<tt class="docutils literal"><span class="pre">queryAdapter</span></tt>. Las dos funciones aceptan los mismos argumentos.
+<tt class="docutils literal"><span class="pre">getAdapter</span></tt> lanzará <tt class="docutils literal"><span class="pre">ComponentLookupError</span></tt> si la búsqueda del
+componente falla mientras que <tt class="docutils literal"><span class="pre">queryAdapter</span></tt> devolverá <cite>None</cite>-</p>
+<p>Puedes importar estos métodos así:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getAdapter
+&gt;&gt;&gt; from zope.component import queryAdapter
+</pre>
+<p>En la sección anterior has registrado un componente para el objeto
+huesped (adaptado) que provee la interfaz <cite>IRegistrador</cite> con el
+nombre 'ng'. En la primera sección de este capítulo, has creado
+un objeto huesped llamado <cite>pepe</cite>.</p>
+<p>Así es como puedes recuperar un compomente que adapta la interfaz
+del objeto <cite>pepe</cite> (<cite>IHuesped</cite>) y ofrece la interfaz <cite>IRegistrador</cite>
+con el nombre 'ng'. Aquí las dos funciones <tt class="docutils literal"><span class="pre">getAdapter</span></tt> y
+<tt class="docutils literal"><span class="pre">queryAdapter</span></tt> funcionan similarmente:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; getAdapter(pepe, IRegistrador, 'ng') #doctest: +ELLIPSIS
+&lt;RegistradorHuespedNG object at ...&gt;
+&gt;&gt;&gt; queryAdapter(pepe, IRegistrador, 'ng') #doctest: +ELLIPSIS
+&lt;RegistradorHuespedNG object at ...&gt;
+</pre>
+<p>Como puedes ver, el primer argumento debe ser el adaptado, después
+la interfaz que debe ser ofrecida por el componente y por último
+el nombre del componente adaptador.</p>
+<p>Si intentas buscar el componente con un nombre distinto al usado
+en el regsitro pero para el mismo adaptado e interfaz, la búsqueda
+fallará. Así es como funcionan ambos métodos en este caso:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; getAdapter(pepe, IRegistrador, 'no-existe') #doctest: +ELLIPSIS
+Traceback (most recent call last):
+...
+ComponentLookupError: ...
+&gt;&gt;&gt; reg = queryAdapter(pepe,
+...           IRegistrador, 'no-existe') #doctest: +ELLIPSIS
+&gt;&gt;&gt; reg is None
+True
+</pre>
+<p>Como ves, <tt class="docutils literal"><span class="pre">getAdapter</span></tt> lanzó una excepción <tt class="docutils literal"><span class="pre">ComponentLookupError</span></tt>,
+pero <tt class="docutils literal"><span class="pre">queryAdapter</span></tt> devolvió <cite>None</cite> cuando la búsqueda falló.</p>
+<p>El tercer argumento, el nombre del registro, es opcional. Si
+no le das el tercer argumento se usará el valor predeterminado que
+es la cadena vacía (''). Como no hay ningún componente registrado
+con una cadena vacía <tt class="docutils literal"><span class="pre">getAdapter</span></tt> lanzará <tt class="docutils literal"><span class="pre">ComponentLookupError</span></tt>.
+De forma similar <tt class="docutils literal"><span class="pre">queryAdapter</span></tt> devolverá <cite>None</cite>. Mira tú mismo
+como funciona:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; getAdapter(pepe, IRegistrador) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+...
+ComponentLookupError: ...
+&gt;&gt;&gt; reg = queryAdapter(pepe, IRegistrador) #doctest: +ELLIPSIS
+&gt;&gt;&gt; reg is None
+True
+</pre>
+<p>En esta sección has aprendido cómo registrar un adaptador sencillo
+y cómo recuperarlo del registro de componentes. Estos tipos de
+adaptador se llaman adaptadores simples, porque adaptan sólamente
+un adaptado. Si un adaptador adapta más de un adaptado, entonces
+se le llama multi adaptador.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id36" id="recuperar-un-adaptador-usando-una-interfaz" name="recuperar-un-adaptador-usando-una-interfaz">4.4&nbsp;&nbsp;&nbsp;Recuperar un adaptador usando una interfaz</a></h2>
+<p>Los adaptadores se pueden recuperar directamente usando interfaces,
+pero sólo funcionará para adaptadores simples sin nombre. El primer
+argumento es el adaptado y el segundo argumento es un argumento de
+palabra clave. Si la búsqueda del adaptador falla, el segundo
+argumento es devuelto.</p>
+<blockquote>
+<pre class="doctest-block">
+&gt;&gt;&gt; IRegistrador(pepe, alternate='salida-predeterminada')
+'salida-predeterminada'
+</pre>
+<p>La palabra clave se puede omitir:</p>
+<pre class="doctest-block">
+&gt;&gt;&gt; IRegistrador(pepe, 'salida-predeterminada')
+'salida-predeterminada'
+</pre>
+<p>Si no le damos el segundo argumento, lanzará <cite>TypeError</cite>:</p>
+<pre class="doctest-block">
+&gt;&gt;&gt; IRegistrar(pepe) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+Traceback (most recent call last):
+...
+TypeError: ('Could not adapt',
+  &lt;Huesped object at ...&gt;,
+  &lt;InterfaceClass __builtin__.IRegistrador&gt;)
+</pre>
+<p>Ahora registramos 'RegistradorHuespedNG' sin nombre:</p>
+<pre class="doctest-block">
+&gt;&gt;&gt; gsm.registerAdapter(RegistradorHuespedNG)
+</pre>
+<p>Ahora la recuperación del adaptador debería funcionar:</p>
+<pre class="doctest-block">
+&gt;&gt;&gt; IRegistrador(pepe, 'salida-predeterminada') #doctest: +ELLIPSIS
+&lt;RegistradorHuespedNG object at ...&gt;
+</pre>
+</blockquote>
+<p>Para los casos simples, puedes usar la interfaz para obtener
+componentes adaptadores.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id37" id="patr-n-de-adaptador" name="patr-n-de-adaptador">4.5&nbsp;&nbsp;&nbsp;Patrón de Adaptador</a></h2>
+<p>El concepto de adaptador de la Arquitectura de Componentes de Zope
+y el clásico <cite>patrón adaptador</cite> descrito en el libro Patrones de
+Diseño son muy similares. Pero la intención del uso del adaptador
+de la ZCA es más amplio que el <cite>patrón adaptador</cite>. La intención
+del <cite>patrón adaptador</cite> es convertir la interfaz de una clase en
+otra interfaz que los clientes esperan. Esto permite que clases
+que no hubieran podido colaborar debido a interfaces incompatibles
+puedan hacerlo. Pero en la sección <cite>motivación</cite> del libro
+de Patrones de Diseño, la Banda de los Cuatro dice: &quot;A veces
+el adaptador es responsable de funcionalidad que la clase adaptada
+no ofrece&quot;. Los adaptadores de la ZCA hacen más hincapie en añadir
+funcionalidades en vez de en crear un nuevo interfaz para el objeto
+adaptado.  Los adaptadores de la ZCA dejan que las clases
+adaptadoras aumenten la funcionalidad añadiendo métodos. (Es
+interesante notar que <cite>Adaptador</cite> se llamaba <cite>Mejora</cite> en una étapa
+inicial del diseño de la ZCA). <a class="footnote-reference" href="#feature" id="id13" name="id13">[11]</a></p>
+<p>El párrafo anterior tiene una cita del libro de la Banda de los Cuatro,
+que termina con algo como &quot; ... la clase adaptada no ofrece&quot;. Pero
+en la siguiente frase yo utilizo &quot;objeto adaptado&quot; en vez de &quot;clase
+adaptada&quot;, porque la Banda de los Cuatro describe dos variaciones
+de adaptadores basadas en la implementación. La primera se llama
+<cite>clase adaptadora</cite> y la otra se llama <cite>objeto adaptador</cite>. Una clase
+adaptadora utiliza herencia múltiple para adaptar una interfaz a otra,
+mientras que un objeto adaptador se basa en la composición de objetos.
+El adaptador de la ZCA sigue el patrón de objeto adaptador, que
+usa delegación como un mecanismo de composición. El segundo principio
+de orientación a objetos de la Banda de los Cuatro se algo como:
+&quot;Favorece la composición de objetos sobre la herencia de clases&quot;.
+Para más detalles sobre el tema, por favor lee el libro de Patrones
+de Diseño.</p>
+<p>Los mayores atractivos del adaptador de la ZCA son la interfaz
+explícita para componentes y el registro de componentes. Los
+componentes adaptadores de la ZCA se registran en el registro de
+componentes y son recuperados, cuando son necesarios, por objetos
+clientes usando la interfaz y el nombre.</p>
+<table class="docutils footnote" frame="void" id="feature" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id13" name="feature">[11]</a></td><td>Discusión sobre el cambio de nombre de <cite>Mejora</cite> a
+<cite>Adaptador</cite>:
+<a class="reference" href="http://mail.zope.org/pipermail/zope3-dev/2001-December/000008.html">http://mail.zope.org/pipermail/zope3-dev/2001-December/000008.html</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id38" id="utilidad" name="utilidad">5&nbsp;&nbsp;&nbsp;Utilidad</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id39" id="id14" name="id14">5.1&nbsp;&nbsp;&nbsp;Introducción</a></h2>
+<p>Ahora ya conoces el concepto de interfaz, adaptador y registro de
+componentes. A veces es útil registrar un objeto que no adapta
+nada. Conexión a base de datos, analizador de XML, objetos que
+devuelven identificadores únicos, etc. son ejemplos de este tipo
+de objetos. Este tipo de componentes ofrecidos por la arquitectura
+de componentes de Zope se llaman componentes <tt class="docutils literal"><span class="pre">utilidad</span></tt>.</p>
+<p>Las utilidades son sólo objetos que ofrecen una interfaz y que
+son recuperados con una interfaz y un nombre. Este enfoque crea
+un registro global en el que las instancias se pueden registrar
+y recuperar desde distintas partes de tu aplicación, sin
+necesidad de pasar las instancias arriba y abajo como parámetros.</p>
+<p>No necesitas registrar todas las instancias de componentes así.
+Registra sólo aquellos componentes que quieras hacer sustituibles.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id40" id="utilidad-simple" name="utilidad-simple">5.2&nbsp;&nbsp;&nbsp;Utilidad simple</a></h2>
+<p>Antes de implementar la utilidad, como siempre, define su interfaz.
+Aqui tenemos una interfaz <cite>saludador</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class ISaludador(Interface):
+...
+...     def saluda(nombre):
+...         &quot;dice hola&quot;
+</pre>
+<p>Aquí tenemos una posible implementación de la interfaz anterior:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class Saludador(object):
+...
+...     implements(ISaludador)
+...
+...     def saluda(self, nombre):
+...         return &quot;Hola &quot; + nombre
+</pre>
+<p>Puedes registrar una instancia de esta clase usando <tt class="docutils literal"><span class="pre">registerUtility</span></tt>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; saludador = Saludador()
+&gt;&gt;&gt; gsm.registerUtility(saludador, ISaludador)
+</pre>
+<p>En este ejemplo has registrado la utilidad como proveedora de la
+interfaz <cite>ISaludador</cite>. Puedes recuperar la utilidad con <cite>queryUtility</cite>
+o <cite>getUtility</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import queryUtility
+&gt;&gt;&gt; from zope.component import getUtility
+
+&gt;&gt;&gt; queryUtility(ISaludador).saluda('Antonio')
+'Hola Antonio'
+
+&gt;&gt;&gt; getUtility(ISaludador).greet('Susana')
+'Hola Susana'
+</pre>
+<p>Como puedes ver, los adaptadores normalmente son clases, pero las
+utilidades normalmente son instancias de clases.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id41" id="utilidad-con-nombre" name="utilidad-con-nombre">5.3&nbsp;&nbsp;&nbsp;Utilidad con nombre</a></h2>
+<p>Cuando registras un componente utilidad, como un adaptador, puedes
+usar un nombre.</p>
+<p>Por ejemplo, considera esto:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; saludador = Saludador()
+&gt;&gt;&gt; gsm.registerUtility(saludador, ISaludador, 'nuevo')
+</pre>
+<p>En este ejemplo has registrado una utilidad que ofrece la interfaz
+<cite>IGreeter</cite> con un nombre. Puedes buscar la interfaz tanto con
+<cite>queryUtility</cite> como con <cite>getUtility</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import queryUtility
+&gt;&gt;&gt; from zope.component import getUtility
+
+&gt;&gt;&gt; queryUtility(ISaludador, 'nuevo').saluda('Antonio')
+'Hola Antonio'
+
+&gt;&gt;&gt; getUtility(ISaludador, 'nuevo').saluda('Antonio')
+'Hola Antonio'
+</pre>
+<p>Como puedes ver, cuando preguntas tienes que usar el <cite>nombre</cite>
+como segundo argumento.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">LLamar a la función <cite>getUtility</cite> sin un nombre (segundo argumento)
+es equivalente a llamarla con una cadena vacía ('') comos el nombre.
+Porque, el valor predeterminado para el segundo argumento (nombrado)
+es una cadena vacía. Entonces, el mecanismo de recuperación de
+componentes intentará encontrar el componente con un nombre de
+cadena vacía (''), y fallará. Cuando la recuperación de un componente
+falla se lanza la excepción <cite>ComponentLookupError</cite>. Recuérdalo, no
+devolverá algún componente aleatorio registrado con cualquier otro
+nombre.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id42" id="f-brica" name="f-brica">5.4&nbsp;&nbsp;&nbsp;Fábrica</a></h2>
+<p>Una <tt class="docutils literal"><span class="pre">Fábrica</span></tt> es un componente utilidad que ofrece la intefaz
+<tt class="docutils literal"><span class="pre">IFactory</span></tt>.</p>
+<p>Para crear una fábrica, primero tienes que definir el interfaz del
+objeto:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IBaseDatos(Interface):
+...
+...     def getConexion():
+...         &quot;&quot;&quot;Devuelve el objeto conexion&quot;&quot;&quot;
+</pre>
+<p>Aquí tenemos una implementación de mentira de la interfaz <cite>IBaseDatos</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class BDFalsa(object):
+...
+...     implements(IBaseDatos)
+...
+...     def getConexion(self):
+...         return &quot;conexion&quot;
+</pre>
+<p>Puedes crear una fábrica usando <tt class="docutils literal"><span class="pre">zope.component.factory.Factory</span></tt>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component.factory import Factory
+
+&gt;&gt;&gt; fabrica = Factory(BDFalsa, 'BDFalsa')
+</pre>
+<p>Ahora puedes registrarla así:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; from zope.component.interfaces import IFactory
+&gt;&gt;&gt; gsm.registerUtility(fabrica, IFactory, 'bdfalsa')
+</pre>
+<p>Para usar la fábrica, puedes hacer lo siguiente:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import queryUtility
+&gt;&gt;&gt; queryUtility(IFactory, 'bdfalsa')() #doctest: +ELLIPSIS
+&lt;BDFalsa object at ...&gt;
+</pre>
+<p>Hay un atajo para usar la fábrica:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import createObject
+&gt;&gt;&gt; createObject('bdfalsa') #doctest: +ELLIPSIS
+&lt;BDFalsa object at ...&gt;
+</pre>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id43" id="adaptadores-avanzados" name="adaptadores-avanzados">6&nbsp;&nbsp;&nbsp;Adaptadores avanzados</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id44" id="multi-adaptador" name="multi-adaptador">6.1&nbsp;&nbsp;&nbsp;Multi adaptador</a></h2>
+<p>Un adaptador simple normalmente adapta sólo un objeto, pero un
+adaptador puede adaptar más de un objeto. Si un adaptador adapta
+más de un objeto, se le llama multi-adaptador.</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class IAdaptadoUno(Interface):
+...     pass
+
+&gt;&gt;&gt; class IAdaptadoDos(Interface):
+...     pass
+
+&gt;&gt;&gt; class IFuncionalidad(Interface):
+...     pass
+
+&gt;&gt;&gt; class MiFuncionalidad(object):
+...     implements(IFuncionalidad)
+...     adapts(IAdaptadoUno, IAdaptadoDos)
+...
+...     def __init__(self, uno, dos):
+...         self.uno = uno
+...         self.dos = dos
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerAdapter(MiFuncionalidad)
+
+&gt;&gt;&gt; class Uno(object):
+...     implements(IAdaptadoUno)
+
+&gt;&gt;&gt; class Dos(object):
+...     implements(IAdaptadoDos)
+
+&gt;&gt;&gt; uno = Uno()
+&gt;&gt;&gt; dos = Dos()
+
+&gt;&gt;&gt; from zope.component import getMultiAdapter
+
+&gt;&gt;&gt; getMultiAdapter((uno, dos), IFuncionalidad) #doctest: +ELLIPSIS
+&lt;MiFuncionalidad object at ...&gt;
+
+&gt;&gt;&gt; mifuncionalidad = getMultiAdapter((uno, dos), IFuncionalidad)
+&gt;&gt;&gt; mifuncionalidad.uno #doctest: +ELLIPSIS
+&lt;Uno object at ...&gt;
+&gt;&gt;&gt; mifuncionalidad.dos #doctest: +ELLIPSIS
+&lt;Dos object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id45" id="adaptador-de-subscripci-n" name="adaptador-de-subscripci-n">6.2&nbsp;&nbsp;&nbsp;Adaptador de subscripción</a></h2>
+<p>A diferencia de los adaptadores normales, los adaptadores de
+subscripción se usan cuando queremos todos los adaptadores que
+adaptan un objeto a una interfaz particular. El adaptador de
+subscripción también se conoce como <cite>subscriptor</cite>.</p>
+<p>Imagina un problema de validación. Tenemos objetos y queremos
+comprobar si cumplen algún tipo de estándar. Definimos una interfaz
+de validación:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IValidador(Interface):
+...
+...     def valida(ob):
+...         &quot;&quot;&quot;Determina si el objeto es válido
+...
+...         Devuelve una cadena que describe un problema de validación.
+...         Se devuelve la cadena vacía para indicar que el objeto
+...         es válido.
+...         &quot;&quot;&quot;
+</pre>
+<p>Quizá tengamos documentos:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class IDocumento(Interface):
+...
+...     resumen = Attribute(&quot;Resumen del documento&quot;)
+...     cuerpo = Attribute(&quot;Cuerpo del documento&quot;)
+
+&gt;&gt;&gt; class Documento(object):
+...
+...     implements(IDocumento)
+...
+...     def __init__(self, resumen, cuerpo):
+...         self.resumen, self.cuerpo = resumen, cuerpo
+</pre>
+<p>Ahora puede que queramos especificar varias regalas de validación
+para los documentos. Por ejemplo, podemos requerir que el resumen
+sean una sola linea:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class ResumenLineaUnica:
+...
+...     adapts(IDocumento)
+...     implements(IValidador)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+...
+...     def valida(self):
+...         if '\n' in self.doc.resumen:
+...             return 'El resumen debe tener sólo una linea'
+...         else:
+...             return ''
+</pre>
+<p>O podemos exigir que el cuerpo tenga al menos una longitud de 1000
+caracteres:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class LongitudAdecuada(object):
+...
+...     adapts(IDocumento)
+...     implements(IValidador)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+...
+...     def valida(self):
+...         if len(self.doc.cuerpo) &lt; 1000:
+...             return 'demasiado corto'
+...         else:
+...             return ''
+</pre>
+<p>Podemos registrar estas reglas como adaptadores de subscripción:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerSubscriptionAdapter(ResumenLineaUnica)
+&gt;&gt;&gt; gsm.registerSubscriptionAdapter(LongitudAdecuada)
+</pre>
+<p>Podemos usar los subscriptores para validar objetos:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import subscribers
+
+&gt;&gt;&gt; doc = Documento(&quot;Un\nDocumento&quot;, &quot;bla&quot;)
+&gt;&gt;&gt; [adaptador.valida()
+...  for adaptador in subscribers([doc], IValidador)
+...  if adaptador.valida()]
+['El resumen debe tener sólo una linea', 'demasiado corto']
+
+&gt;&gt;&gt; doc = Documento(&quot;Un\nDocumento&quot;, &quot;bla&quot; * 1000)
+&gt;&gt;&gt; [adaptador.valida()
+...  for adaptador in subscribers([doc], IValidador)
+...  if adaptador.valida()]
+['El resumen debe tener sólo una linea']
+
+&gt;&gt;&gt; doc = Document(&quot;Un Documento&quot;, &quot;bla&quot;)
+&gt;&gt;&gt; [adaptador.valida()
+...  for adaptador in subscribers([doc], IValidador)
+...  if adaptador.valida()]
+['demasiado corto']
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id46" id="manejador" name="manejador">6.3&nbsp;&nbsp;&nbsp;Manejador</a></h2>
+<p>Los manejadores son factorias de adaptadores de subscripción que
+no producen nada. Realizan todo su trabajo cuando son llamados.
+Los manejadores se utilizan normalmente para tratar eventos. Los
+manejadores también se conocen como subscriptores de eventos o
+incluso como adaptadores de subscripción de eventos.</p>
+<p>Los subscriptores de eventos son distintos a los adaptadores de
+subscripción en cuanto a que el que llama a los subscriptores de
+eventos no espera interactuar con ellos de manera directa. Por
+ejemplo, un publicador de eventos no espera recibir ningún valor
+de retorno. Ya que los subscriptores no necesitan ofrecer una API
+a los que los llaman, es más natural definirlos con funciones,
+en vez de con clases. Por ejemplo, en un sistema de gestión
+documental, podemos querer registrar tiempos de creación para los
+documentos:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import datetime
+
+&gt;&gt;&gt; def documentoCreado(evento):
+...     evento.doc.creado = datetime.datetime.utcnow()
+</pre>
+<p>En este ejemplo, tenemos una función que recibe un evento y realiza
+un procesamiento. Realmente no devuelve nada. Este es un caso especial
+de un adaptador de subscripción que adapta un evento a nada. Todo el
+trabajo se realiza cuando la &quot;fábrica&quot; del adaptador es invocada.
+Llamamos &quot;manejadores&quot; a los subscriptores que no crean nada. Hay
+APIs especiales para registrarlos y llamarlos.</p>
+<p>Para registrar el subscriptor anterior definimos un evento de
+creación de documento:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IDocumentoCreado(Interface):
+...
+...     doc = Attribute(&quot;El documento que se creó&quot;)
+
+&gt;&gt;&gt; class DocumentoCreado(object):
+...
+...     implements(IDocumentoCreado)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+</pre>
+<p>También cambiamos nuestra definición del manejador a:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def documentoCreado(evento):
+...     evento.doc.creado = datetime.datetime.utcnow()
+
+&gt;&gt;&gt; from zope.component import adapter
+
+&gt;&gt;&gt; &#64;adapter(IDocumentoCreado)
+... def documentoCreado(evento):
+...     evento.doc.creado = datetime.datetime.utcnow()
+</pre>
+<p>Esto marca al manejador como un adaptador para los eventos
+<cite>IDocumentoCreado</cite>.</p>
+<p>Ahora registraremos el manejador:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerHandler(documentoCreado)
+</pre>
+<p>Ahora, podemos crear un evento y usar la función <cite>handle</cite> para
+llamar a los manejadores registrados para el evento:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import handle
+
+&gt;&gt;&gt; handle(DocumentoCreado(doc))
+&gt;&gt;&gt; doc.creado.__class__.__name__
+'datetime'
+</pre>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id47" id="uso-de-la-zca-en-zope" name="uso-de-la-zca-en-zope">7&nbsp;&nbsp;&nbsp;Uso de la ZCA en Zope</a></h1>
+<p>La Arquitectura de Componentes de Zope se usa tanto en Zope 3 como en
+Zope 2. En este capítulo veremos el uso de la ZCA en Zope.</p>
+<div class="section">
+<h2><a class="toc-backref" href="#id48" id="zcml" name="zcml">7.1&nbsp;&nbsp;&nbsp;ZCML</a></h2>
+<p>El Lenguaje de Marcado de Configuración de Zope (ZCML) es un sistema
+de configuración basado en XML para registrar componentes. Así, en
+lugar de usar la API Python para los registros, puedes usar ZCML.
+Pero para usar ZCML, desafortunadamente, necesitas instalar más
+paquetes de dependencias.</p>
+<p>Para instalar estos paquetes:</p>
+<pre class="literal-block">
+$ easy_install &quot;zope.component [zcml]&quot;
+</pre>
+<p>Para registrar un adaptador:</p>
+<pre class="literal-block">
+&lt;configure xmlns=&quot;http://namespaces.zope.org/zope&quot;&gt;
+
+&lt;adapter
+    factory=&quot;.empresa.SalarioEmpleado&quot;
+    provides=&quot;.interfaces.ISalario&quot;
+    for=&quot;.interfaces.IEmpleado&quot;
+    /&gt;
+</pre>
+<p>Los atributos <cite>provides</cite> y <cite>for</cite> son opcionales, siempre que los hayas
+declarado en la implementación:</p>
+<pre class="literal-block">
+&lt;configure xmlns=&quot;http://namespaces.zope.org/zope&quot;&gt;
+
+&lt;adapter
+    factory=&quot;.empresa.SalarioEmpleado&quot;
+    /&gt;
+</pre>
+<p>Si quieres registrar el componente como un adaptador con nombre,
+puedes darle un atributo <cite>name</cite>:</p>
+<pre class="literal-block">
+&lt;configure xmlns=&quot;http://namespaces.zope.org/zope&quot;&gt;
+
+&lt;adapter
+    factory=&quot;.empresa.SalarioEmpleado&quot;
+    name=&quot;salario&quot;
+    /&gt;
+</pre>
+<p>Las utilidades se registran de forma similar.</p>
+<p>Para registrar una utilidad:</p>
+<pre class="literal-block">
+&lt;configure xmlns=&quot;http://namespaces.zope.org/zope&quot;&gt;
+
+&lt;utility
+    component=&quot;.basedatos.conexion&quot;
+    provides=&quot;.interfaces.IConexion&quot;
+    /&gt;
+</pre>
+<p>El atributo <cite>provides</cite> es opcional, siempre que lo hayas declarado
+en la implementación:</p>
+<pre class="literal-block">
+&lt;configure xmlns=&quot;http://namespaces.zope.org/zope&quot;&gt;
+
+&lt;utility
+    component=&quot;.basedatos.conexion&quot;
+    /&gt;
+</pre>
+<p>Si quieres registrar el componente como una utilidad con nombre,
+puedes darle un atributo <cite>name</cite>:</p>
+<pre class="literal-block">
+&lt;configure xmlns=&quot;http://namespaces.zope.org/zope&quot;&gt;
+
+&lt;utility
+    component=&quot;.basedatos.conexion&quot;
+    name=&quot;Conexión de Base de Datos&quot;
+    /&gt;
+</pre>
+<p>En vez de usar directamente el componente, también puedes dar una
+fábrica:</p>
+<pre class="literal-block">
+&lt;configure xmlns=&quot;http://namespaces.zope.org/zope&quot;&gt;
+
+&lt;utility
+    factory=&quot;.basedatos.Conexion&quot;
+    /&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id49" id="redefiniciones" name="redefiniciones">7.2&nbsp;&nbsp;&nbsp;Redefiniciones</a></h2>
+<p>Cuando registras componentes usando la API de Python (métodos
+<tt class="docutils literal"><span class="pre">register*</span></tt>), el último componente registrado sustituirá el
+componente registrado anteriormente, si los dos se registran con
+los mismos tipos de argumentos. Por ejemplo, imagina este ejemplo:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IA(Interface):
+...     pass
+
+&gt;&gt;&gt; class IP(Interface):
+...     pass
+
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; class AP(object):
+...
+...     implements(IP)
+...     adapts(IA)
+...
+...     def __init__(self, context):
+...         self.context = context
+
+&gt;&gt;&gt; class AP2(object):
+...
+...     implements(IP)
+...     adapts(IA)
+...
+...     def __init__(self, context):
+...         self.context = context
+
+&gt;&gt;&gt; class A(object):
+...
+...     implements(IA)
+
+&gt;&gt;&gt; a = A()
+&gt;&gt;&gt; ap = AP(a)
+
+&gt;&gt;&gt; gsm.registerAdapter(AP)
+
+&gt;&gt;&gt; getAdapter(a, IP) #doctest: +ELLIPSIS
+&lt;AP object at ...&gt;
+</pre>
+<p>Si registras otro adaptador, el ya hay será sustituido:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; gsm.registerAdapter(AP2)
+
+&gt;&gt;&gt; getAdapter(a, IP) #doctest: +ELLIPSIS
+&lt;AP2 object at ...&gt;
+</pre>
+<p>Pero cuando se registran componente usando ZCML, el segundo registro
+causará un error de conflicto. Esto es una ayuda para tí, si no,
+cabría la posibilidad de que sustituyas los registros por error. Esto
+podría hacer que sea dificil de encontrar errores en tu sistema. Así,
+usar ZCML es un avance para la aplicación.</p>
+<p>A veces es necesario sustituir registros existentes. ZCML ofrece una
+directiva <tt class="docutils literal"><span class="pre">includeOverrides</span></tt> para esto. Usándola, puedes escribir
+sustituciones en un fichero aparte:</p>
+<pre class="literal-block">
+&lt;includeOverrides file=&quot;overrides.zcml&quot; /&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id50" id="namechooser-elejidor-de-nombres" name="namechooser-elejidor-de-nombres">7.3&nbsp;&nbsp;&nbsp;NameChooser (Elejidor de nombres)</a></h2>
+<p>Situación: <cite>zope.app.container.contained.NameChooser</cite></p>
+<p>Este es un adaptador para elejir un nombre único para un objeto dentro
+de un contenedor.</p>
+<p>El registro del adaptador es así:</p>
+<pre class="literal-block">
+&lt;adapter
+    provides=&quot;.interfaces.INameChooser&quot;
+    for=&quot;zope.app.container.interfaces.IWriteContainer&quot;
+    factory=&quot;.contained.NameChooser&quot;
+    /&gt;
+</pre>
+<p>A partir del registro, puedes ver que el adaptado es un
+<tt class="docutils literal"><span class="pre">IWriteContainer</span></tt> y el adaptador ofrece <tt class="docutils literal"><span class="pre">INameChooser</span></tt>.</p>
+<p>Este adaptador ofrece una funcionalidad muy útil para los programadores
+de Zope. Las principales implementaciones de <tt class="docutils literal"><span class="pre">IWriteContainer</span></tt> en
+Zope 3 son <tt class="docutils literal"><span class="pre">zope.app.container.BTreeContainer</span></tt> y
+<tt class="docutils literal"><span class="pre">zope.app.folder.Folder</span></tt>. Normalmente heredarás de estas
+implementaciones al crear tus propias clases de contenedores. Supón
+que no hay interfaz llamada <tt class="docutils literal"><span class="pre">INameChooser</span></tt> ni adaptador, entonces
+tendrás que implementar esta funcionalidad para cada implementación
+de forma separada.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id51" id="locationphysicallylocatable" name="locationphysicallylocatable">7.4&nbsp;&nbsp;&nbsp;LocationPhysicallyLocatable</a></h2>
+<p>Location:
+<tt class="docutils literal"><span class="pre">zope.location.traversing.LocationPhysicallyLocatable</span></tt></p>
+<p>This adapter is frequently used in Zope 3 applications, but
+normally it is called through an API in <tt class="docutils literal"><span class="pre">zope.traversing.api</span></tt>.
+(Some old code even use <tt class="docutils literal"><span class="pre">zope.app.zapi</span></tt> functions, which is
+again one more indirection)</p>
+<p>The registration of adapter is like this:</p>
+<pre class="literal-block">
+&lt;adapter
+    factory=&quot;zope.location.traversing.LocationPhysicallyLocatable&quot;
+    /&gt;
+</pre>
+<p>The interface provided and adaptee interface is given in the
+implementation.</p>
+<p>Here is the beginning of implementation:</p>
+<pre class="literal-block">
+class LocationPhysicallyLocatable(object):
+    &quot;&quot;&quot;Provide location information for location objects
+    &quot;&quot;&quot;
+    zope.component.adapts(ILocation)
+    zope.interface.implements(IPhysicallyLocatable)
+    ...
+</pre>
+<p>Normally, almost all persistent objects in Zope 3 application
+will be providing the <tt class="docutils literal"><span class="pre">ILocation</span></tt> interface.  This interface
+has only two attribute, <tt class="docutils literal"><span class="pre">__parent__</span></tt> and <tt class="docutils literal"><span class="pre">__name__</span></tt>.  The
+<tt class="docutils literal"><span class="pre">__parent__</span></tt> is the parent in the location hierarchy.  And
+<tt class="docutils literal"><span class="pre">__name__</span></tt> is the name within the parent.</p>
+<p>The <tt class="docutils literal"><span class="pre">IPhysicallyLocatable</span></tt> interface has four methods:
+<tt class="docutils literal"><span class="pre">getRoot</span></tt>, <tt class="docutils literal"><span class="pre">getPath</span></tt>, <tt class="docutils literal"><span class="pre">getName</span></tt>, and <tt class="docutils literal"><span class="pre">getNearestSite</span></tt>.</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">getRoot</span></tt> function will return the physical root object.</li>
+<li><tt class="docutils literal"><span class="pre">getPath</span></tt> return the physical path to the object as a
+string.</li>
+<li><tt class="docutils literal"><span class="pre">getName</span></tt> return the last segment of the physical path.</li>
+<li><tt class="docutils literal"><span class="pre">getNearestSite</span></tt> return the site the object is contained
+in.  If the object is a site, the object itself is returned.</li>
+</ul>
+</blockquote>
+<p>If you learn Zope 3, you can see that these are the important
+things which you required very often.  To understand the beauty
+of this system, you must see how Zope 2 actually get the physical
+root object and how it is implemented.  There is a method called
+<tt class="docutils literal"><span class="pre">getPhysicalRoot</span></tt> virtually for all container objects.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id52" id="defaultsized" name="defaultsized">7.5&nbsp;&nbsp;&nbsp;DefaultSized</a></h2>
+<p>Location: <tt class="docutils literal"><span class="pre">zope.size.DefaultSized</span></tt></p>
+<p>This adapter is just a default implementation of <tt class="docutils literal"><span class="pre">ISized</span></tt> interface.
+This adapter is registered for all kind of objects.  If you want to
+register this adapter for a particular interface, then you have to
+override this registration for your implementation.</p>
+<p>The registration of adapter is like this:</p>
+<pre class="literal-block">
+&lt;adapter
+    for=&quot;*&quot;
+    factory=&quot;zope.size.DefaultSized&quot;
+    provides=&quot;zope.size.interfaces.ISized&quot;
+    permission=&quot;zope.View&quot;
+    /&gt;
+</pre>
+<p>As you can see, the adaptee interface is <cite>*</cite>, so it can adapt any kind
+of objects.</p>
+<p>The <tt class="docutils literal"><span class="pre">ISized</span></tt> is a simple interface with two method contracts:</p>
+<pre class="literal-block">
+class ISized(Interface):
+
+    def sizeForSorting():
+        &quot;&quot;&quot;Returns a tuple (basic_unit, amount)
+
+        Used for sorting among different kinds of sized objects.
+        'amount' need only be sortable among things that share the
+        same basic unit.&quot;&quot;&quot;
+
+    def sizeForDisplay():
+        &quot;&quot;&quot;Returns a string giving the size.
+        &quot;&quot;&quot;
+</pre>
+<p>You can see another <tt class="docutils literal"><span class="pre">ISized</span></tt> adapter registered for <tt class="docutils literal"><span class="pre">IZPTPage</span></tt> in
+<tt class="docutils literal"><span class="pre">zope.app.zptpage</span></tt> package.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id53" id="zopeversionutility" name="zopeversionutility">7.6&nbsp;&nbsp;&nbsp;ZopeVersionUtility</a></h2>
+<p>Location: <tt class="docutils literal"><span class="pre">zope.app.applicationcontrol.ZopeVersionUtility</span></tt></p>
+<p>This utility gives version of the running Zope.</p>
+<p>The registration goes like this:</p>
+<pre class="literal-block">
+&lt;utility
+    component=&quot;.zopeversion.ZopeVersionUtility&quot;
+    provides=&quot;.interfaces.IZopeVersion&quot; /&gt;
+</pre>
+<p>The interface provided, <tt class="docutils literal"><span class="pre">IZopeVersion</span></tt>, has only one method named
+<tt class="docutils literal"><span class="pre">getZopeVersion</span></tt>.  This method return a string containing the Zope
+version (possibly including SVN information).</p>
+<p>The default implementation, <tt class="docutils literal"><span class="pre">ZopeVersionUtility</span></tt>, get version info
+from a file <tt class="docutils literal"><span class="pre">version.txt</span></tt> in <cite>zope/app</cite> directory.  If Zope is
+running from subversion checkout, it will show the latest revision
+number.  If none of the above works it will set it to:
+<cite>Development/Unknown</cite>.</p>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id54" id="referencia" name="referencia">8&nbsp;&nbsp;&nbsp;Referencia</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id55" id="attribute" name="attribute">8.1&nbsp;&nbsp;&nbsp;Attribute</a></h2>
+<p>Using this class, you can define normal attribute in an interface.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>Attribute(name, doc='')</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+...     email = Attribute(&quot;Email Address&quot;)
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id56" id="declaration" name="declaration">8.2&nbsp;&nbsp;&nbsp;Declaration</a></h2>
+<p>Need not to use directly.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id57" id="interface" name="interface">8.3&nbsp;&nbsp;&nbsp;Interface</a></h2>
+<p>Using this class, you can define an interface.  To define an
+interface, just inherit from <tt class="docutils literal"><span class="pre">Interface</span></tt> class.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>Interface(name, doc='')</cite></li>
+</ul>
+</blockquote>
+<p>Example 1:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+...     email = Attribute(&quot;Email Address&quot;)
+</pre>
+<p>Example 2:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IHost(Interface):
+...
+...     def goodmorning(guest):
+...         &quot;&quot;&quot;Say good morning to guest&quot;&quot;&quot;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id58" id="adapts" name="adapts">8.4&nbsp;&nbsp;&nbsp;adapts</a></h2>
+<p>This function helps to declare adapter classes.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>adapts(*interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id59" id="alsoprovides" name="alsoprovides">8.5&nbsp;&nbsp;&nbsp;alsoProvides</a></h2>
+<p>Declare interfaces declared directly for an object.  The arguments
+after the object are one or more interfaces.  The interfaces given are
+added to the interfaces previously declared for the object.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>alsoProvides(object, *interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.interface import alsoProvides
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class IStudent(Interface):
+...
+...     college = Attribute(&quot;Name of college&quot;)
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IRegistrar)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = &quot;Jack&quot;
+&gt;&gt;&gt; jack.college = &quot;New College&quot;
+&gt;&gt;&gt; alsoProvides(jack, IStudent)
+
+You can test it like this:
+
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; IStudent in providedBy(jack)
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id60" id="classimplements" name="classimplements">8.6&nbsp;&nbsp;&nbsp;classImplements</a></h2>
+<p>Declare additional interfaces implemented for instances of a class.
+The arguments after the class are one or more interfaces.  The
+interfaces given are added to any interfaces previously declared.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>classImplements(cls, *interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.interface import classImplements
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class IStudent(Interface):
+...
+...     college = Attribute(&quot;Name of college&quot;)
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IRegistrar)
+...     name = u&quot;&quot;
+...     college = u&quot;&quot;
+
+&gt;&gt;&gt; classImplements(Person, IStudent)
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = &quot;Jack&quot;
+&gt;&gt;&gt; jack.college = &quot;New College&quot;
+
+You can test it like this:
+
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; IStudent in providedBy(jack)
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id61" id="classimplementsonly" name="classimplementsonly">8.7&nbsp;&nbsp;&nbsp;classImplementsOnly</a></h2>
+<p>Declare the only interfaces implemented by instances of a class.  The
+arguments after the class are one or more interfaces.  The interfaces
+given replace any previous declarations.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>classImplementsOnly(cls, *interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.interface import classImplementsOnly
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class IStudent(Interface):
+...
+...     college = Attribute(&quot;Name of college&quot;)
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IPerson)
+...     college = u&quot;&quot;
+
+&gt;&gt;&gt; classImplementsOnly(Person, IStudent)
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.college = &quot;New College&quot;
+
+You can test it like this:
+
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; IPerson in providedBy(jack)
+False
+&gt;&gt;&gt; IStudent in providedBy(jack)
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id62" id="classprovides" name="classprovides">8.8&nbsp;&nbsp;&nbsp;classProvides</a></h2>
+<p>Normally if a class implements a particular interface, the instance of
+that class will provide the interface implemented by that class.  But
+if you want a class to be provided by an interface, you can declare it
+using <tt class="docutils literal"><span class="pre">classProvides</span></tt> function.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>classProvides(*interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import classProvides
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class Person(object):
+...
+...     classProvides(IPerson)
+...     name = u&quot;Jack&quot;
+
+You can test it like this:
+
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; IPerson in providedBy(Person)
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id63" id="componentlookuperror" name="componentlookuperror">8.9&nbsp;&nbsp;&nbsp;ComponentLookupError</a></h2>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id64" id="createobject" name="createobject">8.10&nbsp;&nbsp;&nbsp;createObject</a></h2>
+<p>Create an object using a factory.</p>
+<p>Finds the named factory in the current site and calls it with the
+given arguments.  If a matching factory cannot be found raises
+ComponentLookupError.  Returns the created object.</p>
+<p>A context keyword argument can be provided to cause the factory to be
+looked up in a location other than the current site.  (Of course, this
+means that it is impossible to pass a keyword argument named &quot;context&quot;
+to the factory.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>createObject(factory_name, *args, **kwargs)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IDatabase(Interface):
+...
+...     def getConnection():
+...         &quot;&quot;&quot;Return connection object&quot;&quot;&quot;
+
+&gt;&gt;&gt; class FakeDb(object):
+...
+...     implements(IDatabase)
+...
+...     def getConnection(self):
+...         return &quot;connection&quot;
+
+&gt;&gt;&gt; from zope.component.factory import Factory
+
+&gt;&gt;&gt; factory = Factory(FakeDb, 'FakeDb')
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; from zope.component.interfaces import IFactory
+&gt;&gt;&gt; gsm.registerUtility(factory, IFactory, 'fakedb')
+
+&gt;&gt;&gt; from zope.component import createObject
+&gt;&gt;&gt; createObject('fakedb') #doctest: +ELLIPSIS
+&lt;FakeDb object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id65" id="directlyprovidedby" name="directlyprovidedby">8.11&nbsp;&nbsp;&nbsp;directlyProvidedBy</a></h2>
+<p>This function will return the interfaces directly provided by the
+given object.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>directlyProvidedBy(object)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class IStudent(Interface):
+...
+...     college = Attribute(&quot;Name of college&quot;)
+
+&gt;&gt;&gt; class ISmartPerson(Interface):
+...     pass
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IPerson)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = u&quot;Jack&quot;
+&gt;&gt;&gt; jack.college = &quot;New College&quot;
+&gt;&gt;&gt; alsoProvides(jack, ISmartPerson, IStudent)
+
+&gt;&gt;&gt; from zope.interface import directlyProvidedBy
+
+&gt;&gt;&gt; jack_dp = directlyProvidedBy(jack)
+&gt;&gt;&gt; IPerson in jack_dp.interfaces()
+False
+&gt;&gt;&gt; IStudent in jack_dp.interfaces()
+True
+&gt;&gt;&gt; ISmartPerson in jack_dp.interfaces()
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id66" id="directlyprovides" name="directlyprovides">8.12&nbsp;&nbsp;&nbsp;directlyProvides</a></h2>
+<p>Declare interfaces declared directly for an object.  The arguments
+after the object are one or more interfaces.  The interfaces given
+replace interfaces previously declared for the object.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>directlyProvides(object, *interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class IStudent(Interface):
+...
+...     college = Attribute(&quot;Name of college&quot;)
+
+&gt;&gt;&gt; class ISmartPerson(Interface):
+...     pass
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IPerson)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = u&quot;Jack&quot;
+&gt;&gt;&gt; jack.college = &quot;New College&quot;
+&gt;&gt;&gt; alsoProvides(jack, ISmartPerson, IStudent)
+
+&gt;&gt;&gt; from zope.interface import directlyProvidedBy
+
+&gt;&gt;&gt; jack_dp = directlyProvidedBy(jack)
+&gt;&gt;&gt; ISmartPerson in jack_dp.interfaces()
+True
+&gt;&gt;&gt; IPerson in jack_dp.interfaces()
+False
+&gt;&gt;&gt; IStudent in jack_dp.interfaces()
+True
+&gt;&gt;&gt; from zope.interface import providedBy
+
+&gt;&gt;&gt; ISmartPerson in providedBy(jack)
+True
+
+&gt;&gt;&gt; from zope.interface import directlyProvides
+&gt;&gt;&gt; directlyProvides(jack, IStudent)
+
+&gt;&gt;&gt; jack_dp = directlyProvidedBy(jack)
+&gt;&gt;&gt; ISmartPerson in jack_dp.interfaces()
+False
+&gt;&gt;&gt; IPerson in jack_dp.interfaces()
+False
+&gt;&gt;&gt; IStudent in jack_dp.interfaces()
+True
+
+&gt;&gt;&gt; ISmartPerson in providedBy(jack)
+False
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id67" id="getadapter" name="getadapter">8.13&nbsp;&nbsp;&nbsp;getAdapter</a></h2>
+<p>Get a named adapter to an interface for an object.  Returns an adapter
+that can adapt object to interface.  If a matching adapter cannot be
+found, raises <tt class="docutils literal"><span class="pre">ComponentLookupError</span></tt> .</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>getAdapter(object, interface=Interface, name=u'', context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IRegistrar(Interface):
+...     &quot;&quot;&quot;A registrar will register object's details&quot;&quot;&quot;
+...
+...     def register():
+...         &quot;&quot;&quot;Register object's details&quot;&quot;&quot;
+...
+
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+
+&gt;&gt;&gt; class Guest(object):
+...
+...     implements(IGuest)
+...
+...     def __init__(self, name, place):
+...         self.name = name
+...         self.place = place
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_registrar = GuestRegistrarNG(jack)
+
+&gt;&gt;&gt; IRegistrar.providedBy(jack_registrar)
+True
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; gsm.registerAdapter(GuestRegistrarNG,
+...                     (IGuest,), IRegistrar, 'ng')
+
+&gt;&gt;&gt; getAdapter(jack, IRegistrar, 'ng') #doctest: +ELLIPSIS
+&lt;GuestRegistrarNG object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id68" id="getadapterincontext" name="getadapterincontext">8.14&nbsp;&nbsp;&nbsp;getAdapterInContext</a></h2>
+<p>Instead of this function, use <cite>context</cite> argument of <a class="reference" href="#getadapter">getAdapter</a>
+function.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getAdapterInContext(object, interface, context)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component.globalregistry import BaseGlobalComponents
+&gt;&gt;&gt; from zope.component import IComponentLookup
+&gt;&gt;&gt; sm = BaseGlobalComponents()
+
+&gt;&gt;&gt; class Context(object):
+...     def __init__(self, sm):
+...         self.sm = sm
+...     def __conform__(self, interface):
+...         if interface.isOrExtends(IComponentLookup):
+...             return self.sm
+
+&gt;&gt;&gt; context = Context(sm)
+
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IRegistrar(Interface):
+...     &quot;&quot;&quot;A registrar will register object's details&quot;&quot;&quot;
+...
+...     def register():
+...         &quot;&quot;&quot;Register object's details&quot;&quot;&quot;
+...
+
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+
+&gt;&gt;&gt; class Guest(object):
+...
+...     implements(IGuest)
+...
+...     def __init__(self, name, place):
+...         self.name = name
+...         self.place = place
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_registrar = GuestRegistrarNG(jack)
+
+&gt;&gt;&gt; IRegistrar.providedBy(jack_registrar)
+True
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; sm.registerAdapter(GuestRegistrarNG,
+...                     (IGuest,), IRegistrar)
+
+&gt;&gt;&gt; from zope.component import getAdapterInContext
+&gt;&gt;&gt; from zope.component import queryAdapterInContext
+
+&gt;&gt;&gt; getAdapterInContext(jack, IRegistrar, sm) #doctest: +ELLIPSIS
+&lt;GuestRegistrarNG object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id69" id="getadapters" name="getadapters">8.15&nbsp;&nbsp;&nbsp;getAdapters</a></h2>
+<p>Look for all matching adapters to a provided interface for objects.
+Return a list of adapters that match. If an adapter is named, only the
+most specific adapter of a given name is returned.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getAdapters(objects, provided, context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_registrar = GuestRegistrarNG(jack)
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerAdapter(GuestRegistrarNG, name='ng')
+
+&gt;&gt;&gt; from zope.component import getAdapters
+&gt;&gt;&gt; list(getAdapters((jack,), IRegistrar)) #doctest: +ELLIPSIS
+[(u'ng', &lt;GuestRegistrarNG object at ...&gt;)]
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id70" id="getallutilitiesregisteredfor" name="getallutilitiesregisteredfor">8.16&nbsp;&nbsp;&nbsp;getAllUtilitiesRegisteredFor</a></h2>
+<p>Return all registered utilities for an interface.  This includes
+overridden utilities.  The returned value is an iterable of utility
+instances.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getAllUtilitiesRegisteredFor(interface)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...     def greet(name):
+...         &quot;say hello&quot;
+
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         print &quot;Hello&quot;, name
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet, IGreeter)
+
+&gt;&gt;&gt; from zope.component import getAllUtilitiesRegisteredFor
+
+&gt;&gt;&gt; getAllUtilitiesRegisteredFor(IGreeter) #doctest: +ELLIPSIS
+[&lt;Greeter object at ...&gt;]
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id71" id="getfactoriesfor" name="getfactoriesfor">8.17&nbsp;&nbsp;&nbsp;getFactoriesFor</a></h2>
+<p>Return a tuple (name, factory) of registered factories that create
+objects which implement the given interface.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getFactoriesFor(interface, context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IDatabase(Interface):
+...
+...     def getConnection():
+...         &quot;&quot;&quot;Return connection object&quot;&quot;&quot;
+
+&gt;&gt;&gt; class FakeDb(object):
+...
+...     implements(IDatabase)
+...
+...     def getConnection(self):
+...         return &quot;connection&quot;
+
+&gt;&gt;&gt; from zope.component.factory import Factory
+
+&gt;&gt;&gt; factory = Factory(FakeDb, 'FakeDb')
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; from zope.component.interfaces import IFactory
+&gt;&gt;&gt; gsm.registerUtility(factory, IFactory, 'fakedb')
+
+&gt;&gt;&gt; from zope.component import getFactoriesFor
+
+&gt;&gt;&gt; list(getFactoriesFor(IDatabase))
+[(u'fakedb', &lt;Factory for &lt;class 'FakeDb'&gt;&gt;)]
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id72" id="getfactoryinterfaces" name="getfactoryinterfaces">8.18&nbsp;&nbsp;&nbsp;getFactoryInterfaces</a></h2>
+<p>Get interfaces implemented by a factory.  Finds the factory of the
+given name that is nearest to the context, and returns the interface
+or interface tuple that object instances created by the named factory
+will implement.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getFactoryInterfaces(name, context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IDatabase(Interface):
+...
+...     def getConnection():
+...         &quot;&quot;&quot;Return connection object&quot;&quot;&quot;
+
+&gt;&gt;&gt; class FakeDb(object):
+...
+...     implements(IDatabase)
+...
+...     def getConnection(self):
+...         return &quot;connection&quot;
+
+&gt;&gt;&gt; from zope.component.factory import Factory
+
+&gt;&gt;&gt; factory = Factory(FakeDb, 'FakeDb')
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; from zope.component.interfaces import IFactory
+&gt;&gt;&gt; gsm.registerUtility(factory, IFactory, 'fakedb')
+
+&gt;&gt;&gt; from zope.component import getFactoryInterfaces
+
+&gt;&gt;&gt; getFactoryInterfaces('fakedb')
+&lt;implementedBy __builtin__.FakeDb&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id73" id="getglobalsitemanager" name="getglobalsitemanager">8.19&nbsp;&nbsp;&nbsp;getGlobalSiteManager</a></h2>
+<p>Return the global site manager.  This function should never fail and
+always return an object that provides <cite>IGlobalSiteManager</cite></p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getGlobalSiteManager()</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; from zope.component import globalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; gsm is globalSiteManager
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id74" id="getmultiadapter" name="getmultiadapter">8.20&nbsp;&nbsp;&nbsp;getMultiAdapter</a></h2>
+<p>Look for a multi-adapter to an interface for an objects.  Returns a
+multi-adapter that can adapt objects to interface.  If a matching
+adapter cannot be found, raises ComponentLookupError.  The name
+consisting of an empty string is reserved for unnamed adapters. The
+unnamed adapter methods will often call the named adapter methods with
+an empty string for a name.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getMultiAdapter(objects, interface=Interface, name='',
+context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class IAdapteeOne(Interface):
+...     pass
+
+&gt;&gt;&gt; class IAdapteeTwo(Interface):
+...     pass
+
+&gt;&gt;&gt; class IFunctionality(Interface):
+...     pass
+
+&gt;&gt;&gt; class MyFunctionality(object):
+...     implements(IFunctionality)
+...     adapts(IAdapteeOne, IAdapteeTwo)
+...
+...     def __init__(self, one, two):
+...         self.one = one
+...         self.two = two
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerAdapter(MyFunctionality)
+
+&gt;&gt;&gt; class One(object):
+...     implements(IAdapteeOne)
+
+&gt;&gt;&gt; class Two(object):
+...     implements(IAdapteeTwo)
+
+&gt;&gt;&gt; one = One()
+&gt;&gt;&gt; two = Two()
+
+&gt;&gt;&gt; from zope.component import getMultiAdapter
+
+&gt;&gt;&gt; getMultiAdapter((one,two), IFunctionality) #doctest: +ELLIPSIS
+&lt;MyFunctionality object at ...&gt;
+
+&gt;&gt;&gt; myfunctionality = getMultiAdapter((one,two), IFunctionality)
+&gt;&gt;&gt; myfunctionality.one #doctest: +ELLIPSIS
+&lt;One object at ...&gt;
+&gt;&gt;&gt; myfunctionality.two #doctest: +ELLIPSIS
+&lt;Two object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id75" id="getsitemanager" name="getsitemanager">8.21&nbsp;&nbsp;&nbsp;getSiteManager</a></h2>
+<p>Get the nearest site manager in the given context.  If <cite>context</cite> is
+<cite>None</cite>, return the global site manager.  If the <cite>context</cite> is not
+<cite>None</cite>, it is expected that an adapter from the <cite>context</cite> to
+<cite>IComponentLookup</cite> can be found.  If no adapter is found, a
+<cite>ComponentLookupError</cite> is raised.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getSiteManager(context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example 1:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component.globalregistry import BaseGlobalComponents
+&gt;&gt;&gt; from zope.component import IComponentLookup
+&gt;&gt;&gt; sm = BaseGlobalComponents()
+
+&gt;&gt;&gt; class Context(object):
+...     def __init__(self, sm):
+...         self.sm = sm
+...     def __conform__(self, interface):
+...         if interface.isOrExtends(IComponentLookup):
+...             return self.sm
+
+&gt;&gt;&gt; context = Context(sm)
+
+&gt;&gt;&gt; from zope.component import getSiteManager
+
+&gt;&gt;&gt; lsm = getSiteManager(context)
+&gt;&gt;&gt; lsm is sm
+True
+</pre>
+<p>Example 2:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; sm = getSiteManager()
+&gt;&gt;&gt; gsm is sm
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id76" id="getutilitiesfor" name="getutilitiesfor">8.22&nbsp;&nbsp;&nbsp;getUtilitiesFor</a></h2>
+<p>Look up the registered utilities that provide an interface.  Returns
+an iterable of name-utility pairs.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getUtilitiesFor(interface)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...     def greet(name):
+...         &quot;say hello&quot;
+
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         print &quot;Hello&quot;, name
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet, IGreeter)
+
+&gt;&gt;&gt; from zope.component import getUtilitiesFor
+
+&gt;&gt;&gt; list(getUtilitiesFor(IGreeter)) #doctest: +ELLIPSIS
+[(u'', &lt;Greeter object at ...&gt;)]
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id77" id="getutility" name="getutility">8.23&nbsp;&nbsp;&nbsp;getUtility</a></h2>
+<p>Get the utility that provides interface.  Returns the nearest utility
+to the context that implements the specified interface.  If one is not
+found, raises ComponentLookupError.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>getUtility(interface, name='', context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...     def greet(name):
+...         &quot;say hello&quot;
+
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         return &quot;Hello &quot; + name
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet, IGreeter)
+
+&gt;&gt;&gt; from zope.component import getUtility
+
+&gt;&gt;&gt; getUtility(IGreeter).greet('Jack')
+'Hello Jack'
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id78" id="handle" name="handle">8.24&nbsp;&nbsp;&nbsp;handle</a></h2>
+<p>Call all of the handlers for the given objects.  Handlers are
+subscription adapter factories that don't produce anything.  They do
+all of their work when called.  Handlers are typically used to handle
+events.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>handle(*objects)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import datetime
+
+&gt;&gt;&gt; def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IDocumentCreated(Interface):
+...     doc = Attribute(&quot;The document that was created&quot;)
+
+&gt;&gt;&gt; class DocumentCreated(object):
+...     implements(IDocumentCreated)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+
+
+&gt;&gt;&gt; def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+&gt;&gt;&gt; from zope.component import adapter
+
+&gt;&gt;&gt; &#64;adapter(IDocumentCreated)
+... def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerHandler(documentCreated)
+
+&gt;&gt;&gt; from zope.component import handle
+
+&gt;&gt;&gt; handle(DocumentCreated(doc))
+&gt;&gt;&gt; doc.created.__class__.__name__
+'datetime'
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id79" id="implementedby" name="implementedby">8.25&nbsp;&nbsp;&nbsp;implementedBy</a></h2>
+<p>Return the interfaces implemented for a class' instances.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>implementedBy(class_)</cite></li>
+</ul>
+</blockquote>
+<p>Example 1:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...     def greet(name):
+...         &quot;say hello&quot;
+
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         print &quot;Hello&quot;, name
+
+&gt;&gt;&gt; from zope.interface import implementedBy
+&gt;&gt;&gt; implementedBy(Greeter)
+&lt;implementedBy __builtin__.Greeter&gt;
+</pre>
+<p>Example 2:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IPerson(Interface):
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class ISpecial(Interface):
+...     pass
+
+&gt;&gt;&gt; class Person(object):
+...     implements(IPerson)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; from zope.interface import classImplements
+&gt;&gt;&gt; classImplements(Person, ISpecial)
+
+&gt;&gt;&gt; from zope.interface import implementedBy
+
+To get a list of all interfaces implemented by that class::
+
+&gt;&gt;&gt; [x.__name__ for x in implementedBy(Person)]
+['IPerson', 'ISpecial']
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id80" id="implementer" name="implementer">8.26&nbsp;&nbsp;&nbsp;implementer</a></h2>
+<p>Create a decorator for declaring interfaces implemented by a factory.
+A callable is returned that makes an implements declaration on objects
+passed to it.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>implementer(*interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implementer
+&gt;&gt;&gt; class IFoo(Interface):
+...     pass
+&gt;&gt;&gt; class Foo(object):
+...     implements(IFoo)
+
+&gt;&gt;&gt; &#64;implementer(IFoo)
+... def foocreator():
+...     foo = Foo()
+...     return foo
+&gt;&gt;&gt; list(implementedBy(foocreator))
+[&lt;InterfaceClass __builtin__.IFoo&gt;]
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id81" id="implements" name="implements">8.27&nbsp;&nbsp;&nbsp;implements</a></h2>
+<p>Declare interfaces implemented by instances of a class This function
+is called in a class definition.  The arguments are one or more
+interfaces.  The interfaces given are added to any interfaces
+previously declared.  Previous declarations include declarations for
+base classes unless implementsOnly was used.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>implements(*interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IPerson)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = &quot;Jack&quot;
+
+You can test it like this:
+
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; IPerson in providedBy(jack)
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id82" id="implementsonly" name="implementsonly">8.28&nbsp;&nbsp;&nbsp;implementsOnly</a></h2>
+<p>Declare the only interfaces implemented by instances of a class.  This
+function is called in a class definition.  The arguments are one or
+more interfaces.  Previous declarations including declarations for
+base classes are overridden.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>implementsOnly(*interfaces)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.interface import implementsOnly
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class IStudent(Interface):
+...
+...     college = Attribute(&quot;Name of college&quot;)
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IPerson)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; class NewPerson(Person):
+...     implementsOnly(IStudent)
+...     college = u&quot;&quot;
+
+&gt;&gt;&gt; jack = NewPerson()
+&gt;&gt;&gt; jack.college = &quot;New College&quot;
+
+You can test it like this:
+
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; IPerson in providedBy(jack)
+False
+&gt;&gt;&gt; IStudent in providedBy(jack)
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id83" id="moduleprovides" name="moduleprovides">8.29&nbsp;&nbsp;&nbsp;moduleProvides</a></h2>
+<p>Declare interfaces provided by a module.  This function is used in a
+module definition.  The arguments are one or more interfaces.  The
+given interfaces are used to create the module's direct-object
+interface specification.  An error will be raised if the module
+already has an interface specification.  In other words, it is an
+error to call this function more than once in a module definition.</p>
+<p>This function is provided for convenience. It provides a more
+convenient way to call directlyProvides for a module.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>moduleProvides(*interfaces)</cite></li>
+</ul>
+</blockquote>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id84" id="nolongerprovides" name="nolongerprovides">8.30&nbsp;&nbsp;&nbsp;noLongerProvides</a></h2>
+<p>Remove an interface from the list of an object's directly provided
+interfaces.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>noLongerProvides(object, interface)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.interface import classImplements
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class IStudent(Interface):
+...
+...     college = Attribute(&quot;Name of college&quot;)
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IPerson)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = &quot;Jack&quot;
+&gt;&gt;&gt; jack.college = &quot;New College&quot;
+&gt;&gt;&gt; directlyProvides(jack, IStudent)
+
+You can test it like this:
+
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; IPerson in providedBy(jack)
+True
+&gt;&gt;&gt; IStudent in providedBy(jack)
+True
+&gt;&gt;&gt; from zope.interface import noLongerProvides
+&gt;&gt;&gt; noLongerProvides(jack, IStudent)
+&gt;&gt;&gt; IPerson in providedBy(jack)
+True
+&gt;&gt;&gt; IStudent in providedBy(jack)
+False
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id85" id="provideadapter" name="provideadapter">8.31&nbsp;&nbsp;&nbsp;provideAdapter</a></h2>
+<p>It is recommend to use <a class="reference" href="#registeradapter">registerAdapter</a> .</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id86" id="providehandler" name="providehandler">8.32&nbsp;&nbsp;&nbsp;provideHandler</a></h2>
+<p>It is recommend to use <a class="reference" href="#registerhandler">registerHandler</a> .</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id87" id="providesubscriptionadapter" name="providesubscriptionadapter">8.33&nbsp;&nbsp;&nbsp;provideSubscriptionAdapter</a></h2>
+<p>It is recommend to use <a class="reference" href="#registersubscriptionadapter">registerSubscriptionAdapter</a> .</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id88" id="provideutility" name="provideutility">8.34&nbsp;&nbsp;&nbsp;provideUtility</a></h2>
+<p>It is recommend to use <a class="reference" href="#registerutility">registerUtility</a> .</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id89" id="providedby" name="providedby">8.35&nbsp;&nbsp;&nbsp;providedBy</a></h2>
+<p>Test whether the interface is implemented by the object. Return true
+if the object asserts that it implements the interface, including
+asserting that it implements an extended interface.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.interface</span></tt></li>
+<li>Signature: <cite>providedBy(object)</cite></li>
+</ul>
+</blockquote>
+<p>Example 1:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class Person(object):
+...
+...     implements(IPerson)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = &quot;Jack&quot;
+
+You can test it like this:
+
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; IPerson in providedBy(jack)
+True
+</pre>
+<p>Example 2:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IPerson(Interface):
+...     name = Attribute(&quot;Name of person&quot;)
+
+&gt;&gt;&gt; class ISpecial(Interface):
+...     pass
+
+&gt;&gt;&gt; class Person(object):
+...     implements(IPerson)
+...     name = u&quot;&quot;
+
+&gt;&gt;&gt; from zope.interface import classImplements
+&gt;&gt;&gt; classImplements(Person, ISpecial)
+&gt;&gt;&gt; from zope.interface import providedBy
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = &quot;Jack&quot;
+
+To get a list of all interfaces provided by that object::
+
+&gt;&gt;&gt; [x.__name__ for x in providedBy(jack)]
+['IPerson', 'ISpecial']
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id90" id="queryadapter" name="queryadapter">8.36&nbsp;&nbsp;&nbsp;queryAdapter</a></h2>
+<p>Look for a named adapter to an interface for an object.  Returns an
+adapter that can adapt object to interface.  If a matching adapter
+cannot be found, returns the default.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>queryAdapter(object, interface=Interface, name=u'',
+default=None, context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IRegistrar(Interface):
+...     &quot;&quot;&quot;A registrar will register object's details&quot;&quot;&quot;
+...
+...     def register():
+...         &quot;&quot;&quot;Register object's details&quot;&quot;&quot;
+...
+
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+
+&gt;&gt;&gt; class Guest(object):
+...
+...     implements(IGuest)
+...
+...     def __init__(self, name, place):
+...         self.name = name
+...         self.place = place
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_registrar = GuestRegistrarNG(jack)
+
+&gt;&gt;&gt; IRegistrar.providedBy(jack_registrar)
+True
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; gsm.registerAdapter(GuestRegistrarNG,
+...                     (IGuest,), IRegistrar, 'ng')
+
+&gt;&gt;&gt; queryAdapter(jack, IRegistrar, 'ng') #doctest: +ELLIPSIS
+&lt;GuestRegistrarNG object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id91" id="queryadapterincontext" name="queryadapterincontext">8.37&nbsp;&nbsp;&nbsp;queryAdapterInContext</a></h2>
+<p>Instead of this function, use <cite>context</cite> argument of <a class="reference" href="#queryadapter">queryAdapter</a>
+function.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>queryAdapterInContext(object, interface, context,
+default=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component.globalregistry import BaseGlobalComponents
+&gt;&gt;&gt; from zope.component import IComponentLookup
+&gt;&gt;&gt; sm = BaseGlobalComponents()
+
+&gt;&gt;&gt; class Context(object):
+...     def __init__(self, sm):
+...         self.sm = sm
+...     def __conform__(self, interface):
+...         if interface.isOrExtends(IComponentLookup):
+...             return self.sm
+
+&gt;&gt;&gt; context = Context(sm)
+
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IRegistrar(Interface):
+...     &quot;&quot;&quot;A registrar will register object's details&quot;&quot;&quot;
+...
+...     def register():
+...         &quot;&quot;&quot;Register object's details&quot;&quot;&quot;
+...
+
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+
+&gt;&gt;&gt; class Guest(object):
+...
+...     implements(IGuest)
+...
+...     def __init__(self, name, place):
+...         self.name = name
+...         self.place = place
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_registrar = GuestRegistrarNG(jack)
+
+&gt;&gt;&gt; IRegistrar.providedBy(jack_registrar)
+True
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; sm.registerAdapter(GuestRegistrarNG,
+...                     (IGuest,), IRegistrar)
+
+&gt;&gt;&gt; from zope.component import getAdapterInContext
+&gt;&gt;&gt; from zope.component import queryAdapterInContext
+
+&gt;&gt;&gt; queryAdapterInContext(jack, IRegistrar, sm) #doctest: +ELLIPSIS
+&lt;GuestRegistrarNG object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id92" id="querymultiadapter" name="querymultiadapter">8.38&nbsp;&nbsp;&nbsp;queryMultiAdapter</a></h2>
+<p>Look for a multi-adapter to an interface for objects.  Returns a
+multi-adapter that can adapt objects to interface.  If a matching
+adapter cannot be found, returns the default.  The name consisting of
+an empty string is reserved for unnamed adapters.  The unnamed adapter
+methods will often call the named adapter methods with an empty string
+for a name.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>queryMultiAdapter(objects, interface=Interface,
+name=u'', default=None, context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class IAdapteeOne(Interface):
+...     pass
+
+&gt;&gt;&gt; class IAdapteeTwo(Interface):
+...     pass
+
+&gt;&gt;&gt; class IFunctionality(Interface):
+...     pass
+
+&gt;&gt;&gt; class MyFunctionality(object):
+...     implements(IFunctionality)
+...     adapts(IAdapteeOne, IAdapteeTwo)
+...
+...     def __init__(self, one, two):
+...         self.one = one
+...         self.two = two
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerAdapter(MyFunctionality)
+
+&gt;&gt;&gt; class One(object):
+...     implements(IAdapteeOne)
+
+&gt;&gt;&gt; class Two(object):
+...     implements(IAdapteeTwo)
+
+&gt;&gt;&gt; one = One()
+&gt;&gt;&gt; two = Two()
+
+&gt;&gt;&gt; from zope.component import queryMultiAdapter
+
+&gt;&gt;&gt; getMultiAdapter((one,two), IFunctionality) #doctest: +ELLIPSIS
+&lt;MyFunctionality object at ...&gt;
+
+&gt;&gt;&gt; myfunctionality = queryMultiAdapter((one,two), IFunctionality)
+&gt;&gt;&gt; myfunctionality.one #doctest: +ELLIPSIS
+&lt;One object at ...&gt;
+&gt;&gt;&gt; myfunctionality.two #doctest: +ELLIPSIS
+&lt;Two object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id93" id="queryutility" name="queryutility">8.39&nbsp;&nbsp;&nbsp;queryUtility</a></h2>
+<p>Look up a utility that provides an interface.  If one is not found,
+returns default.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span></tt></li>
+<li>Signature: <cite>queryUtility(interface, name='', default=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...     def greet(name):
+...         &quot;say hello&quot;
+
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         return &quot;Hello &quot; + name
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet, IGreeter)
+
+&gt;&gt;&gt; from zope.component import queryUtility
+
+&gt;&gt;&gt; queryUtility(IGreeter).greet('Jack')
+'Hello Jack'
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id94" id="registeradapter" name="registeradapter">8.40&nbsp;&nbsp;&nbsp;registerAdapter</a></h2>
+<p>Register an adapter factory.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>registerAdapter(factory, required=None, provided=None,
+name=u'', info=u'')</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IRegistrar(Interface):
+...     &quot;&quot;&quot;A registrar will register object's details&quot;&quot;&quot;
+...
+...     def register():
+...         &quot;&quot;&quot;Register object's details&quot;&quot;&quot;
+...
+
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+
+&gt;&gt;&gt; class Guest(object):
+...
+...     implements(IGuest)
+...
+...     def __init__(self, name, place):
+...         self.name = name
+...         self.place = place
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_registrar = GuestRegistrarNG(jack)
+
+&gt;&gt;&gt; IRegistrar.providedBy(jack_registrar)
+True
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; gsm.registerAdapter(GuestRegistrarNG,
+...                     (IGuest,), IRegistrar, 'ng')
+
+You can test it like this:
+
+&gt;&gt;&gt; queryAdapter(jack, IRegistrar, 'ng') #doctest: +ELLIPSIS
+&lt;GuestRegistrarNG object at ...&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id95" id="registeredadapters" name="registeredadapters">8.41&nbsp;&nbsp;&nbsp;registeredAdapters</a></h2>
+<p>Return an iterable of <cite>IAdapterRegistrations</cite>.  These registrations
+describe the current adapter registrations in the object.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>registeredAdapters()</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IRegistrar(Interface):
+...     &quot;&quot;&quot;A registrar will register object's details&quot;&quot;&quot;
+...
+...     def register():
+...         &quot;&quot;&quot;Register object's details&quot;&quot;&quot;
+...
+
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+
+&gt;&gt;&gt; class Guest(object):
+...
+...     implements(IGuest)
+...
+...     def __init__(self, name, place):
+...         self.name = name
+...         self.place = place
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_registrar = GuestRegistrarNG(jack)
+
+&gt;&gt;&gt; IRegistrar.providedBy(jack_registrar)
+True
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; gsm.registerAdapter(GuestRegistrarNG,
+...                     (IGuest,), IRegistrar, 'ng2')
+
+
+&gt;&gt;&gt; reg_adapter = list(gsm.registeredAdapters())
+&gt;&gt;&gt; 'ng2' in [x.name for x in reg_adapter]
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id96" id="registeredhandlers" name="registeredhandlers">8.42&nbsp;&nbsp;&nbsp;registeredHandlers</a></h2>
+<p>Return an iterable of <cite>IHandlerRegistrations</cite>.  These registrations
+describe the current handler registrations in the object.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>registeredHandlers()</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import datetime
+
+&gt;&gt;&gt; def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IDocumentCreated(Interface):
+...     doc = Attribute(&quot;The document that was created&quot;)
+
+&gt;&gt;&gt; class DocumentCreated(object):
+...     implements(IDocumentCreated)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+
+
+&gt;&gt;&gt; def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+&gt;&gt;&gt; from zope.component import adapter
+
+&gt;&gt;&gt; &#64;adapter(IDocumentCreated)
+... def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerHandler(documentCreated, info='ng3')
+
+&gt;&gt;&gt; reg_adapter = list(gsm.registeredHandlers())
+&gt;&gt;&gt; 'ng3' in [x.info for x in reg_adapter]
+True
+
+&gt;&gt;&gt; gsm.registerHandler(documentCreated, name='ng4')
+Traceback (most recent call last):
+...
+TypeError: Named handlers are not yet supported
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id97" id="registeredsubscriptionadapters" name="registeredsubscriptionadapters">8.43&nbsp;&nbsp;&nbsp;registeredSubscriptionAdapters</a></h2>
+<p>Return an iterable of <cite>ISubscriptionAdapterRegistrations</cite>.  These
+registrations describe the current subscription adapter registrations
+in the object.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>registeredSubscriptionAdapters()</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IValidate(Interface):
+...     def validate(ob):
+...         &quot;&quot;&quot;Determine whether the object is valid
+...
+...         Return a string describing a validation problem.
+...         An empty string is returned to indicate that the
+...         object is valid.
+...         &quot;&quot;&quot;
+
+&gt;&gt;&gt; class IDocument(Interface):
+...     summary = Attribute(&quot;Document summary&quot;)
+...     body = Attribute(&quot;Document text&quot;)
+
+&gt;&gt;&gt; class Document(object):
+...     implements(IDocument)
+...     def __init__(self, summary, body):
+...         self.summary, self.body = summary, body
+
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class AdequateLength(object):
+...
+...     adapts(IDocument)
+...     implements(IValidate)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+...
+...     def validate(self):
+...         if len(self.doc.body) &lt; 1000:
+...             return 'too short'
+...         else:
+...             return ''
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerSubscriptionAdapter(AdequateLength, info='ng4')
+
+&gt;&gt;&gt; reg_adapter = list(gsm.registeredSubscriptionAdapters())
+&gt;&gt;&gt; 'ng4' in [x.info for x in reg_adapter]
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id98" id="registeredutilities" name="registeredutilities">8.44&nbsp;&nbsp;&nbsp;registeredUtilities</a></h2>
+<p>Return an iterable of <cite>IUtilityRegistrations</cite> .  These registrations
+describe the current utility registrations in the object.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>registeredUtilities()</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...     def greet(name):
+...         &quot;say hello&quot;
+
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         print &quot;Hello&quot;, name
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet, info='ng5')
+
+&gt;&gt;&gt; reg_adapter = list(gsm.registeredUtilities())
+&gt;&gt;&gt; 'ng5' in [x.info for x in reg_adapter]
+True
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id99" id="registerhandler" name="registerhandler">8.45&nbsp;&nbsp;&nbsp;registerHandler</a></h2>
+<p>Register a handler.  A handler is a subscriber that doesn't compute an
+adapter but performs some function when called.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>registerHandler(handler, required=None, name=u'', info='')</cite></li>
+</ul>
+</blockquote>
+<p>In the current implementation of <tt class="docutils literal"><span class="pre">zope.component</span></tt> doesn't support
+<cite>name</cite> attribute.</p>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; import datetime
+
+&gt;&gt;&gt; def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IDocumentCreated(Interface):
+...     doc = Attribute(&quot;The document that was created&quot;)
+
+&gt;&gt;&gt; class DocumentCreated(object):
+...     implements(IDocumentCreated)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+
+
+&gt;&gt;&gt; def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+&gt;&gt;&gt; from zope.component import adapter
+
+&gt;&gt;&gt; &#64;adapter(IDocumentCreated)
+... def documentCreated(event):
+...     event.doc.created = datetime.datetime.utcnow()
+
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerHandler(documentCreated)
+
+&gt;&gt;&gt; from zope.component import handle
+
+&gt;&gt;&gt; handle(DocumentCreated(doc))
+&gt;&gt;&gt; doc.created.__class__.__name__
+'datetime'
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id100" id="registersubscriptionadapter" name="registersubscriptionadapter">8.46&nbsp;&nbsp;&nbsp;registerSubscriptionAdapter</a></h2>
+<p>Register a subscriber factory.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>registerSubscriptionAdapter(factory, required=None,
+provides=None, name=u'', info='')</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IValidate(Interface):
+...     def validate(ob):
+...         &quot;&quot;&quot;Determine whether the object is valid
+...
+...         Return a string describing a validation problem.
+...         An empty string is returned to indicate that the
+...         object is valid.
+...         &quot;&quot;&quot;
+
+&gt;&gt;&gt; class IDocument(Interface):
+...     summary = Attribute(&quot;Document summary&quot;)
+...     body = Attribute(&quot;Document text&quot;)
+
+&gt;&gt;&gt; class Document(object):
+...     implements(IDocument)
+...     def __init__(self, summary, body):
+...         self.summary, self.body = summary, body
+
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class AdequateLength(object):
+...
+...     adapts(IDocument)
+...     implements(IValidate)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+...
+...     def validate(self):
+...         if len(self.doc.body) &lt; 1000:
+...             return 'too short'
+...         else:
+...             return ''
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerSubscriptionAdapter(AdequateLength)
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id101" id="registerutility" name="registerutility">8.47&nbsp;&nbsp;&nbsp;registerUtility</a></h2>
+<p>Register a utility.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>registerUtility(component, provided=None, name=u'',
+info=u'')</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...     def greet(name):
+...         &quot;say hello&quot;
+
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         print &quot;Hello&quot;, name
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet)
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id102" id="subscribers" name="subscribers">8.48&nbsp;&nbsp;&nbsp;subscribers</a></h2>
+<p>Get subscribers.  Subscribers are returned that provide the provided
+interface and that depend on and are computed from the sequence of
+required objects.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>subscribers(required, provided, context=None)</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IValidate(Interface):
+...     def validate(ob):
+...         &quot;&quot;&quot;Determine whether the object is valid
+...
+...         Return a string describing a validation problem.
+...         An empty string is returned to indicate that the
+...         object is valid.
+...         &quot;&quot;&quot;
+
+&gt;&gt;&gt; class IDocument(Interface):
+...     summary = Attribute(&quot;Document summary&quot;)
+...     body = Attribute(&quot;Document text&quot;)
+
+&gt;&gt;&gt; class Document(object):
+...     implements(IDocument)
+...     def __init__(self, summary, body):
+...         self.summary, self.body = summary, body
+
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class SingleLineSummary:
+...     adapts(IDocument)
+...     implements(IValidate)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+...
+...     def validate(self):
+...         if '\n' in self.doc.summary:
+...             return 'Summary should only have one line'
+...         else:
+...             return ''
+
+&gt;&gt;&gt; class AdequateLength(object):
+...     adapts(IDocument)
+...     implements(IValidate)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+...
+...     def validate(self):
+...         if len(self.doc.body) &lt; 1000:
+...             return 'too short'
+...         else:
+...             return ''
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerSubscriptionAdapter(SingleLineSummary)
+&gt;&gt;&gt; gsm.registerSubscriptionAdapter(AdequateLength)
+
+&gt;&gt;&gt; from zope.component import subscribers
+
+&gt;&gt;&gt; doc = Document(&quot;A\nDocument&quot;, &quot;blah&quot;)
+&gt;&gt;&gt; [adapter.validate()
+...  for adapter in subscribers([doc], IValidate)
+...  if adapter.validate()]
+['Summary should only have one line', 'too short']
+
+&gt;&gt;&gt; doc = Document(&quot;A\nDocument&quot;, &quot;blah&quot; * 1000)
+&gt;&gt;&gt; [adapter.validate()
+...  for adapter in subscribers([doc], IValidate)
+...  if adapter.validate()]
+['Summary should only have one line']
+
+&gt;&gt;&gt; doc = Document(&quot;A Document&quot;, &quot;blah&quot;)
+&gt;&gt;&gt; [adapter.validate()
+...  for adapter in subscribers([doc], IValidate)
+...  if adapter.validate()]
+['too short']
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id103" id="unregisteradapter" name="unregisteradapter">8.49&nbsp;&nbsp;&nbsp;unregisterAdapter</a></h2>
+<p>Register an adapter factory.  A boolean is returned indicating whether
+the registry was changed.  If the given component is None and there is
+no component registered, or if the given component is not None and is
+not registered, then the function returns False, otherwise it returns
+True.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>unregisterAdapter(factory=None, required=None,
+provided=None, name=u'')</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IRegistrar(Interface):
+...     &quot;&quot;&quot;A registrar will register object's details&quot;&quot;&quot;
+...
+...     def register():
+...         &quot;&quot;&quot;Register object's details&quot;&quot;&quot;
+...
+
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class GuestRegistrarNG(object):
+...
+...     implements(IRegistrar)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         next_id = get_next_id()
+...         guests_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+
+&gt;&gt;&gt; class Guest(object):
+...
+...     implements(IGuest)
+...
+...     def __init__(self, name, place):
+...         self.name = name
+...         self.place = place
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_registrar = GuestRegistrarNG(jack)
+
+&gt;&gt;&gt; IRegistrar.providedBy(jack_registrar)
+True
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; gsm.registerAdapter(GuestRegistrarNG,
+...                     (IGuest,), IRegistrar, 'ng6')
+
+You can test it like this:
+
+&gt;&gt;&gt; queryAdapter(jack, IRegistrar, 'ng6') #doctest: +ELLIPSIS
+&lt;GuestRegistrarNG object at ...&gt;
+
+Now unregister:
+
+&gt;&gt;&gt; gsm.unregisterAdapter(GuestRegistrarNG, name='ng6')
+True
+
+After unregistration:
+
+&gt;&gt;&gt; print queryAdapter(jack, IRegistrar, 'ng6')
+None
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id104" id="unregisterhandler" name="unregisterhandler">8.50&nbsp;&nbsp;&nbsp;unregisterHandler</a></h2>
+<p>Unregister a handler.  A handler is a subscriber that doesn't compute
+an adapter but performs some function when called.  A boolean is
+returned indicating whether the registry was changed.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>unregisterHandler(handler=None, required=None,
+name=u'')</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IDocument(Interface):
+...
+...     summary = Attribute(&quot;Document summary&quot;)
+...     body = Attribute(&quot;Document text&quot;)
+
+&gt;&gt;&gt; class Document(object):
+...
+...     implements(IDocument)
+...     def __init__(self, summary, body):
+...         self.summary, self.body = summary, body
+
+&gt;&gt;&gt; doc = Document(&quot;A\nDocument&quot;, &quot;blah&quot;)
+
+&gt;&gt;&gt; class IDocumentAccessed(Interface):
+...     doc = Attribute(&quot;The document that was accessed&quot;)
+
+&gt;&gt;&gt; class DocumentAccessed(object):
+...     implements(IDocumentAccessed)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+...         self.doc.count = 0
+
+&gt;&gt;&gt; from zope.component import adapter
+
+&gt;&gt;&gt; &#64;adapter(IDocumentAccessed)
+... def documentAccessed(event):
+...     event.doc.count = event.doc.count + 1
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerHandler(documentAccessed)
+
+&gt;&gt;&gt; from zope.component import handle
+
+&gt;&gt;&gt; handle(DocumentAccessed(doc))
+&gt;&gt;&gt; doc.count
+1
+
+Now unregister:
+
+&gt;&gt;&gt; gsm.unregisterHandler(documentAccessed)
+True
+
+After unregistration:
+
+&gt;&gt;&gt; handle(DocumentAccessed(doc))
+&gt;&gt;&gt; doc.count
+0
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id105" id="unregistersubscriptionadapter" name="unregistersubscriptionadapter">8.51&nbsp;&nbsp;&nbsp;unregisterSubscriptionAdapter</a></h2>
+<p>Unregister a subscriber factory.  A boolean is returned indicating
+whether the registry was changed.  If the given component is None and
+there is no component registered, or if the given component is not
+None and is not registered, then the function returns False, otherwise
+it returns True.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>unregisterSubscriptionAdapter(factory=None,
+required=None, provides=None, name=u'')</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IValidate(Interface):
+...     def validate(ob):
+...         &quot;&quot;&quot;Determine whether the object is valid
+...
+...         Return a string describing a validation problem.
+...         An empty string is returned to indicate that the
+...         object is valid.
+...         &quot;&quot;&quot;
+
+&gt;&gt;&gt; class IDocument(Interface):
+...     summary = Attribute(&quot;Document summary&quot;)
+...     body = Attribute(&quot;Document text&quot;)
+
+&gt;&gt;&gt; class Document(object):
+...     implements(IDocument)
+...     def __init__(self, summary, body):
+...         self.summary, self.body = summary, body
+
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class AdequateLength(object):
+...
+...     adapts(IDocument)
+...     implements(IValidate)
+...
+...     def __init__(self, doc):
+...         self.doc = doc
+...
+...     def validate(self):
+...         if len(self.doc.body) &lt; 1000:
+...             return 'too short'
+...         else:
+...             return ''
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; gsm.registerSubscriptionAdapter(AdequateLength)
+
+&gt;&gt;&gt; from zope.component import subscribers
+
+&gt;&gt;&gt; doc = Document(&quot;A\nDocument&quot;, &quot;blah&quot;)
+&gt;&gt;&gt; [adapter.validate()
+...  for adapter in subscribers([doc], IValidate)
+...  if adapter.validate()]
+['too short']
+
+Now unregister:
+
+&gt;&gt;&gt; gsm.unregisterSubscriptionAdapter(AdequateLength)
+True
+
+After unregistration:
+
+&gt;&gt;&gt; [adapter.validate()
+...  for adapter in subscribers([doc], IValidate)
+...  if adapter.validate()]
+[]
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id106" id="unregisterutility" name="unregisterutility">8.52&nbsp;&nbsp;&nbsp;unregisterUtility</a></h2>
+<p>Unregister a utility.  A boolean is returned indicating whether the
+registry was changed.  If the given component is None and there is no
+component registered, or if the given component is not None and is not
+registered, then the function returns False, otherwise it returns
+True.</p>
+<blockquote>
+<ul class="simple">
+<li>Location: <tt class="docutils literal"><span class="pre">zope.component</span> <span class="pre">-</span> <span class="pre">IComponentRegistry</span></tt></li>
+<li>Signature: <cite>unregisterUtility(component=None, provided=None,
+name=u'')</cite></li>
+</ul>
+</blockquote>
+<p>Example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...     def greet(name):
+...         &quot;say hello&quot;
+
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         return &quot;Hello &quot; + name
+
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet)
+
+&gt;&gt;&gt; queryUtility(IGreeter).greet('Jack')
+'Hello Jack'
+
+Now unregister:
+
+&gt;&gt;&gt; gsm.unregisterUtility(greet)
+True
+
+After unregistration:
+
+&gt;&gt;&gt; print queryUtility(IGreeter)
+None
+</pre>
+</div>
+</div>
+</div>
+
+    <!-- Google Analytics start -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47871477-1', 'muthukadan.net');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- Google Analytics end -->
+
+</body>
+</html>

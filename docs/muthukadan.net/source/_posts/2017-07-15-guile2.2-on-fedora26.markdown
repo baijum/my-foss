@@ -1,0 +1,87 @@
+---
+layout: single
+title: Installing Guile 2.2 on Fedora 26 using Guix
+date: 2017-07-15
+categories: scheme guile
+---
+
+Few days before I upgraded to Fedora 26.  Fedora has a package named
+`guile22` which gives 2.2 version of Guile.  But I wanted to try Guix.
+I noticed that there is [Guix package][guix-copr] in Copr repository.
+Then I enabled that repository and installed Guix.
+
+{% raw %}
+```bash
+# dnf copr enable lantw44/guix
+# dnf install guix
+```
+{% endraw %}
+
+First I started the guix-daemon service and enabled it:
+
+{% raw %}
+```bash
+# systemctl start guix-daemon.service
+# systemctl enable guix-daemon.service
+```
+{% endraw %}
+
+Then I tried to install Guile like this as a normal user (`baiju`):
+
+{% raw %}
+```bash
+$ guix package -i guile
+```
+{% endraw %}
+
+But I had to guix pull before that:
+
+{% raw %}
+```bash
+$ guix pull
+```
+{% endraw %}
+
+I was trying to do these things as a normal user.  But there was some
+error about some permission issue for a directory.  So I changed it
+like this:
+
+{% raw %}
+```bash
+chown baiju.baiju /var/guix/profiles/per-user/baiju
+```
+{% endraw %}
+
+Then I tried the package installation again using the `package -i`
+subcommand.
+
+After installation Guix showed me that I need to update my PATH.
+So I just updated my `.bashrc` like this (guix shows this after installation!):
+
+
+{% raw %}
+```bash
+export PATH="/home/baiju/.guix-profile/bin${PATH:+:}$PATH"  
+```
+{% endraw %}
+
+When starting guile it was showing a warning like this: `warning:
+failed to install locale`
+
+Then I found that [glibc-locales package][locale] need to be installed
+and an environment variable need to be updated.
+
+
+{% raw %}
+```bash
+guix package -i glibc-locales
+export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
+```
+{% endraw %}
+
+I also added the above environment variable setting in my `.bashrc`.
+
+Now I have Guile 2.2 installed using Guix in my Fedora 26!
+
+[guix-copr]: https://copr.fedorainfracloud.org/coprs/lantw44/guix/
+[locale]: https://www.gnu.org/software/guix/manual/guix.html#Application-Setup

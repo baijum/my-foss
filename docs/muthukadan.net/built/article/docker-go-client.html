@@ -1,0 +1,273 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.3.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Docker Go Client - Baiju Muthukadan</title>
+
+
+
+
+<meta name="description" content="For surely there is an end; and thine expectation shall not be cut off. (Proverbs 23:18)">
+
+
+
+
+<meta name="author" content="Baiju Muthukadan">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Baiju Muthukadan">
+<meta property="og:title" content="Docker Go Client">
+
+
+
+
+
+
+  <meta name="twitter:site" content="@nogenerics">
+  <meta name="twitter:title" content="Docker Go Client">
+  <meta name="twitter:description" content="For surely there is an end; and thine expectation shall not be cut off. (Proverbs 23:18)">
+  <meta name="twitter:url" content="">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@Baiju Muthukadan">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Baiju Muthukadan",
+      "url" : null,
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Baiju Muthukadan Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">Baiju Muthukadan</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="/about.html">About</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Docker Go Client">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Docker Go Client
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Docker provides a <a href="https://docs.docker.com/reference/api/docker_remote_api/">remote API</a>
+and there are many language specific client libraries built on top of that.
+The <a href="https://github.com/samalba/dockerclient">dockerclient</a> is one of them.</p>
+
+<p>The below example shows creating a container then stopping and finally
+removing that.</p>
+
+<div class="language-go highlighter-rouge"><pre class="highlight"><code><span class="c">// Init the client</span><span class="x">
+</span><span class="n">docker</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">dockerclient</span><span class="o">.</span><span class="n">NewDockerClient</span><span class="p">(</span><span class="s">"unix:///var/run/docker.sock"</span><span class="p">,</span><span class="x"> </span><span class="no">nil</span><span class="p">)</span><span class="x">
+
+</span><span class="c">// Create a container</span><span class="x">
+</span><span class="n">b</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="nb">make</span><span class="p">(</span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="n">dockerclient</span><span class="o">.</span><span class="n">PortBinding</span><span class="p">)</span><span class="x">
+</span><span class="n">b</span><span class="p">[</span><span class="s">"5432/tcp"</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="p">[]</span><span class="n">dockerclient</span><span class="o">.</span><span class="n">PortBinding</span><span class="p">{</span><span class="n">dockerclient</span><span class="o">.</span><span class="n">PortBinding</span><span class="p">{</span><span class="n">HostPort</span><span class="o">:</span><span class="x"> </span><span class="s">"5432"</span><span class="p">}}</span><span class="x">
+</span><span class="n">hostConfig</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">dockerclient</span><span class="o">.</span><span class="n">HostConfig</span><span class="p">{</span><span class="x">
+	</span><span class="n">PortBindings</span><span class="o">:</span><span class="x"> </span><span class="n">b</span><span class="p">}</span><span class="x">
+</span><span class="n">containerConfig</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">dockerclient</span><span class="o">.</span><span class="n">ContainerConfig</span><span class="p">{</span><span class="x">
+	</span><span class="n">Image</span><span class="o">:</span><span class="x">        </span><span class="s">"postgres:9.4"</span><span class="p">,</span><span class="x">
+	</span><span class="n">Tty</span><span class="o">:</span><span class="x">          </span><span class="no">false</span><span class="p">,</span><span class="x">
+	</span><span class="n">ExposedPorts</span><span class="o">:</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="k">struct</span><span class="p">{}{</span><span class="s">"5432/tcp"</span><span class="o">:</span><span class="x"> </span><span class="p">{}}}</span><span class="x">
+</span><span class="n">containerId</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">docker</span><span class="o">.</span><span class="n">CreateContainer</span><span class="p">(</span><span class="n">containerConfig</span><span class="p">,</span><span class="x"> </span><span class="s">"pg"</span><span class="p">)</span><span class="x">
+</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="c">// Start the container</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">docker</span><span class="o">.</span><span class="n">StartContainer</span><span class="p">(</span><span class="n">containerId</span><span class="p">,</span><span class="x"> </span><span class="n">hostConfig</span><span class="p">)</span><span class="x">
+</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
+	</span><span class="n">log</span><span class="o">.</span><span class="n">Fatal</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span><span class="x">
+
+</span><span class="n">time</span><span class="o">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">7</span><span class="x"> </span><span class="o">*</span><span class="x"> </span><span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">)</span><span class="x">
+
+</span><span class="c">// Stop the container (with 5 seconds timeout)</span><span class="x">
+</span><span class="n">docker</span><span class="o">.</span><span class="n">StopContainer</span><span class="p">(</span><span class="n">containerId</span><span class="p">,</span><span class="x"> </span><span class="m">5</span><span class="p">)</span><span class="x">
+
+</span><span class="c">// Remove the container</span><span class="x">
+</span><span class="n">docker</span><span class="o">.</span><span class="n">RemoveContainer</span><span class="p">(</span><span class="n">containerId</span><span class="p">,</span><span class="x"> </span><span class="no">false</span><span class="p">,</span><span class="x"> </span><span class="no">false</span><span class="p">)</span><span class="x">
+</span></code></pre>
+</div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/nogenerics"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+      <li><a href="https://facebook.com/BaijuMuthukadan"><i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Baiju Muthukadan. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

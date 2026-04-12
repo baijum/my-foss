@@ -1,0 +1,2634 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.4.1: http://docutils.sourceforge.net/" />
+<title>The Zope 3 Book</title>
+<meta name="author" content="Baiju M" />
+<meta name="date" content="0.1.1 (12-October-2008)" />
+<style type="text/css">
+
+/*
+:Author: Fred L. Drake, Jr.
+:date: $Date: 2004/03/31 22:31:05 $
+:version: $Revision: 1.7 $
+
+This stylesheet combines some ideas from the two stylesheets
+distributed with docutils and enhances them for Zope 3 documentation.
+*/
+
+@import url(default.css);
+
+body {
+  margin: 0px 1em 1em 4em;
+  padding: 0px; }
+
+h1.title {
+  font-size: 150%;
+  min-height: 42px; }
+
+div.section {
+  margin: 0px 0px 1.5em 0px; }
+
+div.section h1 {
+  background-color: rgb(230,230,230);
+  margin-left: -2em;
+  padding: 0.2em;
+  padding-left: 0.35em;
+  padding-top: 0.35em;
+  /* This grey underline make this more visually distinctive on LCD
+     monitors, which often don't have enough contrast. */
+  border-right: thin solid rgb(180,180,180);
+  border-bottom: thin solid rgb(180,180,180); }
+
+div.section div.section div.section h3 {
+  margin-left: -1.9em;
+  margin-bottom: -0.5em; }
+
+h1 {
+  font-family: sans-serif;
+  font-size: 135%; }
+
+h2 {
+  font-family: sans-serif;
+  font-size: 120%; }
+
+h3 {
+  font-family: sans-serif;
+  font-size: 105%; }
+
+h4 {
+  font-family: sans-serif;
+  font-size: 100%; }
+
+h5 {
+  font-family: sans-serif;
+  font-size: 100%; }
+
+h6 {
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: 100%; }
+
+hr {
+  width: 75%; }
+
+.literal .pre {
+  background-color: white;
+  font-family: lucidatypewriter, "lucida typewriter", sans-serif; }
+
+.literal-block {
+  border: thin solid rgb(180,180,180);
+  font-family: lucidatypewriter, "lucida typewriter", monospace;
+  font-size: 80%;
+  padding: 0.5em; }
+
+table.table {
+  margin-left: 2em;
+  margin-right: 2em; }
+
+table.table thead {
+  background-color: rgb(230,230,230); }
+
+dt {
+  font-weight: bold; }
+
+/* docutils uses the "option" class with both "col" and "span"
+   elements, so we have to be explicit here */
+.option-list span.option {
+  font-weight: bold; }
+
+.option-list kbd {
+  font-family: inherit; }
+
+</style>
+</head>
+<body>
+<div class="document" id="the-zope-3-book">
+<h1 class="title">The Zope 3 Book</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Baiju M</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>0.1.1 (12-October-2008)</td></tr>
+</tbody>
+</table>
+<p>Copyright 2008 Baiju M &lt;baiju.m.mail AT gmail.com&gt;</p>
+<p>This work is licensed under the Creative Commons
+Attribution-ShareAlike License 3.0. To view a copy of this license, visit
+<a class="reference" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a> or send a letter
+to Creative Commons, 559 Nathan Abbott Way, Stanford, California
+94305, USA.  A summary of the license is given below.</p>
+<p>You are free:</p>
+<ul class="simple">
+<li>to Share - to copy, distribute and transmit the work</li>
+<li>to Remix - to adapt the work</li>
+</ul>
+<p>Under the following conditions:</p>
+<ul class="simple">
+<li>Attribution. You must attribute the work in the manner specified by
+the author or licensor (but not in any way that suggests that they
+endorse you or your use of the work).</li>
+<li>Share Alike. If you alter, transform, or build upon this work, you
+may distribute the resulting work only under the same, similar or a
+compatible license.</li>
+<li>For any reuse or distribution, you must make clear to others the
+license terms of this work.  The best way to do this is with a link
+to this web page.</li>
+<li>Any of the above conditions can be waived if you get permission
+from the copyright holder.</li>
+<li>Nothing in this license impairs or restricts the author's moral
+rights.</li>
+</ul>
+<div class="contents topic">
+<p class="topic-title first"><a id="contents" name="contents">Contents</a></p>
+<ul class="auto-toc simple">
+<li><a class="reference" href="#introduction" id="id18" name="id18">1&nbsp;&nbsp;&nbsp;Introduction</a><ul class="auto-toc">
+<li><a class="reference" href="#overview" id="id19" name="id19">1.1&nbsp;&nbsp;&nbsp;Overview</a></li>
+<li><a class="reference" href="#scope-of-the-book" id="id20" name="id20">1.2&nbsp;&nbsp;&nbsp;Scope of the book</a></li>
+<li><a class="reference" href="#audience" id="id21" name="id21">1.3&nbsp;&nbsp;&nbsp;Audience</a></li>
+<li><a class="reference" href="#prerequisites" id="id22" name="id22">1.4&nbsp;&nbsp;&nbsp;Prerequisites</a></li>
+<li><a class="reference" href="#brief-history" id="id23" name="id23">1.5&nbsp;&nbsp;&nbsp;Brief history</a></li>
+<li><a class="reference" href="#organization-of-the-book" id="id24" name="id24">1.6&nbsp;&nbsp;&nbsp;Organization of the book</a><ul class="auto-toc">
+<li><a class="reference" href="#id1" id="id25" name="id25">1.6.1&nbsp;&nbsp;&nbsp;Introduction</a></li>
+<li><a class="reference" href="#getting-started" id="id26" name="id26">1.6.2&nbsp;&nbsp;&nbsp;Getting Started</a></li>
+<li><a class="reference" href="#development-tools" id="id27" name="id27">1.6.3&nbsp;&nbsp;&nbsp;Development Tools</a></li>
+<li><a class="reference" href="#interfaces" id="id28" name="id28">1.6.4&nbsp;&nbsp;&nbsp;Interfaces</a></li>
+<li><a class="reference" href="#id2" id="id29" name="id29">1.6.5&nbsp;&nbsp;&nbsp;Component Architecture</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#thanks" id="id30" name="id30">1.7&nbsp;&nbsp;&nbsp;Thanks</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id3" id="id31" name="id31">2&nbsp;&nbsp;&nbsp;Getting Started</a><ul class="auto-toc">
+<li><a class="reference" href="#python-installation" id="id32" name="id32">2.1&nbsp;&nbsp;&nbsp;Python installation</a><ul class="auto-toc">
+<li><a class="reference" href="#gnu-linux" id="id33" name="id33">2.1.1&nbsp;&nbsp;&nbsp;GNU/Linux</a></li>
+<li><a class="reference" href="#ms-windows" id="id34" name="id34">2.1.2&nbsp;&nbsp;&nbsp;MS Windows</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id4" id="id35" name="id35">2.2&nbsp;&nbsp;&nbsp;Buildout</a><ul class="auto-toc">
+<li><a class="reference" href="#id5" id="id36" name="id36">2.2.1&nbsp;&nbsp;&nbsp;Introduction</a></li>
+<li><a class="reference" href="#buildout-configuration" id="id37" name="id37">2.2.2&nbsp;&nbsp;&nbsp;Buildout configuration</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#setting-up-development-sandbox" id="id38" name="id38">2.3&nbsp;&nbsp;&nbsp;Setting up development sandbox</a></li>
+<li><a class="reference" href="#a-simple-application" id="id39" name="id39">2.4&nbsp;&nbsp;&nbsp;A simple application</a><ul class="auto-toc">
+<li><a class="reference" href="#configuring-application" id="id40" name="id40">2.4.1&nbsp;&nbsp;&nbsp;Configuring application</a></li>
+<li><a class="reference" href="#running-application" id="id41" name="id41">2.4.2&nbsp;&nbsp;&nbsp;Running application</a></li>
+<li><a class="reference" href="#using-zmi" id="id42" name="id42">2.4.3&nbsp;&nbsp;&nbsp;Using ZMI</a></li>
+<li><a class="reference" href="#hello-world" id="id43" name="id43">2.4.4&nbsp;&nbsp;&nbsp;Hello world</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#overview-of-packages" id="id44" name="id44">2.5&nbsp;&nbsp;&nbsp;Overview of packages</a></li>
+<li><a class="reference" href="#installing-additional-packages" id="id45" name="id45">2.6&nbsp;&nbsp;&nbsp;Installing additional packages</a></li>
+<li><a class="reference" href="#summary" id="id46" name="id46">2.7&nbsp;&nbsp;&nbsp;Summary</a></li>
+<li><a class="reference" href="#see-also" id="id47" name="id47">2.8&nbsp;&nbsp;&nbsp;See also</a></li>
+<li><a class="reference" href="#discussions" id="id48" name="id48">2.9&nbsp;&nbsp;&nbsp;Discussions</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id6" id="id49" name="id49">3&nbsp;&nbsp;&nbsp;Development Tools</a><ul class="auto-toc">
+<li><a class="reference" href="#eggs" id="id50" name="id50">3.1&nbsp;&nbsp;&nbsp;Eggs</a></li>
+<li><a class="reference" href="#id7" id="id51" name="id51">3.2&nbsp;&nbsp;&nbsp;Buildout</a></li>
+<li><a class="reference" href="#buildout-recipes" id="id52" name="id52">3.3&nbsp;&nbsp;&nbsp;Buildout recipes</a><ul class="auto-toc">
+<li><a class="reference" href="#using-a-recipe" id="id53" name="id53">3.3.1&nbsp;&nbsp;&nbsp;Using a recipe</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#developing-a-package" id="id54" name="id54">3.4&nbsp;&nbsp;&nbsp;Developing a package</a></li>
+<li><a class="reference" href="#id8" id="id55" name="id55">3.5&nbsp;&nbsp;&nbsp;Summary</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id9" id="id56" name="id56">4&nbsp;&nbsp;&nbsp;Interfaces</a><ul class="auto-toc">
+<li><a class="reference" href="#id10" id="id57" name="id57">4.1&nbsp;&nbsp;&nbsp;Introduction</a></li>
+<li><a class="reference" href="#types-of-contract" id="id58" name="id58">4.2&nbsp;&nbsp;&nbsp;Types of contract</a></li>
+<li><a class="reference" href="#defining-interfaces" id="id59" name="id59">4.3&nbsp;&nbsp;&nbsp;Defining interfaces</a></li>
+<li><a class="reference" href="#an-example" id="id60" name="id60">4.4&nbsp;&nbsp;&nbsp;An example</a></li>
+<li><a class="reference" href="#declaring-interfaces" id="id61" name="id61">4.5&nbsp;&nbsp;&nbsp;Declaring interfaces</a></li>
+<li><a class="reference" href="#implementing-interfaces" id="id62" name="id62">4.6&nbsp;&nbsp;&nbsp;Implementing interfaces</a></li>
+<li><a class="reference" href="#marker-interfaces" id="id63" name="id63">4.7&nbsp;&nbsp;&nbsp;Marker interfaces</a></li>
+<li><a class="reference" href="#invariants" id="id64" name="id64">4.8&nbsp;&nbsp;&nbsp;Invariants</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#id11" id="id65" name="id65">5&nbsp;&nbsp;&nbsp;Component Architecture</a><ul class="auto-toc">
+<li><a class="reference" href="#installation" id="id66" name="id66">5.1&nbsp;&nbsp;&nbsp;Installation</a></li>
+<li><a class="reference" href="#adapters" id="id67" name="id67">5.2&nbsp;&nbsp;&nbsp;Adapters</a><ul class="auto-toc">
+<li><a class="reference" href="#implementation" id="id68" name="id68">5.2.1&nbsp;&nbsp;&nbsp;Implementation</a></li>
+<li><a class="reference" href="#registration" id="id69" name="id69">5.2.2&nbsp;&nbsp;&nbsp;Registration</a></li>
+<li><a class="reference" href="#querying-adapter" id="id70" name="id70">5.2.3&nbsp;&nbsp;&nbsp;Querying adapter</a></li>
+<li><a class="reference" href="#retrieving-adapter-using-interface" id="id71" name="id71">5.2.4&nbsp;&nbsp;&nbsp;Retrieving adapter using interface</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#utility" id="id72" name="id72">5.3&nbsp;&nbsp;&nbsp;Utility</a><ul class="auto-toc">
+<li><a class="reference" href="#simple-utility" id="id73" name="id73">5.3.1&nbsp;&nbsp;&nbsp;Simple utility</a></li>
+<li><a class="reference" href="#named-utility" id="id74" name="id74">5.3.2&nbsp;&nbsp;&nbsp;Named utility</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference" href="#testing" id="id75" name="id75">6&nbsp;&nbsp;&nbsp;Testing</a><ul class="auto-toc">
+<li><a class="reference" href="#unit-testing" id="id76" name="id76">6.1&nbsp;&nbsp;&nbsp;Unit testing</a></li>
+<li><a class="reference" href="#running-tests" id="id77" name="id77">6.2&nbsp;&nbsp;&nbsp;Running tests</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#browser-resources" id="id78" name="id78">7&nbsp;&nbsp;&nbsp;Browser Resources</a><ul class="auto-toc">
+<li><a class="reference" href="#file-resource" id="id79" name="id79">7.1&nbsp;&nbsp;&nbsp;File Resource</a></li>
+<li><a class="reference" href="#image-resource" id="id80" name="id80">7.2&nbsp;&nbsp;&nbsp;Image resource</a></li>
+<li><a class="reference" href="#directory-resource" id="id81" name="id81">7.3&nbsp;&nbsp;&nbsp;Directory resource</a></li>
+<li><a class="reference" href="#zrt-resource" id="id82" name="id82">7.4&nbsp;&nbsp;&nbsp;ZRT resource</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#browser-pages" id="id83" name="id83">8&nbsp;&nbsp;&nbsp;Browser Pages</a><ul class="auto-toc">
+<li><a class="reference" href="#view-components" id="id84" name="id84">8.1&nbsp;&nbsp;&nbsp;View components</a><ul class="auto-toc">
+<li><a class="reference" href="#id12" id="id85" name="id85">8.1.1&nbsp;&nbsp;&nbsp;Implementation</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#view-components-integration" id="id86" name="id86">8.2&nbsp;&nbsp;&nbsp;View components - integration</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#content-components" id="id87" name="id87">9&nbsp;&nbsp;&nbsp;Content Components</a><ul class="auto-toc">
+<li><a class="reference" href="#id13" id="id88" name="id88">9.1&nbsp;&nbsp;&nbsp;Introduction</a></li>
+<li><a class="reference" href="#id14" id="id89" name="id89">9.2&nbsp;&nbsp;&nbsp;Interfaces</a></li>
+<li><a class="reference" href="#unit-tests" id="id90" name="id90">9.3&nbsp;&nbsp;&nbsp;Unit tests</a></li>
+<li><a class="reference" href="#id15" id="id91" name="id91">9.4&nbsp;&nbsp;&nbsp;Implementation</a></li>
+<li><a class="reference" href="#id16" id="id92" name="id92">9.5&nbsp;&nbsp;&nbsp;Registration</a></li>
+<li><a class="reference" href="#id17" id="id93" name="id93">9.6&nbsp;&nbsp;&nbsp;Running application</a></li>
+<li><a class="reference" href="#views" id="id94" name="id94">9.7&nbsp;&nbsp;&nbsp;Views</a></li>
+<li><a class="reference" href="#functional-testing" id="id95" name="id95">9.8&nbsp;&nbsp;&nbsp;Functional testing</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#skinnig" id="id96" name="id96">10&nbsp;&nbsp;&nbsp;Skinnig</a><ul class="auto-toc">
+<li><a class="reference" href="#core-skins" id="id97" name="id97">10.1&nbsp;&nbsp;&nbsp;Core Skins</a></li>
+<li><a class="reference" href="#a-new-skin" id="id98" name="id98">10.2&nbsp;&nbsp;&nbsp;A New Skin</a></li>
+<li><a class="reference" href="#setting-up-a-layer" id="id99" name="id99">10.3&nbsp;&nbsp;&nbsp;Setting up a Layer</a><ul class="auto-toc">
+<li><a class="reference" href="#setting-up-a-skin" id="id100" name="id100">10.3.1&nbsp;&nbsp;&nbsp;Setting up a Skin</a></li>
+<li><a class="reference" href="#using-the-skin" id="id101" name="id101">10.3.2&nbsp;&nbsp;&nbsp;Using the Skin</a></li>
+</ul>
+</li>
+<li><a class="reference" href="#exercise" id="id102" name="id102">10.4&nbsp;&nbsp;&nbsp;Exercise</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- 1   Introduction
+  1.1  Overview
+  1.2  Scope of the book
+  1.3  Audience
+  1.4  Prerequisites
+  1.5  Brief history
+  1.6  Organization of the book
+    1.6.1  Introduction
+    1.6.2  Getting Started
+    1.6.3  Development Tools
+    1.6.4  Interfaces
+    1.6.5  Component Architecture
+  1.7  Thanks
+2   Getting Started
+  2.1  Python installation
+    2.1.1  GNU/Linux
+    2.1.2  MS Windows
+  2.2  Buildout
+    2.2.1  Introduction
+    2.2.2  Buildout configuration
+  2.3  Setting up development sandbox
+  2.4  A simple application
+    2.4.1  Configuring application
+    2.4.2  Running application
+    2.4.3  Using ZMI
+    2.4.4  Hello world
+  2.5  Overview of packages
+  2.6  Installing additional packages
+  2.7  Summary
+  2.8  See also
+  2.9  Discussions
+3   Development Tools
+  3.1  Eggs
+  3.2  Buildout
+  3.3  Buildout recipes
+    3.3.1  Using a recipe
+  3.4  Developing a package
+  3.5  Summary
+4   Interfaces
+  4.1  Introduction
+  4.2  Types of contract
+  4.3  Defining interfaces
+  4.4  An example
+  4.5  Declaring interfaces
+  4.6  Implementing interfaces
+  4.7  Marker interfaces
+  4.8  Invariants
+5   Component Architecture
+  5.1  Installation
+  5.2  Adapters
+    5.2.1  Implementation
+    5.2.2  Registration
+    5.2.3  Querying adapter
+    5.2.4  Retrieving adapter using interface
+  5.3  Utility
+    5.3.1  Simple utility
+    5.3.2  Named utility
+6   Testing
+  6.1  Unit testing
+  6.2  Running tests
+7   Browser Resources
+  7.1  File Resource
+  7.2  Image resource
+  7.3  Directory resource
+  7.4  ZRT resource
+8   Browser Pages
+  8.1  View components
+    8.1.1  Implementation
+  8.2  View components - integration
+9   Content Components
+  9.1  Introduction
+  9.2  Interfaces
+  9.3  Unit tests
+  9.4  Implementation
+  9.5  Registration
+  9.6  Running application
+  9.7  Views
+  9.8  Functional testing
+10  Skinnig
+  10.1  Core Skins
+  10.2  A New Skin
+  10.3  Setting up a Layer
+    10.3.1  Setting up a Skin
+    10.3.2  Using the Skin
+  10.4  Exercise -->
+<div class="section">
+<h1><a class="toc-backref" href="#id18" id="introduction" name="introduction">1&nbsp;&nbsp;&nbsp;Introduction</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id19" id="overview" name="overview">1.1&nbsp;&nbsp;&nbsp;Overview</a></h2>
+<p>This book is about <a class="reference" href="http://en.wikipedia.org/wiki/Zope_3">Zope 3</a>, a <a class="reference" href="http://en.wikipedia.org/wiki/Python_Programming">Python</a> framework for web application
+development.  Zope 3 was developed by the <a class="reference" href="http://en.wikipedia.org/wiki/Zope">Zope</a> community with the
+leadership of Jim Fulton, the creator of original Zope.  Zope 3
+consists of a number of small frameworks and libraries written in
+Python programming language and it is usable in pieces or in whole.
+These frameworks and libraries can be put together to build any kind
+of web application.  Most of of the Zope 3 packages are built on top
+of a <a class="reference" href="http://wiki.zope.org/zope3/ComponentArchitecture">component architecture</a> which helps to separate presentation
+code from the problem domain code and to create reusable components
+(zope.component).</p>
+<p>The goal for this book project is to create a complete, free,
+open-content, well-organized book for Zope 3.  The target audience of
+this book are Python programmers looking for developing web
+applications.  However, the book doesn't assume you are familiar with
+any other web framework.  This book will require prior knowledge
+Python programming language and at least some exposure to the basics
+of HTML, CSS and JavaScript.</p>
+<p>Zope 3 has an object publisher (zope.publisher), web server
+(zope.server), transactional object database (ZODB), XML based
+configuration language for registering components
+(zope.configuration), flexible security architecture with pluggable
+security policies (zope.security), unit and functional testing
+frameworks (zope.testing , zope.testbrowser), XHTML-compliant
+templating language (zope.pagetemplate), schema engine and automatic
+form generation machinery (zope.schema , z3c.form) and many more core
+and third-party packages.</p>
+<p>Originally, the term ZOPE was used as an acronym for Z Object
+Publishing Environment (the Z doesn't really mean anything in
+particular).  However, now-a-days ZOPE is simply written as Zope .</p>
+<p>Zope 3 is a ZPL (BSD like, GPL compatible license) licensed free/open
+source software.  It was developed by the Zope community with the
+leadership of Jim Fulton.  A brief history is given in the next
+section.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id20" id="scope-of-the-book" name="scope-of-the-book">1.2&nbsp;&nbsp;&nbsp;Scope of the book</a></h2>
+<p>The intension of this book is not to cover how to use Zope 3 packages
+independently or with other Python applications/frameworks.  Rather,
+this book focus on developing web applications using Zope 3 packages.
+More specifically, this book is not going to cover using Zope 3
+technology in Zope 2, Plone, Grok or any other Python
+application/framework.  WSGI is also not a current focus of this
+book.  This book is not going to cover using <cite>zopeproject</cite> to
+bootstrap application (it's very easy, look at the PyPI page for
+zopeproject).  This book use Buildout for setting up an isolated
+development environment for building applications.  Setuptools and
+vitualenv are also covered.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id21" id="audience" name="audience">1.3&nbsp;&nbsp;&nbsp;Audience</a></h2>
+<p>The target audience of this book are Python programmers looking for
+developing web applications.  However, the book doesn't assume you are
+familiar with any other web framework.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id22" id="prerequisites" name="prerequisites">1.4&nbsp;&nbsp;&nbsp;Prerequisites</a></h2>
+<p>This book will require prior knowledge Python programming language and
+at least some exposure to the basics of HTML, CSS and JavaScript.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id23" id="brief-history" name="brief-history">1.5&nbsp;&nbsp;&nbsp;Brief history</a></h2>
+<p>The beginning of Zope's story goes something like this, in 1996, Jim
+Fulton (CTO of Zope Corporation) was drafted to teach a class on
+common gateway interface (CGI) programming, despite not knowing very
+much about the subject.  CGI programming is a commonly-used web
+development model that allows developers to construct dynamic
+websites.  On his way to the class, Jim studied all the existing
+documentation on CGI.  On the way back, Jim considered what he didn't
+like about traditional, CGI-based programming environments.  From these
+initial musings, the core of Zope was written while flying back from
+the CGI class.</p>
+<p>Zope Corporation (then known as Digital Creations) went on to release
+three open-source software packages to support web publishing: Bobo,
+Document Template, and BoboPOS.  These packages were written in a
+language called Python, and provided a web publishing facility, text
+templating, and an object database, respectively.  Digital Creations
+developed a commercial application server based on their three
+opensource components.  This product was called Principia.  In November
+of 1998, investor Hadar Pedhazur convinced Digital Creations to open
+source Principia.  These packages evolved into what are now the core
+components of Zope 2.</p>
+<p>In 2001, the Zope community began working on a component architecture
+for Zope, but after several years they ended up with something much
+more: Zope 3.  While Zope 2 was powerful and popular, Zope 3 was
+designed to bring web application development to the next level.  This
+book is about this Zope 3, which is not really a new version of Zope
+2.</p>
+<p>Most recently, in 2007 the Zope community created yet another
+framework based on Zope 3 called Grok.  The original Zope which is now
+known as Zope 2 is also widely used.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id24" id="organization-of-the-book" name="organization-of-the-book">1.6&nbsp;&nbsp;&nbsp;Organization of the book</a></h2>
+<p>This book has divided into multiple chapters.  Summary of each
+chapter is given below.</p>
+<div class="section">
+<h3><a class="toc-backref" href="#id25" id="id1" name="id1">1.6.1&nbsp;&nbsp;&nbsp;Introduction</a></h3>
+<p>This chapter introduce Zope 3 with an overview and scope of the book,
+then briefly go through the history of Zope 3.  Later discuss
+organization of the book.  And finish with a thanks section.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id26" id="getting-started" name="getting-started">1.6.2&nbsp;&nbsp;&nbsp;Getting Started</a></h3>
+<p>This chapter begins with installation details of Python and Zope 3.
+Then introduce Buildout, the build system we use to setup an isolated
+Python working environment and its configurations.  Later, it explore
+setting up development sandbox using Buildout.  A simple application
+is developed further and it ends with a <cite>hello world</cite> page.  During
+the application development we see how to use ZMI (Zope Management
+Interface) briefly.  This chapter also provides a brief overview of
+important packages and installation of additional packages.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id27" id="development-tools" name="development-tools">1.6.3&nbsp;&nbsp;&nbsp;Development Tools</a></h3>
+<p>This chapter is going to the details about how to develop a web
+application using Python and Zope components.  You should familiarize
+some essential tools like Python eggs, setuptools and buildouts.  If
+you are already familiar with these you may skip this chapter.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id28" id="interfaces" name="interfaces">1.6.4&nbsp;&nbsp;&nbsp;Interfaces</a></h3>
+<p>This chapter introduce the concept of interfaces.  If you are already
+familiar with this you may skip this chapter.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id29" id="id2" name="id2">1.6.5&nbsp;&nbsp;&nbsp;Component Architecture</a></h3>
+<p>This chapter introduce Zope component architecture.  If you are
+already familiar with this you may skip this chapter.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id30" id="thanks" name="thanks">1.7&nbsp;&nbsp;&nbsp;Thanks</a></h2>
+<p>This book would not be possible if Zope 3 did not exist.  For that,
+the I would like to thank all developers of Zope 3.  I am grateful to
+Stephan Richter for allowing me to use his book and training material
+for this work.</p>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id31" id="id3" name="id3">2&nbsp;&nbsp;&nbsp;Getting Started</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id32" id="python-installation" name="python-installation">2.1&nbsp;&nbsp;&nbsp;Python installation</a></h2>
+<p>The Zope community has always recommended using a custom built Python
+for development and deployment.  Both Python 2.4 and 2.5 will work
+for Zope 3 packages.  As of now, the author reccomends using Python
+2.5 for any new projects.</p>
+<div class="section">
+<h3><a class="toc-backref" href="#id33" id="gnu-linux" name="gnu-linux">2.1.1&nbsp;&nbsp;&nbsp;GNU/Linux</a></h3>
+<p>To install Python, you will be required to install gcc, g++ and other
+development tools in your system.  A typical installation of Python can
+be done like this:</p>
+<pre class="literal-block">
+$ wget -c http://www.python.org/ftp/python/2.4.5/Python-2.4.5.tar.bz2
+$ tar jxvf Python-2.4.5.tar.bz2
+$ cd Python-2.4.5
+$ ./configure --prefix=/home/guest/usr
+$ make
+$ make install
+</pre>
+<p>As given above, you can provide an option, <tt class="docutils literal"><span class="pre">--prefix</span></tt> to install
+Python in a particular location.  The above steps install Python
+inside <tt class="docutils literal"><span class="pre">/home/guest/usr</span></tt> directory.</p>
+<p>After installation, you can invoke the Python interpreter like this:</p>
+<pre class="literal-block">
+$ ~/usr/bin/python2.4
+&gt;&gt;&gt; print &quot;Hello, world!&quot;
+Hello, world!
+</pre>
+<p>If you are not getting old statements in Python interactive prompt
+when using up-arrow key, try installing libreadline development
+libraries (Hint: apt-cache search libreadline).  After installing this
+library, you should install Python again.  You also will be required to
+install zlib (Hint: apt-cache search zlib compression library) to
+properly install Zope 3.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id34" id="ms-windows" name="ms-windows">2.1.2&nbsp;&nbsp;&nbsp;MS Windows</a></h3>
+<p><strong>FIXME:</strong> Write about installation of Python in MS Windows with few
+screenshots.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id35" id="id4" name="id4">2.2&nbsp;&nbsp;&nbsp;Buildout</a></h2>
+<div class="section">
+<h3><a class="toc-backref" href="#id36" id="id5" name="id5">2.2.1&nbsp;&nbsp;&nbsp;Introduction</a></h3>
+<p>We are going to use a build tool called Buildout for developing Zope
+3 applications from multiple parts.  Buildout will give you an
+isolated working environment for developing applications.  The
+Buildout package, named <cite>zc.buildout</cite> is available for <a class="reference" href="http://pypi.python.org/pypi/zc.buildout">download from
+PyPI</a>.  This section briefly goes through the usage of Buildout for
+developing applications.</p>
+<p>Buildout has a <cite>boostrap.py</cite> script for initializing a buildout based
+project for development or deployment.  It will download and install
+<cite>zc.buildout</cite>, <cite>setuptools</cite> and other dependency modules in a
+specified directory.  Once bootstrapped it will create a buildout
+executable script inside <cite>bin</cite> directory at the top of your project
+source.  The default configuration for each project is <cite>buildout.cfg</cite>
+file at the top of your project source.  Whenever you run the
+buildout command it will look into the default configuration file and
+will do actions based on it.  Normally, the configuration file and
+boostrap script will be bundled with the project source itself.
+Other than the default configuration file along with the project
+source, you may also create a system wide default configuration file
+at <cite>~/.buildout/default.cfg</cite> .</p>
+<p>Buildout creator Jim Fulton recommend a custom built clean Python
+installation, i.e., there should not be any Python modules installed
+in your site-packages (ideally, a fresh Python installation).  When you
+boostrap your project using Buildout's boostrap.py script, it will
+download and install all necessary packages in a specified directory.
+So, for an ideal project you only required a custom built clean Python
+and the project source with proper Buildout configuration and
+bootstrap script along with the source package.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id37" id="buildout-configuration" name="buildout-configuration">2.2.2&nbsp;&nbsp;&nbsp;Buildout configuration</a></h3>
+<p>These days, most of the Python packages are available in <a class="reference" href="http://peak.telecommunity.com/DevCenter/PythonEggs">egg</a> format.
+Buildout will download and install the eggs in a specified directory
+and the location can be changed from the configuration file.  It is
+better to give a system-wide location for eggs directory.  And this
+configuration can be added to your system-wide configuration file.
+The default configuration file for Buildout is
+<cite>~/.buildout/default.cfg</cite> .  We are going to use <cite>eggs</cite> directory
+inside your home directory to keep all eggs, so first create those
+directories and global configuration file:</p>
+<pre class="literal-block">
+$ cd $HOME
+$ mkdir .buildout
+$ mkdir eggs
+$ touch .buildout/default.cfg
+</pre>
+<p>You can add the following to your global configuration file
+(<cite>~/.buildout/default.cfg</cite>):</p>
+<pre class="literal-block">
+[buildout]
+newest = false
+eggs-directory = /home/guest/eggs
+find-links = http://download.zope.org/ppix
+</pre>
+<p>The <cite>eggs-directory</cite> is where Buildout stores the eggs that are
+downloaded.  The last option, <cite>find-links</cite> points to a reliable
+mirror of the Python Package Index (PyPI).  The default
+configurations given above will be available to all buildouts in your
+system.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id38" id="setting-up-development-sandbox" name="setting-up-development-sandbox">2.3&nbsp;&nbsp;&nbsp;Setting up development sandbox</a></h2>
+<p>To demonstrate the concepts, tools and techniques, we are going to
+develop a simple ticket/issue tracking application named Ticket
+Collector.  To begin the work, first create a directory for the
+project.  After creating the directory, create a configuration file,
+<cite>buildout.cfg</cite> as given below.  To bootstrap this application
+checkout bootstrap.py and run it using a clean Python.</p>
+<pre class="literal-block">
+$ mkdir ticketcollector
+$ cd ticketcollector
+$ echo &quot;#Buildout configuration&quot; &gt; buildout.cfg
+$ svn co svn://svn.zope.org/repos/main/zc.buildout/trunk/bootstrap
+$ ~/usr/bin/python2.4 bootstrap/bootstrap.py
+</pre>
+<p>You can see a <cite>buildout</cite> script created inside <cite>bin</cite> directory.  Now
+onwards, you can run this script when changing Buildout
+configuration.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can save <cite>bootstrap.py</cite> in a local repository.  If you are
+using svn for managing repository, create an <cite>svn:external</cite> to the
+svn URL given above.</p>
+</div>
+<p>Our application is basically a Python package.  First, we will create
+an <cite>src</cite> directory to place our package.  Inside the <cite>src</cite> directory,
+you can create <cite>ticketcollector</cite> Python package.  You can create the
+<cite>src</cite> and the <cite>ticketcollector</cite> package like this:</p>
+<pre class="literal-block">
+$ mkdir src
+$ mkdir src/ticketcollector
+$ echo &quot;#Python package&quot; &gt; src/ticketcollector/__init__.py
+</pre>
+<p>To start building our package you have to create a <cite>setup.py</cite> file.
+The <cite>setup.py</cite> should have the minimum details as given below:</p>
+<pre class="literal-block">
+from setuptools import setup, find_packages
+
+setup(
+    name='ticketcollector',
+    version='0.1',
+
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
+
+    install_requires=['setuptools',
+                      'zope.app.zcmlfiles',
+                      'zope.app.twisted',
+                      'zope.app.securitypolicy',
+                      ],
+    include_package_data=True,
+    zip_safe=False,
+    )
+</pre>
+<p>We have included the bare minimum packages required for installation
+in <cite>install_requires</cite> argument: <cite>zope.app.zcmlfiles</cite>,
+<cite>zope.app.twisted</cite> , <cite>zope.app.securitypolicy</cite> and <cite>setuptools</cite>.</p>
+<p>To make this package buildout aware, we have to modify the
+<cite>buildout.cfg</cite> as given below:</p>
+<pre class="literal-block">
+[buildout]
+develop = .
+parts = py
+
+[py]
+recipe = zc.recipe.egg
+eggs = ticketcollector
+interpreter = python
+</pre>
+<p>Now run the <cite>buildout</cite> script inside <cite>bin</cite> directory.  This will download
+all necessary eggs and install it.</p>
+<pre class="literal-block">
+$ ./bin/buildout
+</pre>
+<p>As you can see above, installing Zope is nothing but just setting up
+a buildout with <cite>setup.py</cite> with proper packages given as
+<cite>install_requires</cite> in it.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Unless you specify a parts section which use <cite>ticketcollector</cite> in
+some way, Buildout will not download dependency packages.  In the
+above example, we created a <cite>[py]</cite> section with <cite>zc.recipe.egg</cite>
+recipe.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id39" id="a-simple-application" name="a-simple-application">2.4&nbsp;&nbsp;&nbsp;A simple application</a></h2>
+<div class="section">
+<h3><a class="toc-backref" href="#id40" id="configuring-application" name="configuring-application">2.4.1&nbsp;&nbsp;&nbsp;Configuring application</a></h3>
+<p>We are going to continue the Ticket Collector application in this
+section.  In the last section when you run <cite>./bin/buildout</cite> command
+all necessary Zope 3 packages required for running our application is
+downloaded inside <cite>~/eggs</cite> directory.  Now to run the bare minimum
+Zope 3, we have to create Zope Configuration Markup Language (ZCML)
+file and extend the <cite>buildout.cfg</cite> with appropriate Buildout recipes.
+We are going to use <cite>zc.zope3recipes:app</cite>, <cite>zc.zope3recipes:instance</cite>
+and <cite>zc.recipe.filestorage</cite> recipes for setting up our application.
+Here is our modified buildout.cfg (inside the ticketcollector project
+directory):</p>
+<pre class="literal-block">
+[buildout]
+develop = .
+parts = ticketcollectorapp instance
+
+[zope3]
+location =
+
+[ticketcollectorapp]
+recipe = zc.zope3recipes:app
+site.zcml =
+  &lt;include
+    package=&quot;ticketcollector&quot;
+    file=&quot;application.zcml&quot;
+    /&gt;
+eggs = ticketcollector
+
+[instance]
+recipe = zc.zope3recipes:instance
+application = ticketcollectorapp
+zope.conf = ${database:zconfig}
+
+[database]
+recipe = zc.recipe.filestorage
+</pre>
+<p>Then we will create <cite>application.zcml</cite> inside <cite>src/ticketcollector</cite>
+directory with the following text.  Consider it as boiler plate code
+now, we will explain this in detail later:</p>
+<pre class="literal-block">
+&lt;configure
+  xmlns=&quot;http://namespaces.zope.org/zope&quot;
+  xmlns:browser=&quot;http://namespaces.zope.org/browser&quot;
+  &gt;
+
+  &lt;include package=&quot;zope.securitypolicy&quot;
+    file=&quot;meta.zcml&quot;
+    /&gt;
+
+  &lt;include package=&quot;zope.app.zcmlfiles&quot; /&gt;
+  &lt;include package=&quot;zope.app.authentication&quot; /&gt;
+  &lt;include package=&quot;zope.app.securitypolicy&quot; /&gt;
+  &lt;include package=&quot;zope.app.twisted&quot; /&gt;
+
+  &lt;securityPolicy
+    component=&quot;zope.securitypolicy.zopepolicy.ZopeSecurityPolicy&quot;
+    /&gt;
+
+  &lt;role id=&quot;zope.Anonymous&quot; title=&quot;Everybody&quot;
+    description=&quot;All users have this role implicitly&quot;
+    /&gt;
+
+  &lt;role id=&quot;zope.Manager&quot; title=&quot;Site Manager&quot; /&gt;
+
+  &lt;role id=&quot;zope.Member&quot; title=&quot;Site Member&quot; /&gt;
+
+  &lt;grant permission=&quot;zope.View&quot;
+    role=&quot;zope.Anonymous&quot;
+    /&gt;
+
+  &lt;grant permission=&quot;zope.app.dublincore.view&quot;
+    role=&quot;zope.Anonymous&quot;
+    /&gt;
+
+  &lt;grantAll role=&quot;zope.Manager&quot; /&gt;
+
+  &lt;unauthenticatedPrincipal
+    id=&quot;zope.anybody&quot;
+    title=&quot;Unauthenticated User&quot;
+    /&gt;
+
+  &lt;unauthenticatedGroup
+    id=&quot;zope.Anybody&quot;
+    title=&quot;Unauthenticated Users&quot;
+    /&gt;
+
+  &lt;authenticatedGroup
+    id=&quot;zope.Authenticated&quot;
+    title=&quot;Authenticated Users&quot;
+    /&gt;
+
+  &lt;everybodyGroup
+    id=&quot;zope.Everybody&quot;
+    title=&quot;All Users&quot;
+    /&gt;
+
+  &lt;principal
+    id=&quot;zope.manager&quot;
+    title=&quot;Manager&quot;
+    login=&quot;admin&quot;
+    password_manager=&quot;Plain Text&quot;
+    password=&quot;admin&quot;
+    /&gt;
+
+  &lt;grant
+    role=&quot;zope.Manager&quot;
+    principal=&quot;zope.manager&quot;
+    /&gt;
+
+&lt;/configure&gt;
+</pre>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id41" id="running-application" name="running-application">2.4.2&nbsp;&nbsp;&nbsp;Running application</a></h3>
+<p>Now you can run the application by executing <cite>./bin/buildout</cite> command
+followed by <cite>./bin/instance</cite> command.</p>
+<pre class="literal-block">
+$ ./bin/buildout
+$ ./bin/instance fg
+</pre>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id42" id="using-zmi" name="using-zmi">2.4.3&nbsp;&nbsp;&nbsp;Using ZMI</a></h3>
+<p>After running your instance, If you open a web browser and go to
+<a class="reference" href="http://localhost:8080">http://localhost:8080</a> you'll see the ZMI
+(Zope Management Interface ).</p>
+<p>Go ahead and click the <cite>Login</cite> link at the upper right corner.  Enter
+the user name and password as admin, which is given in
+<cite>applications.zcml</cite>.  Now click on <cite>[top]</cite> under Navigation on the
+right.  Play around with adding some content objects (the Zope 3 name
+for instances that are visible in the ZMI).  Note how content objects
+can be arranged in a hierarchy by adding folders which are special
+content objects that can hold other content objects.</p>
+<p>There is nothing special about the ZMI, it is just the default skin
+for Zope 3.  You can modify it to your liking, or replace it
+entirely.</p>
+<p>When you're done exploring with the ZMI, go back to the window where
+you typed <cite>./bin/instance fg</cite> and press Control-C to stop Zope 3.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id43" id="hello-world" name="hello-world">2.4.4&nbsp;&nbsp;&nbsp;Hello world</a></h3>
+<p>Now you can begin your development inside <cite>src/ticketcollector</cite>
+directory.  Create a <cite>browser.py</cite> with following content:</p>
+<pre class="literal-block">
+from zope.publisher.browser import BrowserView
+
+class HelloView(BrowserView):
+
+    def __call__(self):
+        return &quot;&quot;&quot;
+        &lt;html&gt;
+        &lt;head&gt;
+          &lt;title&gt;Hello World&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+          Hello World
+        &lt;/body&gt;
+        &lt;/html&gt;
+        &quot;&quot;&quot;
+</pre>
+<p>Now append the following text just above the last line of
+application.zcml:</p>
+<pre class="literal-block">
+&lt;browser:page
+  for=&quot;*&quot;
+  name=&quot;hello&quot;
+  permission=&quot;zope.Public&quot;
+  class=&quot;ticketcollector.browser.HelloView&quot;
+  /&gt;
+</pre>
+<p>After restarting Zope, open <a class="reference" href="http://localhost:8080/hello">http://localhost:8080/hello</a>, you can see that it displays <cite>Hello
+World!</cite>.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id44" id="overview-of-packages" name="overview-of-packages">2.5&nbsp;&nbsp;&nbsp;Overview of packages</a></h2>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id45" id="installing-additional-packages" name="installing-additional-packages">2.6&nbsp;&nbsp;&nbsp;Installing additional packages</a></h2>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id46" id="summary" name="summary">2.7&nbsp;&nbsp;&nbsp;Summary</a></h2>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id47" id="see-also" name="see-also">2.8&nbsp;&nbsp;&nbsp;See also</a></h2>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id48" id="discussions" name="discussions">2.9&nbsp;&nbsp;&nbsp;Discussions</a></h2>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id49" id="id6" name="id6">3&nbsp;&nbsp;&nbsp;Development Tools</a></h1>
+<p>Before going to the details about how to develop a web application
+using Python and Zope components, we should familiarize some
+essential tools like Python eggs, setuptools and buildouts.  If you
+are already familiar with these you may skip this chapter.</p>
+<div class="section">
+<h2><a class="toc-backref" href="#id50" id="eggs" name="eggs">3.1&nbsp;&nbsp;&nbsp;Eggs</a></h2>
+<p>Eggs are Python's new distribution format managed using <cite>setuptool</cite>
+package <a class="reference" href="http://peak.telecommunity.com/DevCenter/PythonEggs">http://peak.telecommunity.com/DevCenter/PythonEggs</a> .</p>
+<p>To install an egg, you can use easy_install program
+<a class="reference" href="http://peak.telecommunity.com/DevCenter/EasyInstall">http://peak.telecommunity.com/DevCenter/EasyInstall</a> .</p>
+<p>An easy way to automate the installtion would be to use
+easy_setup.py program.</p>
+<pre class="literal-block">
+$ wget -c http://peak.telecommunity.com/dist/ez_setup.py
+$ python easy_setup.py
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id51" id="id7" name="id7">3.2&nbsp;&nbsp;&nbsp;Buildout</a></h2>
+<p>The Buildout project provides support for creating applications,
+especially Python applications.  It provides tools for assembling
+applications from multiple parts, Python or otherwise.  An
+application may actually contain multiple programs, processes, and
+configuration settings.</p>
+<p>The word <cite>buildout</cite> refers to a description of a set of parts and the
+software to create and assemble them.  It is often used informally to
+refer to an installed system based on a buildout definition.  For
+example, if we are creating an application named <cite>Foo`</cite>, then <cite>the
+Foo buildout</cite> is the collection of configuration and
+application-specific software that allows an instance of the
+application to be created.  We may refer to such an instance of the
+application informally as <cite>a Foo buildout</cite>.</p>
+<p>Buildout provides support for creating, assembling and deploying
+applications, especially Python applications.  You can build
+applications using Buildout recipes.  Recipes are Python programs
+which follows a pattern to build various parts of an application.
+For example, a recipe will install Python eggs and another one will
+install test runner etc.  Applications can be assembled from multiple
+parts with different configurations.  A part can be a Python egg or
+any other program.  We have already seen how to use buildout to setup
+a Zope~3 application in the getting started chapter.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id52" id="buildout-recipes" name="buildout-recipes">3.3&nbsp;&nbsp;&nbsp;Buildout recipes</a></h2>
+<p>Buildout recipes are distributed in egg formats.  Some examples of
+recipes are:</p>
+<ul class="simple">
+<li>zc.recipe.egg -- The egg recipe installes one or more eggs, with
+their dependencies. It installs their console-script entry points
+with the needed eggs included in their paths.</li>
+<li>zc.recipe.testrunner -- The testrunner recipe creates a test runner
+script for one or more eggs.</li>
+<li>zc.recipe.zope3recipes -- Recipes for creating Zope 3 instances
+with distinguishing features:<ul>
+<li>Don't use a skeleton</li>
+<li>Separates application and instance definition</li>
+<li>Don't support package-includes</li>
+</ul>
+</li>
+<li>zc.recipe.filestorage -- The filestorage recipe sets up a ZODB file
+storage for use in a Zope 3 instance creayed by the <cite>zope3recipes</cite>
+recipe.</li>
+</ul>
+<div class="section">
+<h3><a class="toc-backref" href="#id53" id="using-a-recipe" name="using-a-recipe">3.3.1&nbsp;&nbsp;&nbsp;Using a recipe</a></h3>
+<p>The procedure for using a recipe is common for almost all recipes.
+You can create buildouts with parts controlled recipes.  Suppose you
+want to experiment with one package, say, <cite>zope.component</cite>, you can
+use <cite>zc.recipe.egg</cite> for installing it in buildout.  The
+<cite>zc.recipe.egg</cite> will also provide an interpreter with the egg
+installed in the path.  First you can create a directory and
+initialize Buildout:</p>
+<pre class="literal-block">
+$ mkdir explore-zope.component
+$ cd explore-zope.component
+$ echo &quot;#Buildout configuration&quot; &gt; buildout.cfg
+$ svn co svn://svn.zope.org/repos/main/zc.buildout/trunk/bootstrap
+$ ~/usr/bin/python2.4 bootstrap/bootstrap.py
+</pre>
+<p>Now modify the buildout.cfg like this:</p>
+<pre class="literal-block">
+[buildout]
+parts = py
+
+[py]
+recipe = zc.recipe.egg
+interpreter = mypython
+eggs = zope.component
+</pre>
+<p>Now run <cite>buildout</cite> script inside <cite>bin</cite> directory.  This will download
+zope.component and its dependency eggs and install it.  Now you can
+access the interpreter created by the Buildout recipe like this:</p>
+<pre class="literal-block">
+$ ./bin/buildout
+$ ./bin/mypython
+&gt;&gt;&gt; import zope.component
+</pre>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id54" id="developing-a-package" name="developing-a-package">3.4&nbsp;&nbsp;&nbsp;Developing a package</a></h2>
+<p>The initial steps are not different from the above exmaple:</p>
+<pre class="literal-block">
+$ mkdir hello
+$ cd hello
+$ echo &quot;#Buildout configuration&quot; &gt; buildout.cfg
+$ svn co svn://svn.zope.org/repos/main/zc.buildout/trunk/bootstrap
+$ ~/usr/bin/python2.4 bootstrap/bootstrap.py
+</pre>
+<p>Our application is a simple hello world package.  First we will
+create an <cite>src</cite> directory to place our package.  Inside the <cite>src</cite>
+directory, you can create the <cite>hello</cite> Python package.  You can create
+the <cite>src</cite> and the <cite>hello</cite> package like this:</p>
+<pre class="literal-block">
+$ mkdir src
+$ mkdir src/hello
+$ echo &quot;#Python package&quot; &gt; src/hello/__init__.py
+</pre>
+<p>Now create a file named <cite>say.py</cite> inside the <cite>hello</cite> package with this
+code:</p>
+<pre class="literal-block">
+def say_hello():
+    print &quot;Hello&quot;
+</pre>
+<p>To start building our package you have to create a <cite>setup.py</cite> file.
+The <cite>setup.py</cite> should have the minimum details as given below:</p>
+<pre class="literal-block">
+from setuptools import setup, find_packages
+
+setup(
+  name='hello',
+  version='0.1',
+
+  packages=find_packages('src'),
+  package_dir={'': 'src'},
+
+  install_requires=['setuptools',
+                    ],
+  entry_points = {'console_scripts':
+                  ['print_hello = hello.say:say_hello']},
+  include_package_data=True,
+  zip_safe=False,
+  )
+</pre>
+<p>Modify <cite>buildout.cfg</cite> as given below:</p>
+<pre class="literal-block">
+[buildout]
+develop = .
+parts = py
+
+[py]
+recipe = zc.recipe.egg
+scripts = print_hello
+eggs = hello
+</pre>
+<p>Now run <cite>buildout</cite> script inside <cite>bin</cite> directory.  Now you
+can run the <cite>print_hello</cite> script.</p>
+<pre class="literal-block">
+$ ./bin/buildout
+$ ./bin/print_hello
+Hello
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id55" id="id8" name="id8">3.5&nbsp;&nbsp;&nbsp;Summary</a></h2>
+<p>This chapter provided a brief introduction to eggs.  Later we found
+how to use buildout tool for developing application.</p>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id56" id="id9" name="id9">4&nbsp;&nbsp;&nbsp;Interfaces</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id57" id="id10" name="id10">4.1&nbsp;&nbsp;&nbsp;Introduction</a></h2>
+<p>Interfaces are objects that specify (document) the external behavior
+of objects that &quot;provide&quot; them.  An interface specifies behavior
+through:</p>
+<ul class="simple">
+<li>Informal documentation in a doc string</li>
+<li>Attribute definitions</li>
+<li>Invariants, which are conditions that must hold for objects that
+provide the interface</li>
+</ul>
+<p>Some of the motivations for using interfaces are:</p>
+<ul class="simple">
+<li>Avoid monolithic design by developing small, exchangeable pieces</li>
+<li>Model external responsibility, functionality, and behavior</li>
+<li>Establish contracts between pieces of functionality</li>
+<li>Document the API</li>
+</ul>
+<p>The classic software engineering book <a class="reference" href="http://en.wikipedia.org/wiki/Design_Patterns">Design Patterns</a> by the Gang
+of Four recommends: &quot;Program to an interface, not an implementation&quot;.
+Defining a formal interface is helpful in understanding a system.
+Moreover, interfaces bring you all the benefits of Zope Component
+Architecture which we are going to learn in next chapter.</p>
+<p>In some modern programming languages: Java, C#, VB.NET etc,
+interfaces are an explicit aspect of the language.  Since Python
+lacks interfaces, Zope implements them as a meta-class to inherit
+from.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id58" id="types-of-contract" name="types-of-contract">4.2&nbsp;&nbsp;&nbsp;Types of contract</a></h2>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">&quot;I can do X&quot;:</th><td class="field-body">Describing the ability to do something is the classical
+definition of an API.  Those abilities are defined and implemented as
+methods.</td>
+</tr>
+<tr class="field"><th class="field-name">&quot;I have X&quot;:</th><td class="field-body">This statement declares the availability of data, which
+is classically associated with schemas.  The data is stored in
+attributes and properties.</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">&quot;You can do X with me&quot;:</th></tr>
+<tr><td>&nbsp;</td><td class="field-body">Here we describe the behavior of an object.
+Classically there is no analog.  However, MIME-types are great example
+of behavior declaration.  This is implemented using empty &quot;marker
+interfaces&quot; as they describe implicit behavior.</td>
+</tr>
+</tbody>
+</table>
+<p>The distinction between those three types of contracts was first
+pointed out in this form by Philipp von Weitershausen.</p>
+<p>Understanding those distinctions is very important, since other
+programming languages do not necessarily use all three of these
+notions.  In fact, often only the first one is used.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id59" id="defining-interfaces" name="defining-interfaces">4.3&nbsp;&nbsp;&nbsp;Defining interfaces</a></h2>
+<ul class="simple">
+<li>Python has no concept of interfaces</li>
+<li>Not a problem</li>
+<li>Interfaces are just objects</li>
+<li>&quot;Abuse&quot; the class statement to create an interface</li>
+<li>Syntax proposed in PEP 245</li>
+</ul>
+<p>Jim Fulton does not see this as a problem, since it makes interfaces
+first class citizens.  In Java, for example, interfaces are special
+types of objects that can only serve as interfaces in their intended,
+limited scope.</p>
+<p>An interface from the zope.interface package, on the other hand,
+defines the interface by implementing a meta-class, a core concept of
+Python.  Thus, interfaces are merely using an existing Python
+pattern.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id60" id="an-example" name="an-example">4.4&nbsp;&nbsp;&nbsp;An example</a></h2>
+<p>Here is a classic hello world style example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class Host(object):
+...
+...     def goodmorning(self, name):
+...         &quot;&quot;&quot;Say good morning to guests&quot;&quot;&quot;
+...
+...         return &quot;Good morning, %s!&quot; % name
+</pre>
+<p>In the above class, you defined a goodmorning method.  If you call
+the goodmorning method from an object created using this class, it
+will return Good morning, ...!</p>
+<pre class="literal-block">
+&gt;&gt;&gt; host = Host()
+&gt;&gt;&gt; host.goodmorning('Jack')
+'Good morning, Jack!'
+</pre>
+<p>Here host is the actual object your code uses.  If you want to
+examine implementation details you need to access the class Host,
+either via the source code or an <a class="reference" href="http://en.wikipedia.org/wiki/Application_programming_interface">API</a> documentation tool.</p>
+<p>Now we will begin to use the Zope interfaces.  For the class given
+above you can specify the interface like this:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class IHost(Interface):
+...
+...     def goodmorning(guest):
+...         &quot;&quot;&quot;Say good morning to guest&quot;&quot;&quot;
+</pre>
+<p>As you can see, the interface inherits from zope.interface.Interface.
+This use (abuse?) of Python's class statement is how Zope defines an
+interface.  The I prefix for the interface name is a useful
+convention.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id61" id="declaring-interfaces" name="declaring-interfaces">4.5&nbsp;&nbsp;&nbsp;Declaring interfaces</a></h2>
+<p>You have already seen how to declare an interface using
+<cite>zope.interface</cite> in previous section.  This section will explain the
+concepts in detail.</p>
+<p>Consider this example interface:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+
+&gt;&gt;&gt; class IHost(Interface):
+...     &quot;&quot;&quot;A host object&quot;&quot;&quot;
+...
+...     name = Attribute(&quot;&quot;&quot;Name of host&quot;&quot;&quot;)
+...
+...     def goodmorning(guest):
+...         &quot;&quot;&quot;Say good morning to guest&quot;&quot;&quot;
+</pre>
+<p>The interface, <cite>IHost</cite> has two attributes, name and goodmorning.
+Recall that, at least in Python, methods are also attributes of
+classes.  The name attribute is defined using
+zope.interface.Attribute class.  When you add the attribute name to
+the IHost interface, you don't set an initial value.  The purpose of
+defining the attribute name here is merely to indicate that any
+implementation of this interface will feature an attribute named
+name.  In this case, you don't even say what type of attribute it has
+to be!.  You can pass a documentation string as a first argument to
+Attribute.</p>
+<p>The other attribute, goodmorning is a method defined using a function
+definition.  Note that self is not required in interfaces, because
+self is an implementation detail of class.  For example, a module can
+implement this interface.  If a module implement this interface,
+there will be a name attribute and goodmorning function defined.  And
+the goodmorning function will accept one argument.</p>
+<p>Now you will see how to connect interface-class-object.  So object is
+the real living thing, objects are instances of classes.  And
+interface is the actual definition of the object, so classes are just
+the implementation details.  This is why you should program to an
+interface and not to an implementation.</p>
+<p>Now you should familiarize two more terms to understand other
+concepts.  First one is provide and the other one is implement.
+Object provides interfaces and classes implement interfaces.  In
+other words, objects provide interfaces that their classes implement.
+In the above example host (object) provides IHost (interface) and
+Host (class) implement IHost (interface).  One object can provide
+more than one interface also one class can implement more than one
+interface.  Objects can also provide interfaces directly, in addition
+to what their classes implement.</p>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">Classes are the implementation details of objects.  In Python,
+classes are callable objects, so why other callable objects can't
+implement an interface.  Yes, it is possible.  For any callable
+object you can declare that it produces objects that provide some
+interfaces by saying that the callable object implements the
+interfaces.  The callable objects are generally called as
+factories.  Since functions are callable objects, a function can be
+an implementer of an interface.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id62" id="implementing-interfaces" name="implementing-interfaces">4.6&nbsp;&nbsp;&nbsp;Implementing interfaces</a></h2>
+<p>To declare a class implements a particular interface, use the
+function <cite>zope.interface.implements</cite> in the class statement.</p>
+<p>Consider this example, here <cite>Host</cite> implements <cite>IHost</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class Host(object):
+...
+...     implements(IHost)
+...
+...     name = u''
+...
+...     def goodmorning(self, guest):
+...         &quot;&quot;&quot;Say good morning to guest&quot;&quot;&quot;
+...
+...         return &quot;Good morning, %s!&quot; % guest
+</pre>
+<div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you wonder how implements function works, refer the blog post by
+James Henstridge (<a class="reference" href="http://blogs.gnome.org/jamesh/2005/09/08/python-class-advisors/">http://blogs.gnome.org/jamesh/2005/09/08
+/python-class-advisors/</a>) . In the adapter section, you will see
+an adapts function, it is also working similarly.</p>
+</div>
+<p>Since Host implements IHost, instances of Host provides IHost.  There
+are some utility methods to introspect the declarations.  The
+declaration can write outside the class also.  If you don't write
+interface.implements(IHost) in the above example, then after defining
+the class statement, you can write like this:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import classImplements
+&gt;&gt;&gt; classImplements(Host, IHost)
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id63" id="marker-interfaces" name="marker-interfaces">4.7&nbsp;&nbsp;&nbsp;Marker interfaces</a></h2>
+<p>An interface can be used to declare that a particular object belongs
+to a special type.  An interface without any attribute or method is
+called marker interface.</p>
+<p>Here is a marker interface:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+
+&gt;&gt;&gt; class ISpecialGuest(Interface):
+...     &quot;&quot;&quot;A special guest&quot;&quot;&quot;
+</pre>
+<p>This interface can be used to declare an object is a special guest.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id64" id="invariants" name="invariants">4.8&nbsp;&nbsp;&nbsp;Invariants</a></h2>
+<p>Sometimes you will be required to use some rule for your component
+which involve one or more normal attributes.  These kind of rule is
+called <cite>invariants</cite>.  You can use <cite>zope.interface.invariant</cite> for
+setting <cite>invariants</cite> for your objects in their interface.</p>
+<p>Consider a simple example, there is a <cite>person</cite> object.  A person
+object has <cite>name</cite>, <cite>email</cite> and <cite>phone</cite> attributes.  How do you
+implement a validation rule that says either email or phone have to
+exist, but not necessarily both.</p>
+<p>First you have to make a callable object, either a simple function or
+callable instance of a class like this:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; def contacts_invariant(obj):
+...
+...     if not (obj.email or obj.phone):
+...         raise Exception(
+...             &quot;At least one contact info is required&quot;)
+</pre>
+<p>Then define the <cite>person</cite> object's interface like this.  Use the
+<cite>zope.interface.invariant</cite> function to set the invariant:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import Attribute
+&gt;&gt;&gt; from zope.interface import invariant
+
+&gt;&gt;&gt; class IPerson(Interface):
+...
+...     name = Attribute(&quot;Name&quot;)
+...     email = Attribute(&quot;Email Address&quot;)
+...     phone = Attribute(&quot;Phone Number&quot;)
+...
+...     invariant(contacts_invariant)
+</pre>
+<p>Now use <cite>validateInvariants</cite> method of the interface to validate:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class Person(object):
+...     implements(IPerson)
+...
+...     name = None
+...     email = None
+...     phone = None
+
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.email = u&quot;jack&#64;some.address.com&quot;
+&gt;&gt;&gt; IPerson.validateInvariants(jack)
+&gt;&gt;&gt; jill = Person()
+&gt;&gt;&gt; IPerson.validateInvariants(jill)
+Traceback (most recent call last):
+...
+Exception: At least one contact info is required
+</pre>
+<p>As you can see <cite>jack</cite> object validated without raising any exception.
+But <cite>jill</cite> object didn't validated the invariant constraint, so it
+raised exception.</p>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id65" id="id11" name="id11">5&nbsp;&nbsp;&nbsp;Component Architecture</a></h1>
+<p><cite>Zope Component Architecture (ZCA)</cite> is a framework for supporting
+component based design and programming.  It is very well suited to
+developing large Python software systems.  The ZCA is not specific to
+the Zope web application server: it can be used for developing any
+Python application.</p>
+<p>The ZCA is all about using Python objects effectively.  Components
+are reusable objects with introspectable interfaces.  A component
+provides an interface implemented in a class, or any other callable
+object.  It doesn't matter how the component is implemented, the
+important part is that it comply with its interface contracts.  Using
+ZCA, you can spread the complexity of systems over multiple
+cooperating components.  It helps you to create two basic kinds of
+components: <cite>adapter</cite> and <cite>utility</cite>.</p>
+<p>There are two core packages related to the ZCA:</p>
+<ul class="simple">
+<li><cite>zope.interface</cite> is used to define the interface of a component.</li>
+<li><cite>zope.component</cite> deals with registration and retrieval of
+components.</li>
+</ul>
+<p>Remember, the ZCA is not about the components themselves, rather it
+is about creating, registering, and retrieving components.  Remember
+also, an <cite>adapter</cite> is a normal Python class (or a factory in general)
+and <cite>utility</cite> is a normal Python callable object.</p>
+<p>The ZCA framework is developed as part of the Zope 3 project.  As
+noted earlier, it is a pure Python framework, so it can be used in any
+kind of Python application.  Currently both Zope 3 and Zope 2 projects
+use this framework extensively.  There are many other projects
+including non-web applications using it.</p>
+<div class="section">
+<h2><a class="toc-backref" href="#id66" id="installation" name="installation">5.1&nbsp;&nbsp;&nbsp;Installation</a></h2>
+<p>Using <cite>zc.buildout</cite> with <cite>zc.recipe.egg</cite> recipe you can create Python
+interpreter with specified Python eggs.  First you can create a
+directory and initialize Buildout:</p>
+<pre class="literal-block">
+$ mkdir explore-zope.component
+$ cd explore-zope.component
+$ echo &quot;#Buildout configuration&quot; &gt; buildout.cfg
+$ svn co svn://svn.zope.org/repos/main/zc.buildout/trunk/bootstrap
+$ ~/usr/bin/python2.4 bootstrap/bootstrap.py
+</pre>
+<p>Now modify the <cite>buildout.cfg</cite> like this:</p>
+<pre class="literal-block">
+[buildout]
+parts = py
+
+[py]
+recipe = zc.recipe.egg
+eggs = zope.component
+interpreter = mypython
+</pre>
+<p>Now run <cite>buildout</cite> script inside <cite>bin</cite> directory.  This will download
+zope.component and its dependency eggs and install it.  Now you can
+access the interpreter created by the Buildout recipe like this:</p>
+<pre class="literal-block">
+$ ./bin/buildout
+$ ./bin/mypython
+&gt;&gt;&gt; import zope.component
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id67" id="adapters" name="adapters">5.2&nbsp;&nbsp;&nbsp;Adapters</a></h2>
+<div class="section">
+<h3><a class="toc-backref" href="#id68" id="implementation" name="implementation">5.2.1&nbsp;&nbsp;&nbsp;Implementation</a></h3>
+<p>This section will describe adapters in detail.  Zope component
+architecture, as you noted, helps to effectively use Python objects.
+Adapter components are one of the basic components used by Zope
+component architecture for effectively using Python objects.  Adapter
+components are Python objects, but with well defined interface.</p>
+<p>To declare a class is an adapter use <cite>adapts</cite> function defined in
+<cite>zope.component</cite> package.  Here is a new <cite>FrontDeskNG</cite> adapter with
+explicit interface declaration:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import implements
+&gt;&gt;&gt; from zope.component import adapts
+
+&gt;&gt;&gt; class FrontDeskNG(object):
+...
+...     implements(IDesk)
+...     adapts(IGuest)
+...
+...     def __init__(self, guest):
+...         self.guest = guest
+...
+...     def register(self):
+...         guest = self.guest
+...         next_id = get_next_id()
+...         bookings_db[next_id] = {
+...         'name': guest.name,
+...         'place': guest.place,
+...         'phone': guest.phone
+...         }
+</pre>
+<p>What you defined here is an <cite>adapter</cite> for <cite>IDesk</cite>, which adapts
+<cite>IGuest</cite> object.  The <cite>IDesk</cite> interface is implemented by
+<cite>FrontDeskNG</cite> class.  So, an instance of this class will provide
+<cite>IDesk</cite> interface.</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class Guest(object):
+...
+...     implements(IGuest)
+...
+...     def __init__(self, name, place):
+...         self.name = name
+...         self.place = place
+
+&gt;&gt;&gt; jack = Guest(&quot;Jack&quot;, &quot;Bangalore&quot;)
+&gt;&gt;&gt; jack_frontdesk = FrontDeskNG(jack)
+
+&gt;&gt;&gt; IDesk.providedBy(jack_frontdesk)
+True
+</pre>
+<p>The <cite>FrontDeskNG</cite> is just one adapter you created, you can also
+create other adapters which handles guest registration differently.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id69" id="registration" name="registration">5.2.2&nbsp;&nbsp;&nbsp;Registration</a></h3>
+<p>To use this adapter component, you have to register this in a
+component registry also known as site manager.  A site manager
+normally resides in a site.  A site and site manager will be more
+important when developing a Zope 3 application.  For now you only
+required to bother about global site and global site manager ( or
+component registry).  A global site manager will be in memory, but a
+local site manager is persistent.</p>
+<p>To register your component, first get the global site manager:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+&gt;&gt;&gt; gsm.registerAdapter(FrontDeskNG,
+...                     (IGuest,), IDesk, 'ng')
+</pre>
+<p>To get the global site manager, you have to call
+<cite>getGlobalSiteManager</cite> function available in <cite>zope.component</cite>
+package.  In fact, the global site manager is available as an
+attribute (<cite>globalSiteManager</cite>) of <cite>zope.component</cite> package.  So, you
+can directly use <cite>zope.component.globalSiteManager</cite> attribute.  To
+register the adapter in component, as you can see above, use
+<cite>registerAdapter</cite> method of component registry.  The first argument
+should be your adapter class/factory.  The second argument is a tuple
+of <cite>adaptee</cite> objects, i.e, the object which you are adapting.  In
+this example, you are adapting only <cite>IGuest</cite> object.  The third
+argument is the interface implemented by the adapter component.  The
+fourth argument is optional, that is the name of the particular
+adapter.  Since you gave a name for this adapter, this is a <cite>named
+adapter</cite>.  If name is not given, it will default to an empty string
+('').</p>
+<p>In the above registration, you have given the adaptee interface and
+interface to be provided by the adapter.  Since you have already
+given these details in adapter implementation, it is not required to
+specify again.  In fact, you could have done the registration like
+this:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; gsm.registerAdapter(FrontDeskNG, name='ng')
+</pre>
+<p>There are some old API to do the registration, which you should
+avoid.  The old API functions starts with <cite>provide</cite>, eg:
+<cite>provideAdapter</cite>, <cite>provideUtility</cite> etc.  While developing a Zope 3
+application you can use Zope configuration markup language (ZCML) for
+registration of components.  In Zope 3, local components (persistent
+components) can be registered from Zope Management Interface (ZMI) or
+you can do it programmatically also.</p>
+<p>You registered <cite>FrontDeskNG</cite> with a name <cite>ng</cite>.  Similarly you can
+register other adapters with different names.  If a component is
+registered without name, it will default to an empty string.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id70" id="querying-adapter" name="querying-adapter">5.2.3&nbsp;&nbsp;&nbsp;Querying adapter</a></h3>
+<p>Retrieving registered components from component registry is achieved
+through two functions available in <cite>zope.component</cite> package.  One of
+them is <cite>getAdapter</cite> and the other is <cite>queryAdapter</cite>.  Both functions
+accepts same arguments.  The <cite>getAdapter</cite> will raise
+<cite>ComponentLookupError</cite> if component lookup fails on the other hand
+queryAdapter will return <cite>None</cite>.</p>
+<p>You can import the methods like this:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getAdapter
+&gt;&gt;&gt; from zope.component import queryAdapter
+</pre>
+<p>In the previous section you have registered a component for guest
+object (adaptee) which provides <cite>IDesk</cite> interface with name as <cite>ng</cite>.
+In the first section of this chapter, you have created a guest object
+named <cite>jack</cite>.</p>
+<p>This is how you can retrieve a component which adapts the interface
+of jack object (<cite>IGuest</cite>) and provides <cite>IDesk</cite> interface also
+with name as <cite>ng</cite>.  Here both <cite>getAdapter</cite> and
+<cite>queryAdapter</cite> works similarly:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; getAdapter(jack, IDesk, 'ng') #doctest: +ELLIPSIS
+&lt;FrontDeskNG object at ...&gt;
+&gt;&gt;&gt; queryAdapter(jack, IDesk, 'ng') #doctest: +ELLIPSIS
+&lt;FrontDeskNG object at ...&gt;
+</pre>
+<p>As you can see, the first argument should be adaptee then, the
+interface which should be provided by component and last the name of
+adapter component.</p>
+<p>If you try to lookup the component with an name not used for
+registration but for same adaptee and interface, the lookup will fail.
+Here is how the two methods works in such a case:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; getAdapter(jack, IDesk, 'not-exists') #doctest: +ELLIPSIS
+Traceback (most recent call last):
+...
+ComponentLookupError: ...
+&gt;&gt;&gt; reg = queryAdapter(jack,
+...           IDesk, 'not-exists') #doctest: +ELLIPSIS
+&gt;&gt;&gt; reg is None
+True
+</pre>
+<p>As you can see above, <cite>getAdapter</cite> raised a
+<cite>ComponentLookupError</cite> exception, but <cite>queryAdapter</cite>
+returned <cite>None</cite> when lookup failed.</p>
+<p>The third argument, the name of registration, is optional.  If the
+third argument is not given it will default to empty string ('').
+Since there is no component registered with an empty string,
+<cite>getAdapter</cite> will raise <cite>ComponentLookupError</cite>.  Similarly
+<cite>queryAdapter</cite> will return <cite>None</cite>, see yourself how it
+works:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; getAdapter(jack, IDesk) #doctest: +ELLIPSIS
+Traceback (most recent call last):
+...
+ComponentLookupError: ...
+&gt;&gt;&gt; reg = queryAdapter(jack, IDesk) #doctest: +ELLIPSIS
+&gt;&gt;&gt; reg is None
+True
+</pre>
+<p>In this section you have learned how to register a simple adapter and
+how to retrieve it from component registry.  These kind of adapters is
+called single adapter, because it adapts only one adaptee.  If an
+adapter adapts more that one adaptee, then it is called multi adapter.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id71" id="retrieving-adapter-using-interface" name="retrieving-adapter-using-interface">5.2.4&nbsp;&nbsp;&nbsp;Retrieving adapter using interface</a></h3>
+<p>Adapters can be directly retrieved using interfaces, but it will only
+work for non-named single adapters.  The first argument is the adaptee
+and the second argument is a keyword argument.  If adapter lookup
+fails, second argument will be returned.</p>
+<pre class="literal-block">
+&gt;&gt;&gt; IDesk(jack, alternate='default-output')
+'default-output'
+
+Keyword name can be omitted:
+
+&gt;&gt;&gt; IDesk(jack, 'default-output')
+'default-output'
+
+If second argument is not given, it will raise `TypeError`:
+
+&gt;&gt;&gt; IDesk(jack) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+Traceback (most recent call last):
+...
+TypeError: ('Could not adapt',
+  &lt;Guest object at ...&gt;,
+  &lt;InterfaceClass __builtin__.IDesk&gt;)
+
+Here `FrontDeskNG` is registered without name:
+
+&gt;&gt;&gt; gsm.registerAdapter(FrontDeskNG)
+
+Now the adapter lookup should succeed:
+
+&gt;&gt;&gt; IDesk(jack, 'default-output') #doctest: +ELLIPSIS
+&lt;FrontDeskNG object at ...&gt;
+</pre>
+<p>For simple cases, you may use interface to get adapter components.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id72" id="utility" name="utility">5.3&nbsp;&nbsp;&nbsp;Utility</a></h2>
+<p>Now you know the concept of interface, adapter and component registry.
+Sometimes it would be useful to register an object which is not
+adapting anything.  Database connection, XML parser, object returning
+unique Ids etc. are examples of these kinds of objects.  These kind of
+components provided by the ZCA are called <cite>utility</cite> components.</p>
+<p>Utilities are just objects that provide an interface and that are
+looked up by an interface and a name.  This approach creates a global
+registry by which instances can be registered and accessed by
+different parts of your application, with no need to pass the
+instances around as parameters.</p>
+<p>You need not to register all component instances like this.  Only
+register components which you want to make replaceable.</p>
+<div class="section">
+<h3><a class="toc-backref" href="#id73" id="simple-utility" name="simple-utility">5.3.1&nbsp;&nbsp;&nbsp;Simple utility</a></h3>
+<p>A utility can be registered with a name or without a name.  A utility
+registered with a name is called named utility, which you will see in
+the next section.  Before implementing the utility, as usual, define
+its interface.  Here is a <cite>greeter</cite> interface:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.interface import Interface
+&gt;&gt;&gt; from zope.interface import implements
+
+&gt;&gt;&gt; class IGreeter(Interface):
+...
+...     def greet(name):
+...         &quot;&quot;&quot;Say hello&quot;&quot;&quot;
+</pre>
+<p>Like an adapter a utility may have more than one implementation.  Here
+is a possible implementation of the above interface:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; class Greeter(object):
+...
+...     implements(IGreeter)
+...
+...     def greet(self, name):
+...         return &quot;Hello &quot; + name
+</pre>
+<p>The actual utility will be an instance of this class.  To use this
+utility, you have to register it, later you can query it using the ZCA
+API.  You can register an instance of this class (<cite>utility</cite>) using
+<cite>registerUtility</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import getGlobalSiteManager
+&gt;&gt;&gt; gsm = getGlobalSiteManager()
+
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet, IGreeter)
+</pre>
+<p>In this example you registered the utility as providing the <cite>IGreeter</cite>
+interface.  You can look the interface up with either <cite>queryUtility</cite>
+or <cite>getUtility</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import queryUtility
+&gt;&gt;&gt; from zope.component import getUtility
+
+&gt;&gt;&gt; queryUtility(IGreeter).greet('Jack')
+'Hello Jack'
+
+&gt;&gt;&gt; getUtility(IGreeter).greet('Jack')
+'Hello Jack'
+</pre>
+<p>As you can see, adapters are normally classes, but utilities are
+normally instances of classes.  Only once you are creating the
+instance of a utility class, but adapter instances are dynamically
+created whenever you query for it.</p>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id74" id="named-utility" name="named-utility">5.3.2&nbsp;&nbsp;&nbsp;Named utility</a></h3>
+<p>When registering a utility component, like adapter, you can use a
+name.  As mentioned in the previous section, a utility registered with
+a particular name is called named utility.</p>
+<p>This is how you can register the <cite>greeter</cite> utility with a name:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; greet = Greeter()
+&gt;&gt;&gt; gsm.registerUtility(greet, IGreeter, 'new')
+</pre>
+<p>In this example you registered the utility with a name as providing
+the <cite>IGreeter</cite> interface.  You can look up the interface with either
+<cite>queryUtility</cite> or <cite>getUtility</cite>:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope.component import queryUtility
+&gt;&gt;&gt; from zope.component import getUtility
+
+&gt;&gt;&gt; queryUtility(IGreeter, 'new').greet('Jill')
+'Hello Jill'
+
+&gt;&gt;&gt; getUtility(IGreeter, 'new').greet('Jill')
+'Hello Jill'
+</pre>
+<p>As you can see here, while querying you have to use the <cite>name</cite> as
+second argument.</p>
+<p>Calling <cite>getUtility</cite> function without a name (second argument) is
+equivalent to calling with an empty string as the name.  Because, the
+default value for second (keyword) argument is an empty string.
+Then, component lookup mechanism will try to find the component with
+name as empty string, and it will fail.  When component lookup fails
+it will raise <cite>ComponentLookupError</cite> exception.  Remember, it will
+not return some random component registered with some other name.
+The adapter look up functions, <cite>getAdapter</cite> and <cite>queryAdapter</cite> also
+works similarly.</p>
+</div>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id75" id="testing" name="testing">6&nbsp;&nbsp;&nbsp;Testing</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id76" id="unit-testing" name="unit-testing">6.1&nbsp;&nbsp;&nbsp;Unit testing</a></h2>
+<p>This chapter will discuss about unit testing and integration
+testing. Doctest-based testing is heavily used in Zope 3. And test
+driven development (TDD) is prefered in Zope 3.  To explain the idea,
+consider a use case. A module is required with a function which
+returns &quot;Good morning, name!&quot;. The name will be given as an
+argument. Before writing the real code write the unit test for
+this. In fact you will be writing the real code and it's test cases
+almost in parallel. So create a file named example1.py with the
+function definition:</p>
+<pre class="literal-block">
+def goodmorning(name):
+    &quot;This returns a good morning message&quot;
+</pre>
+<p>See, you have not yet written the logic. But this is necessary to run
+tests successfully with failures!. Ok, now create a file named
+example1.txt with test cases, use reStructuredText format:</p>
+<pre class="literal-block">
+These are tests for example1 module.
+
+First import the module:
+
+  &gt;&gt;&gt; import example1
+</pre>
+<p>Now call the function goodmorning without any arguments:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; example1.goodmorning()
+Traceback (most recent call last):
+...
+TypeError: goodmorning() takes exactly 1 argument (0 given)
+</pre>
+<p>Now call the function goodmorning with one argument:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; example1.goodmorning('Jack')
+'Good morning, Jack!'
+</pre>
+<p>See the examples are written like executed from prompt. You can use
+your python prompt and copy paste from there. Now create another file
+test_example1.py with this content:</p>
+<pre class="literal-block">
+import unittest
+import doctest
+
+def test_suite():
+    return unittest.TestSuite((
+        doctest.DocFileSuite('example1.txt'),
+        ))
+
+if __name__ == '__main__':
+    unittest.main(defaultTest='test_suite')
+</pre>
+<p>This is just boilerplate code for running the test. Now run the test
+using python2.4 test_example1.py command. You will get output with
+following text:</p>
+<pre class="literal-block">
+File &quot;example1.txt&quot;, line 16, in example1.txt
+Failed example:
+    example1.goodmorning('Jack')
+Expected:
+    'Good morning, Jack!'
+Got nothing
+</pre>
+<p>Now one test failed, so implement the function now:</p>
+<pre class="literal-block">
+def goodmorning(name):
+    &quot;This returns a good morning message&quot;
+    return &quot;Good morning, %s!&quot; % name
+</pre>
+<p>Now run the test again, it will run without failures.</p>
+<p>Now start thinking about other functionalities required for the
+module. Before start coding write about it in text file. Decide API,
+write test, write code, than continue this cycle until you finish
+your requirements.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id77" id="running-tests" name="running-tests">6.2&nbsp;&nbsp;&nbsp;Running tests</a></h2>
+<p>By conventions your test modules are put in tests module under each
+package. But the doctest files can be placed in the package
+itself. For example if the package is ticketcollector. Then the main
+doctest file can be placed in ticketcollector/README.txt. And create
+a sub-package zopetic.tests, under this package create test modules
+like test_main.py, test_extra.py etc.  To run the unit tests, change
+to instance home:</p>
+<pre class="literal-block">
+$ cd ticketcollector
+$ ./bin/test
+</pre>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id78" id="browser-resources" name="browser-resources">7&nbsp;&nbsp;&nbsp;Browser Resources</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id79" id="file-resource" name="file-resource">7.1&nbsp;&nbsp;&nbsp;File Resource</a></h2>
+<p>Certain presentation, like images and style sheets are not associated
+with any other component, so that one cannot create a view.  To solve
+this problem, resources were developed, which are presentation
+components that do not require any context.  This mini-chapter will
+demonstrate how resources are created and registered with Zope 3.</p>
+<p>The first goal is to register a simple plain-text file called
+<cite>resource.txt</cite> as a browser resource.  The first step is to create
+this file anywhere you wish on the filesystem, and adding the
+following content:</p>
+<pre class="literal-block">
+Hello, I am a Zope 3 Resource Component!
+</pre>
+<p>Now just register the resource in a ZCML configuration file using the
+<cite>browser</cite> resource directive:</p>
+<pre class="literal-block">
+&lt;browser:resource
+  name=&quot;resource.txt&quot;
+  file=&quot;resource.txt&quot;
+  layer=&quot;default&quot;
+  /&gt;
+</pre>
+<p>Line 2: This is the name under which the resource will be known in
+Zope.</p>
+<p>Line 3: The file attribute specifies the path to the resource on the
+filessytem.  The current working directory ('.') is always the
+directory the configuration file is located.  So in the example
+above, the file <cite>resource.txt</cite> is located in the same folder as the
+configuration file is.</p>
+<p>Line 4: The optional layer attribute specifies the layer the resource
+is added to.  By default, the default layer is selected.</p>
+<p>Once you hook up the configuration file to the main configuration
+path and restart Zope 3, you should be able to access the resource
+now via a Browser using <cite>http://localhost:8080/&#64;&#64;/resource.txt</cite>.  The
+<cite>&#64;&#64;/</cite> in the URL tells the traversal mechanism that the following
+object is a resource.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id80" id="image-resource" name="image-resource">7.2&nbsp;&nbsp;&nbsp;Image resource</a></h2>
+<p>If you have an image resource, you might want to use different
+configuration.  Create a simple image called img.png and register it
+as follows:</p>
+<pre class="literal-block">
+&lt;browser:resource
+  name=&quot;img.png&quot;
+  image=&quot;img.png&quot;
+  permission=&quot;zope.ManageContent&quot;
+  /&gt;
+</pre>
+<p>Line 3: As you can see, instead of the <cite>file</cite> attribute we use the
+<cite>image</cite> one.  Internally this will create an <cite>Image</cite> object, which is
+able to detect the content type and returns it correctly.  There is a
+third possible attribute named <cite>template</cite>.  If specified, a Page
+Template that is executed when the resource is called.  Note that
+only one of <cite>file</cite>, <cite>image</cite>, or <cite>template</cite> attributes can be
+specified inside a resource directive.</p>
+<p>Line 4: A final optional attribute is the ''permission'' one must
+have to view the resource.  To demonstrate the security, I set the
+permission required for viewing the image to <cite>zope.ManageContent</cite>, so
+that you must log in as an administrator/- manager to be able to view
+it.  The default of the attribute is <cite>zope.Public</cite> so that everyone
+can see the resource.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id81" id="directory-resource" name="directory-resource">7.3&nbsp;&nbsp;&nbsp;Directory resource</a></h2>
+<p>If you have many resource files to register, it can be very tedious
+to write a single directive for every resource.  For this purpose the
+<cite>resourceDirectory</cite> is provided, with which you can simply declare an
+entire directory, including its content as resources.  Thereby the
+filenames of the files are reused as the names for the resource
+available.  Assuming you put your two previous resources in a
+directory called resource, then you can use the following:</p>
+<pre class="literal-block">
+&lt;browser:resourceDirectory
+  name=&quot;resources&quot;
+  directory=&quot;../resource&quot;
+  /&gt;
+</pre>
+<p>The image will then be publically available under the URL:
+<cite>http://localhost:8080/&#64;&#64;/resources/img.png</cite></p>
+<p>The <cite>DirectoryResource</cite> object uses a simple resource type
+recognition.  It looks at the filename extensions to discover the
+type.  For page templates, currently the extensions ''pt'', ''zpt''
+and ''html'' are registered and for an image ''gif'', ''png'' and
+''jpg''.  All other extensions are converted to file resources.  Note
+that it is not necessary to have a list of all image types, since
+only Browser-displayable images must be recognized.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id82" id="zrt-resource" name="zrt-resource">7.4&nbsp;&nbsp;&nbsp;ZRT resource</a></h2>
+<p>When working locally, you may be storing your image resources in a
+directory.  If you have a subfolder called <cite>images</cite> with an image
+<cite>logo.png</cite>.  And you have a template, so here is the HTML to insert
+the logo:</p>
+<pre class="literal-block">
+&lt;img src=&quot;./images/logo.png&quot; /&gt;
+</pre>
+<p>Now you can see that the template locally works.</p>
+<p>If you view the HTML via Zope, you can see that it is broken.</p>
+<p>Now, let's try to register the logo with the system like this:</p>
+<pre class="literal-block">
+&lt;resource
+  name=&quot;logo.png&quot;
+  file=&quot;images/logo.png&quot;
+  /&gt;
+</pre>
+<p>Now try again, after restarting Zope 3, you can see that it is still
+broken!.  So, relative path is not correct.</p>
+<p>Zope Resource Templates (ZRT) allows for locally working resources to
+work with Zope 3 as well.  It will rewrite text segments in a
+resource.  It is a 3rd party package developed by Stephan Richter for
+Lovely Systems.  The package is available from here:
+<cite>http://pypi.python.org/pypi/z3c.zrtresource</cite></p>
+<p>To use the zrt-resource add the following lines to the page
+template:</p>
+<pre class="literal-block">
+&lt;!--
+  /* zrt-replace: &quot;./images/logo.png&quot; \
+                  tal&quot;string:${context/++resource++logo.png}&quot; */
+--&gt;
+</pre>
+<p>Then convert HTML resource registration to:</p>
+<pre class="literal-block">
+&lt;zrt-resource
+  name=&quot;helloworld.html&quot;
+  file=&quot;helloworld.html&quot;
+  /&gt;
+</pre>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id83" id="browser-pages" name="browser-pages">8&nbsp;&nbsp;&nbsp;Browser Pages</a></h1>
+<p>In the last chapter we have seen how to use resources HTML.  The
+resource HTML will be only available on site-level with the <cite>&#64;&#64;</cite>
+prefix.</p>
+<p>Browser page (or more generically views) are representations for
+particular objects/components.</p>
+<p>If you have a template like this (helloworld.pt):</p>
+<pre class="literal-block">
+Hello, World !
+</pre>
+<p>Here is how to register a page for IFolder interface:</p>
+<pre class="literal-block">
+&lt;browser:page
+  name=&quot;helloworld.html&quot;
+  for=&quot;zope.app.folder.interfaces.IFolder&quot;
+  template=&quot;helloworld.pt&quot;
+  permission=&quot;zope.Public&quot;
+  /&gt;
+</pre>
+<div class="section">
+<h2><a class="toc-backref" href="#id84" id="view-components" name="view-components">8.1&nbsp;&nbsp;&nbsp;View components</a></h2>
+<p>While templates display data view components are preparing data.
+View components convert data to output formats also prepare related
+data (meta-data).  Then, create TAL-friendly object structures (dicts
+and lists).  View components know about: component for which the
+representation is created (context) and request object holding all
+<cite>output media</cite> information (request)</p>
+<div class="section">
+<h3><a class="toc-backref" href="#id85" id="id12" name="id12">8.1.1&nbsp;&nbsp;&nbsp;Implementation</a></h3>
+<p>Normally view components are added inside <cite>browser</cite> package inside
+your main package.  The organization of the browser code is really up
+to you and the above examples are just the most basic rules of thumb.</p>
+<p>Here is simple view defined:</p>
+<pre class="literal-block">
+from zope.publisher.browser import BrowserPage
+from zope.app.folder import interfaces
+
+class HelloWorld(BrowserPage):
+
+    def subFolderIds(self):
+        for name, subobj in self.context.items():
+            if interfaces.IFolder.providedBy(subobj):
+                yield name
+</pre>
+<p>Since methods and attributes of the view component are directly used
+by the template, they should return simple iterable objects
+(e.g. lists, tuples, generators) or mappings (e.g. dicts).</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id86" id="view-components-integration" name="view-components-integration">8.2&nbsp;&nbsp;&nbsp;View components - integration</a></h2>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id87" id="content-components" name="content-components">9&nbsp;&nbsp;&nbsp;Content Components</a></h1>
+<div class="section">
+<h2><a class="toc-backref" href="#id88" id="id13" name="id13">9.1&nbsp;&nbsp;&nbsp;Introduction</a></h2>
+<p>See this example:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope import interface
+
+&gt;&gt;&gt; class IPerson(interface.Interface):
+...     name = interface.Attribute(&quot;Name&quot;)
+&gt;&gt;&gt; class Person(object):
+...     interface.implements(IPerson)
+...     name = None
+&gt;&gt;&gt; jack = Person()
+&gt;&gt;&gt; jack.name = &quot;Jack&quot;
+</pre>
+<p>Here <cite>jack</cite> is a content component.  So a content component is nothing but an
+object which provides a particular interface.  As said in the previous chapter,
+use <tt class="docutils literal"><span class="pre">zope.schema</span></tt> to define fields of interface.  The above interface can be
+declared like this:</p>
+<pre class="literal-block">
+&gt;&gt;&gt; from zope import interface
+&gt;&gt;&gt; from zope import schema
+
+&gt;&gt;&gt; class IPerson(interface.Interface):
+...     name = schema.TextLine(
+...         title=u&quot;Name&quot;,
+...         description=u&quot;Name of person&quot;,
+...         default=u&quot;&quot;,
+...         required=True)
+</pre>
+<p>If you are developing an enterprise application content will be the most
+important thing you have to organize first.  To learn Zope 3 application
+development with content components, this chapter introduce a simple
+ticket/issue collector application.</p>
+<p>First look at the user stories, this book will implement these stories in
+coming chapters.</p>
+<blockquote>
+<ol class="arabic simple">
+<li>Individual small ticket collector for each project.  Many collectors can
+be added to one running zope.</li>
+<li>Any number of tickets can be added to one collector.</li>
+<li>Each ticket will be added with a description and one initial comment.</li>
+<li>Additional comments can be added to tickets.</li>
+</ol>
+</blockquote>
+<p>This chapter starts a simple implementation of ticket collector.</p>
+<p>As stated above, our goal is to develop a fully functional, though not
+great-looking, web-based ticket collector application.  The root object will be
+the <tt class="docutils literal"><span class="pre">Collector</span></tt>, which can contain <tt class="docutils literal"><span class="pre">Ticket</span></tt> objects from various users.
+Since you want to allow people to respond to various tickets, you have to allow
+tickets to contain replies, which are <tt class="docutils literal"><span class="pre">Comment</span></tt> objects.</p>
+<p>That means you have two container-based components: The <tt class="docutils literal"><span class="pre">Collector</span></tt> contains
+only tickets and can be added to any Folder or container that wishes to be able
+to contain it.  To make the ticket collector more interesting, it also has a
+description, which briefly introduces the subject/theme of the discussions
+hosted.  <tt class="docutils literal"><span class="pre">Tickets</span></tt>, on the other hand should be only contained by ticket
+collector.  They will each have a summary and a description.  And last
+<tt class="docutils literal"><span class="pre">Comment</span></tt> should be only contained by tickets.</p>
+<p>This setup should contain all the essential things that you need to make the
+object usable.  Later on you will associate a lot of other meta-data with these
+components to integrate them even better into Zope 3 and add additional
+functionality.</p>
+<p>The most convenient place to put your package is <tt class="docutils literal"><span class="pre">$HOME/myzope/lib/python</span></tt>.
+To create that package, add a directory using:</p>
+<pre class="literal-block">
+$ cd $HOME/myzope/lib/python/
+$ mkdir collector
+</pre>
+<p>on GNU/Linux.</p>
+<p>To make this directory a package, place an empty __init__.py file in the new
+directory.  In GNU/Linux you can do something like:</p>
+<pre class="literal-block">
+$ echo &quot;# Make it a Python package&quot; &gt;&gt; collector/__init__.py
+</pre>
+<p>but you can of course also just use a text editor and save a file of this name.
+Just make sure that there is valid Python code in the file.  The file should at
+least contain some whitespace, since empty files confuse some archive programs.</p>
+<p>From now on you are only going to work inside this <tt class="docutils literal"><span class="pre">collector</span></tt> package, which
+should be located at <tt class="docutils literal"><span class="pre">$HOME/myzope/lib/python/collector</span></tt>.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id89" id="id14" name="id14">9.2&nbsp;&nbsp;&nbsp;Interfaces</a></h2>
+<p>The very first step of the coding process is always to define your interfaces,
+which represent your external API. You should be aware that software that is
+built on top of your packages expect the interfaces to behave exactly the way
+you specify them. This is often less of an issue for attributes and arguments
+of a method, but often enough developers forget to specify what the expected
+return value of a method or function is or which exceptions it can raise or
+catch.</p>
+<p>Interfaces are commonly stored in an <tt class="docutils literal"><span class="pre">interfaces</span></tt> module or package. Since
+our package is not that big, you are going to use a file-based module; therefore
+start editing a file called <tt class="docutils literal"><span class="pre">interfaces.py</span></tt> in your favorite editor.</p>
+<p>In this initial step of our application, you are only interested in defining one
+interface for the ticket collector itself and one for a single ticket, which
+are listed below (add these to the file <tt class="docutils literal"><span class="pre">interfaces.py</span></tt>):</p>
+<pre class="literal-block">
+from zope.interface import Interface
+from zope.schema import Text, TextLine, Field
+
+from zope.app.container.constraints import containers, contains
+from zope.app.container.interfaces import IContained, IContainer
+
+class IComment(Interface):
+    &quot;&quot;&quot;Comment for Ticket&quot;&quot;&quot;
+
+    body = Text(
+        title=u&quot;Additional Comment&quot;,
+        description=u&quot;Body of the Comment.&quot;,
+        default=u&quot;&quot;,
+        required=True)
+
+class ITicket(IContainer):
+    &quot;&quot;&quot;A ticket object.&quot;&quot;&quot;
+
+    summary = TextLine(
+        title=u&quot;Summary&quot;,
+        description=u&quot;Short summary&quot;,
+        default=u&quot;&quot;,
+        required=True)
+
+    description = Text(
+        title=u&quot;Description&quot;,
+        description=u&quot;Full description&quot;,
+        default=u&quot;&quot;,
+        required=False)
+
+    contains('.IComment')
+
+class ICollector(IContainer):
+    &quot;&quot;&quot;Collector the base object. It can only
+    contains ITicket objects.&quot;&quot;&quot;
+
+    contains('.ITicket')
+
+    description = Text(
+        title=u&quot;Description&quot;,
+        description=u&quot;A description of the collector.&quot;,
+        default=u&quot;&quot;,
+        required=False)
+
+
+class ITicketContained(IContained):
+    &quot;&quot;&quot;Interface that specifies the type of objects that can contain
+    tickets.  So a ticket can only contain in a collector.&quot;&quot;&quot;
+
+    containers(ICollector)
+
+class ICommentContained(IContained):
+    &quot;&quot;&quot;Interface that specifies the type of objects that can contain
+    comments.  So a comment can only contain in a ticket.&quot;&quot;&quot;
+
+    containers(ITicket)
+</pre>
+<p>If you want a hierarchy of comments, the <tt class="docutils literal"><span class="pre">IComment</span></tt> and <tt class="docutils literal"><span class="pre">ICommentContained</span></tt>
+can be changed like this:</p>
+<pre class="literal-block">
+class IComment(Interface):
+    &quot;&quot;&quot;Comment for Ticket&quot;&quot;&quot;
+
+    body = Text(
+        title=u&quot;Additional Comment&quot;,
+        description=u&quot;Body of the Comment.&quot;,
+        default=u&quot;&quot;,
+        required=True)
+
+    contains('.IComment')
+
+class ICommentContained(IContained):
+    &quot;&quot;&quot;Interface that specifies the type of objects that can contain
+    comments.  So a comment can contain in a ticket or a comment itself.&quot;&quot;&quot;
+
+    containers(ITicket, IComment)
+</pre>
+<p>See the <tt class="docutils literal"><span class="pre">IComment</span></tt> interface calls <tt class="docutils literal"><span class="pre">contains</span></tt> function with <tt class="docutils literal"><span class="pre">.IComment</span></tt>
+as argument.  And in <tt class="docutils literal"><span class="pre">ICommentContained</span></tt> interface, <tt class="docutils literal"><span class="pre">IComment</span></tt> is also
+added.  But for simplicity these interfaces are not used in this chapter.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id90" id="unit-tests" name="unit-tests">9.3&nbsp;&nbsp;&nbsp;Unit tests</a></h2>
+<p>Unit testing is explained in another <a class="reference" href="/ZopeGuideUnitTesting">chapter</a> .  Here you can see some
+boiler-plate code which helps to run the doctest based unittests which you will
+write later.  Since <cite>Collector</cite> and <cite>Ticket</cite> objects are containers, this code
+also run common tests for containers.  By convention write all unit test files
+under <cite>tests</cite> directory.  But doctest files are placed in the package directory
+itself.</p>
+<p>First create <tt class="docutils literal"><span class="pre">tests/test_collector.py</span></tt>:</p>
+<pre class="literal-block">
+import unittest
+from zope.testing.doctestunit import DocTestSuite
+
+from zope.app.container.tests.test_icontainer import TestSampleContainer
+
+from collector.ticketcollector import Collector
+
+
+class Test(TestSampleContainer):
+
+    def makeTestObject(self):
+        return Collector()
+
+def test_suite():
+    return unittest.TestSuite((
+        DocTestSuite('collector.ticketcollector'),
+        unittest.makeSuite(Test),
+        ))
+
+if __name__ == '__main__':
+    unittest.main(defaultTest='test_suite')
+</pre>
+<p>Then <tt class="docutils literal"><span class="pre">tests/test_ticket.py</span></tt>:</p>
+<pre class="literal-block">
+import unittest
+from zope.testing.doctestunit import DocTestSuite
+
+from zope.app.container.tests.test_icontainer import TestSampleContainer
+
+from collector.ticket import Ticket
+
+
+class Test(TestSampleContainer):
+
+    def makeTestObject(self):
+        return Ticket()
+
+def test_suite():
+    return unittest.TestSuite((
+        DocTestSuite('collector.ticket'),
+        unittest.makeSuite(Test),
+        ))
+
+if __name__ == '__main__':
+    unittest.main(defaultTest='test_suite')
+</pre>
+<p><tt class="docutils literal"><span class="pre">tests/test_comment.py</span></tt>:</p>
+<pre class="literal-block">
+import unittest
+from zope.testing.doctestunit import DocTestSuite
+
+def test_suite():
+    return unittest.TestSuite((
+        DocTestSuite('collector.comment'),
+        ))
+
+if __name__ == '__main__':
+    unittest.main(defaultTest='test_suite')
+</pre>
+<p>To run the unit test:</p>
+<pre class="literal-block">
+$ cd $HOME/myzope/etc
+$ ../bin/test -vpu --dir collector
+</pre>
+<p>Of course now all tests should fail.  In next section you will write doctests
+along with implemetation.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id91" id="id15" name="id15">9.4&nbsp;&nbsp;&nbsp;Implementation</a></h2>
+<p>As you can see in the unit test module, collector is going to be implemented in
+<tt class="docutils literal"><span class="pre">ticketcollector.py</span></tt>.  A base class, <tt class="docutils literal"><span class="pre">BTreeContainer</span></tt> is used to implement
+the container.  This will make the implementation easier.</p>
+<p>Here is the <tt class="docutils literal"><span class="pre">ticketcollector.py</span></tt>:</p>
+<pre class="literal-block">
+from zope.interface import implements
+from zope.app.container.btree import BTreeContainer
+
+from interfaces import ICollector
+
+class Collector(BTreeContainer):
+    &quot;&quot;&quot;A simple implementation of a collector using B-Tree Containers.
+
+    Make sure that the ``Collector`` implements the ``ICollector``
+    interface::
+
+      &gt;&gt;&gt; from zope.interface.verify import verifyClass
+      &gt;&gt;&gt; verifyClass(ICollector, Collector)
+      True
+
+    Here is an example of changing the description of the collector::
+
+      &gt;&gt;&gt; collector = Collector()
+      &gt;&gt;&gt; collector.description
+      u''
+      &gt;&gt;&gt; collector.description = u'Ticket Collector Description'
+      &gt;&gt;&gt; collector.description
+      u'Ticket Collector Description'
+    &quot;&quot;&quot;
+
+    implements(ICollector)
+
+    description = u''
+</pre>
+<p>Similarly <tt class="docutils literal"><span class="pre">ticket.py</span></tt>:</p>
+<pre class="literal-block">
+from zope.interface import implements
+from zope.interface import classProvides
+from zope.app.container.btree import BTreeContainer
+from zope.app.container.contained import Contained
+
+from interfaces import ITicket, ITicketContained
+
+class Ticket(BTreeContainer, Contained):
+    &quot;&quot;&quot;A simple implementation of a ticket using B-Tree Containers.
+
+    Make sure that the ``Ticket`` implements the ``ITicket`` interface::
+
+      &gt;&gt;&gt; from zope.interface.verify import verifyClass
+      &gt;&gt;&gt; verifyClass(ITicket, Ticket)
+      True
+
+    Here is an example of changing the summary and description of the ticket::
+
+      &gt;&gt;&gt; ticket = Ticket()
+      &gt;&gt;&gt; ticket.summary
+      u''
+      &gt;&gt;&gt; ticket.description
+      u''
+      &gt;&gt;&gt; ticket.summary = u'Ticket Summary'
+      &gt;&gt;&gt; ticket.description = u'Ticket Description'
+      &gt;&gt;&gt; ticket.summary
+      u'Ticket Summary'
+      &gt;&gt;&gt; ticket.description
+      u'Ticket Description'
+    &quot;&quot;&quot;
+
+    implements(ITicket, ITicketContained)
+
+    summary = u''
+    description = u''
+</pre>
+<p>Then <cite>comment.py</cite>:</p>
+<pre class="literal-block">
+from zope.interface import implements
+
+from interfaces import IComment
+from interfaces import ICommentContained
+from zope.app.container.contained import Contained
+
+class Comment(Contained):
+    &quot;&quot;&quot;A simple implementation of a comment.
+
+    Make sure that the ``Comment`` implements the ``IComment`` interface::
+
+      &gt;&gt;&gt; from zope.interface.verify import verifyClass
+      &gt;&gt;&gt; verifyClass(IComment, Comment)
+      True
+
+    Here is an example of changing the body of the comment::
+
+      &gt;&gt;&gt; comment = Comment()
+      &gt;&gt;&gt; comment.body
+      u''
+      &gt;&gt;&gt; comment.body = u'Comment Body'
+      &gt;&gt;&gt; comment.body
+      u'Comment Body'
+    &quot;&quot;&quot;
+
+    implements(IComment, ICommentContained)
+
+    body = u&quot;&quot;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id92" id="id16" name="id16">9.5&nbsp;&nbsp;&nbsp;Registration</a></h2>
+<p>You have written interfaces and its implementations, now how to bind this with
+Zope 3 framework.  You can use use Zope Configuration Markup Language (ZCML)
+based configuration file for this.</p>
+<p>This is our configure.zcml:</p>
+<pre class="literal-block">
+&lt;configure
+    xmlns=&quot;http://namespaces.zope.org/zope&quot;
+    i18n_domain=&quot;collector&quot;&gt;
+
+  &lt;interface
+      interface=&quot;.interfaces.ICollector&quot;
+      type=&quot;zope.app.content.interfaces.IContentType&quot;
+      /&gt;
+
+  &lt;class class=&quot;.ticketcollector.Collector&quot;&gt;
+    &lt;implements
+        interface=&quot;zope.annotation.interfaces.IAttributeAnnotatable&quot;
+        /&gt;
+    &lt;implements
+        interface=&quot;zope.app.container.interfaces.IContentContainer&quot;
+        /&gt;
+    &lt;require
+        permission=&quot;zope.ManageContent&quot;
+        set_schema=&quot;.interfaces.ICollector&quot;
+        /&gt;
+    &lt;require
+        permission=&quot;zope.ManageContent&quot;
+        interface=&quot;.interfaces.ICollector&quot;
+        /&gt;
+  &lt;/class&gt;
+
+  &lt;interface
+      interface=&quot;.interfaces.ITicket&quot;
+      type=&quot;zope.app.content.interfaces.IContentType&quot;
+      /&gt;
+
+  &lt;class class=&quot;.ticket.Ticket&quot;&gt;
+    &lt;implements
+        interface=&quot;zope.annotation.interfaces.IAttributeAnnotatable&quot;
+        /&gt;
+    &lt;implements
+        interface=&quot;zope.app.container.interfaces.IContentContainer&quot;
+        /&gt;
+    &lt;require
+        permission=&quot;zope.ManageContent&quot;
+        set_schema=&quot;.interfaces.ITicket&quot;
+        /&gt;
+    &lt;require
+        permission=&quot;zope.ManageContent&quot;
+        interface=&quot;.interfaces.ITicket&quot;
+        /&gt;
+  &lt;/class&gt;
+
+  &lt;interface
+      interface=&quot;.interfaces.IComment&quot;
+      type=&quot;zope.app.content.interfaces.IContentType&quot;
+      /&gt;
+
+  &lt;class class=&quot;.comment.Comment&quot;&gt;
+    &lt;implements
+        interface=&quot;zope.annotation.interfaces.IAttributeAnnotatable&quot;
+        /&gt;
+    &lt;require
+        permission=&quot;zope.ManageContent&quot;
+        set_schema=&quot;.interfaces.IComment&quot;
+        /&gt;
+    &lt;require
+        permission=&quot;zope.ManageContent&quot;
+        interface=&quot;.interfaces.IComment&quot;
+        /&gt;
+  &lt;/class&gt;
+
+  &lt;include package=&quot;.browser&quot; /&gt;
+
+&lt;/configure&gt;
+</pre>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id93" id="id17" name="id17">9.6&nbsp;&nbsp;&nbsp;Running application</a></h2>
+<p>Before running the applcation create one view for <tt class="docutils literal"><span class="pre">Collector</span></tt>.</p>
+<p>Create a <cite>browser</cite> directory and under that, a new <cite>configure.zcml</cite>
+file:</p>
+<pre class="literal-block">
+&lt;configure
+    xmlns=&quot;http://namespaces.zope.org/browser&quot;&gt;
+
+  &lt;addMenuItem
+      class=&quot;collector.ticketcollector.Collector&quot;
+      title=&quot;Collector&quot;
+      description=&quot;A Collector&quot;
+      permission=&quot;zope.ManageContent&quot;
+      /&gt;
+
+&lt;/configure&gt;
+</pre>
+<p>The <tt class="docutils literal"><span class="pre">class</span></tt> attribute specifies the module path for the class, a leading dot
+means to make the import relative to the package containing the ZCML file.
+Therefore in this case Zope will import the collector.ticketcollector module,
+then import &quot;Collector&quot; from that module.</p>
+<p>The <tt class="docutils literal"><span class="pre">title</span></tt> attribute provides the title to display in the add menu.</p>
+<p>The <tt class="docutils literal"><span class="pre">permission</span></tt> attribute is used to describe what permission is required
+for a person to be able to add one of these objects.  The
+<tt class="docutils literal"><span class="pre">zope.ManageContent</span></tt> permission means that the user can add, remove, and
+modify content (the &quot;admin&quot; user you created while making the instance is one
+such user).</p>
+<p>You have to tell Zope to read our ZCML file, and the easiest way to do that is
+to put a &quot;slug&quot; in the $HOME/myzope/etc/package-includes/ directory.  A
+<tt class="docutils literal"><span class="pre">slug</span></tt> is a ZCML file that just includes another file.  Here's what our slug
+should look like (save it as &quot;collector-configure.zcml&quot;):</p>
+<pre class="literal-block">
+&lt;include package=&quot;collector&quot; /&gt;
+</pre>
+<p>Now if you start Zope back up, you can go to the ZMI and add our content type by
+clicking on &quot;Add Collector&quot; and entering a name for our object; name it
+&quot;MyCollector&quot;.</p>
+<p>Now restart Zope and visit <a class="reference" href="http://localhost:8080">http://localhost:8080</a> .  You can add collector from
+menu.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id94" id="views" name="views">9.7&nbsp;&nbsp;&nbsp;Views</a></h2>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id95" id="functional-testing" name="functional-testing">9.8&nbsp;&nbsp;&nbsp;Functional testing</a></h2>
+</div>
+</div>
+<div class="section">
+<h1><a class="toc-backref" href="#id96" id="skinnig" name="skinnig">10&nbsp;&nbsp;&nbsp;Skinnig</a></h1>
+<p>Motivation</p>
+<ul class="simple">
+<li>Need to build sites with equal/similar features, but different look
+and feel</li>
+<li>Variation of Look and Feel can be simple or complex<ul>
+<li>Exchange a CSS file and some images</li>
+<li>Reconfigure the application to have different UI components, such
+as widgets, tables, O-wrap, etc.</li>
+</ul>
+</li>
+<li>Often need to mix and match UI components from multiple packages</li>
+</ul>
+<p>The level of customization of Zope (2 and 3) has been a strong point
+for years. Initially the UI was customized relying on implicit
+acquisition, where it was simply a matter of adding an object higher
+in the object path to customize the UI. Since implicit acquisition is
+often hard to debug, the CMF introduced the concept of skins, where a
+skin describes the look and feel of a site. Skins could acquire from
+other skins explicitly.</p>
+<p>In Zope 3 the concept of skins was reconsidered and re-implemented to
+use the component architecture.</p>
+<p>Layers</p>
+<ul class="simple">
+<li>Define the &quot;feel&quot; of a site</li>
+<li>Contain presentation logic</li>
+<li>Common artifacts: pages, content providers, viewlet managers, and
+viewlets</li>
+<li>Developed by Zope 3 Python developers</li>
+</ul>
+<p>Skins</p>
+<ul class="simple">
+<li>Define the &quot;look&quot; of a site</li>
+<li>Common artifacts: templates and resources (CSS, Javascript, etc.)</li>
+<li>Use layers to retrieve the data for templates</li>
+<li>Developed by HTML and Graphic Designer/Scripter</li>
+</ul>
+<p>Layers versus Skins</p>
+<ul class="simple">
+<li>Both are implemented as interfaces</li>
+<li>Zope 3 does not differentiate between the two</li>
+<li>In fact, the distinction of layers defining the &quot;feel&quot; and skins
+the &quot;look&quot; is a convention. You may not want to follow the
+convention, if it is too abstract for you, but if you are
+developing application with multiple look and feel, I strongly
+suggest using this convention, since it cleanly separates concerns.</li>
+<li>Both support inheritance/acquisition</li>
+</ul>
+<p>This is realized through a combination of interface inheritance and
+component lookup techniques. We will discuss this in more detail
+later.</p>
+<p>Skins are directly provided by a request</p>
+<div class="section">
+<h2><a class="toc-backref" href="#id97" id="core-skins" name="core-skins">10.1&nbsp;&nbsp;&nbsp;Core Skins</a></h2>
+<ul class="simple">
+<li>Access skin using ++skin++Name after the server root</li>
+<li>Core Skins that are part of the repository<ul>
+<li>Rotterdam -- the default skin shown</li>
+<li>Boston -- a newer skin featuring viewlets</li>
+<li>Basic -- a skin with no layout styles</li>
+<li>Debug -- based on Rotterdam, shows debug information upon
+failures</li>
+</ul>
+</li>
+<li>Try <a class="reference" href="http://localhost:8080/++skin++Boston">http://localhost:8080/++skin++Boston</a></li>
+</ul>
+<p>Unfortunately, it is hard to reuse the UI components developed for
+these skins, since they still rely on the not so flexible macro
+pattern. Thus, it is better if you start from scratch. This will also
+avoid a lot of the overhead that comes with the over-generalized core
+skins.</p>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id98" id="a-new-skin" name="a-new-skin">10.2&nbsp;&nbsp;&nbsp;A New Skin</a></h2>
+<ul class="simple">
+<li>Views registered for default layer by default
+zope.publisher.interfaces.browser.IDefaultBrowserLayer</li>
+<li>Default layer contains a lot of things we do not need (security
+concerns)</li>
+<li>Since pretty much everything in zope.app is registered into the
+default layer, it has an uncontrollable amount of junk in it. It is
+very hard to verify that all those registrations fulfill your
+security needs. Another problem is that views might be available
+that you do not want to be available.</li>
+<li>Always want to develop skins from scratch</li>
+<li>Some registrations in the default layer are very useful</li>
+<li>Examples of those useful registrations include error views, traversal registrations, and widgets.</li>
+<li>Useful set of registrations collected in the minimal layer z3c.layer.minimal</li>
+<li>Add the z3c.layer.minimal package to your project dependencies</li>
+</ul>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id99" id="setting-up-a-layer" name="setting-up-a-layer">10.3&nbsp;&nbsp;&nbsp;Setting up a Layer</a></h2>
+<p>Write an interface for the layer that inherits the minimal layer:</p>
+<pre class="literal-block">
+from z3c.layer import minimal
+
+class IHelloWorldLayer(minimal.IMinimalBrowserLayer):
+    &quot;&quot;&quot;Hello World Application Layer&quot;&quot;&quot;
+</pre>
+<p>Change all page, viewletmanager, and viewlet directives to specify
+this layer:</p>
+<blockquote>
+layer=&quot;.interfaces.IHelloWorldLayer&quot;</blockquote>
+<p>Once you changed those registrations, the helloworld.html page is not
+available anymore in the core skins. The templates by themselves do
+not matter.</p>
+<div class="section">
+<h3><a class="toc-backref" href="#id100" id="setting-up-a-skin" name="setting-up-a-skin">10.3.1&nbsp;&nbsp;&nbsp;Setting up a Skin</a></h3>
+<p>Write an interface for each new skin that inherits the Hello World
+application layer:</p>
+<pre class="literal-block">
+class IBasicSkin(IHelloWorldLayer):
+    &quot;&quot;&quot;Basic Skin for Hello World App.&quot;&quot;&quot;
+</pre>
+<p>Register the interface as a skin interface:</p>
+<pre class="literal-block">
+&lt;zope:interface
+    interface=&quot;.interfaces.IBasicSkin&quot;
+    type=&quot;zope.publisher.interfaces.browser.IBrowserSkinType&quot;
+    name=&quot;HWBasic&quot;
+    /&gt;
+</pre>
+<p>Register all templates for this skin by adding the layer attribute:</p>
+<blockquote>
+layer=&quot;.interfaces.IBasicSkin&quot;</blockquote>
+</div>
+<div class="section">
+<h3><a class="toc-backref" href="#id101" id="using-the-skin" name="using-the-skin">10.3.2&nbsp;&nbsp;&nbsp;Using the Skin</a></h3>
+<p>Access it via: <a class="reference" href="http://localhost:8080/++skin++HWBasic">http://localhost:8080/++skin++HWBasic</a></p>
+<p>Hide skin traversal step by using Apache's Virtual Hosting feature</p>
+<p>To change the default skin to something else use:</p>
+<blockquote>
+&lt;browser:defaultSkin name=&quot;HWBasic&quot; /&gt;</blockquote>
+<p>Simply specifying the browser:defaultSkin directive in your
+configuration file will not work, since it has been specified in
+zope/app/zcmlfiles/browser.zcml already. You can either change the
+skin at this location or use the zope:includeOverrides directive,
+which will override the any included directives.</p>
+</div>
+</div>
+<div class="section">
+<h2><a class="toc-backref" href="#id102" id="exercise" name="exercise">10.4&nbsp;&nbsp;&nbsp;Exercise</a></h2>
+<ul class="simple">
+<li>Develop the Hello World application layer.</li>
+<li>Develop two skins based on this layer.</li>
+<li>Write some tests that specifically test the difference between the
+skins.</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

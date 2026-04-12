@@ -1,0 +1,423 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.3.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Golang workshops - Baiju Muthukadan</title>
+
+
+
+
+<meta name="description" content="Recently I conducted couple of Go workshops.  The first workshop wason February 27th at NIT Calicut as part ofFOSSMeet’16 program.  The second one was lastSaturday (April 16th) at NUMA Bangalore organized byHasgeek as part ofRootconf’16.">
+
+
+
+
+<meta name="author" content="Baiju Muthukadan">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Baiju Muthukadan">
+<meta property="og:title" content="Golang workshops">
+
+
+
+
+  <meta property="og:description" content="Recently I conducted couple of Go workshops.  The first workshop wason February 27th at NIT Calicut as part ofFOSSMeet’16 program.  The second one was lastSaturday (April 16th) at NUMA Bangalore organized byHasgeek as part ofRootconf’16.">
+
+
+
+  <meta name="twitter:site" content="@nogenerics">
+  <meta name="twitter:title" content="Golang workshops">
+  <meta name="twitter:description" content="Recently I conducted couple of Go workshops.  The first workshop wason February 27th at NIT Calicut as part ofFOSSMeet’16 program.  The second one was lastSaturday (April 16th) at NUMA Bangalore organized byHasgeek as part ofRootconf’16.">
+  <meta name="twitter:url" content="">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@Baiju Muthukadan">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-04-19T00:00:00+05:30">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Baiju Muthukadan",
+      "url" : null,
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Baiju Muthukadan Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">Baiju Muthukadan</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="/about.html">About</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/dallas_fall2014.jpg" class="author__avatar" alt="Baiju Muthukadan" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Baiju Muthukadan</h3>
+    
+      <p class="author__bio" itemprop="description">
+        '(Software Engineer, Author, Public Speaker, '(Works at Red Hat))
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Bangalore, India</span>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Golang workshops">
+    <meta itemprop="description" content="Recently I conducted couple of Go workshops.  The first workshop wason February 27th at NIT Calicut as part ofFOSSMeet’16 program.  The second one was lastSaturday (April 16th) at NUMA Bangalore organized byHasgeek as part ofRootconf’16.">
+    <meta itemprop="datePublished" content="April 19, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Golang workshops
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Recently I conducted couple of Go workshops.  The first workshop was
+on February 27th at <a href="http://www.nitc.ac.in">NIT Calicut</a> as part of
+<a href="http://fossmeet.in">FOSSMeet’16</a> program.  The second one was last
+Saturday (April 16th) at NUMA Bangalore organized by
+<a href="https://hasgeek.com">Hasgeek</a> as part of
+<a href="https://rootconf.in/2016">Rootconf’16</a>.</p>
+
+<p>The workshop at NIT was a 4 hour workshop and particpants were
+computer science students from various engineering colleges.</p>
+
+<p>Few photos from the workshop:</p>
+
+<p><img src="https://www.dropbox.com/s/q2vhbns0opyx7cp/IMG_20160227_124533.jpg?raw=1" style="width: 560px" />
+<img src="https://www.dropbox.com/s/vuzxsp8ru5icosx/IMG_20160227_124328.jpg?raw=1" style="width: 560px" />
+<img src="https://www.dropbox.com/s/6di9mktuzrgnlpu/IMG_20160227_124435.jpg?raw=1" style="width: 560px" />
+<img src="https://www.dropbox.com/s/ie77qiqpw02loa1/IMG_20160227_124356.jpg?raw=1" style="width: 560px" /></p>
+
+<p><img src="https://www.dropbox.com/s/x6nolmo5z63rbkb/IMG_20160227_153141.jpg?raw=1" style="width: 560px" />
+<img src="https://www.dropbox.com/s/rv5ecqhptpsysgo/IMG_20160227_160137.jpg?raw=1" style="width: 560px" /></p>
+
+<p>The workshop at Rootconf was attended by professionals with experience
+in other programming languages.  It was a 6 hour workshop and it was
+well received.  Here are few photos and feedback from the workshop.</p>
+
+<p><img src="https://www.dropbox.com/s/jyy3l9sw0k3wwmd/IMG_20160416_145735.jpg?raw=1" style="width: 560px" /></p>
+
+<p><img src="https://www.dropbox.com/s/ws0u92dsro3tomy/IMG_20160416_145718.jpg?raw=1" style="width: 560px" /></p>
+
+<p><img src="https://www.dropbox.com/s/5d9wx3pay44nx7a/IMG_20160416_150210.jpg?raw=1" style="width: 560px" /></p>
+
+<p><img src="https://www.dropbox.com/s/datln4romzu98mf/Screenshot_2016-04-16-18-33-18_com.android.chrome_1460812340616.jpg?raw=1" style="width: 560px" />
+<img src="https://www.dropbox.com/s/tc55skv2pwhj54e/Screenshot_2016-04-16-18-33-59_com.android.chrome_1460812321262.jpg?raw=1" style="width: 560px" />
+<img src="https://www.dropbox.com/s/q9bu4tsc8yuaof7/Screenshot_2016-04-16-18-34-08_com.android.chrome_1460812295238.jpg?raw=1" style="width: 560px" />
+<img src="https://www.dropbox.com/s/vdwhlpwsll42niw/Screenshot_2016-04-16-18-34-28_com.android.chrome_1460812241381.jpg?raw=1" style="width: 560px" /></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#golang" class="page__taxonomy-item" rel="tag">golang</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#talk" class="page__taxonomy-item" rel="tag">talk</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-04-19T00:00:00+05:30">April 19, 2016</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=nogenerics&text=Golang workshops /golang/talk/golang-workshops/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/golang/talk/golang-workshops/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=/golang/talk/golang-workshops/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/golang/talk/golang-workshops/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/golang/emberjs/gopherconindia-2015-talk/" class="pagination--pager" title="Go and Ember.js talk at GopherConIndia 2015
+">Previous</a>
+    
+    
+      <a href="/golang/talk/golang-workshop-sahrdaya-rebootcalicut/" class="pagination--pager" title="Golang workshops at Sahrdaya &amp; Reboot Calicut
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/nogenerics"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+      <li><a href="https://facebook.com/BaijuMuthukadan"><i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Baiju Muthukadan. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>

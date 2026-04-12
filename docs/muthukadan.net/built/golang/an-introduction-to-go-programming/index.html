@@ -1,0 +1,560 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.3.1 by Michael Rose
+  Copyright 2017 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>An Introduction to Go Programming - Baiju Muthukadan</title>
+
+
+
+
+<meta name="description" content="Go, also commonly referred to as golang, is a statically typed,compiled, garbage-collected, concurrent general purpose programminglanguage.  Go is considered as an object oriented programming languageand it uses object composition instead of class inheritance.  Go wasinitially developed at Google by Robert Griesemer, Rob Pike, andKen Thompson.  Go was publicly released as a free/open sourcesoftware in November 2009 by Google.">
+
+
+
+
+<meta name="author" content="Baiju Muthukadan">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="Baiju Muthukadan">
+<meta property="og:title" content="An Introduction to Go Programming">
+
+
+
+
+  <meta property="og:description" content="Go, also commonly referred to as golang, is a statically typed,compiled, garbage-collected, concurrent general purpose programminglanguage.  Go is considered as an object oriented programming languageand it uses object composition instead of class inheritance.  Go wasinitially developed at Google by Robert Griesemer, Rob Pike, andKen Thompson.  Go was publicly released as a free/open sourcesoftware in November 2009 by Google.">
+
+
+
+  <meta name="twitter:site" content="@nogenerics">
+  <meta name="twitter:title" content="An Introduction to Go Programming">
+  <meta name="twitter:description" content="Go, also commonly referred to as golang, is a statically typed,compiled, garbage-collected, concurrent general purpose programminglanguage.  Go is considered as an object oriented programming languageand it uses object composition instead of class inheritance.  Go wasinitially developed at Google by Robert Griesemer, Rob Pike, andKen Thompson.  Go was publicly released as a free/open sourcesoftware in November 2009 by Google.">
+  <meta name="twitter:url" content="">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@Baiju Muthukadan">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2014-11-28T00:00:00+05:30">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Baiju Muthukadan",
+      "url" : null,
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Baiju Muthukadan Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">Baiju Muthukadan</a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item"><a href="/about.html">About</a></li>
+          
+        </ul>
+        <button><div class="navicon"></div></button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/dallas_fall2014.jpg" class="author__avatar" alt="Baiju Muthukadan" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name" itemprop="name">Baiju Muthukadan</h3>
+    
+      <p class="author__bio" itemprop="description">
+        '(Software Engineer, Author, Public Speaker, '(Works at Red Hat))
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">Bangalore, India</span>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fa fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="An Introduction to Go Programming">
+    <meta itemprop="description" content="Go, also commonly referred to as golang, is a statically typed,compiled, garbage-collected, concurrent general purpose programminglanguage.  Go is considered as an object oriented programming languageand it uses object composition instead of class inheritance.  Go wasinitially developed at Google by Robert Griesemer, Rob Pike, andKen Thompson.  Go was publicly released as a free/open sourcesoftware in November 2009 by Google.">
+    <meta itemprop="datePublished" content="November 28, 2014">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">An Introduction to Go Programming
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><a href="http://golang.org">Go</a>, also commonly referred to as <strong>golang</strong>, is a statically typed,
+compiled, garbage-collected, concurrent general purpose programming
+language.  Go is considered as an object oriented programming language
+and it uses <a href="http://en.wikipedia.org/wiki/Composition_over_inheritance">object composition</a> instead of class inheritance.  Go was
+initially developed at Google by <a href="http://en.wikipedia.org/wiki/Robert_Griesemer">Robert Griesemer</a>, <a href="http://en.wikipedia.org/wiki/Rob_Pike">Rob Pike</a>, and
+<a href="http://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a>.  Go was publicly released as a free/open source
+software in November 2009 by Google.</p>
+
+<p>There are two major compilers available, <em>gc</em> &amp; <em>gccgo</em>.  The official
+compiler is <em>gc</em> and <em>gccgo</em> is a front-end to <a href="https://gcc.gnu.org">gcc</a>.  Go supports
+major operating systems including Windows, GNU/Linux, Mac OS X and
+various flavors of BSDs.  Through <em>gccgo</em> it supports more platforms.
+And cross compilation is easy in Go.</p>
+
+<p><img src="https://www.dropbox.com/s/sp2rbf1mv1onzcm/golang-mascot.png?raw=1" alt="mascot" /></p>
+
+<p>The syntax of Go is very similar to C programming language.  There are
+around 25+ keywords in the languages which is smaller compared to C,
+C++, Python etc.</p>
+
+<p>Go compilation is very fast, few seconds would be enough to compile
+large programs.  In Go, unused imports and variables raise error
+during compile time.  A variable starting with capital letter is
+considered as exported and so it can be used from other packages.</p>
+
+<p>Now I will move on to the details of installation of Go compiler.
+First you will see instruction for installing in GNU/Linux.
+The next section explains installation in a Windows system.</p>
+
+<p>Finally I will show running a hello world program.  This will help you
+to verify your installation.</p>
+
+<h2 id="linux-installation">Linux Installation</h2>
+
+<p>Go project provides binaries for major operating systems including
+GNU/Linux.  You can find 32 bit and 64 bit binaries for GNU/Linux
+here: <a href="https://golang.org/dl/">https://golang.org/dl/</a></p>
+
+<p>The following commands will download and install Go compiler in a
+64 bit GNU/Linux system:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd</span> <span class="nv">$HOME</span>
+wget -c https://storage.googleapis.com/golang/go1.7.1.linux-amd64.tar.gz
+tar zxvf go1.7.1.linux-amd64.tar.gz
+mkdir <span class="nv">$HOME</span>/mygo</code></pre></figure>
+
+<p>The first line ensure that current working directory is the home
+directory for the user.  The <code class="highlighter-rouge">$HOME</code> environment variable contains the
+path to the user’s home directory.</p>
+
+<p>The second line download the 64 bit binary for GNU/Linux.  The <code class="highlighter-rouge">wget</code>
+is a command line download manager.</p>
+
+<p>The third line extract the downloaded tar ball in to <code class="highlighter-rouge">go</code> directory
+inside the home.</p>
+
+<p>The last line creates a directory named <code class="highlighter-rouge">mygo</code> as the workspace.  This
+directory can be used to place binaries, third party packages and your
+own Go source code.</p>
+
+<p>You also need to set few environment variables.  Open the
+<code class="highlighter-rouge">$HOME/.bashrc</code> file in a text editor and enter these lines:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">export </span><span class="nv">GOROOT</span><span class="o">=</span><span class="nv">$HOME</span>/go
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$GOROOT</span>/bin:<span class="nv">$PATH</span>
+
+<span class="nb">export </span><span class="nv">GOPATH</span><span class="o">=</span><span class="nv">$HOME</span>/mygo
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$GOPATH</span>/bin:<span class="nv">$PATH</span></code></pre></figure>
+
+<p>The first line set <code class="highlighter-rouge">GOROOT</code> environment variable pointing to
+<code class="highlighter-rouge">$HOME/go</code>.  This is required for proper functioning of Go tools.  You
+can avoid setting the <code class="highlighter-rouge">GOROOT</code> environment variable if you install Go
+inside <code class="highlighter-rouge">/usr/local/go</code>.</p>
+
+<p>The second line append the <code class="highlighter-rouge">$GOROOT/bin</code> to the <code class="highlighter-rouge">PATH</code> environment
+variable.  This will help you to run <code class="highlighter-rouge">go</code>, <code class="highlighter-rouge">godoc</code> &amp; <code class="highlighter-rouge">gofmt</code> commands
+from command line.</p>
+
+<p>The third line set the <code class="highlighter-rouge">GOPATH</code> environment variable pointing to
+<code class="highlighter-rouge">$HOME/mygo</code>.  The GOPATH environment variable specifies the location
+of your Go workspace.</p>
+
+<p>The last line append <code class="highlighter-rouge">$GOPATH/bin</code> to the <code class="highlighter-rouge">PATH</code> environment variable.
+This will help you to run any binaries installed.</p>
+
+<h2 id="windows-installation">Windows Installation</h2>
+
+<p>There are separate installers (MSI files) available for 32 bit &amp; 64
+bit versions of Windows.  The 32 bit version MSI file will be named
+like this: <code class="highlighter-rouge">go1.x.y.windows-386.msi</code> (Replace <code class="highlighter-rouge">x.y</code> with the current
+version).  Similarly for 64 bit version, the MSI file will be named
+like this: <code class="highlighter-rouge">go1.x.y.windows-amd64.msi</code> (Replace <code class="highlighter-rouge">x.y</code> with the current
+version).</p>
+
+<p>You can download the installers (MSI files) from here:
+<a href="https://golang.org/dl/">https://golang.org/dl/</a></p>
+
+<p>After downloading the installer file, you can open the MSI file by
+double clicking on that file.  This should prompts few things about
+the installation of the Go compiler.  The installer place the
+Go related files in the <code class="highlighter-rouge">C:\Go</code> directory.</p>
+
+<p>The installer also put the <code class="highlighter-rouge">C:\Go\bin</code> directory in the system
+<code class="highlighter-rouge">PATH</code> environment variable.  You may need to restart any open command
+prompts for the change to take effect.</p>
+
+<p>You also need to create a directory to download third party packages
+from github.com or similar sites.  The directory can be created at
+<code class="highlighter-rouge">C:\mygo</code> like this:</p>
+
+<figure class="highlight"><pre><code class="language-batch" data-lang="batch">mkdir C:\mygo</code></pre></figure>
+
+<p>After this you can set <code class="highlighter-rouge">GOPATH</code> environment variable to point to this
+location.  Temporarily you can set it like this:</p>
+
+<figure class="highlight"><pre><code class="language-batch" data-lang="batch">set GOPATH=C:\mygo</code></pre></figure>
+
+<p>You can also append <code class="highlighter-rouge">C:\mygo\bin</code> into the <code class="highlighter-rouge">PATH</code> environment
+variable.</p>
+
+<p>If you do not know how to set environment variable, just do a Google
+search for: “set windows environment variable”.</p>
+
+<p>The <code class="highlighter-rouge">GOROOT</code> environment variable is not required here as you have
+installed the <code class="highlighter-rouge">Go</code> inside <code class="highlighter-rouge">C:\Go</code> folder.  If you have changed that
+location during the installation, set the <code class="highlighter-rouge">GOROOT</code> pointing to the
+location you selected.</p>
+
+<h2 id="running-a-program">Running a program</h2>
+
+<p>This section helps you to verify your installation by running a hello
+world program.</p>
+
+<p>As you know Go is a compiled programming language.  However, there is
+a command which does both compilation and running the program.  The
+command line syntax to run the program is like this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">go run &lt;program.go&gt;</code></pre></figure>
+
+<p>To run a hello world program, you can copy-paste the below code to
+your favorite text editor and save it as <code class="highlighter-rouge">hello.go</code>:</p>
+
+<figure class="highlight"><pre><code class="language-go" data-lang="go"><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+
+</span><span class="k">import</span><span class="x"> </span><span class="s">"fmt"</span><span class="x">
+
+</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+     </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">)</span><span class="x">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Once you saved the above source code into a file.  You can open your
+command line program (<em>bash</em> or <em>cmd.exe</em>) and run the above program like
+this:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">go run hello.go</code></pre></figure>
+
+<p>If you are able to see the output as <code class="highlighter-rouge">Hello, World!</code>, you have
+successfully installed Go compiler.</p>
+
+<h2 id="building-and-running-program">Building and Running Program</h2>
+
+<p>As you can see above, you can run the program using <code class="highlighter-rouge">go run hello.go</code>
+command.  You can also build (compile) and run the binary like this in
+GNU/Linux:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">go build hello.go
+./hello</code></pre></figure>
+
+<p>The first command produce a binary and second comand is executing that
+binary.  You can do the same thing in Windows like this:</p>
+
+<figure class="highlight"><pre><code class="language-batch" data-lang="batch">go build hello.go
+hello.exe</code></pre></figure>
+
+<p>The <code class="highlighter-rouge">go build</code> command produce a binary file native to the operating
+system and the architecture of the CPU (i386, x86_64 etc.)</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#golang" class="page__taxonomy-item" rel="tag">golang</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-11-28T00:00:00+05:30">November 28, 2014</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=nogenerics&text=An Introduction to Go Programming /golang/an-introduction-to-go-programming/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=/golang/an-introduction-to-go-programming/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=/golang/an-introduction-to-go-programming/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=/golang/an-introduction-to-go-programming/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/testing/keynote-speech-on-test-automation-using-pytest/" class="pagination--pager" title="Keynote Speech on Test Automation using Pytest
+">Previous</a>
+    
+    
+      <a href="/golang/emberjs/gopherconindia-2015-talk/" class="pagination--pager" title="Go and Ember.js talk at GopherConIndia 2015
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/nogenerics"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+      <li><a href="https://facebook.com/BaijuMuthukadan"><i class="fa fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Baiju Muthukadan. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
