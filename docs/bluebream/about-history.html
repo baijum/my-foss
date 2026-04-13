@@ -1,0 +1,146 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The history of BlueBream &mdash; BlueBream v1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="BlueBream v1.0 documentation" href="../index.html" />
+    <link rel="up" title="About" href="index.html" />
+    <link rel="next" title="About the BlueBream website" href="website.html" />
+    <link rel="prev" title="What is BlueBream ?" href="whatis.html" /> 
+  </head>
+  <body>
+
+  <div id="wrapper">
+<div id="tophead">
+<a href="..">
+<img src="../_static/img/bluebream.png" border="0px" alt="BlueBream"/>
+The Web Component Framework
+</a>
+</div>
+
+<div class="navbar">
+  <ul>
+    <li><a href="index.html">About</a></li>
+    <li><a href="../download.html">Download</a></li>
+    <li><a href="../screencasts.html">Screencasts</a></li>
+    <li><a href="../doc/1.0/index.html">Documentation</a></li>
+    <li><a href="../support.html">Support</a></li>
+    <li><a href="../community.html">Contribute</a></li>
+    <li><a href="http://bluebream.posterous.com/">Blog</a></li>
+  </ul>
+</div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="the-history-of-bluebream">
+<span id="history"></span><h1>The history of BlueBream<a class="headerlink" href="#the-history-of-bluebream" title="Permalink to this headline">¶</a></h1>
+<p>Our story begins in 1996.  <cite>Jim Fulton</cite> was technical director at Digital
+Creations.  At the International Python Conference (IPC) that year, Jim gave
+a presentation on <cite>CGI</cite>: <a class="reference external" href="http://www.python.org/workshops/1996-06/agenda.html">Python and Internet Programming</a>.  Jim,
+considering CGI less than elegant, envisioned a better way to program for
+the internet in Python.  According to legend, Jim learned CGI on the plane
+to the conference, and designed <cite>Bobo</cite> on the plane ride back home.</p>
+<p>Digital Creations then released three open-source Python software packages:
+Bobo, Document Template, and Bobopos.  These packages &#8211; a web publisher, a
+text template, and an object database &#8211; were the core of <em>Principia</em>, a
+commercial application server.  In November of 1998, investor Hadar Pedhazur
+convinced Digital Creations to open source Principia.  These packages
+evolved into the core components of Zope 2 and Digital Creations became Zope
+Corporation.</p>
+<p>Since those days Zope has been under active development.  It has evolved in
+several ways as the community gained experience, continually seeking the
+optimum balance between power and ease of use.  Zope 2 emphasized rapid
+development, the <cite>Zope Component Architecture</cite>, which is the core of Zope 3,
+emphasized modularity and configurability which proved very successful in
+&#8220;enterprise&#8221; applications requiring flexibility and scalability.</p>
+<p>Zope 3 is now known as BlueBream.  The name stems from the coincidence that
+the Z Object Publishing Environment when spelled <cite>zope</cite> is the name of a
+species of fish.  <a class="reference external" href="http://en.wikipedia.org/wiki/Blue_bream">Blue bream</a> is another name for the same species.</p>
+<p>BlueBream combines the ZCA, Buildout into a well defined, and documented,
+that makes building powerhouse applications fun.</p>
+<p>The components which comprise BlueBream are under continual development by
+an international team of experienced coders.</p>
+<p>The longer learning curve for deploying Zope 3 is overkill for some
+situations which would otherwise stand to benefit from the distilled wisdom
+of the ZCA.  The Zope community has responded to this in with several
+rapidly deployable ZCA-derived frameworks, which implement Convention over
+configuration while maintaining the power of ZCA under the hood.  Notable
+among these are Grok and Repoze.  Take a look at the recent uploads to the
+PyPi site, it is rare to not see several zca projects listed.</p>
+<p id="intro-more-about-project"><span id="intro-organization"></span>The original intent of Zope 3 was to become a replacement for Zope 2,
+however this did not happen as planned.  Instead Zope 2 continued to make up
+the majority of new Zope deployments, mostly due to the popularity of Plone.</p>
+<p>Zope 3 was conceived as a fresh start to leave certain aspects and
+limitations of its presumed predecessor <a class="reference external" href="http://docs.zope.org/zope2/zope2book/">Zope 2</a> behind.  Zope 3 introduced a new
+component architecture to address some of the inheritance-based-programming
+limitations of Zope 2.</p>
+<p>The <a class="reference external" href="http://www.muthukadan.net/docs/zca.html">ZCA</a> notionally includes the
+packages named <tt class="docutils literal"><span class="pre">zope.component</span></tt>, <tt class="docutils literal"><span class="pre">zope.interface</span></tt> and
+<tt class="docutils literal"><span class="pre">zope.configuration</span></tt>.  Zope 3 added to this a large number of extra
+libraries and provided an application server that enabled programmers to
+develop standalone web applications.</p>
+<p>In the meantime another wave of web frameworks appeared.  <cite>Grok</cite> evolved
+with many Zope 3 libraries at its core.  <a class="reference external" href="http://bfg.repoze.org">repoze.bfg (aka BFG)</a> evolved around the ZCA.  Additionally Zope 2 began
+to make use of the ZCA and various other Zope 3 packages.</p>
+<p>In 2009 a group of Zope developers agreed to concentrate primarily on the
+development of the Zope 3 libraries and formed the Zope Toolkit (ZTK) that
+focused on a slim library subset of the Zope 3 project, which can then be
+efficiently utilized by web application frameworks on top.  This development
+led to the following logical steps:</p>
+<ul class="simple">
+<li>Form a project around the remaining web application part of Zope 3</li>
+<li>Name it BlueBream as a new and unique name to avoid confusion</li>
+<li>Create an upgrade path from the former Zope 3 application server</li>
+</ul>
+<p>BlueBream can thus be seen as the successor of Zope 3 web application server
+that like Grok relies on the ZTK.</p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="website.html" title="About the BlueBream website"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="whatis.html" title="What is BlueBream ?"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">BlueBream v1.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">About</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2010, Zope Foundation.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.5.
+    </div>
+    </div>
+  </body>
+</html>
