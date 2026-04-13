@@ -1,0 +1,377 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=ISO-8859-1">
+  <title>Migrating a CDS/ISIS based system to Koha</title>
+  <link rel="stylesheet" href="html.css" type="text/css">
+  <meta name="generator" content="DocBook XSL Stylesheets V1.65.1">
+</head>
+<body bgcolor="white" text="black" link="#0000ff" vlink="#840084"
+ alink="#0000ff">
+<div class="article" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title"><a name="d0e1"></a>Migrating a CDS/ISIS based system
+to Koha</h2>
+</div>
+<div>
+<div class="author">
+<h3 class="author"><span class="firstname">Baiju</span> <span
+ class="surname">M</span></h3>
+<tt class="email">&lt;<a href="mailto:baijum81%20AT%20hailmail.net">baijum81
+AT hailmail.net</a>&gt;</tt></div>
+</div>
+<div>
+<p class="pubdate">2004-12-18</p>
+</div>
+<div>
+<div class="revhistory">
+<table border="1" width="100%" summary="Revision history">
+  <tbody>
+    <tr>
+      <th align="left" valign="top" colspan="3"><b>Revision History</b></th>
+    </tr>
+    <tr>
+      <td align="left">Revision 2.0.0p2</td>
+      <td align="left">2004-12-18</td>
+      <td align="left">sh</td>
+    </tr>
+    <tr>
+      <td align="left" colspan="3">
+      <p>Fix some links</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">Revision 2.0.0p1</td>
+      <td align="left">2004-11-15</td>
+      <td align="left">bm</td>
+    </tr>
+    <tr>
+      <td align="left" colspan="3">
+      <p>Small additions by BM.</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="left">Revision 2.0.0</td>
+      <td align="left">2004-04-01</td>
+      <td align="left">bm</td>
+    </tr>
+    <tr>
+      <td align="left" colspan="3">
+      <p>Initial XML markup (by Stephen Hedges) of a wiki page posted
+at <a
+ href="http://www.saas.nsw.edu.au/koha_wiki/index.php?page=CDS%2FISIS+based+system+to+Koha"
+ target="_top">http://www.saas.nsw.edu.au/koha_wiki/index.php?page=CDS%2FISIS+based+system+to+Koha</a>
+on 2004-04-01, with links to program listings expanded.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div></div>
+<hr></div>
+<div class="toc">
+<dl>
+  <dt><span class="section"><a href="#d0e51">1. Using this document</a></span></dt>
+  <dd>
+    <dl>
+      <dt><span class="section"><a href="#d0e54">1.1. Copyright and
+License</a></span></dt>
+      <dt><span class="section"><a href="#d0e82">1.2. Disclaimer</a></span></dt>
+    </dl>
+  </dd>
+  <dt><span class="section"><a href="#d0e89">2. Introduction</a></span></dt>
+  <dt><span class="section"><a href="#d0e103">3. Migrating Book Data</a></span></dt>
+  <dt><span class="section"><a href="#d0e146">4. Migrating Member Data</a></span></dt>
+</dl>
+</div>
+<font color="red">
+<p>By Baiju M</p>
+</font>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both;"><a name="d0e51"></a>1.&nbsp;Using
+this document</h2>
+</div>
+</div>
+<div></div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="d0e54"></a>1.1.&nbsp;Copyright and License</h3>
+</div>
+</div>
+<div></div>
+</div>
+<p>Copyright 2004 Baiju M <tt class="email">&lt;<a
+ href="mailto:baijum81%20AT%20hailmail.net">baijum81 AT hailmail.net</a>&gt;</tt></p>
+<p>This document is related to Koha and is licensed to you under the
+GNU General Public License version 2 or later (<a
+ href="http://www.gnu.org/licenses/gpl.html" target="_top">http://www.gnu.org/licenses/gpl.html</a>).</p>
+<p>Koha-related documents may be reproduced and distributed in whole or
+in part, in any medium physical or electronic, as long as this
+copyright notice is retained on all copies.</p>
+<p>You may create a derivative work and distribute it provided that you:</p>
+<div class="orderedlist">
+<ol type="1">
+  <li>
+    <p>License the derivative work with this same license, or the Linux
+Documentation Project License (<a
+ href="http://www.tldp.org/COPYRIGHT.html" target="_top">http://www.tldp.org/COPYRIGHT.html</a>).
+Include a copyright notice and at least a pointer to the license used.</p>
+  </li>
+  <li>
+    <p>Give due credit to previous authors and major contributors.</p>
+  </li>
+</ol>
+</div>
+<p>Commercial redistribution is allowed and encouraged; however, the
+author would like to be notified of any such distributions.</p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h3 class="title"><a name="d0e82"></a>1.2.&nbsp;Disclaimer</h3>
+</div>
+</div>
+<div></div>
+</div>
+<p>No liability for the contents of this document can be accepted. Use
+the concepts, examples and information at your own risk. There may be
+errors and inaccuracies that could be damaging to your system. Although
+this is highly unlikely, proceed with caution; the author(s) do not
+take any responsibility.</p>
+<p>All copyrights are held by their respective owners, unless
+specifically noted otherwise. Use of a term in this document should not
+be regarded as affecting the validity of any trademark or service mark.
+Naming of particular products or brands should not be seen as
+endorsements.</p>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both;"><a name="d0e89"></a>2.&nbsp;Introduction</h2>
+</div>
+</div>
+<div></div>
+</div>
+<p>I am doing this migration from CDS/ISIS (version : 1.5) system to <span
+ class="application">Koha</span> for St. Joseph's College, Devagiri,
+Calicut. <a href="http://devagiricollege.org/" target="_top">http://devagiricollege.org/</a></p>
+<p>In the current system it is possible to do circulation and other
+basic functionalities of the library.</p>
+<p>The work is in progress, so give any pointers if you have.</p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both;"><a name="d0e103"></a>3.&nbsp;Migrating
+Book Data</h2>
+</div>
+</div>
+<div></div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+  <li>
+    <p>First I exported Books data into XML using CDS/ISIS export tool
+(available in the ISIS Utils menu).</p>
+    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+    <h3 class="title">Note</h3>
+    <p>Users of previous CDS/ISIS versions (i.e, 1.3 or before), export
+documents data from CDS/ISIS and save it as Common Communication Format
+(CCF), which is a standard based on ISO 2709. Import this ISO data into
+CDS/ISIS version 1.4 or later. This step is necessary to export the
+data as XML, the old versions of ISIS do not have support for exporting
+document data as XML directly. <i><span class="remark">FIXME: ISIS
+1.3.x support exporting XML?</span></i></p>
+    </div>
+  </li>
+  <li>
+    <p>Then I wrote a python script (shown below) to convert XML to tab
+delimited text format.</p>
+    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+    <h3 class="title">Note</h3>
+    <p>This step is not necessary, but you can do some corrections in
+data quickly.</p>
+    </div>
+    <div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;">
+    <h3 class="title">Tip</h3>
+    <p>Use Emacs macro or Vim recording for quick parsing.</p>
+    </div>
+    <pre class="programlisting">## ciddtf.py : Convert ISIS Document Database to Text File<br><br>##Before Parsing :<br>##Change  RECORDX\xc3\x91_5\xc3\xaf\x03\x12  to RECORD<br>##Change &amp; to and<br>##fix problems of &lt;Tag_97&gt; manualy.<br><br>import libxml2<br><br>record = []<br><br>def Record(i, node):<br>    sub_node = node.children<br>    while sub_node is not None:<br>        if sub_node.type == "element":<br>            record[i][sub_node.name] = sub_node.get_content()<br>            sub_node = sub_node.next<br>        else:<br>            sub_node = sub_node.next<br><br># Memory debug specific<br>libxml2.debugMemory(1)<br> <br>isis_data = libxml2.parseFile ('../xmls/docs.xml')<br>root = isis_data.getRootElement()<br>node = root.children<br>i = 0<br>while node is not None:<br>    if node.type != "element":<br>        node = node.next<br>        continue<br>    if node is None:<br>        break<br>    if node.name == "RECORD":<br>        ##print node.get_content()<br>        record.append({})<br>        Record(i, node)<br>        i = i + 1<br>        node = node.next<br>    else:<br>        print "unhandled node in &lt;isis_xml&gt;: " + node.name<br><br>isis_data.freeDoc()<br><br># Memory debug specific<br>libxml2.cleanupParser()<br>if libxml2.debugMemory(1) == 0:<br>    print "OK"<br>else:<br>    print "Memory leak %d bytes" % (libxml2.debugMemory(1))<br>    libxml2.dumpMemory()<br><br>####################################################################<br><br>record_file = open('../outs/docs.txt', 'w')<br>tag = ['Tag_4', 'Tag_7', 'Tag_11', 'Tag_12', 'Tag_13', 'Tag_18', 'Tag_19', 'Tag_20', 'Tag_21', 'Tag_24', 'Tag_38', 'Tag_10', 'Tag_114', 'Tag_115', 'Tag_110', 'Tag_5', 'Tag_122', 'Tag_97', 'Tag_151', 'Tag_153', 'Tag_123']<br><br>for j in record:<br>    if j.has_key('Tag_691'):<br>        record_file.write(j['Tag_691'])<br>##Check docs without 114 tag<br>##         if j.has_key('Tag_114'):<br>##             pass<br>##         else:<br>##             print j['Tag_691']<br>    else:<br>        record_file.write('_B_L_A_N_K_')<br>    for h in tag:<br>        if j.has_key(h):<br>            record_file.write('\t'+j[h])<br>        else:<br>            record_file.write('\t_B_L_A_N_K_')<br>    record_file.write('\n')</pre>
+    <p>Here is a sample XML:</p>
+    <div class="literallayout">
+    <p>&lt;?xml&nbsp;version="1.0"&nbsp;encoding="ISO-8859-1"?&gt;<br>
+&lt;!DOCTYPE&nbsp;DATABASE_SJCLDB&nbsp;SYSTEM&nbsp;"SJCLDB.dtd"&gt;<br>
+&lt;DATABASE_SJCLDB&gt;<br>
+&lt;RECORD&gt;<br>
+&lt;Tag_691&gt;43009&lt;/Tag_691&gt;<br>
+&lt;Tag_4&gt;Chiriyute&nbsp;pithamahan:&nbsp;V&nbsp;K&nbsp;N&nbsp;Krutikalekkurichulla&nbsp;paddhanangal&lt;/Tag_4&gt;<br>
+&lt;Tag_11&gt;DC&nbsp;Books&lt;/Tag_11&gt;<br>
+&lt;Tag_12&gt;Kottayam&lt;/Tag_12&gt;<br>
+&lt;Tag_13&gt;1997&lt;/Tag_13&gt;<br>
+&lt;Tag_18&gt;Roy&lt;/Tag_18&gt;<br>
+&lt;Tag_19&gt;P&nbsp;C&lt;/Tag_19&gt;<br>
+&lt;Tag_38&gt;Ed&lt;/Tag_38&gt;<br>
+&lt;Tag_10&gt;134p&lt;/Tag_10&gt;<br>
+&lt;Tag_114&gt;894.37&nbsp;&nbsp;Roy&lt;/Tag_114&gt;<br>
+&lt;Tag_115&gt;N7&lt;/Tag_115&gt;<br>
+&lt;Tag_110&gt;GL-M3&lt;/Tag_110&gt;<br>
+&lt;Tag_122&gt;2000-03-28&lt;/Tag_122&gt;<br>
+&lt;Tag_151&gt;Rs.40.00&lt;/Tag_151&gt;<br>
+&lt;Tag_123&gt;Tom&lt;/Tag_123&gt;<br>
+&lt;/RECORD&gt;<br>
+&lt;RECORD&gt;<br>
+&lt;Tag_691&gt;43018&lt;/Tag_691&gt;<br>
+&lt;Tag_4&gt;Edanadan&nbsp;pattu&lt;/Tag_4&gt;<br>
+&lt;Tag_11&gt;Current&nbsp;Books&lt;/Tag_11&gt;<br>
+&lt;Tag_12&gt;Kottayam&lt;/Tag_12&gt;<br>
+&lt;Tag_13&gt;1997&lt;/Tag_13&gt;<br>
+&lt;Tag_18&gt;Sajitha&lt;/Tag_18&gt;<br>
+&lt;Tag_19&gt;K&nbsp;R&lt;/Tag_19&gt;<br>
+&lt;Tag_38&gt;Ed&lt;/Tag_38&gt;<br>
+&lt;Tag_10&gt;160p&lt;/Tag_10&gt;<br>
+&lt;Tag_114&gt;398.87&nbsp;&nbsp;Saj&lt;/Tag_114&gt;<br>
+&lt;Tag_115&gt;N7&lt;/Tag_115&gt;<br>
+&lt;Tag_110&gt;GL-3&lt;/Tag_110&gt;<br>
+&lt;Tag_122&gt;2000-03-28&lt;/Tag_122&gt;<br>
+&lt;Tag_151&gt;Rs.50.00&lt;/Tag_151&gt;<br>
+&lt;Tag_123&gt;Tom&lt;/Tag_123&gt;<br>
+&lt;/RECORD&gt;<br>
+&lt;RECORD&gt;<br>
+&lt;Tag_691&gt;38980&lt;/Tag_691&gt;<br>
+&lt;Tag_4&gt;Plays&lt;/Tag_4&gt;<br>
+&lt;Tag_11&gt;EWP&lt;/Tag_11&gt;<br>
+&lt;Tag_12&gt;New&nbsp;York&lt;/Tag_12&gt;<br>
+&lt;Tag_13&gt;1989&lt;/Tag_13&gt;<br>
+&lt;Tag_18&gt;O'Neill&lt;/Tag_18&gt;<br>
+&lt;Tag_19&gt;Eugene&lt;/Tag_19&gt;<br>
+&lt;Tag_114&gt;O7,2&nbsp;One&lt;/Tag_114&gt;<br>
+&lt;Tag_115&gt;M9.1&lt;/Tag_115&gt;<br>
+&lt;Tag_122&gt;1996-06-27&lt;/Tag_122&gt;<br>
+&lt;/RECORD&gt;<br>
+&lt;RECORD&gt;<br>
+&lt;Tag_691&gt;44579&lt;/Tag_691&gt;<br>
+&lt;Tag_4&gt;Arangukaanatha&nbsp;Nadan&lt;/Tag_4&gt;<br>
+&lt;Tag_11&gt;Current&lt;/Tag_11&gt;<br>
+&lt;Tag_12&gt;Thrissur&lt;/Tag_12&gt;<br>
+&lt;Tag_13&gt;1998&lt;/Tag_13&gt;<br>
+&lt;Tag_18&gt;Thikkodian&lt;/Tag_18&gt;<br>
+&lt;Tag_10&gt;396p&lt;/Tag_10&gt;<br>
+&lt;Tag_114&gt;894.8&nbsp;&nbsp;Thi/Ara&lt;/Tag_114&gt;<br>
+&lt;Tag_115&gt;N8&lt;/Tag_115&gt;<br>
+&lt;Tag_110&gt;GL-M8&lt;/Tag_110&gt;<br>
+&lt;Tag_122&gt;2001-06-19&lt;/Tag_122&gt;<br>
+&lt;Tag_151&gt;Rs.135.00&lt;/Tag_151&gt;<br>
+&lt;Tag_123&gt;Tom&lt;/Tag_123&gt;<br>
+&lt;/RECORD&gt;<br>
+&lt;RECORD&gt;<br>
+&lt;Tag_691&gt;16469&lt;/Tag_691&gt;<br>
+&lt;Tag_4&gt;Sartre:&nbsp;A&nbsp;collection&nbsp;of&nbsp;critical&nbsp;essays&lt;/Tag_4&gt;<br>
+&lt;Tag_11&gt;Prentice&nbsp;Hall&lt;/Tag_11&gt;<br>
+&lt;Tag_12&gt;USA&lt;/Tag_12&gt;<br>
+&lt;Tag_13&gt;1965&lt;/Tag_13&gt;<br>
+&lt;Tag_18&gt;Kern&lt;/Tag_18&gt;<br>
+&lt;Tag_19&gt;Edith&lt;/Tag_19&gt;<br>
+&lt;Tag_38&gt;Ed&lt;/Tag_38&gt;<br>
+&lt;Tag_10&gt;180p&lt;/Tag_10&gt;<br>
+&lt;Tag_114&gt;O-,4&nbsp;M79&lt;/Tag_114&gt;<br>
+&lt;Tag_115&gt;J5&lt;/Tag_115&gt;<br>
+&lt;Tag_110&gt;Twentieth&nbsp;century&nbsp;views&lt;/Tag_110&gt;<br>
+&lt;Tag_122&gt;1998-09-26&lt;/Tag_122&gt;<br>
+&lt;/RECORD&gt;<br>
+&lt;RECORD&gt;<br>
+&lt;Tag_691&gt;42068&lt;/Tag_691&gt;<br>
+&lt;Tag_4&gt;Internet&nbsp;for&nbsp;beginners&lt;/Tag_4&gt;<br>
+&lt;Tag_11&gt;Icon&nbsp;Books&lt;/Tag_11&gt;<br>
+&lt;Tag_12&gt;Australia&lt;/Tag_12&gt;<br>
+&lt;Tag_13&gt;1997&lt;/Tag_13&gt;<br>
+&lt;Tag_18&gt;Brunner&lt;/Tag_18&gt;<br>
+&lt;Tag_19&gt;laurel&lt;/Tag_19&gt;<br>
+&lt;Tag_20&gt;Jevtic&lt;/Tag_20&gt;<br>
+&lt;Tag_21&gt;Zoran&lt;/Tag_21&gt;<br>
+&lt;Tag_10&gt;175p&lt;/Tag_10&gt;<br>
+&lt;Tag_115&gt;N7&lt;/Tag_115&gt;<br>
+&lt;Tag_122&gt;1998/09/26&lt;/Tag_122&gt;<br>
+&lt;Tag_123&gt;CPYR&lt;/Tag_123&gt;<br>
+&lt;/RECORD&gt;<br>
+&lt;RECORD&gt;<br>
+&lt;Tag_691&gt;42367&lt;/Tag_691&gt;<br>
+&lt;Tag_4&gt;Text&nbsp;book&nbsp;of&nbsp;Biochemistry&nbsp;with&nbsp;clinical&nbsp;correlations&lt;/Tag_4&gt;<br>
+&lt;Tag_7&gt;Ed.4&lt;/Tag_7&gt;<br>
+&lt;Tag_11&gt;Wiley-Liss/John&nbsp;Wiley&nbsp;and&nbsp;Sons&lt;/Tag_11&gt;<br>
+&lt;Tag_12&gt;New&nbsp;York&lt;/Tag_12&gt;<br>
+&lt;Tag_13&gt;1997&lt;/Tag_13&gt;<br>
+&lt;Tag_18&gt;Devlin&lt;/Tag_18&gt;<br>
+&lt;Tag_19&gt;Thomas&nbsp;M&lt;/Tag_19&gt;<br>
+&lt;Tag_38&gt;Ed&lt;/Tag_38&gt;<br>
+&lt;Tag_10&gt;1186p&lt;/Tag_10&gt;<br>
+&lt;Tag_114&gt;612.015&nbsp;Dev/KD&lt;/Tag_114&gt;<br>
+&lt;Tag_115&gt;N7&lt;/Tag_115&gt;<br>
+&lt;Tag_110&gt;Zoology&lt;/Tag_110&gt;<br>
+&lt;Tag_122&gt;1998-10-08&lt;/Tag_122&gt;<br>
+&lt;Tag_97&gt;$.30.95&lt;/Tag_97&gt;<br>
+&lt;/RECORD&gt;<br>
+&lt;/DATABASE_SJCLDB&gt;&nbsp;</p>
+    </div>
+  </li>
+  <li>
+    <p>Now parse the tab separated file using a perl script (shown
+below) and convert it as MARC 21 or UNIMARC.</p>
+    <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;">
+    <h3 class="title">Note</h3>
+    <p>Before doing this last step, please study Stephen Hedges'
+migration guide here: <a
+ href="http://www.kohadocs.org/migrating_to_koha.html" target="_top">http://www.kohadocs.org/migrating_to_koha.html</a></p>
+    </div>
+    <pre class="programlisting">package cmftf;<br>## Create MARC From Text File<br>## Copyright 2004 Baiju M &lt;baijum81@hailmail.net&gt;<br>## This program is licensed under GNU GPL.<br><br>use strict;<br>use MARC::Record;<br><br>my $input_file = "../outs/docs.txt";<br>my $output_file = "../outs/docs.out";<br>my $repeated_items = " ";<br>open(INFILE, $input_file) or die "Can't open $input_file: $!";<br>open(OUTFILE, "&gt;&gt;", $output_file) or die "Can't open $output_file: $!";<br>my $c = 0;<br>while (&lt;INFILE&gt;) {<br>    $c++;<br>    my $biblionumber_ftf_691_090_c, my $title_ftf_4_245_a, my $edition_ftf_7_250_a, my $publisher_ftf_11_260_b, my $publishcountry_ftf_12_260_a, my $publishyear_ftf_13_260_c, my $author1ee_ftf_18_100_a, my $author1se_ftf_19_100_a, my $author2ee_ftf_20_700_a, my $author2se_ftf_21_700_a, my $adiauthors_ftf_24_700_a, my $role_ftf_38_590_a, my $phydescr_ftf_10_300_a, my $classno_ftf_114_852_k, my $classno_ftf_115_852_h, my $keyword_ftf_5_520_a, my $voldetails_ftf_110_440_v, my $dateofentry_ftf_122_952_v, my $notes_ftf_97_500_a, my $pubprice_151_952_r, my $currency_153_590_b, my $reccreated_123_508_a, my $remainder;<br>    ($biblionumber_ftf_691_090_c, $title_ftf_4_245_a, $edition_ftf_7_250_a, $publisher_ftf_11_260_b, $publishcountry_ftf_12_260_a, $publishyear_ftf_13_260_c, $author1ee_ftf_18_100_a, $author1se_ftf_19_100_a, $author2ee_ftf_20_700_a, $author2se_ftf_21_700_a, $adiauthors_ftf_24_700_a, $role_ftf_38_590_a, $phydescr_ftf_10_300_a, $classno_ftf_114_852_k, $classno_ftf_115_852_h, $keyword_ftf_5_520_a, $voldetails_ftf_110_440_v, $dateofentry_ftf_122_952_v, $notes_ftf_97_500_a, $pubprice_151_952_r, $currency_153_590_b, $reccreated_123_508_a, $remainder) = split(/\t/, $_, 23);<br>    if (($biblionumber_ftf_691_090_c !~ /[^\d]/)  and ($title_ftf_4_245_a !~ /_B_L_A_N_K_/) and ($repeated_items !~ /$biblionumber_ftf_691_090_c/) ) {<br>        $repeated_items .= " $biblionumber_ftf_691_090_c";<br>        my @biblionumber_array;<br>        open(INF, $input_file) or die "Can't open $input_file: $!";<br>        my $i = 1;<br>        while (&lt;INF&gt;) {<br>            $i++;<br>            if ($i &gt;= $c) {<br>            my $biblionumber_ftf_691_090_c2, my $title_ftf_4_245_a2, my $edition_ftf_7_250_a2, my $publisher_ftf_11_260_b2, my $publishcountry_ftf_12_260_a2, my $publishyear_ftf_13_260_c2, my $author1ee_ftf_18_100_a2, my $author1se_ftf_19_100_a2, my $author2ee_ftf_20_700_a2, my $author2se_ftf_21_700_a2, my $adiauthors_ftf_24_700_a2, my $role_ftf_38_590_a2, my $phydescr_ftf_10_300_a2, my $classno_ftf_114_852_k2, my $classno_ftf_115_852_h2, my $keyword_ftf_5_520_a2, my $voldetails_ftf_110_440_v2, my $dateofentry_ftf_122_952_v2, my $notes_ftf_97_500_a2, my $pubprice_151_952_r2, my $currency_153_590_b2, my $reccreated_123_508_a2, my $remainder2;<br>            ($biblionumber_ftf_691_090_c2, $title_ftf_4_245_a2, $edition_ftf_7_250_a2, $publisher_ftf_11_260_b2, $publishcountry_ftf_12_260_a2, $publishyear_ftf_13_260_c2, $author1ee_ftf_18_100_a2, $author1se_ftf_19_100_a2, $author2ee_ftf_20_700_a2, $author2se_ftf_21_700_a2, $adiauthors_ftf_24_700_a2, $role_ftf_38_590_a2, $phydescr_ftf_10_300_a2, $classno_ftf_114_852_k2, $classno_ftf_115_852_h2, $keyword_ftf_5_520_a2, $voldetails_ftf_110_440_v2, $dateofentry_ftf_122_952_v2, $notes_ftf_97_500_a2, $pubprice_151_952_r2, $currency_153_590_b2, $reccreated_123_508_a2, $remainder2) = split(/\t/, $_, 23);<br>            if (($biblionumber_ftf_691_090_c2 !~ /[^\d]/) and ($title_ftf_4_245_a2 !~ /_B_L_A_N_K_/) and ($title_ftf_4_245_a2 eq $title_ftf_4_245_a) and ($author1ee_ftf_18_100_a2 eq $author1ee_ftf_18_100_a)){<br>                print "$biblionumber_ftf_691_090_c:$biblionumber_ftf_691_090_c2\t";<br>                $repeated_items .= " $biblionumber_ftf_691_090_c2";<br>                push @biblionumber_array, $biblionumber_ftf_691_090_c2;<br>            }<br>        }<br>        }<br>        print "\n";<br>        close(INF);<br>        my $record = MARC::Record-&gt;new();<br><br>        if ($author1ee_ftf_18_100_a =~ /_B_L_A_N_K_/) {<br>            $author1ee_ftf_18_100_a = "";<br>        }<br>        if ($author1se_ftf_19_100_a =~ /_B_L_A_N_K_/) {<br>            $author1se_ftf_19_100_a = "";<br>        }<br><br>        my $author1_ftf = join(" ", $author1se_ftf_19_100_a, $author1ee_ftf_18_100_a);<br><br>        if ($author1_ftf ne "") { <br>            my $author1 = MARC::Field-&gt;new(<br>                                           '100','1','',<br>                                           a =&gt; $author1_ftf<br>                                           );<br>            $record-&gt;add_fields($author1);<br>        }<br><br>        if ($title_ftf_4_245_a !~ /_B_L_A_N_K_/) { <br>            my $title = MARC::Field-&gt;new(<br>                                         '245','1','2',<br>                                         a =&gt; $title_ftf_4_245_a<br>                                         );<br>            $record-&gt;add_fields($title);<br>        }<br><br>        if ($edition_ftf_7_250_a !~ /_B_L_A_N_K_/) { <br>            my $edition = MARC::Field-&gt;new(<br>                                           '250','','',<br>                                           a =&gt; $edition_ftf_7_250_a<br>                                           );<br>            $record-&gt;add_fields($edition);<br>        }<br><br>        if ($publishcountry_ftf_12_260_a !~ /_B_L_A_N_K_/) { <br>            my $publishcountry = MARC::Field-&gt;new(<br>                                                  '260','','',<br>                                                  a =&gt; $publishcountry_ftf_12_260_a<br>                                                  );<br>         $record-&gt;add_fields($publishcountry);<br>        }<br>        if ($publisher_ftf_11_260_b =~ /_B_L_A_N_K_/) {<br>            $publisher_ftf_11_260_b = "";<br>        }<br>        if ($publishyear_ftf_13_260_c =~ /_B_L_A_N_K_/) { <br>            $publishyear_ftf_13_260_c = "";<br>        }<br>        my $publisher = MARC::Field-&gt;new(<br>                                         '260','','',<br>                                         b =&gt; $publisher_ftf_11_260_b,<br>                                         c =&gt; $publishyear_ftf_13_260_c<br>                                         );<br>        $record-&gt;add_fields($publisher);<br><br>        if ($phydescr_ftf_10_300_a =~ /_B_L_A_N_K_/) {<br>            $phydescr_ftf_10_300_a = "";<br>        }<br>        my $phydescr = MARC::Field-&gt;new(<br>                                        '300','','',<br>                                        a =&gt; $phydescr_ftf_10_300_a,<br>                                        f =&gt; 'BOOK'<br>                                        );<br>        $record-&gt;append_fields($phydescr);<br><br>        if ($voldetails_ftf_110_440_v !~ /_B_L_A_N_K_/) { <br>            my $voldetails = MARC::Field-&gt;new(<br>                                              '440','','3',<br>                                              v =&gt; $voldetails_ftf_110_440_v<br>                                              );<br>            $record-&gt;add_fields($voldetails);<br>        }<br><br>        if ($notes_ftf_97_500_a !~ /_B_L_A_N_K_/) { <br>            my $notes = MARC::Field-&gt;new(<br>                                         '500','','',<br>                                         a =&gt; $notes_ftf_97_500_a<br>                                         );<br>            $record-&gt;add_fields($notes);<br>        }<br><br>        if ($reccreated_123_508_a !~ /_B_L_A_N_K_/) { <br>            my $reccreated = MARC::Field-&gt;new(<br>                                              '508','','',<br>                                              a =&gt; $reccreated_123_508_a<br>                                              );<br>            $record-&gt;add_fields($reccreated);<br>        }<br><br>        if ($keyword_ftf_5_520_a !~ /_B_L_A_N_K_/) { <br>            my $keyword = MARC::Field-&gt;new(<br>                                           '520','','',<br>                                           a =&gt; $keyword_ftf_5_520_a<br>                                           );<br>            $record-&gt;add_fields($keyword);<br>        }<br>        if ($role_ftf_38_590_a =~ /_B_L_A_N_K_/) { <br>            $role_ftf_38_590_a = '';<br>        }<br>        if ($currency_153_590_b =~ /_B_L_A_N_K_/) {<br>            $currency_153_590_b = '';<br>        }<br>        my $role = MARC::Field-&gt;new(<br>                                    '590','','',<br>                                    a =&gt; $role_ftf_38_590_a,<br>                                    b =&gt; $currency_153_590_b<br>                                    );<br>        $record-&gt;add_fields($role);<br><br>        if ($author2ee_ftf_20_700_a =~ /_B_L_A_N_K_/) {<br>            $author2ee_ftf_20_700_a = "";<br>        }<br>        if ($author2se_ftf_21_700_a =~ /_B_L_A_N_K_/) {<br>            $author2se_ftf_21_700_a = "";<br>        }<br>        if ($adiauthors_ftf_24_700_a =~ /_B_L_A_N_K_/) {<br>            $adiauthors_ftf_24_700_a = "";<br>        }<br><br>        my $adiauthors_ftf = join(" ", $author2se_ftf_21_700_a, $author2ee_ftf_20_700_a, $adiauthors_ftf_24_700_a);<br><br>        if ($adiauthors_ftf ne "") { <br>            my $adiauthors = MARC::Field-&gt;new(<br>                                              '700','1','',<br>                                              a =&gt; $adiauthors_ftf<br>                                              );<br>            $record-&gt;add_fields($adiauthors);<br>        }<br><br>        if ($classno_ftf_114_852_k =~ /_B_L_A_N_K_/) {<br>            if ($classno_ftf_115_852_h =~ /_B_L_A_N_K_/) {<br>                my $classno = MARC::Field-&gt;new(<br>                                               '852','','',<br>                                               k =&gt; '999.9999'<br>                                               );<br>                $record-&gt;add_fields($classno);<br>            }<br>            else {<br>                if ($classno_ftf_115_852_h =~ /^\d\d\d/) {<br>                    my $classno = MARC::Field-&gt;new(<br>                                                   '852','','',<br>                                                   k =&gt; $classno_ftf_115_852_h<br>                                                   );<br>                    $record-&gt;add_fields($classno);<br>                }<br>                else {<br>                    my $classno = MARC::Field-&gt;new(<br>                                                   '852','','',<br>                                                   k =&gt; '999.9998',<br>                                                   h =&gt; $classno_ftf_115_852_h<br>                                                   );<br>                    $record-&gt;add_fields($classno);<br>                }<br>            }<br>        }    <br>        else {<br>            if ($classno_ftf_114_852_k =~ /^\d\d\d/) {<br>                if ($classno_ftf_115_852_h =~ /_B_L_A_N_K_/) {<br>                    $classno_ftf_115_852_h = "";<br>                }<br>                my $classno = MARC::Field-&gt;new(<br>                                               '852','','',<br>                                               k =&gt; $classno_ftf_114_852_k,<br>                                               h =&gt; $classno_ftf_115_852_h<br>                                               );<br>                $record-&gt;add_fields($classno);<br>            }<br>            else {<br>                if ($classno_ftf_115_852_h =~ /^\d\d\d/) {<br>                    my $classno = MARC::Field-&gt;new(<br>                                                   '852','','',<br>                                                   k =&gt; $classno_ftf_115_852_h,<br>                                                   h =&gt; $classno_ftf_114_852_k<br>                                                   );<br>                    $record-&gt;add_fields($classno);<br>                }<br>                else {<br>                    if ($classno_ftf_115_852_h =~ /_B_L_A_N_K_/) {<br>                        $classno_ftf_115_852_h = "";<br>                    }<br>                    my $classno = MARC::Field-&gt;new(<br>                                                   '852','','',<br>                                                   k =&gt; '999.9997',<br>                                                   h =&gt; $classno_ftf_115_852_h<br>                                                   );<br>                    $record-&gt;add_fields($classno);<br>                }<br>            }<br>        }<br><br>        if ($pubprice_151_952_r =~ /_B_L_A_N_K_/) { <br>            $pubprice_151_952_r = '';<br>        }<br>        if ($dateofentry_ftf_122_952_v =~ /_B_L_A_N_K_/) {<br>            $dateofentry_ftf_122_952_v = '';<br>        }<br>        my @biblionumber_array_tmp = sort @biblionumber_array;<br>        foreach (@biblionumber_array_tmp) {<br>            my $biblionumber = $_;<br>            my $barcode = MARC::Field-&gt;new(<br>                                           '952','','',<br>                                           b =&gt; "MAIN",<br>                                           d =&gt; "MAIN",<br>                                           p =&gt; $biblionumber,<br>                                           r =&gt; $pubprice_151_952_r,<br>                                           u =&gt; $biblionumber,<br>                                           v =&gt; $dateofentry_ftf_122_952_v<br>                                           );<br>            $record-&gt;add_fields($barcode);<br>        }<br>        #print "\n";<br>        print OUTFILE $record-&gt;as_usmarc();<br>    }<br>    else {<br>        #print $_;<br>    }<br>}<br>close(OUTFILE);</pre>
+  </li>
+  <li>
+    <p>And finally use koha's <tt class="filename">bulkmarcimport.pl</tt>
+script to convert this to SQL.</p>
+  </li>
+</ul>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h2 class="title" style="clear: both;"><a name="d0e146"></a>4.&nbsp;Migrating
+Member Data</h2>
+</div>
+</div>
+<div></div>
+</div>
+<div class="itemizedlist">
+<ul type="disc">
+  <li>
+    <p>To convert member details to <span class="application">Koha</span>,
+first I exported member database into XML, then wrote a python script
+to convert it to tab separated text file:</p>
+    <pre class="programlisting">##cimdtf.py : Convert ISIS Member Database to Text File<br><br>##Before Parsing :<br>##Change &amp; to and<br>##fix problems of &lt;Tag_*&gt; manualy.<br><br>##tag = ['Tag_201', 'Tag_202', 'Tag_203', 'Tag_216', 'Tag_217']<br>##Tag_201 : Name -&gt; firstname<br>##Tag_202 : Membership number -&gt; cardnumber<br>##Tag_203 : Division -&gt; streetaddress<br>##Tag_216 : Status (UG,PG, etc.) -&gt; categorycode<br>##Tag_217 : Joining date -&gt; dateenrolled<br><br>##   CREATE TABLE borrowers (<br>##01   borrowernumber int(11) NOT NULL auto_increment,<br>##02   cardnumber varchar(16) NOT NULL default '', ##Tag_202<br>##03   surname text NOT NULL, ##Tag_201<br>##04   firstname text NOT NULL, ##' '<br>##05   title text, ##' '<br>##06   othernames text, ##''<br>##07   initials text NOT NULL, ##''<br>##08   streetaddress text NOT NULL, ##Tag_203<br>##09   suburb text, ##NULL<br>##10   city text NOT NULL, ##Tag_203 (Use this?)<br>##11   phone text NOT NULL, ##''<br>##12   emailaddress text, ##''<br>##13   faxnumber text, ##''<br>##14   textmessaging text, ##''<br>##15   altstreetaddress text, ##NULL<br>##16   altsuburb text, ##NULL<br>##17   altcity text, ##NULL<br>##18   altphone text, ##''<br>##19   dateofbirth date default NULL, ##'0000-00-00'<br>##20   branchcode varchar(4) NOT NULL default '', ##'MAIN'<br>##21   categorycode char(2) default NULL, ##Tag_216<br>##22   dateenrolled date default NULL, ##Tag_217<br>##23   gonenoaddress tinyint(1) default NULL, ##NULL<br>##24   lost tinyint(1) default NULL, ##NULL<br>##25   debarred tinyint(1) default NULL, ##NULL<br>##26   studentnumber text, ##NULL<br>##27   school text, #NULL<br>##28   contactname text, ##' '<br>##29   borrowernotes text, ##''<br>##30   guarantor int(11) default NULL, ##NULL<br>##31   area char(2) default NULL, ##'' or NULL<br>##32   ethnicity varchar(50) default NULL, ##'' or NULL<br>##33   ethnotes varchar(255) default NULL, ##'' or NULL<br>##34   sex char(1) default NULL, ##NULL<br>##35   expiry date default NULL, ##'0000-00-00'<br>##36   altnotes varchar(255) default NULL, ##''<br>##37   altrelationship varchar(100) default NULL, ##'workplace'<br>##38   streetcity text, ##''<br>##39   phoneday varchar(50) default NULL, ##''<br>##40   preferredcont char(1) default NULL, ##NULL<br>##41   physstreet varchar(100) default NULL, ##''<br>##42   password varchar(30) default NULL, ##NULL<br>##43   flags int(11) default NULL, ##NULL<br>##44   userid varchar(30) default NULL, ##NULL<br>##45   homezipcode varchar(25) default NULL, ##''<br>##46   zipcode varchar(25) default NULL, ##''<br>##47   UNIQUE KEY cardnumber (cardnumber),<br>##48   KEY borrowernumber (borrowernumber)<br>## ) ;<br><br>import libxml2<br><br>record = []<br><br>def Record(i, node):<br>    sub_node = node.children<br>    while sub_node is not None:<br>        if sub_node.type == "element":<br>            record[i][sub_node.name] = sub_node.get_content()<br>            sub_node = sub_node.next<br>        else:<br>            sub_node = sub_node.next<br><br>## Memory debug specific<br>libxml2.debugMemory(1)<br><br>isis_data = libxml2.parseFile ('../xmls/members.xml')<br>root = isis_data.getRootElement()<br>node = root.children<br>i = 0<br>while node is not None:<br>    if node.type != "element":<br>        node = node.next<br>        continue<br>    if node is None:<br>        break<br>    if node.name == "RECORD":<br>        ##print node.get_content()<br>        record.append({})<br>        Record(i, node)<br>        i = i + 1<br>        node = node.next<br>    else:<br>        print "unhandled node in &lt;isis_xml&gt;: " + node.name<br><br>isis_data.freeDoc()<br><br># Memory debug specific<br>libxml2.cleanupParser()<br>if libxml2.debugMemory(1) == 0:<br>    print "OK"<br>else:<br>    print "Memory leak %d bytes" % (libxml2.debugMemory(1))<br>    libxml2.dumpMemory()<br><br>####################################################################<br><br>output_file = open('../outs/members.txt', 'w')<br>tag = ['Tag_202', 'Tag_203', 'Tag_216', 'Tag_217']<br><br>for j in record:<br>    if j.has_key('Tag_202') and j.has_key('Tag_201') and j.has_key('Tag_216'):<br><br>        output_file.write('\t')                    ##01<br>        output_file.write(j['Tag_202']+'\t')       ##02<br>        output_file.write(j['Tag_201']+'\t')       ##03<br>        output_file.write(' \t')                   ##04<br>        output_file.write(' \t')                   ##05<br>        output_file.write('\t')                    ##06<br>        output_file.write('\t')                    ##07<br>        if j.has_key('Tag_203'):                   ##08<br>            output_file.write(j['Tag_203']+'\t')<br>        else:<br>            output_file.write('\t')<br>        output_file.write('NULL\t')                ##09<br>        output_file.write('\t')                    ##10<br>        output_file.write('\t')                    ##11<br>        output_file.write('\t')                    ##12<br>        output_file.write('\t')                    ##13<br>        output_file.write('\t')                    ##14<br>        output_file.write('NULL\t')                ##15<br>        output_file.write('NULL\t')                ##16<br>        output_file.write('NULL\t')                ##17<br>        output_file.write('\t')                    ##18<br>        output_file.write('0000-00-00\t')          ##19<br>        output_file.write('MAIN\t')                ##20<br>        if j.has_key('Tag_216'):                   ##21<br>            output_file.write(j['Tag_216']+'\t')<br>        else:<br>            output_file.write('OT\t')<br>            pass<br>        if j.has_key('Tag_217'):                   ##22<br>            output_file.write(j['Tag_217']+'\t')<br>        else:<br>            output_file.write('0000-00-00\t')<br>            pass<br>        output_file.write('NULL\t')                ##23<br>        output_file.write('NULL\t')                ##24<br>        output_file.write('NULL\t')                ##25<br>        output_file.write('NULL\t')                ##26<br>        output_file.write('NULL\t')                ##27<br>        output_file.write(' \t')                   ##28<br>        output_file.write('\t')                    ##29<br>        output_file.write('NULL\t')                ##30<br>        output_file.write('NULL\t')                ##31<br>        output_file.write('NULL\t')                ##32<br>        output_file.write('NULL\t')                ##33<br>        output_file.write('M\t')                   ##34<br>        output_file.write('0000-00-00\t')          ##35<br>        output_file.write('NULL\t')                ##36<br>        output_file.write('workplace\t')           ##37<br>        output_file.write('NULL\t')                ##38<br>        output_file.write('NULL\t')                ##39<br>        output_file.write('NULL\t')                ##40<br>        output_file.write('NULL\t')                ##41<br>        output_file.write('NULL\t')                ##42<br>        output_file.write('NULL\t')                ##43<br>        output_file.write('NULL\t')                ##44<br>        output_file.write('NULL\t')                ##45<br>        output_file.write('NULL\t')                ##46<br>        output_file.write('\n')</pre>
+  </li>
+  <li>
+    <p>Later to load it into <span class="application">MySQL</span>:</p>
+    <p><b class="userinput"><tt>LOAD DATA LOCAL INFILE "members.txt"
+INTO TABLE borrowers;</tt></b></p>
+  </li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>
