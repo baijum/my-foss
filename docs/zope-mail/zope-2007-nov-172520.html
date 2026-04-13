@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Zope] Zope 3.4.0 beta 2 Released!
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:zope%40zope.org?Subject=%5BZope%5D%20Zope%203.4.0%20beta%202%20Released%21&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="172518.html">
+   <LINK REL="Next"  HREF="172521.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Zope] Zope 3.4.0 beta 2 Released!</H1>
+    <B>Stephan Richter</B> 
+    <A HREF="mailto:zope%40zope.org?Subject=%5BZope%5D%20Zope%203.4.0%20beta%202%20Released%21&In-Reply-To="
+       TITLE="[Zope] Zope 3.4.0 beta 2 Released!">srichter at cosmos.phy.tufts.edu
+       </A><BR>
+    <I>Mon Nov  5 19:07:11 EST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="172518.html">[Zope] Monkey patch tutorial
+</A></li>
+        <LI>Next message: <A HREF="172521.html">[Zope] integrating a zope app with plone security, search
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172520">[ date ]</a>
+              <a href="thread.html#172520">[ thread ]</a>
+              <a href="subject.html#172520">[ subject ]</a>
+              <a href="author.html#172520">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>November 5, 2007 - The Zope 3 development team announces the Zope
+3.4.0b2 release.
+
+This release is the second beta release for Zope 3.4.0. It was preceded
+by an early beta 1 release back in July.
+
+Zope 3.4 introduces support for binary large objects in the ZODB, and provides
+a new postprocessing hook for publishing results. Many of the packages also
+provide small feature improvements that are too numerous to list at this
+point.
+
+
+Packages and Eggs
+-----------------
+
+Since the first Zope 3.4 alpha and beta releases, we have finished the
+transition to a completely egg-based system. This largely means that most Zope
+3 developers do not use the classic Zope 3 tar ball release anymore. However,
+for your convenience, the Zope 3 developers will provide the classic Zope 3
+tar ball releases for at least the 3.4 series and probably for 3.5 as well.
+
+So how are Zope 3 applications built using only eggs?
+
+The Known Good Set (KGS)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The known good set -- or in short KGS -- is a package index that derives from
+the official Python Package Index (PyPI) and thus contains all available
+packages in the Python world. But for a controlled set of packages, only
+certain versions that are known to work together are available. The list of
+controlled packages and their versions for Zope 3.4 can be found at the index
+page [1]_.
+
+The index can be used in several ways -- described here for `buildout`-based
+projects. The easiest method is to specify the index option in your
+``buildout.cfg`` file::
+
+  [buildout]
+  index = <A HREF="http://download.zope.org/zope3.4">http://download.zope.org/zope3.4</A>
+  ...
+
+You can also &quot;nail&quot; the versions by downloading the versions [2]_ and insert
+them as follows:
+
+  [buildout]
+  versions = versions
+  ...
+
+  [versions]
+  zope.interface 3.4.0
+  ...
+
+
+``zopeproject`` Project Builder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Philipp von Weitershausen has developed a package called `zopeproject` to
+quickly setup the boilerplate for any Zope 3 based project. Ample
+documentation is provided at the `zopeproject` home page [3]_. `zopeproject`
+uses Paste or ZDaemon to create a working server. Here are the necessary
+commands to get a project started::
+
+  $ easy_install zopeproject
+  $ zopeproject HelloWorld
+  $ cd HelloWorld
+  $ bin/helloworld-ctl foreground
+
+
+Demo Packages
+~~~~~~~~~~~~~
+
+At this point, there is no demo package demonstrating a simple Zope 3
+application setup. (I hope one gets developed before Zope 3.4.0 final.)
+However, the ``z3c.formdemo`` package can be used as a fairly minimal
+setup. To get started with it, do the following::
+
+  $ svn co <A HREF="svn://svn.zope.org/repos/main/z3c.formdemo/tags/1.5.1">svn://svn.zope.org/repos/main/z3c.formdemo/tags/1.5.1</A> formdemo
+  $ cd formdemo
+  $ python bootstrap.py
+  $ ./bin/buildout -v
+  $ ./bin/demo fg
+
+
+.. [1] <A HREF="http://download.zope.org/zope3.4/controlled-packages.cfg">http://download.zope.org/zope3.4/controlled-packages.cfg</A>
+
+.. [2] <A HREF="http://download.zope.org/zope3.4/versions.cfg">http://download.zope.org/zope3.4/versions.cfg</A>
+
+.. [3] <A HREF="http://pypi.python.org/pypi/zopeproject">http://pypi.python.org/pypi/zopeproject</A>
+
+
+What is Zope 3?
+---------------
+
+Zope 3 is a web application server that continues to build on the heritage of
+Zope.  It was rewritten from scratch based on the latest software design
+patterns and the experiences of Zope 2.
+
+The component architecture is the very core of Zope 3 that allows developers 
+to
+create flexible and powerful web applications.
+
+
+Compatibility with Zope 2
+--------------------------
+
+Zope 3 is not upwards compatible with Zope 2. This means you cannot run Zope 2
+applications in Zope 3.
+
+We continue to work on the transition from Zope 2 to Zope 3 by making Zope 2
+use more and more of the Zope 3 infrastructure. This means that new code
+written in Zope 2 can benefit from Zope 3 technology. Also, with care, code
+can be written that works in both Zope 3 and Zope 2.  This allows a Zope 2
+application to slowly evolve towards Zope 3.  Unchanged Zope 2 applications
+are never expected to work in Zope 3, however.
+
+
+Downloads
+---------
+
+- Zope 3.4 Egg Index:
+    <A HREF="http://download.zope.org/zope3.4">http://download.zope.org/zope3.4</A>
+
+- Zope 3.4 Controlled Packages:
+    <A HREF="http://download.zope.org/zope3.4/controlled-packages.cfg">http://download.zope.org/zope3.4/controlled-packages.cfg</A>
+
+- Zope 3.4 Latest Versions:
+    <A HREF="http://download.zope.org/zope3.4/versions.cfg">http://download.zope.org/zope3.4/versions.cfg</A>
+
+- The classic Zope 3 source release can be downloaded from:
+    <A HREF="http://zope.org/Products/Zope3">http://zope.org/Products/Zope3</A>
+
+Installation instructions for both Windows and Un*x/Linux are now available in
+the top level `README.txt` file of the distribution. The binary installer is
+recommended for Windows.
+
+Zope 3.4 requires Python 2.4.4 to run. You must also have zlib installed on
+your system.
+
+
+Resources
+---------
+
+- Zope 3 Development Web Site:
+    <A HREF="http://wiki.zope.org/zope3">http://wiki.zope.org/zope3</A>
+
+- Zope 3 Developers Mailing List:
+    <A HREF="http://mail.zope.org/mailman/listinfo/zope-dev">http://mail.zope.org/mailman/listinfo/zope-dev</A>
+
+    Retired: <A HREF="http://mail.zope.org/mailman/listinfo/zope3-dev">http://mail.zope.org/mailman/listinfo/zope3-dev</A>
+
+- Zope 3 Users Mailing List:
+    <A HREF="http://mail.zope.org/mailman/listinfo/zope3-users">http://mail.zope.org/mailman/listinfo/zope3-users</A>
+
+- Bug tracker at launchpad:
+    <A HREF="https://launchpad.net/zope3">https://launchpad.net/zope3</A>
+
+- IRC Channel:
+    #zope3-dev at irc.freenode.net
+
+
+Acknowledgments
+---------------
+
+Much thanks to everyone who contributed to this release. Since all
+contributions are now spread over a multitude of packages, listing all
+contributors is not feasible anymore.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="172518.html">[Zope] Monkey patch tutorial
+</A></li>
+	<LI>Next message: <A HREF="172521.html">[Zope] integrating a zope app with plone security, search
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172520">[ date ]</a>
+              <a href="thread.html#172520">[ thread ]</a>
+              <a href="subject.html#172520">[ subject ]</a>
+              <a href="author.html#172520">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="http://mail.zope.org/mailman/listinfo/zope">More information about the Zope
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en" dir="ltr">
+  <head>
+<base href="https://launchpad.net/zcadoc/+index" />
+
+    <meta charset="UTF-8" />
+    <title>zcadoc in Launchpad</title>
+    <link rel="shortcut icon" href="/@@/launchpad.png" />
+    
+    
+      <link rel="alternate" type="application/atom+xml"
+            href="http://feeds.launchpad.net/zcadoc/announcements.atom"
+            title="Announcements for zcadoc" />
+      <link rel="alternate" type="application/atom+xml"
+            href="http://feeds.launchpad.net/zcadoc/latest-bugs.atom"
+            title="Latest Bugs for zcadoc" />
+      <link rel="alternate" type="application/atom+xml"
+            href="http://feeds.launchpad.net/zcadoc/branches.atom"
+            title="Latest Branches for zcadoc" />
+      <link rel="alternate" type="application/atom+xml"
+            href="http://feeds.launchpad.net/zcadoc/revisions.atom"
+            title="Latest Revisions for zcadoc" />
+    
+
+    
+  
+  <link type="text/css" rel="stylesheet"
+        media="screen, print"
+        href="/+icing/rev16877/combo.css" />
+
+
+    
+
+    
+      
+    
+
+    
+  
+
+  
+  
+  <script type="text/javascript">
+    var LP = {
+        cache: {},
+        links: {}
+    };
+  </script>
+
+  
+
+  <script type="text/javascript">var cookie_scope = '; Path=/; Secure; Domain=.launchpad.net';</script>
+
+   <script type="text/javascript"
+           src="/+combo/rev16877/?yui/yui/yui-min.js&amp;lp/meta.js&amp;yui/loader/loader-min.js"></script>
+   <script type="text/javascript">
+        var raw = null;
+        if (LP.devmode) {
+           raw = 'raw';
+        }
+        YUI.GlobalConfig = {
+            combine: true,
+            comboBase: '/+combo/rev16877/?',
+            root: 'yui/',
+            filter: raw,
+            debug: false,
+            fetchCSS: false,
+            maxURLLength: 2000,
+            groups: {
+                lp: {
+                    combine: true,
+                    base: '/+combo/rev16877/?lp/',
+                    comboBase: '/+combo/rev16877/?',
+                    root: 'lp/',
+                    // comes from including lp/meta.js
+                    modules: LP_MODULES,
+                    fetchCSS: false
+                }
+            }
+        }</script>
+
+  <script type="text/javascript">
+      // we need this to create a single YUI instance all events and code
+      // talks across. All instances of YUI().use should be based off of
+      // LPJS instead.
+      LPJS = new YUI();
+  </script>
+
+
+
+    <script id="base-layout-load-scripts" type="text/javascript">
+        //<![CDATA[
+        LPJS.use('base', 'node', 'console', 'event',
+            'oop', 'lp', 'lp.app.foldables','lp.app.sorttable',
+            'lp.app.inlinehelp', 'lp.app.links', 'lp.app.longpoll',
+            'lp.bugs.bugtask_index', 'lp.bugs.subscribers',
+            'lp.app.ellipsis', 'lp.code.branchmergeproposal.diff',
+            'lp.views.global',
+             function(Y) {
+
+            Y.on("domready", function () {
+                var global_view = new Y.lp.views.Global();
+                global_view.render();
+
+                Y.lp.app.sorttable.SortTable.init();
+                Y.lp.app.inlinehelp.init_help();
+                Y.lp.activate_collapsibles();
+                Y.lp.app.foldables.activate();
+                Y.lp.app.links.check_valid_lp_links();
+                // Longpolling will only start if
+                // LP.cache.longpoll is populated.
+                // We use Y.later to work around a Safari/Chrome 'feature':
+                // The mouse cursor stays 'busy' until all the requests started during
+                // page load are finished.  Hence we want the long poll request to start
+                // right *after* the page has loaded.
+                Y.later(0, Y.lp.app.longpoll, Y.lp.app.longpoll.setupLongPollManager);
+
+            });
+
+            Y.on('lp:context:web_link:changed', function(e) {
+                  window.location = e.new_value;
+            });
+        });
+        //]]>
+    </script>
+    <script id="base-helper-functions" type="text/javascript">
+         //<![CDATA[
+        // This code is pulled from lp.js that needs to be available on every
+        // request. Pulling here to get it outside the scope of the YUI block.
+        function setFocusByName(name) {
+            // Focus the first element matching the given name which can be focused.
+            var nodes = document.getElementsByName(name);
+            var i, node;
+            for (i = 0; i < nodes.length; i++) {
+                node = nodes[i];
+                if (node.focus) {
+                    try {
+                        // Trying to focus a hidden element throws an error in IE8.
+                        if (node.offsetHeight !== 0) {
+                            node.focus();
+                        }
+                    } catch (e) {
+                        LPJS.use('console', function(Y) {
+                            Y.log('In setFocusByName(<' +
+                                node.tagName + ' type=' + node.type + '>): ' + e);
+                        });
+                    }
+                    break;
+                }
+            }
+        }
+
+        function selectWidget(widget_name, event) {
+          if (event && (event.keyCode === 9 || event.keyCode === 13)) {
+              // Avoid firing if user is tabbing through or simply pressing
+              // enter to submit the form.
+              return;
+          }
+          document.getElementById(widget_name).checked = true;
+        }
+        //]]>
+    </script>
+
+    
+      
+    
+  
+    
+  </head>
+
+  <body id="document" itemscope=""
+        itemtype="http://schema.org/WebPage"
+        class="tab-overview
+      main_side
+      public
+      yui3-skin-sam">
+          
+          
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-12833497-1']);
+          _gaq.push(['_setDomainName', '.launchpad.net']);
+          _gaq.push(['_setAllowHash', false]);
+          _gaq.push(['_trackPageview']);
+        </script>
+        <script type="text/javascript"
+                src="https://launchpad.net/+icing/rev16877/google-analytics/ga.js"></script>
+    <div class="yui-d0">
+      <div id="locationbar" class="login-logout">
+        
+
+<div id="logincontrol"><a href="https://launchpad.net/zcadoc/+login">Log in / Register</a></div>
+
+
+
+      </div><!--id="locationbar"-->
+
+      <div id="watermark" class="watermark-apps-portlet">
+        <div>
+          <img alt="" width="64" height="64" src="https://launchpadlibrarian.net/10268204/zcadoc-square-64.jpg" />
+        </div>
+        <div class="wide">
+          <h1 id="edit-title">
+<span style="max-width: 95%;"
+      class="yui3-editable_text-text ellipsis">
+    ZCA and Documentation
+</span>
+  
+</h1>
+
+
+
+          
+  <!-- Application Menu -->
+  <ul class="facetmenu">
+    
+      <li class="overview active"
+          title="General information about zcadoc"><span>Overview</span></li>
+      
+      
+    
+    
+      
+      <li class="branches" title="Branches for zcadoc"><a
+    href="https://code.launchpad.net/zcadoc">Code</a></li>
+      
+    
+    
+      
+      <li class="bugs" title="Bugs reported about zcadoc"><a
+    href="https://bugs.launchpad.net/zcadoc">Bugs</a></li>
+      
+    
+    
+      
+      <li class="specifications"
+          title="Feature specifications for zcadoc"><a
+    href="https://blueprints.launchpad.net/zcadoc">Blueprints</a></li>
+      
+    
+    
+      
+      <li class="translations"
+          title="Translations of zcadoc in Launchpad"><a
+    href="https://translations.launchpad.net/zcadoc">Translations</a></li>
+      
+    
+    
+      
+      <li class="answers" title="Questions for zcadoc"><a
+    href="https://answers.launchpad.net/zcadoc">Answers</a></li>
+      
+    
+  </ul>
+
+        </div>
+      </div>
+
+      <div class="yui-t4">
+        <div id="maincontent" class="yui-main">
+          <div class="yui-b" dir="ltr">
+            <div class="context-publication">
+              
+              
+
+              <div id="registration" class="registering">
+                
+    Registered
+    2007-11-02
+    by
+    <a href="/~zcadoc" class="bg-image" style="background-image: url(https://launchpadlibrarian.net/10268373/zcadoc-square-14x14.jpg)">Team zcadoc</a>
+  
+              </div>
+            </div>
+
+            
+            <div id="request-notifications">
+              
+            </div>
+
+            
+              
+      <div class="top-portlet">
+        
+
+    
+
+	<div class="summary"><p>This project has moved to: <a rel="nofollow" href="https://github.com/baijum/zcadoc">https:/<wbr />/github.<wbr />com/baijum/<wbr />zcadoc</a></p></div>
+
+        
+
+        
+        
+      </div>
+
+      <div class="yui-g">
+        <div class="yui-u first">
+          <div id="project-info" class="portlet">
+            <h2>Project information</h2>
+
+            <div class="two-column-list">
+              
+
+              <dl id="owner">
+                <dt>Maintainer:</dt>
+                <dd>
+  <span id="edit-owner">
+    <span class="yui3-activator-data-box">
+      <a href="/~zcadoc" class="bg-image" style="background-image: url(https://launchpadlibrarian.net/10268373/zcadoc-square-14x14.jpg)">Team zcadoc</a>
+    </span>
+    
+  </span>
+
+  
+
+</dd>
+              </dl>
+
+              
+
+              <dl id="driver">
+                <dt>Driver:</dt>
+                <dd>
+  <span id="edit-driver">
+    <span class="yui3-activator-data-box">
+      Not yet selected
+    </span>
+    
+  </span>
+
+  
+
+</dd>
+              </dl>
+
+              <dl id="dev-focus">
+                <dt>Development focus:</dt>
+                <dd>
+                  <p>
+                  <a href="/zcadoc/trunk">trunk series</a>&nbsp;
+                  </p>
+                  
+                </dd>
+              </dl>
+
+              
+
+              <dl id="licences">
+                <dt>Licences:</dt>
+                <dd>
+                  
+                    GNU GPL v2,
+                  
+                  
+                    Zope Public Licence
+                  
+                  
+                  <div class="scrolled-box" condition="view/show_license_info">
+                    ()
+                  </div>
+                </dd>
+                
+                
+              </dl>
+            </div>
+
+            <p>
+              <a href="https://launchpad.net/zcadoc/+rdf"
+        class="menu-link-rdf sprite download"><abbr title="Resource Description Framework">RDF</abbr> metadata</a>
+            </p>
+
+            
+          </div>
+        </div>
+
+        <div class="yui-u">
+          <div class="portlet">
+            <h2>
+              <span class="see-all"><a href="https://launchpad.net/zcadoc/+series"
+        class="menu-link-series sprite info">View full history</a></span>
+              Series and milestones
+            </h2>
+
+            
+  
+  <div id="timeline-loading" class="hidden">
+    <img src="/@@/spinner" /> Loading graph...
+  </div>
+
+  <!-- Opera ignores overflow:hidden for iframe, so use scrolling=no. -->
+  <iframe id="timeline-iframe" name="timeline-iframe" class="timeline-iframe hidden" style="border: 0" scrolling="no" width="100%" height="216px"></iframe>
+  <script>
+  //<![CDATA[
+  function timeline_iframe(auto_resize, include_inactive, start, size) {
+      var timeline_url = "+timeline-graph?";
+      if (include_inactive == 'true') {
+          timeline_url += "include_inactive=true&";
+      }
+
+      if (auto_resize == 'true') {
+          timeline_url += 'resize_frame=timeline-iframe&';
+      }
+
+      start = parseInt(start);
+      size = parseInt(size);
+      if (start != NaN && start >= 0) {
+          timeline_url += "start=" + start + "&";
+      }
+      if (size != NaN && size >= 1) {
+          timeline_url += "size=" + size + "&";
+      }
+      LPJS.use('node', 'lp.registry.timeline', function(Y) {
+          if (!Y.lp.registry.timeline.isCanvasSupported()) {
+              return;
+          }
+          var loading_el = Y.one('#timeline-loading');
+          loading_el.setStyle('display', 'block');
+          var iframe = Y.one('#timeline-iframe');
+          iframe.set('src', timeline_url);
+          Y.on('load', function(e) {
+              loading_el.setStyle('display', 'none');
+              iframe.setStyle('display', 'block');
+          }, iframe);
+      });
+  }
+  //]]>
+  </script>
+  <script>
+      timeline_iframe(
+        'None',
+        'None',
+        'None',
+        'None'
+        );
+      </script>
+
+
+            <p id="development-focus">
+              <a href="/zcadoc/trunk">zcadoc trunk series</a>
+              is the current focus of development
+            </p>
+
+            <ul class="horizontal">
+              
+              <li>
+                <a href="https://launchpad.net/zcadoc/+milestones"
+        class="menu-link-milestones sprite info">View milestones</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="yui-g">
+        <div class="yui-u first">
+          
+
+          
+
+          <div>
+  
+
+</div>
+
+          <div>
+</div>
+        </div>
+
+        <div class="yui-u">
+          
+
+          
+
+          <div>
+</div>
+        </div>
+        <div class="yui-u">
+          <div id="structural-subscription-content-box"></div>
+        </div>
+
+      </div>
+    
+            
+            
+          </div><!-- yui-b -->
+        </div><!-- yui-main -->
+
+        
+          <div id="side-portlets" class="yui-b side">
+            
+      
+
+      <div id="involvement" class="portlet">
+  <h2>Get Involved</h2>
+
+  <ul class="involvement">
+    
+      <li class="disabled"
+          title="Launchpad needs to know where the user can report a bug">
+        <div style="padding: 0.3em 0 0.3em 0.3em">
+          <div style="display: inline-block" class="sprite warning-icon action-icon">warning</div>
+
+          <div style="height: 1.2em; float: right">
+            <img src="/@@/gray-arrow-right.png" style="top: 50%; bottom: 50%; margin-top: -5px;
+                       position: relative;
+                       height: 9px; width: 14px; padding: 0" />
+          </div>
+
+          <span>Report a bug</span>
+        </div>
+      </li>
+    
+    
+      <li class="disabled"
+          title="Launchpad needs to know where the user can ask a question">
+        <div style="padding: 0.3em 0 0.3em 0.3em">
+          <div style="display: inline-block" class="sprite warning-icon action-icon">warning</div>
+
+          <div style="height: 1.2em; float: right">
+            <img src="/@@/gray-arrow-right.png" style="top: 50%; bottom: 50%; margin-top: -5px;
+                       position: relative;
+                       height: 9px; width: 14px; padding: 0" />
+          </div>
+
+          <span>Ask a question</span>
+        </div>
+      </li>
+    
+    
+      <li class="disabled"
+          title="Launchpad needs to know where the user can help translate">
+        <div style="padding: 0.3em 0 0.3em 0.3em">
+          <div style="display: inline-block" class="sprite warning-icon action-icon">warning</div>
+
+          <div style="height: 1.2em; float: right">
+            <img src="/@@/gray-arrow-right.png" style="top: 50%; bottom: 50%; margin-top: -5px;
+                       position: relative;
+                       height: 9px; width: 14px; padding: 0" />
+          </div>
+
+          <span>Help translate</span>
+        </div>
+      </li>
+    
+  </ul>
+
+  
+    
+    
+  
+
+  
+</div>
+
+
+      <div id="downloads" class="top-portlet downloads">
+        <h2>Downloads</h2>
+
+        
+
+        <p class="alternate">
+          
+           
+             zcadoc
+             does not have any download files registered with Launchpad.
+           
+        </p>
+      </div>
+
+      
+
+<div id="portlet-latest-announcements"
+     class="portlet announcements">
+  <h2>
+    <span style="float: right;"><a title="Atom 1.0 feed"
+    href="http://feeds.launchpad.net/zcadoc/announcements.atom"><img src="/@@/rss.png" /></a></span>
+    Announcements
+  </h2>
+
+  
+
+  
+    <ul>
+      <li>
+        <div class="latest-announcement">
+          
+          <a href="/zcadoc/+announcement/30">Zope Component Architecture book</a>
+          <strong>on 2007-12-11</strong>
+          <br /> The Zope Component Architecture book project aims to create a comprehensive g...
+        </div>
+      </li>
+    </ul>
+
+    <div class="see-all"><a href="https://launchpad.net/zcadoc/+announcements"
+        class="menu-link-announcements sprite info">Read all announcements</a></div>
+  
+
+  <div class="actions"></div>
+</div>
+
+
+
+    
+          </div><!-- yui-b side -->
+        
+      </div><!-- yui-t4 -->
+
+      
+  <div id="footer" class="footer">
+    <div class="lp-arcana">
+        <div class="lp-branding">
+          <a href="https://launchpad.net/"><img src="/@@/launchpad-logo-and-name-hierarchy.png" alt="Launchpad" /></a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://launchpad.net/+tour">Take the tour</a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://help.launchpad.net/">Read the guide</a>
+          &nbsp;
+          <form id="globalsearch" method="get"
+                accept-charset="UTF-8"
+                action="https://launchpad.net/+search">
+            <input type="search" id="search-text" name="field.text" />
+            <input type="image" src="/@@/search" style="vertical-align:5%" alt="Search Launchpad" />
+          </form>
+        </div>
+        
+  
+
+    </div>
+
+    <div class="colophon">
+      &copy; 2004-2013
+      <a href="http://canonical.com/">Canonical&nbsp;Ltd.</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://launchpad.net/legal">Terms of use</a>
+      &nbsp;&bull;&nbsp;
+      <a href="/feedback">Contact Launchpad Support</a>
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://blog.launchpad.net/">Blog</a>
+      
+	&nbsp;&bull;&nbsp;
+	<a href="http://www.canonical.com/about-canonical/careers">Careers</a>
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://identi.ca/launchpadstatus">System status</a>
+      <span id="lp-version">
+      &nbsp;&bull;&nbsp;
+        r16877
+        
+        
+        (<a href="https://dev.launchpad.net/">Get the code!</a>)
+      </span>
+    </div>
+  </div>
+
+    </div><!-- yui-d0-->
+
+    <div id="help-pane" class="invisible">
+      <div id="help-body">
+        
+        <iframe id="help-pane-content" class="invisible" src="javascript:void(0);"></iframe>
+      </div>
+      <div id="help-footer">
+        <span id="help-close"></span>
+      </div>
+    </div>
+
+    
+  
+  
+  <script id="json-cache-script">LP.cache = {"target_info": {"url": "https://launchpad.net/zcadoc", "title": "ZCA and Documentation"}, "related_features": {}, "administratedTeams": [], "importances": ["Unknown", "Undecided", "Critical", "High", "Medium", "Low", "Wishlist"], "context": {"license_info": null, "remote_product": null, "recipes_collection_link": "https://launchpad.net/api/devel/zcadoc/recipes", "development_focus_link": "https://launchpad.net/api/devel/zcadoc/trunk", "bug_supervisor_link": null, "private": false, "registrant_link": "https://launchpad.net/api/devel/~zcadoc", "official_bug_tags": [], "active_milestones_collection_link": "https://launchpad.net/api/devel/zcadoc/active_milestones", "commercial_subscription_is_due": false, "all_specifications_collection_link": "https://launchpad.net/api/devel/zcadoc/all_specifications", "translation_focus_link": null, "licenses": ["GNU GPL v2", "Zope Public Licence"], "all_milestones_collection_link": "https://launchpad.net/api/devel/zcadoc/all_milestones", "bug_reported_acknowledgement": null, "display_name": "zcadoc", "wiki_url": null, "title": "ZCA and Documentation", "homepage_url": null, "download_url": null, "is_permitted": "tag:launchpad.net:2008:redacted", "reviewer_whiteboard": "tag:launchpad.net:2008:redacted", "branch_sharing_policy": "Public", "self_link": "https://launchpad.net/api/devel/zcadoc", "information_type": "Public", "specification_sharing_policy": "Public", "resource_type_link": "https://launchpad.net/api/devel/#project", "programming_language": null, "translations_usage": "Unknown", "description": null, "translationpermission": "Open", "valid_specifications_collection_link": "https://launchpad.net/api/devel/zcadoc/valid_specifications", "project_reviewed": "tag:launchpad.net:2008:redacted", "brand_link": "https://launchpad.net/api/devel/zcadoc/brand", "sourceforge_project": null, "http_etag": "\"0c788d42fda3d6fb02e8b7832c0956e575d12286-4e40dc3428d42568bc7b235be54acfcc89a14ec7\"", "project_group_link": null, "bug_reporting_guidelines": null, "active": true, "bug_tracker_link": null, "name": "zcadoc", "license_approved": "tag:launchpad.net:2008:redacted", "driver_link": null, "freshmeat_project": null, "screenshots_url": null, "web_link": "https://launchpad.net/zcadoc", "summary": "This project has moved to: https://github.com/baijum/zcadoc", "logo_link": "https://launchpad.net/api/devel/zcadoc/logo", "owner_link": "https://launchpad.net/api/devel/~zcadoc", "qualifies_for_free_hosting": true, "translationgroup_link": null, "bug_sharing_policy": "Public", "releases_collection_link": "https://launchpad.net/api/devel/zcadoc/releases", "date_created": "2007-11-02T21:24:48.933095+00:00", "series_collection_link": "https://launchpad.net/api/devel/zcadoc/series", "commercial_subscription_link": null, "icon_link": "https://launchpad.net/api/devel/zcadoc/icon"}, "information_types": ["Public", "Public Security", "Private Security", "Private", "Proprietary", "Embargoed"], "team_membership_policy_data": [{"style": "", "help": "", "value": "RESTRICTED", "name": "Restricted Team", "disabled": false, "description_css_class": "choice-description", "description": ""}, {"style": "", "help": "", "value": "MODERATED", "name": "Moderated Team", "disabled": false, "description_css_class": "choice-description", "description": ""}], "statuses": ["New", "Incomplete", "Opinion", "Invalid", "Won't Fix", "Expired", "Confirmed", "Triaged", "In Progress", "Fix Committed", "Fix Released", "Unknown"]};</script>
+
+    
+  
+
+    
+  </body>
+
+
+  <!--
+    Facet name: overview
+    Page type: main_side
+    Has global search: True
+    Has application tabs: True
+    Has side portlets: True
+
+    At least 25 queries/external actions issued in 0.22 seconds
+
+    Features: {'markdown.enabled': None, 'baselayout.careers_link.disabled': None, 'hard_timeout': u'5000', 'profiling.enabled': None, 'js.yui_version': None, 'visible_render_time': None}
+
+    r16877
+
+    -->
+
+</html>
+
